@@ -3,11 +3,18 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: ['@vue/prettier', 'plugin:vue/recommended', '@vue/airbnb'],
+  extends: [
+    '@vue/prettier',
+    'plugin:vue/recommended',
+    'plugin:prettier/recommended',
+    'prettier/vue',
+    '@vue/airbnb',
+    'eslint:recommended',
+  ],
   rules: {
     'import/no-extraneous-dependencies': [
       'error',
-      { devDependencies: ['**/*.stories.js', '**/*.spec.js'] },
+      { devDependencies: ['**/*.config.js', 'tailwind*', '**/*.test.js', '**/*.spec.js'] },
     ],
     'prettier/prettier': ['error', { singleQuote: true, trailingComma: 'all', printWidth: 100 }],
     'function-paren-newline': 0,
