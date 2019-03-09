@@ -6,11 +6,13 @@
     </div>
     <div class="w-4/5 flex flex-row justify-end">
       <div
-        class="flex items-center content-center rounded-full h-14 w-14 shadow text-pleo-blue text-3xl font-bold mr-4"
+        class="flex items-center content-center rounded-full h-14 w-14 shadow text-pleo-blue text-3xl font-bold mr-4 cursor-pointer"
       >
         <div class="self-center mx-auto">+</div>
       </div>
-      <div class="flex items-center content-center rounded-full h-14 w-14 bg-pleo-blue mr-8">
+      <div
+        class="flex items-center content-center rounded-full h-14 w-14 bg-pleo-blue mr-8 cursor-pointer"
+      >
         <div class="mx-auto mx-auto pt-2 pl-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"

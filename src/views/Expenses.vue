@@ -5,7 +5,12 @@
         <ExpensesActionbar />
         <ExpensesSearch />
         <Expense v-for="(expense, index) in expenses" :key="index" :expense="expense" />
-        <div class="text-grey-darker text-center px py-2 mt-2 ml-2 mb-2 mr-6">Load More...</div>
+        <div
+          class="text-grey-darker text-center px py-2 mt-2 ml-2 mb-2 mr-6"
+          @click="getNextPage()"
+        >
+          Load More...
+        </div>
       </div>
     </div>
     <div class="inline-flex bg-red w-2/5 fixed">
@@ -89,17 +94,29 @@ export default {
     Expense,
     ExpensesSearch,
   },
-
+  data() {
+    return {
+      page: 0,
+    };
+  },
   computed: {
     ...mapGetters(['expenses']),
   },
 
-  created() {
-    this.getExpenses();
-  },
-
   methods: {
     ...mapActions(['getExpenses']),
+    // getNextPage: () => this.getExpenses(1),
+    getAvatarUrl: email => `https://api.adorable.io/avatars/285/${email}`,
+    openExpense: expenseId => console.log(expenseId),
+    getCurrency: currency => {
+      const currencies = {
+        DKK: 'kr',
+        EUR: '€',
+        GBP: '£',
+        USD: '$',
+      };
+      return currencies[currency];
+    },
   },
 };
 </script>

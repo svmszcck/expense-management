@@ -1,7 +1,8 @@
 <template>
   <div class="relative px py-2 mt-2 ml-2 mb-2 mr-6 mb-20">
     <input
-      id="search"
+      id="searchBar"
+      v-model="search"
       class="border-grey text-grey w-full pl-10 pt-3 pb-3 shadow"
       type="text"
       name="search"
@@ -35,7 +36,7 @@
       >
         <g id="surface1">
           <path
-            style=" stroke:none;fill-rule:nonzero;fill:rgb(158,157,175  );fill-opacity:1;"
+            style=" stroke:none;fill-rule:nonzero;fill:rgb(158,157,175);fill-opacity:1;"
             d="M 0.5 4 L 13.5 4 C 13.777344 4 14 3.777344 14 3.5 L 14 1.5 C 14 1.222656 13.777344 1 13.5 1 L 0.5 1 C 0.222656 1 0 1.222656 0 1.5 L 0 3.5 C 0 3.777344 0.222656 4 0.5 4 Z M 15.5 6.5 L 2.5 6.5 C 2.222656 6.5 2 6.722656 2 7 L 2 9 C 2 9.277344 2.222656 9.5 2.5 9.5 L 15.5 9.5 C 15.777344 9.5 16 9.277344 16 9 L 16 7 C 16 6.722656 15.777344 6.5 15.5 6.5 Z M 13.5 12 L 0.5 12 C 0.222656 12 0 12.222656 0 12.5 L 0 14.5 C 0 14.777344 0.222656 15 0.5 15 L 13.5 15 C 13.777344 15 14 14.777344 14 14.5 L 14 12.5 C 14 12.222656 13.777344 12 13.5 12 Z M 13.5 12 "
           />
         </g>
@@ -43,3 +44,39 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapActions } from 'vuex';
+
+export default {
+  // campos de la db
+  name: 'ExpensesExpense',
+  data() {
+    return {
+      search: '',
+    };
+  },
+  watch: {
+    search: {
+      handler: function() {
+        this.getExpenses(this.search);
+      },
+      // TODO: lodash debounce
+      immediate: true,
+    },
+  },
+  methods: {
+    ...mapActions(['getExpenses']),
+
+    getCurrency(currency) {
+      const currencies = {
+        DKK: 'kr',
+        EUR: '€',
+        GBP: '£',
+        USD: '$',
+      };
+      return currencies[currency];
+    },
+  },
+};
+</script>
