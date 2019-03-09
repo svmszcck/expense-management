@@ -13,4 +13,4 @@ export default {
   },
 };
 </script>
-<style src="./assets/css/sidebar.css"></style>
+<style lang="scss" src="./assets/css/common.scss"></style>

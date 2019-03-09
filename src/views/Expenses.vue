@@ -1,13 +1,11 @@
 <template>
   <div class="flex-1 ml-64 bg-white h-full mt-12">
-    <div class="inline-flex w-1/2 pl-12 pr-16">
-      <div class="balance flex flex-col">
-        <div class="uppercase text-3xl">£22,124.56</div>
-        <div class="text-grey mt-2 text-sm">Available balance</div>
-      </div>
-      <div class="balance flex flex-row justify-end align-middle w-4/5">
-        <div class="text-3xl">+</div>
-        <div class="text-grey mt-2 text-sm">Export</div>
+    <div class="inline-flex w-1/2 pl-20 pr-20">
+      <div class="flex flex-col w-full">
+        <ExpensesActionbar />
+        <ExpensesSearch />
+        <Expense v-for="(expense, index) in expenses" :key="index" :expense="expense" />
+        <div class="text-grey-darker text-center px py-2 mt-2 ml-2 mb-2 mr-6">Load More...</div>
       </div>
     </div>
     <div class="inline-flex bg-red w-2/5 fixed">
@@ -80,9 +78,17 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import ExpensesActionbar from '@/components/Expenses/ExpensesActionbar.vue';
+import Expense from '@/components/Expenses/ExpensesExpense.vue';
+import ExpensesSearch from '@/components/Expenses/ExpensesSearch.vue';
 
 export default {
   name: 'Expenses',
+  components: {
+    ExpensesActionbar,
+    Expense,
+    ExpensesSearch,
+  },
 
   computed: {
     ...mapGetters(['expenses']),

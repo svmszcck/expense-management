@@ -126,6 +126,8 @@ let colors = {
   'pink-light': '#fa7ea8',
   'pink-lighter': '#ffbbca',
   'pink-lightest': '#ffebef',
+
+  'pleo-blue': '#4790e5',
 };
 
 module.exports = {
@@ -469,6 +471,7 @@ module.exports = {
     '8': '2rem',
     '10': '2.5rem',
     '12': '3rem',
+    '14': '3.5rem',
     '16': '4rem',
     '24': '6rem',
     '32': '8rem',
@@ -518,6 +521,7 @@ module.exports = {
     '8': '2rem',
     '10': '2.5rem',
     '12': '3rem',
+    '14': '3.5rem',
     '16': '4rem',
     '24': '6rem',
     '32': '8rem',
