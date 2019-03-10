@@ -1,4 +1,4 @@
-import { LIST_EXPENSES, SET_PAGE, SET_EXPENSE } from '../../mutation-types';
+import { LIST_EXPENSES, SET_PAGE, SET_EXPENSE, SET_COMMENT } from '../../mutation-types';
 
 export default {
   [LIST_EXPENSES]: (state, expenses) => {
@@ -8,6 +8,9 @@ export default {
     state.page = page;
   },
   [SET_EXPENSE]: (state, expense) => {
+    state.expense = expense;
+  },
+  [SET_COMMENT]: (state, expense) => {
     state.expense = expense;
   },
 };

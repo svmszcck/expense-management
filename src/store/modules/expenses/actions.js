@@ -35,4 +35,9 @@ export default {
     const expense = id ? getters.expenses.filter(item => item.id === id)[0] : getters.expenses[0];
     commit(SET_EXPENSE, expense);
   },
+  setComment: ({ commit }, commentCreated) => {
+    ExpensesService.setComment(commentCreated).then(({ data }) => {
+      commit(SET_EXPENSE, data);
+    });
+  },
 };

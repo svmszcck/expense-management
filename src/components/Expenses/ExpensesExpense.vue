@@ -16,7 +16,7 @@
         <div class="text-grey-darker font-medium capitalize">{{ merchantLow }}</div>
         <div class="text-grey mt-2 text-sm">{{ expense.user.first }} {{ expense.user.last }}</div>
         <div v-if="showComment" class="border-l-2 mt-4 border-expense pl-4">
-          <div class="pt-1 pb-1 text-grey font-bold">{{ expense.category }}</div>
+          <div class="pt-1 pb-1 text-grey font-bold">{{ expense.comment }}</div>
           <div class="pt-1 pb-1 text-sm text-grey italic">empty</div>
         </div>
       </div>

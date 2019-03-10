@@ -14,12 +14,24 @@
         </div>
       </div>
     </div>
-    <div class="font-medium text-grey-darkest text-grey-darker">{{ getValue }}</div>
+    <input
+      v-if="typeComment"
+      v-model="comment"
+      class="appearance-none bg-transparent border-b border-green-light w-full text-grey-darker
+    mr-2 leading-tight focus:outline-none"
+      type="text"
+      :placeholder="$t('expense.addComment')"
+      aria-label="comment"
+      @keyup.enter="saveComment"
+      @blur="saveComment"
+    />
+    <div v-else class="font-medium text-grey-darkest text-grey-darker">{{ getValue }}</div>
   </div>
 </template>
 
 <script>
 import { fontIcon } from '@/utils';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'ExpensesExpenseDetailElementElement',
@@ -41,15 +53,34 @@ export default {
       default: () => 'text-grey-dark',
     },
   },
+  data() {
+    return {
+      comment: '',
+    };
+  },
   computed: {
+    ...mapGetters(['expense']),
     fontIcon,
     getValue() {
       return this.user ? `${this.user.first} ${this.user.last}` : this.value;
     },
+    typeComment() {
+      return this.type === 'comment';
+    },
   },
 
   methods: {
+    ...mapActions(['setComment']),
     getAvatarUrl: email => `https://api.adorable.io/avatars/285/${email}`,
+    saveComment() {
+      // console.log(this.comment);
+      const commentCreated = {
+        id: this.expense.id,
+        comment: this.comment,
+      };
+
+      this.setComment(commentCreated);
+    },
   },
 };
 </script>

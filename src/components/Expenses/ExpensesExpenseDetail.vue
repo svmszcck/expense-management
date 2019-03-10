@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-full">
+  <div class="flex flex-col w-full overflow-y-auto">
     <div class="flex flex-row font-semibold justify-between w-full pb-6">
       <div class="pl-12 pt-3">
         <font-awesome-icon
