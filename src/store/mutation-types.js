@@ -3,6 +3,7 @@
  */
 export const LIST_EXPENSES = 'LIST_EXPENSES';
 export const SET_PAGE = 'SET_PAGE';
+export const SET_EXPENSE = 'SET_EXPENSE';
 // export const EXPENSE_DETAIL = 'EXPENSE_DETAIL';
 export const UPDATE_EXPENSE = 'UPDATE_EXPENSE';
 export const UPDATE_RECEIPT_TO_EXPENSE = 'UPDATE_RECEIPT_TO_EXPENSE';

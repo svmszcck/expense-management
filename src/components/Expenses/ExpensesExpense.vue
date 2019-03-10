@@ -1,5 +1,5 @@
 <template>
-  <div class="px py-2 mt-2 ml-2 mb-2 mr-6 cursor-pointer" @click="openExpense(expense.id)">
+  <div class="px py-2 mt-2 ml-2 mb-2 mr-6 cursor-pointer" @click="openExpense()">
     <div class="flex flex-row">
       <div class="mr-4">
         <div class="rounded-full mx-auto max-w-sm overflow-hidden">
@@ -27,6 +27,9 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex';
+import { getCurrency } from '@/utils';
+
 export default {
   // campos de la db
   name: 'ExpensesExpense',
@@ -37,6 +40,7 @@ export default {
       default: () => {},
     },
   },
+
   computed: {
     merchantLow() {
       return this.expense.merchant.toLowerCase();
@@ -45,18 +49,18 @@ export default {
       return this.expense.comment != '';
     },
   },
+
+  created() {
+    this.setExpense();
+  },
+
   methods: {
-    getAvatarUrl: email => `https://api.adorable.io/avatars/285/${email}`,
-    openExpense: expenseId => console.log(expenseId),
-    getCurrency: currency => {
-      const currencies = {
-        DKK: 'kr',
-        EUR: '€',
-        GBP: '£',
-        USD: '$',
-      };
-      return currencies[currency];
+    ...mapActions(['setExpense']),
+    openExpense() {
+      return this.setExpense(this.expense.id);
     },
+    getAvatarUrl: email => `https://api.adorable.io/avatars/285/${email}`,
+    getCurrency,
   },
 };
 </script>

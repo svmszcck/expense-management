@@ -1,11 +1,15 @@
 <template>
   <div>
-    <!-- <ExpensesExpenseDetailElementsElement type="person" /> -->
-    <ExpensesExpenseDetailElementsElement type="team" />
-    <ExpensesExpenseDetailElementsElement type="category" color="text-green-light" />
-    <ExpensesExpenseDetailElementsElement type="vat" />
-    <ExpensesExpenseDetailElementsElement type="tag" />
-    <ExpensesExpenseDetailElementsElement type="comment" />
+    <ExpensesExpenseDetailElementsElement type="profile" :user="expense.user" />
+    <ExpensesExpenseDetailElementsElement type="team" value="Design Team" />
+    <ExpensesExpenseDetailElementsElement
+      type="category"
+      color="text-green-light"
+      :value="expense.merchant"
+    />
+    <ExpensesExpenseDetailElementsElement type="vat" value="20%" />
+    <ExpensesExpenseDetailElementsElement type="tag" :value="expense.category" />
+    <ExpensesExpenseDetailElementsElement type="comment" :value="expense.comment" />
   </div>
 </template>
 <script>
@@ -15,6 +19,12 @@ export default {
   name: 'ExpensesExpenseDetailElements',
   components: {
     ExpensesExpenseDetailElementsElement,
+  },
+  props: {
+    expense: {
+      type: Object,
+      default: () => {},
+    },
   },
 };
 </script>

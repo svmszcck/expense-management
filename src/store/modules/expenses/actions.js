@@ -1,8 +1,8 @@
 import ExpensesService from '@/api/expenses';
-import { LIST_EXPENSES, SET_PAGE } from '../../mutation-types';
+import { LIST_EXPENSES, SET_PAGE, SET_EXPENSE } from '../../mutation-types';
 
 export default {
-  getExpenses: ({ commit, state }, options) => {
+  getExpenses: ({ commit }, options) => {
     const { search, page } = options;
 
     // get state.expenses and state.page
@@ -30,5 +30,9 @@ export default {
       commit(LIST_EXPENSES, items);
       commit(SET_PAGE, page);
     });
+  },
+  setExpense: ({ commit, getters }, id) => {
+    const expense = id ? getters.expenses.filter(item => item.id === id)[0] : getters.expenses[0];
+    commit(SET_EXPENSE, expense);
   },
 };

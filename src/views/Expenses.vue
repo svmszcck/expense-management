@@ -43,16 +43,6 @@ export default {
     ...mapActions(['getExpenses']),
     // getNextPage: () => this.getExpenses(1),
     getAvatarUrl: email => `https://api.adorable.io/avatars/285/${email}`,
-    openExpense: expenseId => console.log(expenseId),
-    getCurrency: currency => {
-      const currencies = {
-        DKK: 'kr',
-        EUR: '€',
-        GBP: '£',
-        USD: '$',
-      };
-      return currencies[currency];
-    },
   },
 };
 </script>
