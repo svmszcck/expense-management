@@ -46,25 +46,31 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  // campos de la db
   name: 'ExpensesExpense',
+
   data() {
     return {
       search: '',
     };
   },
+
+  computed: {
+    ...mapGetters(['page']),
+  },
+
   watch: {
     search: {
       handler: function() {
-        this.getExpenses(this.search);
+        this.getExpenses({ search: this.search, page: this.page });
       },
       // TODO: lodash debounce
       immediate: true,
     },
   },
+
   methods: {
     ...mapActions(['getExpenses']),
 

@@ -1,0 +1,44 @@
+<template>
+  <div class="flex flex-col w-full">
+    <div class="flex flex-row font-semibold justify-between w-full pb-6">
+      <div class="pl-12 pt-3">
+        <font-awesome-icon class="mr-4 text-grey-dark" icon="chevron-up" />
+        <font-awesome-icon class="mr-4 text-grey-light" icon="chevron-down" />
+      </div>
+      <div class="flex flex-row pb-3">
+        <div class="pl-3 pt-3 pb-3 pr-5 border-pleo border-b-2 text-grey-darker">
+          Details
+        </div>
+        <div class="pl-5 pt-3 pb-3 pr-3 text-grey border-grey-light border-b-2">
+          Activity
+        </div>
+      </div>
+      <div class="pt-3  ">
+        <font-awesome-icon class="mr-4 text-grey-dark" icon="eye" />
+        <span class="text-grey">3</span>
+      </div>
+    </div>
+    <div class="pl-12 flex flex-col items-center pt-24">
+      <div class="flex flex-col justify-center block h-24 sm:h-24 w-24 rounded-full bg-green-light">
+        <span class="text-white text-5xl ml-8">A</span>
+      </div>
+      <div class="text-xl font-medium text-grey-darkest pt-4">Starbucks</div>
+      <div class="text-3xl font-normal text-grey-dark pt-2">money</div>
+      <div class="font-normal text-grey pt-2">money</div>
+    </div>
+
+    <div class="pl-40 flex flex-col items-left pt-12">
+      <ExpensesExpenseDetailElements />
+    </div>
+  </div>
+</template>
+<script>
+import ExpensesExpenseDetailElements from '@/components/Expenses/ExpensesExpenseDetailElements.vue';
+
+export default {
+  name: 'ExpensesExpenseDetail',
+  components: {
+    ExpensesExpenseDetailElements,
+  },
+};
+</script>
