@@ -40,11 +40,19 @@
     <div class="pl-40 flex flex-col items-left pt-12">
       <ExpensesExpenseDetailElements :expense="currentExpense" />
     </div>
+    <vue-dropzone
+      id="drop1"
+      ref="receiptUploader"
+      :options="dropOptions"
+      @vdropzone-processing="processingEvent"
+      @vdropzone-sending="sendingEvent"
+    ></vue-dropzone>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
 import { getCurrency } from '@/utils';
+import vueDropzone from 'vue2-dropzone';
 import ExpensesExpenseDetailElements from '@/components/Expenses/ExpensesExpenseDetailElements.vue';
 
 export default {
@@ -52,6 +60,7 @@ export default {
 
   components: {
     ExpensesExpenseDetailElements,
+    vueDropzone,
   },
 
   data() {
@@ -66,6 +75,13 @@ export default {
         category: '',
         user: { first: '', last: '', email: '' },
         index: null,
+      },
+      dropOptions: {
+        url: 'http://demo.es',
+        headers: {
+          'Cache-Control': null,
+          'X-Requested-With': null,
+        },
       },
     };
   },
@@ -89,6 +105,15 @@ export default {
 
   methods: {
     getCurrency,
+    processingEvent() {
+      this.$refs.receiptUploader.setOption(
+        'url',
+        `http://localhost:3000/expenses/${this.currentExpense.id}/receipts`,
+      );
+    },
+    sendingEvent(file, xhr, formData) {
+      formData.append('receipt', file);
+    },
   },
 };
 </script>

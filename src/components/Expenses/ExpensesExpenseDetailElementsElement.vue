@@ -74,7 +74,6 @@ export default {
       (state, getters) => getters.expense,
       () => (this.comment = this.expense.comment != '' ? this.expense.comment : ''),
     );
-    console.log(this.expense.comment);
   },
   methods: {
     ...mapActions(['setComment']),

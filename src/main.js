@@ -20,6 +20,7 @@ import router from './router';
 import store from './store';
 import '@/assets/css/tailwind.css';
 import messages from '@/assets/locales';
+import 'vue2-dropzone/dist/vue2Dropzone.css';
 
 Vue.use(VueI18n);
 
