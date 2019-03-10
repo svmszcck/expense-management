@@ -16,13 +16,14 @@
     </div>
     <input
       v-if="typeComment"
+      ref="inputComment"
       v-model="comment"
       class="appearance-none bg-transparent border-b border-green-light w-full text-grey-darker
     mr-2 leading-tight focus:outline-none"
       type="text"
       :placeholder="$t('expense.addComment')"
       aria-label="comment"
-      @keyup.enter="saveComment"
+      @keyup.enter="blurField"
       @blur="saveComment"
     />
     <div v-else class="font-medium text-grey-darkest text-grey-darker">{{ getValue }}</div>
@@ -68,12 +69,20 @@ export default {
       return this.type === 'comment';
     },
   },
-
+  mounted() {
+    this.$store.watch(
+      (state, getters) => getters.expense,
+      () => (this.comment = this.expense.comment != '' ? this.expense.comment : ''),
+    );
+    console.log(this.expense.comment);
+  },
   methods: {
     ...mapActions(['setComment']),
     getAvatarUrl: email => `https://api.adorable.io/avatars/285/${email}`,
+    blurField() {
+      this.$refs.inputComment.blur();
+    },
     saveComment() {
-      // console.log(this.comment);
       const commentCreated = {
         id: this.expense.id,
         comment: this.comment,
