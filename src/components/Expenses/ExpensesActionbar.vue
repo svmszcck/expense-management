@@ -2,7 +2,7 @@
   <div class="flex flex-row justify-between w-full">
     <div class="balance w-1/5">
       <div class="uppercase text-3xl">£22,124.56</div>
-      <div class="text-grey mt-2 text-sm">Available balance</div>
+      <div class="text-grey mt-2 text-sm">{{ $t('expenses.balance') }}</div>
     </div>
     <div class="w-4/5 flex flex-row justify-end">
       <div

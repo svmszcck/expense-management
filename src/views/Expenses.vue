@@ -9,7 +9,7 @@
           class="text-grey-darker text-center px py-2 mt-2 ml-2 mb-2 mr-6"
           @click="getNextPage()"
         >
-          Load More...
+          {{ $t('expenses.loadMore') }}
         </div>
       </div>
     </div>

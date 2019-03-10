@@ -2,19 +2,27 @@
   <div class="flex flex-col w-full">
     <div class="flex flex-row font-semibold justify-between w-full pb-6">
       <div class="pl-12 pt-3">
-        <font-awesome-icon class="mr-4 text-grey-dark" icon="chevron-up" />
-        <font-awesome-icon class="mr-4 text-grey-light" icon="chevron-down" />
+        <font-awesome-icon
+          class="mr-4 text-grey-dark"
+          icon="chevron-up"
+          :title="$t('expense.up')"
+        />
+        <font-awesome-icon
+          class="mr-4 text-grey-light"
+          icon="chevron-down"
+          :title="$t('expense.down')"
+        />
       </div>
       <div class="flex flex-row pb-3">
         <div class="pl-3 pt-3 pb-3 pr-5 border-pleo border-b-2 text-grey-darker">
-          Details
+          {{ $t('expense.details') }}
         </div>
         <div class="pl-5 pt-3 pb-3 pr-3 text-grey border-grey-light border-b-2">
-          Activity
+          {{ $t('expense.activity') }}
         </div>
       </div>
       <div class="pt-3  ">
-        <font-awesome-icon class="mr-4 text-grey-dark" icon="eye" />
+        <font-awesome-icon class="mr-4 text-grey-dark" icon="eye" :title="$t('expense.watching')" />
         <span class="text-grey">3</span>
       </div>
     </div>

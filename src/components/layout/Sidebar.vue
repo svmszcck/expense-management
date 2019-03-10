@@ -14,27 +14,27 @@
     </div>
     <div class="menu-items">
       <div class="menu-item py-3 text-grey-darker cursor-pointer">
-        <span class="font-medium py-1 pl-16 border-l-2 border-pleo">Expenses</span>
+        <span class="font-medium py-1 pl-16 border-l-2 border-pleo">{{ $t('menu.expenses') }}</span>
       </div>
       <div class="menu-item py-4 text-grey-darker cursor-pointer">
-        <span class="font-normal pl-16">My Cards</span>
+        <span class="font-normal pl-16">{{ $t('menu.myCards') }}</span>
       </div>
       <div class="menu-item py-4 text-grey-darker cursor-pointer">
-        <span class="font-normal pl-16">Teams</span>
+        <span class="font-normal pl-16">{{ $t('menu.teams') }}</span>
       </div>
       <div class="menu-item py-4 text-grey-darker cursor-pointer">
-        <span class="font-normal pl-16">Wallet</span>
+        <span class="font-normal pl-16">{{ $t('menu.wallet') }}</span>
       </div>
       <div class="menu-item py-4 text-grey-darker cursor-pointer">
-        <span class="font-normal pl-16">Analytics</span>
+        <span class="font-normal pl-16">{{ $t('menu.analytics') }}</span>
       </div>
       <div class="menu-item py-4 text-grey-darker cursor-pointer">
-        <span class="font-normal pl-16">More...</span>
+        <span class="font-normal pl-16">{{ $t('menu.more') }}</span>
       </div>
     </div>
 
     <div class="absolute pin-b w-64 pt-4 pb-4 border-t-2 border-grey-lighter cursor-pointer">
-      <div class="pl-16">Help & Support</div>
+      <div class="pl-16">{{ $t('menu.help') }}</div>
     </div>
   </div>
 </template>
