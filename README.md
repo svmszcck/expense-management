@@ -5,9 +5,9 @@ See the [API details](https://github.com/pleo-io/frontend-challenge/blob/master/
 
 ## Functional requirements
 - DONE. User can list expenses. Expenses are listed.
-- User can add a comment on an expense
+- DONE User can add a comment on an expense
 - DONE. User can filter on expenses (client side filters). It only filter by shown ones.
-- User can add a receipt image on an expense
+- SEMI-DONE.User can add a receipt image on an expense
 
 ## General requirements
 A single page application using a modern JS library/framework including:
@@ -22,7 +22,7 @@ Want to go the extra mile? Here's few suggestion of things we'd like to see (or 
 - Responsive design
 - DONE. Implement with a state management library (Redux, Mobx, VueX, ...)
 - Implement solution in TypeScript
-- Localization: support for multiple languages (English, French, ...)
+- DONE. Localization: support for multiple languages (English, French, ...)
 
 ## What we're looking for
 - Using high-quality existing libraries or small amounts of custom code

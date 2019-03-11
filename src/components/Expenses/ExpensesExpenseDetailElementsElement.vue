@@ -19,7 +19,7 @@
       ref="inputComment"
       v-model="comment"
       class="appearance-none bg-transparent border-b border-green-light w-full text-grey-darker
-    mr-2 leading-tight focus:outline-none"
+    mr-2 leading-tight focus:outline-none mr-20"
       type="text"
       :placeholder="$t('expense.addComment')"
       aria-label="comment"

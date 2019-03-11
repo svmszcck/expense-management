@@ -18,9 +18,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import 'vue2-dropzone/dist/vue2Dropzone.css';
 import '@/assets/css/tailwind.css';
 import messages from '@/assets/locales';
-import 'vue2-dropzone/dist/vue2Dropzone.css';
 
 Vue.use(VueI18n);
 
