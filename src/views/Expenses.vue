@@ -6,7 +6,7 @@
         <ExpensesSearch />
         <Expense v-for="(expense, index) in expenses" :key="index" :expense="expense" />
         <div
-          class="text-grey-darker text-center px py-2 mt-2 ml-2 mb-2 mr-6"
+          class="text-grey-darker text-center px py-2 mt-2 ml-2 mb-2 mr-6 cursor-pointer"
           @click="getNextPage()"
         >
           {{ $t('expenses.loadMore') }}
@@ -36,14 +36,14 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['expenses']),
+    ...mapGetters(['expenses', 'page', 'expense']),
   },
 
   mounted() {
     this.$store.watch(
       (state, getters) => getters.expenses,
       () => {
-        this.setExpense();
+        this.setExpense(this.expense.id);
       },
     );
   },
@@ -53,7 +53,11 @@ export default {
 
   methods: {
     ...mapActions(['getExpenses', 'setExpense']),
-    // getNextPage: () => this.getExpenses(1),
+
+    getNextPage() {
+      this.getExpenses(this.page + 1);
+    },
+
     getAvatarUrl: email => `https://api.adorable.io/avatars/285/${email}`,
   },
 };

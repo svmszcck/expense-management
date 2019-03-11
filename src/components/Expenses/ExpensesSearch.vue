@@ -66,8 +66,6 @@ export default {
       handler: function() {
         this.searchExpenses(this.search);
       },
-      // TODO: lodash debounce
-      // immediate: true,
     },
   },
 
