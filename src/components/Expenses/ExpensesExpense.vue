@@ -50,10 +50,6 @@ export default {
     },
   },
 
-  created() {
-    this.setExpense();
-  },
-
   methods: {
     ...mapActions(['setExpense']),
     openExpense() {

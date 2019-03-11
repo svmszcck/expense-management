@@ -39,8 +39,20 @@ export default {
     ...mapGetters(['expenses']),
   },
 
+  mounted() {
+    this.$store.watch(
+      (state, getters) => getters.expenses,
+      () => {
+        this.setExpense();
+      },
+    );
+  },
+  created() {
+    this.getExpenses();
+  },
+
   methods: {
-    ...mapActions(['getExpenses']),
+    ...mapActions(['getExpenses', 'setExpense']),
     // getNextPage: () => this.getExpenses(1),
     getAvatarUrl: email => `https://api.adorable.io/avatars/285/${email}`,
   },

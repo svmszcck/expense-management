@@ -64,15 +64,15 @@ export default {
   watch: {
     search: {
       handler: function() {
-        this.getExpenses({ search: this.search, page: this.page });
+        this.searchExpenses(this.search);
       },
       // TODO: lodash debounce
-      immediate: true,
+      // immediate: true,
     },
   },
 
   methods: {
-    ...mapActions(['getExpenses']),
+    ...mapActions(['searchExpenses']),
 
     getCurrency(currency) {
       const currencies = {

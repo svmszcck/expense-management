@@ -2,6 +2,7 @@
  * REGISTER EXPENSES MUTATIONS
  */
 export const LIST_EXPENSES = 'LIST_EXPENSES';
+export const SEARCH_EXPENSES = 'SEARCH_EXPENSES';
 export const SET_PAGE = 'SET_PAGE';
 export const SET_EXPENSE = 'SET_EXPENSE';
 export const SET_COMMENT = 'SET_COMMENT';
