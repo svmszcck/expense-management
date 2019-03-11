@@ -3,21 +3,21 @@
     <div class="flex flex-row font-semibold justify-between w-full pb-6">
       <div class="pl-12 pt-3">
         <font-awesome-icon
-          class="mr-4 text-grey-dark"
+          class="mr-4 text-grey-dark cursor-pointer"
           icon="chevron-up"
           :title="$t('expense.up')"
         />
         <font-awesome-icon
-          class="mr-4 text-grey-light"
+          class="mr-4 text-grey-light cursor-pointer"
           icon="chevron-down"
           :title="$t('expense.down')"
         />
       </div>
       <div class="flex flex-row pb-3">
-        <div class="pl-3 pt-3 pb-3 pr-5 border-pleo border-b-2 text-grey-darker">
+        <div class="pl-3 pt-3 pb-3 pr-5 border-pleo border-b-2 text-grey-darker cursor-pointer">
           {{ $t('expense.details') }}
         </div>
-        <div class="pl-5 pt-3 pb-3 pr-3 text-grey border-grey-light border-b-2">
+        <div class="pl-5 pt-3 pb-3 pr-3 text-grey border-grey-light border-b-2 cursor-pointer">
           {{ $t('expense.activity') }}
         </div>
       </div>

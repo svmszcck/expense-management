@@ -9,8 +9,13 @@
         <img class="block h-12 sm:h-12 rounded-full mx-auto" src="/images/ray_garcia.png" alt />
       </div>
     </div>
-    <div class="text-center mx-auto mb-10">
-      <div class="">Ray</div>
+    <div class="flex flex-row justify-center mx-auto mb-10 text-grey-dark font-semibold">
+      <div class="mr-1">Ray</div>
+      <font-awesome-icon
+        class="ml-1 cursor-pointer"
+        icon="chevron-down"
+        :title="$t('expense.down')"
+      />
     </div>
     <div class="text-center mx-auto flex flex-row justify-center mb-24 cursor-pointer">
       <div class="mr-2" @click="changeLang('en')"><img src="/images/en.png" alt="English" /></div>
