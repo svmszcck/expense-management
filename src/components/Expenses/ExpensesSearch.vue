@@ -71,16 +71,6 @@ export default {
 
   methods: {
     ...mapActions(['searchExpenses']),
-
-    getCurrency(currency) {
-      const currencies = {
-        DKK: 'kr',
-        EUR: '€',
-        GBP: '£',
-        USD: '$',
-      };
-      return currencies[currency];
-    },
   },
 };
 </script>

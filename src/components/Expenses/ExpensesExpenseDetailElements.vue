@@ -8,7 +8,6 @@
       :value="expense.merchant"
     />
     <ExpensesExpenseDetailElementsElement type="vat" value="20%" />
-    <!-- <ExpensesExpenseDetailElementsElement type="tag" :value="expense.category" /> -->
     <ExpensesExpenseDetailElementsElement type="comment" :value="expense.comment" />
   </div>
 </template>

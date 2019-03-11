@@ -9,8 +9,12 @@
         <img class="block h-12 sm:h-12 rounded-full mx-auto" src="/images/ray_garcia.png" alt />
       </div>
     </div>
-    <div class="text-center mx-auto">
-      <div class="mb-32">Ray</div>
+    <div class="text-center mx-auto mb-10">
+      <div class="">Ray</div>
+    </div>
+    <div class="text-center mx-auto flex flex-row justify-center mb-24 cursor-pointer">
+      <div class="mr-2" @click="changeLang('en')"><img src="/images/en.png" alt="English" /></div>
+      <div class="ml-2" @click="changeLang('es')"><img src="/images/es.png" alt="Español" /></div>
     </div>
     <div class="menu-items">
       <div class="menu-item py-3 text-grey-darker cursor-pointer">
@@ -38,3 +42,13 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  name: 'Sidebar',
+  methods: {
+    changeLang(ln) {
+      this.$locale = ln;
+    },
+  },
+};
+</script>

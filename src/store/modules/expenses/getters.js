@@ -1,4 +1,3 @@
-/* eslint-disable-next-line */
 export const expenses = (state, getters) => {
   return getters.searchExpenses.length > 0 ? state.searchExpenses : state.expenses;
 };

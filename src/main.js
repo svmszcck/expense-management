@@ -29,6 +29,15 @@ const i18n = new VueI18n({
   messages,
 });
 
+Object.defineProperty(Vue.prototype, '$locale', {
+  get: function() {
+    return i18n.locale;
+  },
+  set: function(locale) {
+    i18n.locale = locale;
+  },
+});
+
 library.add(
   faChevronUp,
   faChevronDown,
