@@ -37,8 +37,9 @@ export default {
     commit(SET_EXPENSE, expense);
   },
 
-  setExpenseAfterUpload: ({ commit }, expense) => {
+  setExpenseAfterUpload: ({ commit, dispatch }, expense) => {
     commit(SET_EXPENSE, expense);
+    dispatch('getExpenses', { search: '', page: ' ' });
   },
 
   setComment: ({ commit, dispatch }, commentCreated) => {

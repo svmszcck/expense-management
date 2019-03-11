@@ -34,7 +34,7 @@
       <div class="text-3xl font-normal text-grey-dark pt-2">
         {{ getCurrency(currentExpense.amount.currency) }}{{ currentExpense.amount.value }}
       </div>
-      <div class="font-normal text-grey pt-2">{{ currentExpense.date }}</div>
+      <div class="font-normal text-grey pt-2">{{ currentExpense.date | moment }}</div>
     </div>
 
     <div class="pl-40 flex flex-col items-left pt-12">
@@ -55,7 +55,7 @@
         :key="dropzoneKey"
         :useCustomSlot="true"
         :options="dropOptions"
-        class="mt-4 border-grey-lighter border-2 rounded-lg max-w-xxs mx-2"
+        class="mt-4 pl-12 pr-16 border-grey-lighter border-2 rounded-lg max-w-xxs mx-2"
         @vdropzone-processing="processingEvent"
         @vdropzone-sending="sendingEvent"
         @vdropzone-success="updateCurrentExpense"
@@ -73,6 +73,7 @@
 import { mapGetters, mapActions } from 'vuex';
 import { getCurrency } from '@/utils';
 import vueDropzone from 'vue2-dropzone';
+import moment from 'moment';
 import ExpensesExpenseDetailElements from '@/components/Expenses/ExpensesExpenseDetailElements.vue';
 
 export default {
@@ -81,6 +82,12 @@ export default {
   components: {
     ExpensesExpenseDetailElements,
     vueDropzone,
+  },
+
+  filters: {
+    moment: function(date) {
+      return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+    },
   },
 
   data() {

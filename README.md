@@ -7,7 +7,7 @@ See the [API details](https://github.com/pleo-io/frontend-challenge/blob/master/
 - DONE. User can list expenses. Expenses are listed.
 - DONE User can add a comment on an expense
 - DONE. User can filter on expenses (client side filters). It only filter by shown ones.
-- SEMI-DONE.User can add a receipt image on an expense
+- DONE.User can add a receipt image on an expense
 
 ## General requirements
 A single page application using a modern JS library/framework including:
