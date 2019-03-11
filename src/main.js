@@ -15,6 +15,7 @@ import {
   faEye,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import VModal from 'vue-js-modal';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -23,6 +24,7 @@ import '@/assets/css/tailwind.css';
 import messages from '@/assets/locales';
 
 Vue.use(VueI18n);
+Vue.use(VModal), { dynamic: true, injectModalsContainer: true };
 
 const i18n = new VueI18n({
   locale: 'en',

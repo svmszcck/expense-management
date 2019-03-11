@@ -45,9 +45,9 @@
       <div
         v-for="image in previewImages"
         :key="image"
-        class="flex preview-thumbnail mt-4 p-4 border-grey-lighter border-2 rounded-lg max-w-xxs mx-2"
+        class="flex preview-thumbnail mt-4 p-4 border-grey-lighter border-2 rounded-lg max-w-xxs mx-2 cursor-pointer"
       >
-        <img class="self-center" :src="image" alt="" />
+        <img class="self-center" :src="image" alt="" @click="openModal(image)" />
       </div>
       <vue-dropzone
         id="drop1"
@@ -67,6 +67,9 @@
         </div>
       </vue-dropzone>
     </div>
+    <modal name="receiptModal" height="auto">
+      <img :src="clickedReceipt" />
+    </modal>
   </div>
 </template>
 <script>
@@ -117,6 +120,7 @@ export default {
       fileContainerKey: 'fileContainer',
       previewImages: [],
       dropzoneKey: 'dropzone',
+      clickedReceipt: '',
     };
   },
 
@@ -167,6 +171,11 @@ export default {
 
     updateCurrentExpense(file, response) {
       this.setExpenseAfterUpload(response);
+    },
+
+    openModal(image) {
+      this.clickedReceipt = image;
+      this.$modal.show('receiptModal');
     },
   },
 };
