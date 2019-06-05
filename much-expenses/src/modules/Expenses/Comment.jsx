@@ -1,41 +1,82 @@
 import React from 'react';
-import {
-  compose,
-  withStateHandlers
-} from 'recompose'
+
+import withFiniteStateMachine from '../../components/StateMachine/fsm.hoc'
 
 const Comment = ({
   content,
-  text,
-  editing,
-  toggleEditing,
-  onEditing,
-  cancelEditing,
-  onFinishedEditing
-}) =>
-    !editing
-      ? <span onClick={toggleEditing}>Comment: {content}</span>
-      : <div>
-        <input value={text} onChange={onEditing} ></input>
-        <button onClick={cancelEditing}>Cancel</button>
-      <button onClick={onFinishedEditing}>Save</button>
-      </div>
-
-
-
-// setting the initial state based on the incoming props
-const initialState = ({ content }) => ({ text: content, editing: false })
-
-const handlers = {
-  toggleEditing: ({ editing }) => evt => ({ editing: !editing }),
-  onEditing: ({ text }) => evt => ({ text: evt.target.value }),
-  cancelEditing: ({ editing }, { content }) => evt => ({ text: content, editing: false }),
-  onFinishedEditing: ({ text }, { onSave }) => evt => {
-    onSave(text)
-    return ({ editing: false })
+  componentState,
+  send
+}) => {
+  console.log('rendering Comment on state', componentState, 'with content', content)
+  switch (componentState) {
+    case 'show': 
+      return <span onClick={() => send('EDIT')}>Comment: {content}</span>
+    case 'editing':
+      return (
+        <div>
+          <input defaultValue={content}></input>
+          <button onClick={() => send('CANCEL') }>Cancel</button>
+          <button onClick={evt => send('SAVE', { data: evt.target.parentElement.firstChild.value })}>
+            Save
+          </button>
+        </div>
+      )
+    case 'updating':
+      return <span>UPDATING.......</span>
+    default:
+      return <span>not working</span>
   }
 }
 
-export default compose(
-  withStateHandlers(initialState, handlers)
+
+
+const commentMachine = props => ({
+  id: 'comment',
+  initial: 'show',
+  context: {},
+  states: {
+    show: {
+      on: {
+        EDIT: 'editing'
+      }
+    },
+    editing: {
+      on: {
+        CANCEL: 'show',
+        SAVE: 'updating'
+      }
+    },
+    updating: {
+      invoke: {
+        id: 'saveComment',
+        src: (ctx, evt) => {
+          console.log('on SaveComment', ctx, evt)
+          return fetch(`http://localhost:3030/expenses/${props.id}`, {
+            method: 'POST',
+            body: JSON.stringify({ comment: evt.data }),
+            headers: { 'Content-Type': 'application/json' }
+          })
+        },
+        onDone: {
+          target: 'show',
+          actions: ['updateHandler']
+        },
+        onError: {
+          target: 'editing',
+          actions: ['logError']
+        }
+      }
+    }
+  }
+})
+
+export default withFiniteStateMachine(
+  commentMachine,
+  props => ({
+    updateHandler: (ctx, evt) =>  props.onUpdate('REFRESH'),
+    logError: console.error
+  })
 )(Comment)
+
+
+

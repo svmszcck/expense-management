@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import Comment from './Comment'
 
 import { StyledItem } from './styles';
@@ -13,11 +14,13 @@ const Expense = ({
   comment,
   category,
   user,
-  index
+  index,
+  onUpdate
 }) =>
   <StyledItem direction="column" across="start" along="center">
     <div>AMOUNT: {amount.value}{amount.currency}</div>
-    <Comment content={comment} onSave={ e => console.log('clicked save', e) } ></Comment>
+    <Comment id={id} content={comment} onUpdate={onUpdate} ></Comment>
   </StyledItem>
+
 
 export default Expense
