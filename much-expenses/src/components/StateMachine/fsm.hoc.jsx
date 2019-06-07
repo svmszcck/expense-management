@@ -19,11 +19,11 @@ const withFiniteStateMachine = (machine, actions, context = {}) => BaseComponent
     ).withContext(context)
 
   const interpreter = interpret(m)
-  interpreter.start()
+
 
   const MachineComponent = compose(
     withStateHandlers({ componentState: m.initialState.value }, {
-      update: () => newState => ({ componentState: newState })
+      update: () => newState => newState
     }),
     withProps({ send: interpreter.send }),
     lifecycle({
@@ -31,8 +31,8 @@ const withFiniteStateMachine = (machine, actions, context = {}) => BaseComponent
         interpreter
           .onTransition(state => {
             console.log('going to', outerProps.id, m.id, state.value)
-            this.props.update(state.value)
-          })
+            this.props.update({ machineState: state.value, ...state.context })
+          }).start()
       }
     })
   )(BaseComponent)

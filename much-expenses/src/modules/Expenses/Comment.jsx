@@ -4,11 +4,11 @@ import withFiniteStateMachine from '../../components/StateMachine/fsm.hoc'
 
 const Comment = ({
   content,
-  componentState,
+  machineState,
   send
 }) => {
-  console.log('rendering Comment on state', componentState, 'with content', content)
-  switch (componentState) {
+  console.log('rendering Comment on state', machineState, 'with content', content)
+  switch (machineState) {
     case 'show': 
       return <span onClick={() => send('EDIT')}>Comment: {content}</span>
     case 'editing':
