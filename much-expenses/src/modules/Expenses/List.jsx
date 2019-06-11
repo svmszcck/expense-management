@@ -1,5 +1,5 @@
 import React from 'react';
-import { compose, withStateHandlers } from 'recompose'
+import { compose } from 'recompose'
 
 
 import Expense from './Item'
@@ -9,19 +9,41 @@ import withFiniteStateMachine from '../../components/StateMachine/fsm.hoc'
 import { StyledList } from './styles';
 import { assign } from 'xstate';
 
+
+//currying in case we want to cache filters at a later point, probably not gonna get enough toime to do it
+const applyTextFiltering = (text) => (data) => 
+  data.filter(item => {
+
+    const pattern = new RegExp(text, 'gi')
+    const check = obj => {
+      const matches = obj.match(pattern)
+      return matches && matches.length > 0
+    }
+
+    return check(item.comment) ||
+      check(item.merchant) || 
+      check(item.user.first) ||
+      check(item.user.last) ||
+      check(item.user.email)
+  })
+
+
 const Expenses = ({
   machineState,
   data,
+  filterText,
   send
 }) => {
+
   switch (machineState) {
     case 'fetching':
       return <span>FETCHING DATA....</span>
     case 'show':
       return <StyledList>
         <div>The total is {data.total}</div>
+        <input type="text" placeholder="filter by keyword" onChange={evt => send('FILTERING', { text: evt.target.value })} value={filterText}/>
         {
-          data.expenses.map(expense => <Expense key={expense.id} {...expense} onUpdate={send} />)
+          applyTextFiltering(filterText)(data.expenses).map(expense => <Expense key={expense.id} {...expense} onUpdate={send} />)
         }
       </StyledList>
 
@@ -34,7 +56,9 @@ const Expenses = ({
 const expensesMachine = props => ({
   id: 'expenses',
   initial: 'start',
-  context: {},
+  context: {
+    filterText : ''
+  },
   states: {
     start: {
       on: {
@@ -62,7 +86,11 @@ const expensesMachine = props => ({
     },
     show: {
       on: {
-        REFRESH: 'fetching'
+        REFRESH: 'fetching',
+        FILTERING: {
+          target: 'show',
+          actions: assign({ filterText: (_, evt) => evt.text }) 
+        }
       }
     },
     error: {}
@@ -74,9 +102,6 @@ const expensesActions = props => ({
 })
 
 export default compose(
-  withStateHandlers({ data: {} }, {
-    updateData: () => newData => ({ data: newData })
-  }),
   withFiniteStateMachine(expensesMachine, expensesActions)
 )(Expenses);
 
