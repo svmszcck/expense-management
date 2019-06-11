@@ -19,7 +19,6 @@ const Expenses = ({
       return <span>FETCHING DATA....</span>
     case 'show':
       return <StyledList>
-        show state
         <div>The total is {data.total}</div>
         {
           data.expenses.map(expense => <Expense key={expense.id} {...expense} onUpdate={send} />)

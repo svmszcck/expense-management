@@ -4,6 +4,8 @@ import React from 'react';
 import Comment from './Comment'
 
 import withFiniteStateMachine from '../../components/StateMachine/fsm.hoc'
+import Gallery from '../../components/Gallery'
+
 
 import { StyledItem } from './styles';
 import { assign } from 'xstate';
@@ -26,9 +28,10 @@ const Expense = ({
 }) =>
   <StyledItem direction="column" across="start" along="center">
     <div>AMOUNT: {amount.value}{amount.currency}</div>
-    {
-      receipts.map(r => <img src={`http://localhost:3030${r.url}`} height="100" ></img>)
-    }
+    <Gallery items={receipts}>
+      { (props, index) => <img alt={props.url} src={`http://localhost:3030${props.url}`} height="100" /> }
+    </Gallery>
+  
     <Comment id={id} content={comment} onUpdate={onUpdate} ></Comment>
     <input name="receipt" type="file" onChange={evt => send('FILES.SELECTED', { files: evt.target.files })} />
     {
