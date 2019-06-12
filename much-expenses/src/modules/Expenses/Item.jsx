@@ -12,8 +12,6 @@ import {
   StyledItem,
   StyledInfo,
   KeyValueStyling,
-  StyledUser,
-  StyledAmount
 } from './styles';
 import FlexContainer from '../../components/Flex/Container'
 import { assign } from 'xstate';

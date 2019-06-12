@@ -2,12 +2,11 @@ import styled from 'styled-components'
 
 import FlexContainer from '../../components/Flex/Container'
 
-export const StyledList = styled(FlexContainer)`
-   margin-left: 2em;
-   margin-top: 2em;
+export const StyledWrapper = styled.div`
+  margin: 2em 0 0 2em;
 `
 
-
+export const StyledList = styled(FlexContainer)``
 
 export const StyledItem = styled(FlexContainer)`
   min-width: 425px;
@@ -21,6 +20,19 @@ export const StyledItem = styled(FlexContainer)`
   &:hover{
    transform: scale(1.025);
   }
+`
+
+export const StyledFilterInput = styled.input`
+    max-width: 1024px;
+    padding: 0.5em 2em;
+    height: 60px;
+    width: 100%;
+    font-size: 20px;
+    box-sizing: border-box;
+    outline: none;
+    border: 2px solid grey;
+    border-radius: 50px;
+
 `
 
 export const StyledInfo = styled(FlexContainer)`

@@ -6,7 +6,11 @@ import Expense from './Item'
 
 import withFiniteStateMachine from '../../components/StateMachine/fsm.hoc'
 
-import { StyledList } from './styles';
+import {
+  StyledList,
+  StyledFilterInput,
+  StyledWrapper
+} from './styles';
 import { assign } from 'xstate';
 
 
@@ -39,17 +43,15 @@ const Expenses = ({
     case 'fetching':
       return <span>FETCHING DATA....</span>
     case 'show':
-      return <div>
+      return <StyledWrapper>
 
-        <div>The total is {data.total}</div>
-        
-        <input type="text" placeholder="filter by keyword" onChange={evt => send('FILTERING', { text: evt.target.value })} value={filterText}/>
+        <StyledFilterInput type="text" placeholder="Enter a pattern to search for" onChange={evt => send('FILTERING', { text: evt.target.value })} value={filterText}/>
         <StyledList direction="row" across="stretch" along="start" wrap="wrap">
           {
             applyTextFiltering(filterText)(data.expenses).map(expense => <Expense key={expense.id} {...expense} onUpdate={send} />)
           }
         </StyledList>
-      </div>
+      </StyledWrapper>
 
     default:
       return <span>SOMETHING WENT WRONG</span>
