@@ -22,7 +22,7 @@ const withFiniteStateMachine = (machine, actions, context = {}) => BaseComponent
 
 
   const MachineComponent = compose(
-    withStateHandlers({ componentState: m.initialState.value }, {
+    withStateHandlers({ machineState: m.initialState.value }, {
       update: () => newState => newState
     }),
     withProps({ send: interpreter.send }),
@@ -30,7 +30,7 @@ const withFiniteStateMachine = (machine, actions, context = {}) => BaseComponent
       componentDidMount() {
         interpreter
           .onTransition(state => {
-            console.log('going to', outerProps.id, m.id, state.value)
+            console.log('in', m.id, 'going to', state.value, 'with context', state.context )
             this.props.update({ machineState: state.value, ...state.context })
           }).start()
       }

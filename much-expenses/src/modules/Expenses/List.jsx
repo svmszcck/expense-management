@@ -39,13 +39,17 @@ const Expenses = ({
     case 'fetching':
       return <span>FETCHING DATA....</span>
     case 'show':
-      return <StyledList>
+      return <div>
+
         <div>The total is {data.total}</div>
+        
         <input type="text" placeholder="filter by keyword" onChange={evt => send('FILTERING', { text: evt.target.value })} value={filterText}/>
-        {
-          applyTextFiltering(filterText)(data.expenses).map(expense => <Expense key={expense.id} {...expense} onUpdate={send} />)
-        }
-      </StyledList>
+        <StyledList direction="row" across="stretch" along="start" wrap="wrap">
+          {
+            applyTextFiltering(filterText)(data.expenses).map(expense => <Expense key={expense.id} {...expense} onUpdate={send} />)
+          }
+        </StyledList>
+      </div>
 
     default:
       return <span>SOMETHING WENT WRONG</span>
