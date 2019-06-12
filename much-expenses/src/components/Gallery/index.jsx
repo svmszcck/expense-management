@@ -5,6 +5,7 @@ import {  branch, renderComponent, compose } from 'recompose'
 
 import {
   StyledContainer, 
+  StyledOverflowedContainer,
   StyledItemWrapper, 
   StyledCloseButton,
   StyledClickableText
@@ -16,14 +17,16 @@ const Gallery = ({
   toggle,
   children
 }) =>
- <StyledContainer>
-    {
-      items.map((item, ind) => 
-        <StyledItemWrapper key={ind}>
-          { children(item, ind) }
-        </StyledItemWrapper>
-      )
-    }
+  <StyledContainer>
+    <StyledOverflowedContainer>
+      {
+        items.map((item, ind) =>
+          <StyledItemWrapper key={ind}>
+            {children(item, ind)}
+          </StyledItemWrapper>
+        )
+      }
+    </StyledOverflowedContainer>
     <StyledCloseButton onClick={evt => toggle('CLOSE')} >Close</StyledCloseButton>
   </StyledContainer>
 
