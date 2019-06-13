@@ -1,9 +1,9 @@
 import React from 'react';
 
 import withFiniteStateMachine from '../../components/StateMachine/fsm.hoc'
+import { Spinner } from '../../components/Spinner'
 
 import { 
-  StyledComment, 
   StyledQuotation,
   StyledMessage,
   StyledEditingComment,
@@ -23,7 +23,6 @@ const Comment = ({
 
   switch (machineState) {
     case 'show': 
-      const text = content === '' ? 'No comment yet. Click here to add one.' : content
       html = content === ''
         ? <StyledMessage onClick={() => send('EDIT')}>No comment yet. Click here to add one.</StyledMessage>
         : <StyledQuotation onClick={() => send('EDIT')}>{content}</StyledQuotation>
@@ -42,7 +41,7 @@ const Comment = ({
       )
       break;
     case 'updating':
-      return <span>UPDATING.......</span>
+      return <Spinner height={40} amount={30} duration={3} keyframes={{ max: [10, 30, 50, 70, 90], min: [0, 20, 40, 60, 80, 100] }} />
     default:
       return <span>not working</span>
   }
@@ -71,11 +70,17 @@ const commentMachine = props => ({
     updating: {
       invoke: {
         id: 'saveComment',
-        src: (ctx, evt) => fetch(`http://localhost:3030/expenses/${props.id}`, {
-          method: 'POST',
-          body: JSON.stringify({ comment: evt.data }),
-          headers: { 'Content-Type': 'application/json' }
-        }),
+        src: (ctx, evt) => new Promise((resolve, reject) =>
+          setTimeout(() => // Timeout is here only to show off the spinner
+            fetch(`http://localhost:3030/expenses/${props.id}`, {
+              method: 'POST',
+              body: JSON.stringify({ comment: evt.data }),
+              headers: { 'Content-Type': 'application/json' }
+            })
+              .then(resolve)
+              .catch(reject)
+          , 1500 )
+        ),
         onDone: {
           target: 'show',
           actions: ['updateHandler']

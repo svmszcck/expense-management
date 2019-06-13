@@ -3,13 +3,15 @@ import { compose } from 'recompose'
 
 
 import Expense from './Item'
-
+import { Spinner } from '../../components/Spinner'
 import withFiniteStateMachine from '../../components/StateMachine/fsm.hoc'
+
 
 import {
   StyledList,
   StyledFilterInput,
-  StyledWrapper
+  StyledWrapper,
+  StyledSpinnerWrapper
 } from './styles';
 import { assign } from 'xstate';
 
@@ -38,10 +40,11 @@ const Expenses = ({
   filterText,
   send
 }) => {
-
   switch (machineState) {
     case 'fetching':
-      return <span>FETCHING DATA....</span>
+      return <StyledSpinnerWrapper>
+        <Spinner height={60} amount={15} duration={1.25} keyframes={{ max: [50], min: [0, 100] }} />
+      </StyledSpinnerWrapper>
     case 'show':
       return <StyledWrapper direction="column" across="stretch" along="start">
 

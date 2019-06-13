@@ -15,14 +15,14 @@ import {
 const Gallery = ({
   items,
   toggle,
-  children
+  renderItem
 }) =>
   <StyledContainer>
     <StyledOverflowedContainer>
       {
         items.map((item, ind) =>
           <StyledItemWrapper key={ind}>
-            {children(item, ind)}
+            {renderItem(item, ind)}
           </StyledItemWrapper>
         )
       }
@@ -33,14 +33,14 @@ const Gallery = ({
 
 const noItemsMessage = branch(
   ({ items = [] }) => items.length === 0,
-  renderComponent(() => <StyledContainer> No items to show</StyledContainer>)
+  renderComponent(({ emptyMessage }) => <StyledContainer>{emptyMessage}</StyledContainer>)
 )
 
 const collapsed = branch(
   ({ collapsed }) => collapsed,
-  renderComponent(({ toggle, message }) => 
+  renderComponent(({ toggle, openMessage }) => 
     <StyledContainer>
-      <StyledClickableText onClick={evt => toggle('OPEN')}>{message}</StyledClickableText>
+      <StyledClickableText onClick={evt => toggle('OPEN')}>{openMessage}</StyledClickableText>
     </StyledContainer>
   )
 )

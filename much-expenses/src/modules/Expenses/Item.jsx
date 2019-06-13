@@ -50,9 +50,14 @@ const Expense = ({
       <hr />
       <Comment id={id} content={comment} onUpdate={onUpdate} ></Comment>
     </StyledInfo>
-    <Gallery collapsed={collapsed}  items={receipts} toggle={send} message="Show uploaded receipts">
-      { (props, index) => <img alt={props.url} src={`http://localhost:3030${props.url}`} height="100" /> }
-    </Gallery>
+    <Gallery
+      collapsed={collapsed}
+      items={receipts}
+      toggle={send}
+      openMessage="Show uploaded receipts"
+      emptyMessage="No receipts uploaded"
+      renderItem={(props, index) => <img alt={props.url} src={`http://localhost:3030${props.url}`} height="100" />}
+    />
   </StyledItem>
 
 

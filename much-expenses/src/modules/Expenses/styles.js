@@ -6,6 +6,14 @@ export const StyledWrapper = styled(FlexContainer)`
   margin: 2em 0 0 2em;
 `
 
+export const StyledSpinnerWrapper = styled(FlexContainer)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`
+
 export const StyledList = styled(FlexContainer)``
 
 export const StyledItem = styled(FlexContainer)`
