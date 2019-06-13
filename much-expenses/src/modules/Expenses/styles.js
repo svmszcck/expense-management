@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import FlexContainer from '../../components/Flex/Container'
 
-export const StyledWrapper = styled.div`
+export const StyledWrapper = styled(FlexContainer)`
   margin: 2em 0 0 2em;
 `
 
@@ -26,7 +26,7 @@ export const StyledFilterInput = styled.input`
     max-width: 1024px;
     padding: 0.5em 2em;
     height: 60px;
-    width: 100%;
+    width: 95%;
     font-size: 20px;
     box-sizing: border-box;
     outline: none;

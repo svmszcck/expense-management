@@ -43,7 +43,7 @@ const Expenses = ({
     case 'fetching':
       return <span>FETCHING DATA....</span>
     case 'show':
-      return <StyledWrapper>
+      return <StyledWrapper direction="column" across="stretch" along="start">
 
         <StyledFilterInput type="text" placeholder="Enter a pattern to search for" onChange={evt => send('FILTERING', { text: evt.target.value })} value={filterText}/>
         <StyledList direction="row" across="stretch" along="start" wrap="wrap">
