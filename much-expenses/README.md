@@ -1,4 +1,4 @@
-#Comments on the challenge
+# Comments on the challenge
 
 This is a pretty straightforward exercise, which is why I used the opportunity to sue some libraries that I'm not that experienced with, namely `xState`.
 
