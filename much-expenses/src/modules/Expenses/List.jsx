@@ -16,7 +16,7 @@ import {
 import { assign } from 'xstate';
 
 
-//currying in case we want to cache filters at a later point, probably not gonna get enough toime to do it
+//currying in case we want to cache filters at a later point, probably not gonna get enough time to do it
 const applyTextFiltering = (text) => (data) => 
   data.filter(item => {
 
@@ -42,11 +42,11 @@ const Expenses = ({
 }) => {
   switch (machineState) {
     case 'fetching':
-      return <StyledSpinnerWrapper>
+      return <StyledSpinnerWrapper data-testid="spinner">
         <Spinner height={60} amount={15} duration={1.25} keyframes={{ max: [50], min: [0, 100] }} />
       </StyledSpinnerWrapper>
     case 'show':
-      return <StyledWrapper direction="column" across="stretch" along="start">
+      return <StyledWrapper direction="column" across="stretch" along="start" data-testid="display-list">
 
         <StyledFilterInput type="text" placeholder="Enter a pattern to search for" onChange={evt => send('FILTERING', { text: evt.target.value })} value={filterText}/>
         <StyledList direction="row" across="stretch" along="start" wrap="wrap">
@@ -79,10 +79,7 @@ const expensesMachine = props => ({
     fetching: {
       invoke: {
         id: 'fetchExpenses',
-        src: (ctx, evt) => {
-          console.log('on fetch expenses', ctx, evt)
-          return fetch(`http://localhost:3030/expenses`).then(res => res.json())
-        },
+        src: (ctx, evt) => fetch(`http://localhost:3030/expenses`).then(res => res.json()),
         onDone: {
           target: 'show',
           actions: assign({ data: (ctx, evt) => evt.data })

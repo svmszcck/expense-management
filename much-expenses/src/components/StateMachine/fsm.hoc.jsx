@@ -30,7 +30,6 @@ const withFiniteStateMachine = (machine, actions, context = {}) => BaseComponent
       componentDidMount() {
         interpreter
           .onTransition(state => {
-            console.log('in', m.id, 'going to', state.value, 'with context', state.context )
             this.props.update({ machineState: state.value, ...state.context })
           }).start()
       }
