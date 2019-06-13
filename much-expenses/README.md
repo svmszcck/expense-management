@@ -1,68 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Comments on the challenge
 
-## Available Scripts
+This is a pretty straightforward exercise, which is why I used the opportunity to sue some libraries that I'm not that experienced with, namely `xState`.
 
-In the project directory, you can run:
+`xState` is a library for managing state via `Finite State Machines`. I've recently attended a workshop about it and thought it would be interesting to model React components and FSM that act as `Actors`, akin to the Actor model seen in `Erlang` for example.
 
-### `npm start`
+Implementing this actor model, and thinking about how different components communicate with each other was perhaps the toughest part of this project. 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I resolved to pass a callback as a prop to child components so they can send events to the parent components. This allows for each component to have its own state machine that does not need to be aware of the parent's state machine. In turn, this allowed me to use `recompose` to abstract the effects of the FSM to Higher Order Component. 
+In this manner, every component that requires a state machine only needs the definition of the states, and its respective actions, so it becomes very easy to add functionality, while preventing bugs creeping in due to the nature of a FSM. I think it overall worked very well, even if there are some rough edges. Particularly, testing becomes less that ideal.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+As for styling, I used `styled-components` which wraps React components into a HoC with the styles applied, making into perfect to use in tandem with `recompose`. 
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This all means my components can just focus on getting some props and render the correct bit of HTML. Everything else is abstracted away into reusable bits. I could go further and start creating factories that produces reusable parts of state machines. That would be the next step in a larger project, but I thought that overkill for this simple one.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I didn't have much free time to devote to this. In fact there was a whole week where I didn't even pick it up. But with the architecture I chose, and the state machines, it was very easy to understand what I'd done before. I'm quite happy with that.
+Overall I'd say I did this in a grand total of 10-12h. Most of the time, I would say, was spent on styling, getting everything perfect.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+# How it works
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+When opening the app, it will automatically fetch all the expenses.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+You can filter the items by writing on the top search bar. It will try and match based on the `user name`, `merchant` and `comment`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+On the right side of each item you can choose to upload a receipt. This will then show in the gallery on the bottom of the item - the dark bar. You can click on it to open.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Clicking on the comment will open a `textarea` where it can be edited.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+At any point something gets saved and sent to the server, the whole app refreshes. Ideally, only the item in need of updating would request the new data, but unfortunately, there was no API endpoint for that.
+Also, please note that the I added a `timeout` to delay the `POST` request while updating an item, just so it's easier to see that state, with the active spinner.
