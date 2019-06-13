@@ -32,3 +32,20 @@ Clicking on the comment will open a `textarea` where it can be edited.
 
 At any point something gets saved and sent to the server, the whole app refreshes. Ideally, only the item in need of updating would request the new data, but unfortunately, there was no API endpoint for that.
 Also, please note that the I added a `timeout` to delay the `POST` request while updating an item, just so it's easier to see that state, with the active spinner.
+
+
+# How to run
+
+Simply run 
+
+```
+yarn start
+```
+
+or
+
+```
+npm start
+```
+
+*NOTE*: I changed the port of the API to `3030`, just so the react app runs on `3000`, otherwise I would have needed to do a lot of messing about with the `create-react-app` settings. This was quicker.
