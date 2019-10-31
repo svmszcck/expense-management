@@ -49,13 +49,14 @@ class ExpenseCard extends Component {
           </p>
           <p className="lead mb-1">
             <i className="icon fas fa-clock text-center"></i>
-            <Moment format="HH mm" withTitle>
-              {this.props.expense.date}
-            </Moment>
+            <Moment format="HH:mm A">{this.props.expense.date}</Moment>
           </p>
         </div>
         <div className="col-1 pt-1">
-          <button className="btn btn-block btn-success btn-sm my-1">
+          <button
+            className="btn btn-block btn-success btn-sm my-1"
+            onClick={e => this.props.openImageModal(e, this.props.expense.id)}
+          >
             <i className="fas fa-camera"></i>
           </button>
           <button className="btn btn-block btn-success btn-sm my-1">
