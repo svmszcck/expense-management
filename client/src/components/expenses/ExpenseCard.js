@@ -59,7 +59,10 @@ class ExpenseCard extends Component {
           >
             <i className="fas fa-camera"></i>
           </button>
-          <button className="btn btn-block btn-success btn-sm my-1">
+          <button
+            className="btn btn-block btn-success btn-sm my-1"
+            onClick={e => this.props.openCommentModal(e, this.props.expense.id, this.props.expense.comment)}
+          >
             <i className="fas fa-comments"></i>
           </button>
           <button className="btn btn-block btn-warning btn-sm my-1">
@@ -72,7 +75,9 @@ class ExpenseCard extends Component {
 }
 
 ExpenseCard.propTypes = {
-  expense: PropTypes.object.isRequired
+  expense: PropTypes.object.isRequired,
+  openImageModal: PropTypes.func.isRequired,
+  openCommentModal: PropTypes.func.isRequired
 };
 
 export default ExpenseCard;

@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ExpenseCard from './ExpenseCard';
 import ImageElementModal from './ImageElementModal';
+import CommentElementModal from './CommentElementModal';
 
-import { getExpenses, addReceiptImage } from '../../actions/expenseActions';
+import { getExpenses, addReceiptImage, changeCommentElement } from '../../actions/expenseActions';
 
 class Expenses extends Component {
   constructor(props) {
@@ -15,7 +16,9 @@ class Expenses extends Component {
       total: '',
       imageModal: false,
       imageObject: {},
-      id: ''
+      id: '',
+      commentModal: false,
+      comment: ''
     };
   }
   componentDidMount() {
@@ -34,6 +37,7 @@ class Expenses extends Component {
       });
     }
   }
+  // IMAGE MODAL
   openImageModal = (e, id) => {
     e.preventDefault();
     if (!this.state.imageModal) {
@@ -86,6 +90,42 @@ class Expenses extends Component {
       this.setState({ errors: updatedErrors });
     }
   };
+  // COMMENT MODAL
+  onChange = e => {
+    e.preventDefault();
+    let errorsUpdate = {};
+    if (this.state.errors[`${e.target.name}`]) {
+      errorsUpdate = this.state.errors;
+      delete errorsUpdate[`${e.target.name}`];
+    }
+    this.setState({ [e.target.name]: e.target.value, errors: errorsUpdate });
+  };
+  openCommentModal = (e, id, comment) => {
+    e.preventDefault();
+    if (!this.state.commentModal) {
+      this.setState({ commentModal: true, id: id, comment: comment });
+    }
+  };
+  submitCommentModal = e => {
+    e.preventDefault();
+    let commentObj = {};
+    commentObj.comment = this.state.comment;
+    this.props.changeCommentElement(this.state.id, commentObj);
+    this.resetCommentModal();
+  };
+  resetCommentModal = () => {
+    this.setState({
+      commentModal: false,
+      comment: ''
+    });
+  };
+  toggleCommentModal = e => {
+    e.preventDefault();
+    if (this.state.commentModal) {
+      this.setState({ commentModal: false });
+    }
+  };
+
   render() {
     const { errors, expenses } = this.state;
     let spinner = null;
@@ -105,6 +145,7 @@ class Expenses extends Component {
                   key={expense.id}
                   expense={expense}
                   openImageModal={this.openImageModal}
+                  openCommentModal={this.openCommentModal}
                 />
               ))}
           </div>
@@ -120,6 +161,16 @@ class Expenses extends Component {
             errors={errors}
           />
         </section>
+        <section id="commentModal">
+          <CommentElementModal
+            modal={this.state.commentModal}
+            toggleModal={this.toggleCommentModal}
+            resetModal={this.resetCommentModal}
+            submitModal={this.submitCommentModal}
+            comment={this.state.comment}
+            onChange={this.onChange}
+          />
+        </section>
       </div>
     );
   }
@@ -129,7 +180,8 @@ Expenses.propTypes = {
   errors: PropTypes.object,
   expenses: PropTypes.object,
   getExpenses: PropTypes.func.isRequired,
-  addReceiptImage: PropTypes.func.isRequired
+  addReceiptImage: PropTypes.func.isRequired,
+  changeCommentElement: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -141,6 +193,7 @@ export default connect(
   mapStateToProps,
   {
     getExpenses,
-    addReceiptImage
+    addReceiptImage,
+    changeCommentElement
   }
 )(Expenses);

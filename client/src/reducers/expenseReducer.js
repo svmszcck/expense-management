@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
       let { expenses } = state.expenses;
       for (let i = 0; i < expenses.length; i++) {
         if (expenses[i].id === action.payload.id) {
-          expenses[i].receipts = action.payload.receipts;
+          expenses[i] = action.payload;
         }
       }
       return {

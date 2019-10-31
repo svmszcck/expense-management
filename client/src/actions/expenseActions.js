@@ -32,3 +32,17 @@ export const addReceiptImage = (imageData, config, id) => dispatch => {
       dispatch(getError(err.response.data));
     });
 };
+
+export const changeCommentElement = (id, comment) => dispatch => {
+  axios
+    .post(`/expenses/${id}`, comment)
+    .then(res => {
+      dispatch({
+        type: GET_EXPENSE,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch(getError(err.response.data));
+    });
+};
