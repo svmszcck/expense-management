@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import ExpenseCard from './ExpenseCard';
 import ImageElementModal from './ImageElementModal';
 
-import { getExpenses } from '../../actions/expenseActions';
+import { getExpenses, addReceiptImage } from '../../actions/expenseActions';
 
 class Expenses extends Component {
   constructor(props) {
@@ -78,7 +78,7 @@ class Expenses extends Component {
         }
       };
       console.log('adding image', this.state.id);
-      //this.props.addReceiptImage(formData, configData, this.state.id);
+      this.props.addReceiptImage(formData, configData, this.state.id);
       this.resetImageModal();
     } else {
       let updatedErrors = this.state.errors;
@@ -128,7 +128,8 @@ class Expenses extends Component {
 Expenses.propTypes = {
   errors: PropTypes.object,
   expenses: PropTypes.object,
-  getExpenses: PropTypes.func.isRequired
+  getExpenses: PropTypes.func.isRequired,
+  addReceiptImage: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -139,6 +140,7 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    getExpenses
+    getExpenses,
+    addReceiptImage
   }
 )(Expenses);

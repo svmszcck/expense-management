@@ -1,4 +1,4 @@
-import { EXPENSES_LOADING, GET_EXPENSES } from '../actions/types';
+import { EXPENSES_LOADING, GET_EXPENSES, GET_EXPENSE } from '../actions/types';
 
 const initialState = {
   expenses: null,
@@ -17,6 +17,11 @@ export default (state = initialState, action) => {
         ...state,
         expenses: action.payload,
         loading: false
+      };
+    case GET_EXPENSE:
+      console.log(action.payload);
+      return {
+        ...state
       };
     default:
       return state;
