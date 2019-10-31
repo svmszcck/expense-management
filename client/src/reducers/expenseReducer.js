@@ -19,7 +19,12 @@ export default (state = initialState, action) => {
         loading: false
       };
     case GET_EXPENSE:
-      console.log(action.payload);
+      let { expenses } = state.expenses;
+      for (let i = 0; i < expenses.length; i++) {
+        if (expenses[i].id === action.payload.id) {
+          expenses[i].receipts = action.payload.receipts;
+        }
+      }
       return {
         ...state
       };
