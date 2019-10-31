@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import ExpenseCard from './ExpenseCard';
 
 import { getExpenses } from '../../actions/expenseActions';
 
@@ -41,7 +42,12 @@ class Expenses extends Component {
       <div>
         {spinner}
         {!spinner && (
-          <div className="container pt-5">{this.state.expenses[0].user.first}</div>
+          <div className="container pt-5">
+            {this.state.expenses.length > 0 &&
+              this.state.expenses.map(expense => (
+                <ExpenseCard key={expense.id} expense={expense} />
+              ))}
+          </div>
         )}
       </div>
     );

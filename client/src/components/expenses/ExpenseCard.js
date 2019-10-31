@@ -1,0 +1,77 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Moment from 'react-moment';
+
+class ExpenseCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <div className="row border mb-2">
+        <div className="col-1 px-0">
+          <a href="./event.html">
+            <img
+              src={
+                this.props.expense.receipts.length > 0
+                  ? this.props.expense.receipts[0].url
+                  : 'https://picsum.photos/200?random=1'
+              }
+              alt="img1"
+              className="img-fluid"
+            />
+          </a>
+          <div className="text-center">{this.props.expense.category}</div>
+        </div>
+        <div className="col-7 border-left">
+          <h4 className="mt-2">
+            {this.props.expense.user.first} {this.props.expense.user.last}
+            <span className="h5 ml-3 text-secondary">
+              <a href={`mailto:${this.props.expense.user.email}`}>
+                <i> {this.props.expense.user.email}</i>
+              </a>
+            </span>
+          </h4>
+          <p className="mb-0">{this.props.expense.comment}</p>
+        </div>
+        <div className="col-3 border-left border-right pt-2">
+          <p className="lead mb-1">
+            <i className="icon fas fa-calendar-alt text-center"></i>
+            <Moment format="D MMM YYYY" withTitle>
+              {this.props.expense.date}
+            </Moment>
+          </p>
+          <p className="lead mb-1">
+            <i className="icon fas fa-dollar-sign text-center"></i>
+            {this.props.expense.amount.value}{' '}
+            {this.props.expense.amount.currency}
+          </p>
+          <p className="lead mb-1">
+            <i className="icon fas fa-clock text-center"></i>
+            <Moment format="HH mm" withTitle>
+              {this.props.expense.date}
+            </Moment>
+          </p>
+        </div>
+        <div className="col-1 pt-1">
+          <button className="btn btn-block btn-success btn-sm my-1">
+            <i className="fas fa-camera"></i>
+          </button>
+          <button className="btn btn-block btn-success btn-sm my-1">
+            <i className="fas fa-comments"></i>
+          </button>
+          <button className="btn btn-block btn-warning btn-sm my-1">
+            <i className="fas fa-edit"></i>
+          </button>
+        </div>
+      </div>
+    );
+  }
+}
+
+ExpenseCard.propTypes = {
+  expense: PropTypes.object.isRequired
+};
+
+export default ExpenseCard;
