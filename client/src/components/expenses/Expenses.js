@@ -30,7 +30,9 @@ class Expenses extends Component {
       price: '',
       currency: '',
       editModal: false,
-      offset: 0
+      offset: 0,
+      filterWindow: false,
+      sortWindow: false
     };
   }
   componentDidMount() {
@@ -49,6 +51,11 @@ class Expenses extends Component {
       });
     }
   }
+  // FILTER WINDOW
+  toggleFilterWindow = e => {
+    e.preventDefault();
+    this.setState({ filterWindow: !this.state.filterWindow });
+  };
   // IMAGE MODAL
   openImageModal = (e, id) => {
     e.preventDefault();
@@ -93,7 +100,6 @@ class Expenses extends Component {
           'content-type': 'multipart/form/data'
         }
       };
-      console.log('adding image', this.state.id);
       this.props.addReceiptImage(formData, configData, this.state.id);
       this.resetImageModal();
     } else {
@@ -191,6 +197,41 @@ class Expenses extends Component {
         {spinner}
         {!spinner && (
           <div className="container pt-5">
+            <div className="mb-3">
+              <button
+                className="btn btn-sm btn-info my-3"
+                onClick={this.toggleFilterWindow}
+              >
+                SORT
+                {this.state.filterWindow ? (
+                  <i class="fas fa-chevron-up ml-2"></i>
+                ) : (
+                  <i class="fas fa-chevron-down ml-2"></i>
+                )}
+              </button>
+              {this.state.filterWindow && (
+                <div className="my-2 py-2">
+                  <span className="mr-4 border p-3 filterSection">
+                    date{' '}
+                    <button className="btn btn-secondary btn-sm ml-3">
+                      <i class="fas fa-chevron-up"></i>
+                    </button>
+                    <button className="btn btn-secondary btn-sm ml-1">
+                      <i class="fas fa-chevron-down"></i>
+                    </button>
+                  </span>
+                  <span className="mx-4 border p-3 filterSection">
+                    price{' '}
+                    <button className="btn btn-secondary btn-sm ml-3">
+                      <i class="fas fa-chevron-up"></i>
+                    </button>
+                    <button className="btn btn-secondary btn-sm ml-1">
+                      <i class="fas fa-chevron-down"></i>
+                    </button>
+                  </span>
+                </div>
+              )}
+            </div>
             {this.state.expenses.length > 0 &&
               this.state.expenses.map(expense => (
                 <ExpenseCard

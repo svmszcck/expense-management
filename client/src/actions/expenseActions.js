@@ -7,7 +7,7 @@ import { GET_EXPENSES, GET_EXPENSE } from './types';
 export const getExpenses = (offset = 0) => dispatch => {
   dispatch(setLoading('expenses'));
   axios
-    .get('/expenses', { params: { offset, limit: 3 } })
+    .get('/expenses', { params: { offset, limit: 25 } })
     .then(res => {
       dispatch({
         type: GET_EXPENSES,

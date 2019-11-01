@@ -69,6 +69,10 @@
   background: lightgrey;
 }
 
+.filterSection {
+  border-radius: 5px;
+}
+
 /* -------- LOADER -------- */
 .loader {
   color: rgb(108, 117, 125);
