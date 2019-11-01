@@ -221,6 +221,8 @@ class Expenses extends Component {
             pageClassName={'pageBox'}
             activeLinkClassName={'pageLink'}
             pageLinkClassName={'pageLink'}
+            breakClassName={'pageBox'}
+            breakLinkClassName={'pageLink'}
           />
         </div>
         <section id="imageModal">
