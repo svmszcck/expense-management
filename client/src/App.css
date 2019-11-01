@@ -2,6 +2,10 @@
   width: 40px;
 }
 
+.react-datepicker-wrapper {
+  width: 100% !important;
+}
+
 /* -------- LOADER -------- */
 .loader {
   color: rgb(108, 117, 125);

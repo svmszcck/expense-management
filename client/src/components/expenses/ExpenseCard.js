@@ -61,11 +61,28 @@ class ExpenseCard extends Component {
           </button>
           <button
             className="btn btn-block btn-success btn-sm my-1"
-            onClick={e => this.props.openCommentModal(e, this.props.expense.id, this.props.expense.comment)}
+            onClick={e =>
+              this.props.openCommentModal(
+                e,
+                this.props.expense.id,
+                this.props.expense.comment
+              )
+            }
           >
             <i className="fas fa-comments"></i>
           </button>
-          <button className="btn btn-block btn-warning btn-sm my-1">
+          <button
+            className="btn btn-block btn-warning btn-sm my-1"
+            onClick={e =>
+              this.props.openEditModal(
+                e,
+                this.props.expense.id,
+                this.props.expense.date,
+                this.props.expense.amount.value,
+                this.props.expense.amount.currency
+              )
+            }
+          >
             <i className="fas fa-edit"></i>
           </button>
         </div>
@@ -77,7 +94,8 @@ class ExpenseCard extends Component {
 ExpenseCard.propTypes = {
   expense: PropTypes.object.isRequired,
   openImageModal: PropTypes.func.isRequired,
-  openCommentModal: PropTypes.func.isRequired
+  openCommentModal: PropTypes.func.isRequired,
+  openEditModal: PropTypes.func.isRequired
 };
 
 export default ExpenseCard;

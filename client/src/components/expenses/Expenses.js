@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ExpenseCard from './ExpenseCard';
-import ImageElementModal from './ImageElementModal';
-import CommentElementModal from './CommentElementModal';
+import ImageElementModal from './modals/ImageElementModal';
+import CommentElementModal from './modals/CommentElementModal';
+import EditElementModal from './modals/EditElementModal';
 
-import { getExpenses, addReceiptImage, changeCommentElement } from '../../actions/expenseActions';
+import {
+  getExpenses,
+  addReceiptImage,
+  changeCommentElement
+} from '../../actions/expenseActions';
 
 class Expenses extends Component {
   constructor(props) {
@@ -18,7 +23,11 @@ class Expenses extends Component {
       imageObject: {},
       id: '',
       commentModal: false,
-      comment: ''
+      comment: '',
+      date: '',
+      price: '',
+      currency: '',
+      editModal: false
     };
   }
   componentDidMount() {
@@ -115,8 +124,7 @@ class Expenses extends Component {
   };
   resetCommentModal = () => {
     this.setState({
-      commentModal: false,
-      comment: ''
+      commentModal: false
     });
   };
   toggleCommentModal = e => {
@@ -124,6 +132,44 @@ class Expenses extends Component {
     if (this.state.commentModal) {
       this.setState({ commentModal: false });
     }
+  };
+  // EDIT MODAL
+  openEditModal = (e, id, date, price, currency) => {
+    e.preventDefault();
+    if (!this.state.editModal) {
+      this.setState({
+        editModal: true,
+        id: id,
+        date: date,
+        price: price,
+        currency: currency
+      });
+    }
+  };
+  submitEditModal = e => {
+    e.preventDefault();
+    let editObj = {};
+    editObj.date = this.state.date;
+    editObj.price = this.state.price;
+    editObj.currency = this.state.currency;
+    console.log(this.state);
+    // this.props.changeEditElement(this.state.id, editObj);
+    this.resetEditModal();
+  };
+  resetEditModal = () => {
+    this.setState({
+      editModal: false
+    });
+  };
+  toggleEditModal = e => {
+    e.preventDefault();
+    if (this.state.editModal) {
+      this.setState({ editModal: false });
+    }
+  };
+  onChangeDatepicker = date => {
+    console.log(date, 'check');
+    this.setState({ date: date });
   };
 
   render() {
@@ -146,6 +192,7 @@ class Expenses extends Component {
                   expense={expense}
                   openImageModal={this.openImageModal}
                   openCommentModal={this.openCommentModal}
+                  openEditModal={this.openEditModal}
                 />
               ))}
           </div>
@@ -169,6 +216,19 @@ class Expenses extends Component {
             submitModal={this.submitCommentModal}
             comment={this.state.comment}
             onChange={this.onChange}
+          />
+        </section>
+        <section id="commentModal">
+          <EditElementModal
+            modal={this.state.editModal}
+            toggleModal={this.toggleEditModal}
+            resetModal={this.resetEditModal}
+            submitModal={this.submitEditModal}
+            date={this.state.date}
+            price={this.state.price}
+            currency={this.state.currency}
+            onChange={this.onChange}
+            onChangeDatepicker={this.onChangeDatepicker}
           />
         </section>
       </div>

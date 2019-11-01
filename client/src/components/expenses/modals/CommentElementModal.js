@@ -1,33 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import FileInputGroup from './FileInputGroup';
+import TextareaInput from '../common/TextareaInput';
 
-const ImageElementModal = ({
+const CommentElementModal = ({
   modal,
   toggleModal,
   resetModal,
   submitModal,
-  changeImage,
-  imageObject,
-  errors
+  comment,
+  onChange
 }) => {
   return (
     <Modal isOpen={modal} toggle={toggleModal} size="lg" onClosed={resetModal}>
       <form onSubmit={submitModal}>
-        <ModalHeader className="text-info">Upload New Image</ModalHeader>
+        <ModalHeader className="text-info">
+          Change Comment
+        </ModalHeader>
         <ModalBody>
           <div className="container">
             <div className="row">
               <div className="col-12">
-                <FileInputGroup
-                  name="blogAvatar"
-                  placeholder="Avatar"
-                  onChange={changeImage}
-                  sendFile={imageObject}
-                  error={errors.image}
-                  accept="image/png, image/jpg, image/jpeg"
-                />
+                <div className="form-group">
+                  <TextareaInput 
+                    value={comment}
+                    onChange={onChange}
+                    name="comment"
+                    placeholder="Add Comment"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -36,11 +37,7 @@ const ImageElementModal = ({
           <button className="btn btn-secondary mainButton" type="submit">
             Submit
           </button>
-          <button
-            className="btn btn-danger"
-            type="button"
-            onClick={toggleModal}
-          >
+          <button className="btn btn-danger" type="button" onClick={toggleModal}>
             Cancel
           </button>
         </ModalFooter>
@@ -49,14 +46,13 @@ const ImageElementModal = ({
   );
 };
 
-ImageElementModal.propTypes = {
+CommentElementModal.propTypes = {
   modal: PropTypes.bool.isRequired,
   toggleModal: PropTypes.func.isRequired,
   resetModal: PropTypes.func.isRequired,
   submitModal: PropTypes.func.isRequired,
-  changeImage: PropTypes.func.isRequired,
-  imageObject: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  comment: PropTypes.string,
+  onChange: PropTypes.func.isRequired
 };
 
-export default ImageElementModal;
+export default CommentElementModal;
