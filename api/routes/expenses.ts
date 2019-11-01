@@ -50,7 +50,10 @@ router.post('/:id', (req, res) => {
   const expense = expenses.find(expense => expense.id === req.params.id);
 
   if (expense) {
-    expense.comment = req.body.comment || expense.comment;
+    if (req.body.comment) expense.comment = req.body.comment;
+    if (req.body.date) expense.date = req.body.date;
+    if (req.body.price) expense.amount.value = req.body.price;
+    if (req.body.currency) expense.amount.currency = req.body.currency;
     res.status(200).send(expense);
   } else {
     res.status(404);

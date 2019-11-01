@@ -33,9 +33,9 @@ export const addReceiptImage = (imageData, config, id) => dispatch => {
     });
 };
 
-export const changeCommentElement = (id, comment) => dispatch => {
+export const updateExpense = (id, expense) => dispatch => {
   axios
-    .post(`/expenses/${id}`, comment)
+    .post(`/expenses/${id}`, expense)
     .then(res => {
       dispatch({
         type: GET_EXPENSE,

@@ -9,7 +9,7 @@ import EditElementModal from './modals/EditElementModal';
 import {
   getExpenses,
   addReceiptImage,
-  changeCommentElement
+  updateExpense
 } from '../../actions/expenseActions';
 
 class Expenses extends Component {
@@ -119,7 +119,7 @@ class Expenses extends Component {
     e.preventDefault();
     let commentObj = {};
     commentObj.comment = this.state.comment;
-    this.props.changeCommentElement(this.state.id, commentObj);
+    this.props.updateExpense(this.state.id, commentObj);
     this.resetCommentModal();
   };
   resetCommentModal = () => {
@@ -148,12 +148,11 @@ class Expenses extends Component {
   };
   submitEditModal = e => {
     e.preventDefault();
-    let editObj = {};
-    editObj.date = this.state.date;
-    editObj.price = this.state.price;
-    editObj.currency = this.state.currency;
-    console.log(this.state);
-    // this.props.changeEditElement(this.state.id, editObj);
+    let expenseObj = {};
+    expenseObj.date = this.state.date;
+    expenseObj.price = this.state.price;
+    expenseObj.currency = this.state.currency;
+    this.props.updateExpense(this.state.id, expenseObj);
     this.resetEditModal();
   };
   resetEditModal = () => {
@@ -168,7 +167,6 @@ class Expenses extends Component {
     }
   };
   onChangeDatepicker = date => {
-    console.log(date, 'check');
     this.setState({ date: date });
   };
 
@@ -224,7 +222,7 @@ class Expenses extends Component {
             toggleModal={this.toggleEditModal}
             resetModal={this.resetEditModal}
             submitModal={this.submitEditModal}
-            date={this.state.date}
+            date={this.state.date.toString()}
             price={this.state.price}
             currency={this.state.currency}
             onChange={this.onChange}
@@ -241,7 +239,7 @@ Expenses.propTypes = {
   expenses: PropTypes.object,
   getExpenses: PropTypes.func.isRequired,
   addReceiptImage: PropTypes.func.isRequired,
-  changeCommentElement: PropTypes.func.isRequired
+  updateExpense: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -254,6 +252,6 @@ export default connect(
   {
     getExpenses,
     addReceiptImage,
-    changeCommentElement
+    updateExpense
   }
 )(Expenses);

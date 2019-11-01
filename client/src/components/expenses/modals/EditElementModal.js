@@ -85,7 +85,7 @@ EditElementModal.propTypes = {
   toggleModal: PropTypes.func.isRequired,
   resetModal: PropTypes.func.isRequired,
   submitModal: PropTypes.func.isRequired,
-  date: PropTypes.instanceOf(Date),
+  date: PropTypes.string,
   price: PropTypes.string,
   currency: PropTypes.string,
   onChange: PropTypes.func.isRequired,
