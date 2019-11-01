@@ -6,6 +6,8 @@ import ImageElementModal from './modals/ImageElementModal';
 import CommentElementModal from './modals/CommentElementModal';
 import EditElementModal from './modals/EditElementModal';
 
+import ReactPaginate from 'react-paginate';
+
 import {
   getExpenses,
   addReceiptImage,
@@ -27,11 +29,12 @@ class Expenses extends Component {
       date: '',
       price: '',
       currency: '',
-      editModal: false
+      editModal: false,
+      offset: 0
     };
   }
   componentDidMount() {
-    this.props.getExpenses();
+    this.props.getExpenses(this.state.offset);
   }
   componentWillReceiveProps(nextProps) {
     // Set errors
@@ -169,6 +172,11 @@ class Expenses extends Component {
   onChangeDatepicker = date => {
     this.setState({ date: date });
   };
+  // PAGINATION
+  handlePageClick = data => {
+    let offset = data.selected * this.state.expenses.length;
+    this.props.getExpenses(offset);
+  };
 
   render() {
     const { errors, expenses } = this.state;
@@ -195,6 +203,26 @@ class Expenses extends Component {
               ))}
           </div>
         )}
+        <div className="container">
+          <ReactPaginate
+            previousLabel={<i className="fas fa-chevron-left"></i>}
+            nextLabel={<i className="fas fa-chevron-right"></i>}
+            breakLabel={'...'}
+            breakClassName={'break-me'}
+            pageCount={Math.ceil(this.state.total / this.state.expenses.length)}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={this.handlePageClick}
+            containerClassName={'pagination'}
+            subContainerClassName={'pages pagination'}
+            activeClassName={'activePage'}
+            nextClassName={'nextPrevBox'}
+            previousClassName={'nextPrevBox'}
+            pageClassName={'pageBox'}
+            activeLinkClassName={'pageLink'}
+            pageLinkClassName={'pageLink'}
+          />
+        </div>
         <section id="imageModal">
           <ImageElementModal
             modal={this.state.imageModal}
@@ -216,7 +244,7 @@ class Expenses extends Component {
             onChange={this.onChange}
           />
         </section>
-        <section id="commentModal">
+        <section id="editModal">
           <EditElementModal
             modal={this.state.editModal}
             toggleModal={this.toggleEditModal}

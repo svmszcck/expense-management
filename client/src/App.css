@@ -6,6 +6,69 @@
   width: 100% !important;
 }
 
+.pagination {
+  font: 50px !important;
+  color: black !important;
+  margin: 20px !important;
+}
+
+.pages {
+  font: 50px !important;
+  color: black !important;
+  margin: 20px !important;
+}
+
+.active {
+  color: grey;
+}
+
+.nextPrevBox {
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  margin: 0px 10px;
+  padding: 0px 20px;
+  color: black;
+}
+
+.nextPrevBox:hover {
+  cursor: pointer;
+  text-decoration: none;
+  background: lightgrey;
+}
+
+.activePage {
+  background: lightgrey;
+}
+
+.pageLink {
+  padding: 0px 10px;
+}
+
+.pageLink:hover {
+  text-decoration: none;
+}
+
+.pageBox {
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  margin: 0px 5px;
+  color: black;
+}
+
+.pageBox:hover {
+  cursor: pointer;
+  text-decoration: none;
+  background: lightgrey;
+}
+
+.activePage:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  background: lightgrey;
+}
+
 /* -------- LOADER -------- */
 .loader {
   color: rgb(108, 117, 125);

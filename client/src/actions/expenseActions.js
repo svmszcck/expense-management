@@ -4,10 +4,10 @@ import { getError, setLoading } from './commonActions';
 
 import { GET_EXPENSES, GET_EXPENSE } from './types';
 
-export const getExpenses = () => dispatch => {
+export const getExpenses = (offset = 0) => dispatch => {
   dispatch(setLoading('expenses'));
   axios
-    .get('/expenses')
+    .get('/expenses', { params: { offset, limit: 3 } })
     .then(res => {
       dispatch({
         type: GET_EXPENSES,
