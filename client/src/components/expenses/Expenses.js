@@ -51,10 +51,30 @@ class Expenses extends Component {
       });
     }
   }
-  // FILTER WINDOW
-  toggleFilterWindow = e => {
+  // SORT WINDOW
+  toggleSortWindow = e => {
     e.preventDefault();
-    this.setState({ filterWindow: !this.state.filterWindow });
+    this.setState({ sortWindow: !this.state.sortWindow });
+  };
+  sortPrice = (e, direction) => {
+    e.preventDefault();
+    let unsortedList = this.state.expenses;
+    if (direction === 'ascending') {
+      unsortedList.sort((a, b) =>
+        parseFloat(a.amount.value / a.amount.baseEUR) >
+        parseFloat(b.amount.value / b.amount.baseEUR)
+          ? 1
+          : -1
+      );
+    } else {
+      unsortedList.sort((a, b) =>
+        parseFloat(a.amount.value / a.amount.baseEUR) <
+        parseFloat(b.amount.value / b.amount.baseEUR)
+          ? 1
+          : -1
+      );
+    }
+    this.setState({ expenses: unsortedList });
   };
   // IMAGE MODAL
   openImageModal = (e, id) => {
@@ -200,33 +220,39 @@ class Expenses extends Component {
             <div className="mb-3">
               <button
                 className="btn btn-sm btn-info my-3"
-                onClick={this.toggleFilterWindow}
+                onClick={this.toggleSortWindow}
               >
                 SORT
-                {this.state.filterWindow ? (
-                  <i class="fas fa-chevron-up ml-2"></i>
+                {this.state.sortWindow ? (
+                  <i className="fas fa-chevron-up ml-2"></i>
                 ) : (
-                  <i class="fas fa-chevron-down ml-2"></i>
+                  <i className="fas fa-chevron-down ml-2"></i>
                 )}
               </button>
-              {this.state.filterWindow && (
+              {this.state.sortWindow && (
                 <div className="my-2 py-2">
-                  <span className="mr-4 border p-3 filterSection">
+                  <span className="mr-4 border p-3 sortSection">
                     date{' '}
                     <button className="btn btn-secondary btn-sm ml-3">
-                      <i class="fas fa-chevron-up"></i>
+                      <i className="fas fa-chevron-up"></i>
                     </button>
                     <button className="btn btn-secondary btn-sm ml-1">
-                      <i class="fas fa-chevron-down"></i>
+                      <i className="fas fa-chevron-down"></i>
                     </button>
                   </span>
-                  <span className="mx-4 border p-3 filterSection">
+                  <span className="mx-4 border p-3 sortSection">
                     price{' '}
-                    <button className="btn btn-secondary btn-sm ml-3">
-                      <i class="fas fa-chevron-up"></i>
+                    <button
+                      className="btn btn-secondary btn-sm ml-3"
+                      onClick={e => this.sortPrice(e, 'ascending')}
+                    >
+                      <i className="fas fa-chevron-up"></i>
                     </button>
-                    <button className="btn btn-secondary btn-sm ml-1">
-                      <i class="fas fa-chevron-down"></i>
+                    <button
+                      className="btn btn-secondary btn-sm ml-1"
+                      onClick={e => this.sortPrice(e, 'descending')}
+                    >
+                      <i className="fas fa-chevron-down"></i>
                     </button>
                   </span>
                 </div>
