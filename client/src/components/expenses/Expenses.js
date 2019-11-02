@@ -6,6 +6,8 @@ import ImageElementModal from './modals/ImageElementModal';
 import CommentElementModal from './modals/CommentElementModal';
 import EditElementModal from './modals/EditElementModal';
 
+import SortComponent from './SortComponent';
+
 import ReactPaginate from 'react-paginate';
 
 import {
@@ -93,6 +95,11 @@ class Expenses extends Component {
       });
     }
     this.setState({ expenses: unsortedList });
+  };
+  // FILTER WINDOW
+  toggleFilterWindow = e => {
+    e.preventDefault();
+    this.setState({ filterWindow: !this.state.filterWindow });
   };
   // IMAGE MODAL
   openImageModal = (e, id) => {
@@ -235,53 +242,12 @@ class Expenses extends Component {
         {spinner}
         {!spinner && (
           <div className="container pt-5">
-            <div className="mb-3">
-              <button
-                className="btn btn-sm btn-info my-3"
-                onClick={this.toggleSortWindow}
-              >
-                SORT
-                {this.state.sortWindow ? (
-                  <i className="fas fa-chevron-up ml-2"></i>
-                ) : (
-                  <i className="fas fa-chevron-down ml-2"></i>
-                )}
-              </button>
-              {this.state.sortWindow && (
-                <div className="my-2 py-2">
-                  <span className="mr-4 border p-3 sortSection">
-                    date{' '}
-                    <button
-                      className="btn btn-secondary btn-sm ml-3"
-                      onClick={e => this.sortDate(e, 'ascending')}
-                    >
-                      <i className="fas fa-chevron-up"></i>
-                    </button>
-                    <button
-                      className="btn btn-secondary btn-sm ml-1"
-                      onClick={e => this.sortDate(e, 'descending')}
-                    >
-                      <i className="fas fa-chevron-down"></i>
-                    </button>
-                  </span>
-                  <span className="mx-4 border p-3 sortSection">
-                    price{' '}
-                    <button
-                      className="btn btn-secondary btn-sm ml-3"
-                      onClick={e => this.sortPrice(e, 'ascending')}
-                    >
-                      <i className="fas fa-chevron-up"></i>
-                    </button>
-                    <button
-                      className="btn btn-secondary btn-sm ml-1"
-                      onClick={e => this.sortPrice(e, 'descending')}
-                    >
-                      <i className="fas fa-chevron-down"></i>
-                    </button>
-                  </span>
-                </div>
-              )}
-            </div>
+            <SortComponent
+              sortDate={this.sortDate}
+              sortPrice={this.sortPrice}
+              sortWindow={this.state.sortWindow}
+              toggleSortWindow={this.toggleSortWindow}
+            />
             {this.state.expenses.length > 0 &&
               this.state.expenses.map(expense => (
                 <ExpenseCard
