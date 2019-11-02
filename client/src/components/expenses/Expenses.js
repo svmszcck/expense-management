@@ -76,6 +76,24 @@ class Expenses extends Component {
     }
     this.setState({ expenses: unsortedList });
   };
+  sortDate = (e, direction) => {
+    e.preventDefault();
+    let unsortedList = this.state.expenses;
+    if (direction === 'ascending') {
+      unsortedList.sort((a, b) => {
+        a = new Date(a.date);
+        b = new Date(b.date);
+        return a < b ? -1 : a > b ? 1 : 0;
+      });
+    } else {
+      unsortedList.sort((a, b) => {
+        a = new Date(a.date);
+        b = new Date(b.date);
+        return a > b ? -1 : a < b ? 1 : 0;
+      });
+    }
+    this.setState({ expenses: unsortedList });
+  };
   // IMAGE MODAL
   openImageModal = (e, id) => {
     e.preventDefault();
@@ -233,10 +251,16 @@ class Expenses extends Component {
                 <div className="my-2 py-2">
                   <span className="mr-4 border p-3 sortSection">
                     date{' '}
-                    <button className="btn btn-secondary btn-sm ml-3">
+                    <button
+                      className="btn btn-secondary btn-sm ml-3"
+                      onClick={e => this.sortDate(e, 'ascending')}
+                    >
                       <i className="fas fa-chevron-up"></i>
                     </button>
-                    <button className="btn btn-secondary btn-sm ml-1">
+                    <button
+                      className="btn btn-secondary btn-sm ml-1"
+                      onClick={e => this.sortDate(e, 'descending')}
+                    >
                       <i className="fas fa-chevron-down"></i>
                     </button>
                   </span>
