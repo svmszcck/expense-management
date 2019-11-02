@@ -4,6 +4,9 @@ import { expenses } from '../data/expenses';
 import { UploadedFile } from 'express-fileupload';
 import { dirname } from 'path';
 
+import axios from 'axios';
+import { start } from 'repl';
+
 const path = require('path');
 
 const router = express.Router();
@@ -49,13 +52,65 @@ router.get('/:id', (req, res) => {
 
 router.post('/:id', (req, res) => {
   const expense = expenses.find(expense => expense.id === req.params.id);
-
   if (expense) {
-    if (req.body.comment) expense.comment = req.body.comment;
-    if (req.body.date) expense.date = req.body.date;
-    if (req.body.price) expense.amount.value = req.body.price;
-    if (req.body.currency) expense.amount.currency = req.body.currency;
-    res.status(200).send(expense);
+    if (
+      req.body.date !== expense.date ||
+      req.body.currency !== expense.amount.currency
+    ) {
+      if (req.body.date) expense.date = req.body.date;
+      if (req.body.comment) expense.comment = req.body.comment;
+      if (req.body.price) expense.amount.value = req.body.price;
+      if (req.body.currency) expense.amount.currency = req.body.currency;
+
+      let endDate = new Date(expense.date);
+      let endYear = endDate.getFullYear();
+      let endMonth = endDate.getMonth() + 1;
+      let endDay = endDate.getDate();
+
+      let startDate = new Date(expense.date);
+      let currencyMarginDays = 2;
+      startDate.setDate(startDate.getDate() - currencyMarginDays);
+      let startYear = startDate.getFullYear();
+      let startMonth = startDate.getMonth() + 1;
+      let startDay = startDate.getDate();
+
+      let startMonthString;
+      let startDayString;
+      let endMonthString;
+      let endDayString;
+
+      startMonth < 10
+        ? (startMonthString = `0${startMonth}`)
+        : (startMonthString = `${startMonth}`);
+      startDay < 10
+        ? (startDayString = `0${startDay}`)
+        : (startDayString = `${startDay}`);
+      endMonth < 10
+        ? (endMonthString = `0${endMonth}`)
+        : (endMonthString = `${endMonth}`);
+      endDay < 10
+        ? (endDayString = `0${endDay}`)
+        : (endDayString = `${endDay}`);
+
+      let startString = `${startYear}-${startMonthString}-${startDayString}`;
+      let endString = `${endYear}-${endMonthString}-${endDayString}`;
+      let currencyString = expense.amount.currency;
+      axios
+        .get(
+          `https://api.exchangeratesapi.io/history?start_at=${startString}&end_at=${endString}&symbols=${currencyString}`
+        )
+        .then(response => {
+          if (response.data.rates[endString]) {
+            expense.amount.baseEUR = response.data.rates[endString][currencyString];
+          } else {
+            expense.amount.baseEUR =
+            response.data.rates[startString][currencyString];
+          }
+          console.log(expense.amount);
+          return res.status(200).send(expense);
+        })
+        .catch(err => console.log(err.response.data));
+    }
   } else {
     res.status(404);
   }
