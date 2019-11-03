@@ -11,7 +11,7 @@ class ExpenseCard extends Component {
     return (
       <div className="row border mb-2">
         <div className="col-1 px-0">
-          <a href="./event.html">
+          <a href="#">
             <img
               src={
                 this.props.expense.receipts.length > 0

@@ -11,6 +11,18 @@ const path = require('path');
 
 const router = express.Router();
 
+const optionsCategory = [
+  'others',
+  'supplies',
+  'food',
+  'transport',
+  'guests',
+  'gasoline',
+  'tolls',
+  'party',
+  'flight'
+];
+
 router.get('/', (req, res) => {
   const limit = parseInt(req.query.limit) || 25;
   const offset = parseInt(req.query.offset) || 0;
@@ -101,16 +113,28 @@ router.post('/:id', (req, res) => {
         )
         .then(response => {
           if (response.data.rates[endString]) {
-            expense.amount.baseEUR = response.data.rates[endString][currencyString];
+            expense.amount.baseEUR =
+              response.data.rates[endString][currencyString];
           } else {
             expense.amount.baseEUR =
-            response.data.rates[startString][currencyString];
+              response.data.rates[startString][currencyString];
           }
           console.log(expense.amount);
           return res.status(200).send(expense);
         })
         .catch(err => console.log(err.response.data));
     }
+  } else {
+    res.status(404);
+  }
+});
+
+router.post('/:id/category', (req, res) => {
+  if (!req.body.category) return res.status(404);
+  if (optionsCategory.indexOf(req.body.category) < 0) return res.status(404);
+  const expense = expenses.find(expense => expense.id === req.params.id);
+  if (expense) {
+    expense.category = req.body.category;
   } else {
     res.status(404);
   }

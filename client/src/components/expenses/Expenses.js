@@ -14,6 +14,7 @@ import TextInput from './common/TextInput';
 import NumberInput from './common/NumberInput';
 import SelectInput from './common/SelectInput';
 import optionsCurrency from './common/optionsCurrency';
+import optionsCategory from './common/optionsCategory';
 
 import {
   getExpenses,
@@ -45,7 +46,8 @@ class Expenses extends Component {
       filteredLastName: '',
       filteredMinPrice: '',
       filteredMaxPrice: '',
-      filteredCurrency: ''
+      filteredCurrency: '',
+      filteredCategory: ''
     };
   }
   componentDidMount() {
@@ -131,7 +133,10 @@ class Expenses extends Component {
         (unfilteredList[i].amount.value / unfilteredList[i].amount.baseEUR <=
           Number(this.state.filteredMaxPrice) ||
           this.state.filteredMaxPrice === '') &&
-        unfilteredList[i].amount.currency === this.state.filteredCurrency
+        (unfilteredList[i].amount.currency === this.state.filteredCurrency ||
+          this.state.filteredCurrency === '') &&
+        (unfilteredList[i].category === this.state.filteredCategory ||
+          this.state.filteredCategory === '')
       ) {
         filteredList.push(unfilteredList[i]);
       }
@@ -348,6 +353,15 @@ class Expenses extends Component {
                         value={this.state.filteredCurrency}
                         onChange={this.onChangeFilter}
                         options={optionsCurrency}
+                        extraClass="form-control-sm"
+                      />
+                    </div>
+                    <div className="col-2">
+                      <SelectInput
+                        name="filteredCategory"
+                        value={this.state.filteredCategory}
+                        onChange={this.onChangeFilter}
+                        options={optionsCategory}
                         extraClass="form-control-sm"
                       />
                     </div>

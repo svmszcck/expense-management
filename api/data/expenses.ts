@@ -29,7 +29,7 @@ export const expenses: Expense[] = [
     merchant: 'QUONK',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Atkins',
       last: 'Blackburn',
@@ -47,7 +47,7 @@ export const expenses: Expense[] = [
     merchant: 'WRAPTURE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Barbara',
       last: 'Downs',
@@ -65,7 +65,7 @@ export const expenses: Expense[] = [
     merchant: 'SENMAO',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Berta',
       last: 'Wise',
@@ -83,7 +83,7 @@ export const expenses: Expense[] = [
     merchant: 'UPDAT',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Guadalupe',
       last: 'Bolton',
@@ -101,7 +101,7 @@ export const expenses: Expense[] = [
     merchant: 'ZORROMOP',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Irma',
       last: 'Jarvis',
@@ -119,7 +119,7 @@ export const expenses: Expense[] = [
     merchant: 'POLARAX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Wong',
       last: 'Solis',
@@ -137,7 +137,7 @@ export const expenses: Expense[] = [
     merchant: 'NURPLEX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Mitchell',
       last: 'Moody',
@@ -155,7 +155,7 @@ export const expenses: Expense[] = [
     merchant: 'YURTURE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Debora',
       last: 'Leach',
@@ -173,7 +173,7 @@ export const expenses: Expense[] = [
     merchant: 'DUFLEX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Eloise',
       last: 'Holcomb',
@@ -191,7 +191,7 @@ export const expenses: Expense[] = [
     merchant: 'APPLIDECK',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Carissa',
       last: 'Hickman',
@@ -209,7 +209,7 @@ export const expenses: Expense[] = [
     merchant: 'KRAG',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Dominique',
       last: 'Hoover',
@@ -227,7 +227,7 @@ export const expenses: Expense[] = [
     merchant: 'STELAECOR',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Maria',
       last: 'Mcknight',
@@ -245,7 +245,7 @@ export const expenses: Expense[] = [
     merchant: 'QUIZKA',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Ray',
       last: 'Mendoza',
@@ -263,7 +263,7 @@ export const expenses: Expense[] = [
     merchant: 'MARQET',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Bartlett',
       last: 'Webb',
@@ -281,7 +281,7 @@ export const expenses: Expense[] = [
     merchant: 'JUMPSTACK',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Bender',
       last: 'Stout',
@@ -299,7 +299,7 @@ export const expenses: Expense[] = [
     merchant: 'EMPIRICA',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Marshall',
       last: 'Sullivan',
@@ -317,7 +317,7 @@ export const expenses: Expense[] = [
     merchant: 'JASPER',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Brown',
       last: 'Medina',
@@ -335,7 +335,7 @@ export const expenses: Expense[] = [
     merchant: 'DIGIRANG',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Butler',
       last: 'Maldonado',
@@ -353,7 +353,7 @@ export const expenses: Expense[] = [
     merchant: 'QUILITY',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Sofia',
       last: 'Brady',
@@ -371,7 +371,7 @@ export const expenses: Expense[] = [
     merchant: 'KNOWLYSIS',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Matilda',
       last: 'Copeland',
@@ -389,7 +389,7 @@ export const expenses: Expense[] = [
     merchant: 'DIGIAL',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Weaver',
       last: 'Vazquez',
@@ -407,7 +407,7 @@ export const expenses: Expense[] = [
     merchant: 'PRISMATIC',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Cardenas',
       last: 'Hartman',
@@ -425,7 +425,7 @@ export const expenses: Expense[] = [
     merchant: 'PARLEYNET',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Lawrence',
       last: 'Allen',
@@ -443,7 +443,7 @@ export const expenses: Expense[] = [
     merchant: 'KOZGENE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Lila',
       last: 'Espinoza',
@@ -461,7 +461,7 @@ export const expenses: Expense[] = [
     merchant: 'ZILIDIUM',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Penny',
       last: 'Dejesus',
@@ -479,7 +479,7 @@ export const expenses: Expense[] = [
     merchant: 'QUILTIGEN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'others',
     user: {
       first: 'Small',
       last: 'Ochoa',
@@ -497,7 +497,7 @@ export const expenses: Expense[] = [
     merchant: 'ZILLACON',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'Janette',
       last: 'Mooney',
@@ -515,7 +515,7 @@ export const expenses: Expense[] = [
     merchant: 'MOBILDATA',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'Selena',
       last: 'Mcmillan',
@@ -533,7 +533,7 @@ export const expenses: Expense[] = [
     merchant: 'ZENTURY',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'Heather',
       last: 'Keith',
@@ -551,7 +551,7 @@ export const expenses: Expense[] = [
     merchant: 'PLASMOSIS',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'Silvia',
       last: 'Wilder',
@@ -569,7 +569,7 @@ export const expenses: Expense[] = [
     merchant: 'BEDDER',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'Gallegos',
       last: 'Tanner',
@@ -587,7 +587,7 @@ export const expenses: Expense[] = [
     merchant: 'XIXAN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'Downs',
       last: 'Savage',
@@ -605,7 +605,7 @@ export const expenses: Expense[] = [
     merchant: 'KIOSK',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'Spence',
       last: 'Ballard',
@@ -623,7 +623,7 @@ export const expenses: Expense[] = [
     merchant: 'VALREDA',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'Amelia',
       last: 'Hobbs',
@@ -641,7 +641,7 @@ export const expenses: Expense[] = [
     merchant: 'QUILCH',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'Janis',
       last: 'Dyer',
@@ -659,7 +659,7 @@ export const expenses: Expense[] = [
     merchant: 'OCTOCORE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'Renee',
       last: 'Bridges',
@@ -677,7 +677,7 @@ export const expenses: Expense[] = [
     merchant: 'AMTAP',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'Vivian',
       last: 'Munoz',
@@ -695,7 +695,7 @@ export const expenses: Expense[] = [
     merchant: 'BRISTO',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'Carolina',
       last: 'Lopez',
@@ -713,7 +713,7 @@ export const expenses: Expense[] = [
     merchant: 'AFFLUEX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'William',
       last: 'Francis',
@@ -731,7 +731,7 @@ export const expenses: Expense[] = [
     merchant: 'ROCKABYE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'Sheryl',
       last: 'Hunt',
@@ -749,7 +749,7 @@ export const expenses: Expense[] = [
     merchant: 'TERRAGEN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'supplies',
     user: {
       first: 'Ronda',
       last: 'Nunez',
@@ -767,7 +767,7 @@ export const expenses: Expense[] = [
     merchant: 'BUZZWORKS',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Cathy',
       last: 'Mccormick',
@@ -785,7 +785,7 @@ export const expenses: Expense[] = [
     merchant: 'TYPHONICA',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Fletcher',
       last: 'Gaines',
@@ -803,7 +803,7 @@ export const expenses: Expense[] = [
     merchant: 'RODEMCO',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Hawkins',
       last: 'Hyde',
@@ -821,7 +821,7 @@ export const expenses: Expense[] = [
     merchant: 'ZENSUS',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Ellison',
       last: 'Gutierrez',
@@ -839,7 +839,7 @@ export const expenses: Expense[] = [
     merchant: 'ENTOGROK',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Claire',
       last: 'Leonard',
@@ -857,7 +857,7 @@ export const expenses: Expense[] = [
     merchant: 'INTERLOO',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Thornton',
       last: 'Watson',
@@ -875,7 +875,7 @@ export const expenses: Expense[] = [
     merchant: 'NITRACYR',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Estelle',
       last: 'Monroe',
@@ -893,7 +893,7 @@ export const expenses: Expense[] = [
     merchant: 'ZILLAR',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Kane',
       last: 'Gallegos',
@@ -911,7 +911,7 @@ export const expenses: Expense[] = [
     merchant: 'POLARIUM',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Juliet',
       last: 'Holloway',
@@ -929,7 +929,7 @@ export const expenses: Expense[] = [
     merchant: 'MANGLO',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Tracy',
       last: 'Waller',
@@ -947,7 +947,7 @@ export const expenses: Expense[] = [
     merchant: 'JUNIPOOR',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Claudine',
       last: 'Powell',
@@ -965,7 +965,7 @@ export const expenses: Expense[] = [
     merchant: 'EXOVENT',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Estes',
       last: 'Brown',
@@ -983,7 +983,7 @@ export const expenses: Expense[] = [
     merchant: 'COMCUBINE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Minnie',
       last: 'Ayala',
@@ -1001,7 +1001,7 @@ export const expenses: Expense[] = [
     merchant: 'ILLUMITY',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Lourdes',
       last: 'Gallagher',
@@ -1019,7 +1019,7 @@ export const expenses: Expense[] = [
     merchant: 'GINKLE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Sampson',
       last: 'Stephenson',
@@ -1037,7 +1037,7 @@ export const expenses: Expense[] = [
     merchant: 'KANGLE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Hinton',
       last: 'Cleveland',
@@ -1055,7 +1055,7 @@ export const expenses: Expense[] = [
     merchant: 'CORECOM',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Alexandria',
       last: 'Valencia',
@@ -1073,7 +1073,7 @@ export const expenses: Expense[] = [
     merchant: 'MULTRON',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Latoya',
       last: 'Case',
@@ -1091,7 +1091,7 @@ export const expenses: Expense[] = [
     merchant: 'GENMOM',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'food',
     user: {
       first: 'Virginia',
       last: 'Benjamin',
@@ -1109,7 +1109,7 @@ export const expenses: Expense[] = [
     merchant: 'COGNICODE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'transport',
     user: {
       first: 'Ophelia',
       last: 'Cortez',
@@ -1127,7 +1127,7 @@ export const expenses: Expense[] = [
     merchant: 'EXTRAGEN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'transport',
     user: {
       first: 'Mckenzie',
       last: 'Cervantes',
@@ -1145,7 +1145,7 @@ export const expenses: Expense[] = [
     merchant: 'PORTALIS',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'transport',
     user: {
       first: 'Reyna',
       last: 'Delaney',
@@ -1163,7 +1163,7 @@ export const expenses: Expense[] = [
     merchant: 'INSURETY',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'transport',
     user: {
       first: 'Villarreal',
       last: 'Mckinney',
@@ -1181,7 +1181,7 @@ export const expenses: Expense[] = [
     merchant: 'COMFIRM',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'transport',
     user: {
       first: 'Harvey',
       last: 'Carlson',
@@ -1199,7 +1199,7 @@ export const expenses: Expense[] = [
     merchant: 'FORTEAN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'transport',
     user: {
       first: 'Mays',
       last: 'Sparks',
@@ -1217,7 +1217,7 @@ export const expenses: Expense[] = [
     merchant: 'CANDECOR',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'transport',
     user: {
       first: 'Hicks',
       last: 'Murphy',
@@ -1235,7 +1235,7 @@ export const expenses: Expense[] = [
     merchant: 'PHEAST',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'transport',
     user: {
       first: 'Caldwell',
       last: 'Evans',
@@ -1253,7 +1253,7 @@ export const expenses: Expense[] = [
     merchant: 'MEDESIGN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'transport',
     user: {
       first: 'Schwartz',
       last: 'Gentry',
@@ -1271,7 +1271,7 @@ export const expenses: Expense[] = [
     merchant: 'BIOLIVE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'transport',
     user: {
       first: 'Chris',
       last: 'Pugh',
@@ -1289,7 +1289,7 @@ export const expenses: Expense[] = [
     merchant: 'SULTRAXIN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'transport',
     user: {
       first: 'Bernadine',
       last: 'Rodriguez',
@@ -1307,7 +1307,7 @@ export const expenses: Expense[] = [
     merchant: 'GEEKFARM',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'guests',
     user: {
       first: 'Peterson',
       last: 'Ashley',
@@ -1325,7 +1325,7 @@ export const expenses: Expense[] = [
     merchant: 'HYPLEX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'guests',
     user: {
       first: 'Justine',
       last: 'Arnold',
@@ -1343,7 +1343,7 @@ export const expenses: Expense[] = [
     merchant: 'TRANSLINK',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'guests',
     user: {
       first: 'Beth',
       last: 'Landry',
@@ -1361,7 +1361,7 @@ export const expenses: Expense[] = [
     merchant: 'URBANSHEE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'guests',
     user: {
       first: 'Pate',
       last: 'Cruz',
@@ -1379,7 +1379,7 @@ export const expenses: Expense[] = [
     merchant: 'ENERSAVE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'guests',
     user: {
       first: 'Mercedes',
       last: 'Simon',
@@ -1397,7 +1397,7 @@ export const expenses: Expense[] = [
     merchant: 'ORBIN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'guests',
     user: {
       first: 'Angelina',
       last: 'Logan',
@@ -1415,7 +1415,7 @@ export const expenses: Expense[] = [
     merchant: 'DIGIGEN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'guests',
     user: {
       first: 'Randi',
       last: 'Peck',
@@ -1433,7 +1433,7 @@ export const expenses: Expense[] = [
     merchant: 'QABOOS',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'guests',
     user: {
       first: 'Willis',
       last: 'Davenport',
@@ -1451,7 +1451,7 @@ export const expenses: Expense[] = [
     merchant: 'ENAUT',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'guests',
     user: {
       first: 'Aurelia',
       last: 'Mercer',
@@ -1469,7 +1469,7 @@ export const expenses: Expense[] = [
     merchant: 'OPTICALL',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'guests',
     user: {
       first: 'Harrison',
       last: 'Crawford',
@@ -1487,7 +1487,7 @@ export const expenses: Expense[] = [
     merchant: 'FURNAFIX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'guests',
     user: {
       first: 'Kelsey',
       last: 'Christensen',
@@ -1505,7 +1505,7 @@ export const expenses: Expense[] = [
     merchant: 'ZYTRAC',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'guests',
     user: {
       first: 'Janine',
       last: 'Terrell',
@@ -1523,7 +1523,7 @@ export const expenses: Expense[] = [
     merchant: 'ISOSTREAM',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'guests',
     user: {
       first: 'Tucker',
       last: 'Townsend',
@@ -1541,7 +1541,7 @@ export const expenses: Expense[] = [
     merchant: 'TROPOLIS',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Savannah',
       last: 'Barron',
@@ -1559,7 +1559,7 @@ export const expenses: Expense[] = [
     merchant: 'SCHOOLIO',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Wheeler',
       last: 'Noel',
@@ -1577,7 +1577,7 @@ export const expenses: Expense[] = [
     merchant: 'INVENTURE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Bauer',
       last: 'Clark',
@@ -1595,7 +1595,7 @@ export const expenses: Expense[] = [
     merchant: 'RADIANTIX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Sabrina',
       last: 'Stanton',
@@ -1613,7 +1613,7 @@ export const expenses: Expense[] = [
     merchant: 'OLYMPIX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Kemp',
       last: 'Ramos',
@@ -1631,7 +1631,7 @@ export const expenses: Expense[] = [
     merchant: 'NORSUP',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Mccray',
       last: 'Thomas',
@@ -1649,7 +1649,7 @@ export const expenses: Expense[] = [
     merchant: 'KONNECT',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Pam',
       last: 'Noble',
@@ -1667,7 +1667,7 @@ export const expenses: Expense[] = [
     merchant: 'DANJA',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Ericka',
       last: 'Edwards',
@@ -1685,7 +1685,7 @@ export const expenses: Expense[] = [
     merchant: 'IZZBY',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Baird',
       last: 'Galloway',
@@ -1703,7 +1703,7 @@ export const expenses: Expense[] = [
     merchant: 'ISOPOP',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Bird',
       last: 'Stewart',
@@ -1721,7 +1721,7 @@ export const expenses: Expense[] = [
     merchant: 'FANGOLD',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Zamora',
       last: 'Medina',
@@ -1739,7 +1739,7 @@ export const expenses: Expense[] = [
     merchant: 'PROTODYNE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Stephanie',
       last: 'Irwin',
@@ -1757,7 +1757,7 @@ export const expenses: Expense[] = [
     merchant: 'LUDAK',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Harvey',
       last: 'Castillo',
@@ -1775,7 +1775,7 @@ export const expenses: Expense[] = [
     merchant: 'BESTO',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Shana',
       last: 'Oliver',
@@ -1793,7 +1793,7 @@ export const expenses: Expense[] = [
     merchant: 'SKYPLEX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Rose',
       last: 'Fitzgerald',
@@ -1811,7 +1811,7 @@ export const expenses: Expense[] = [
     merchant: 'WATERBABY',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Lillie',
       last: 'Emerson',
@@ -1829,7 +1829,7 @@ export const expenses: Expense[] = [
     merchant: 'GENEKOM',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Long',
       last: 'Fischer',
@@ -1847,7 +1847,7 @@ export const expenses: Expense[] = [
     merchant: 'EMTRAK',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Imogene',
       last: 'Hartman',
@@ -1865,7 +1865,7 @@ export const expenses: Expense[] = [
     merchant: 'BLANET',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Nancy',
       last: 'Hammond',
@@ -1883,7 +1883,7 @@ export const expenses: Expense[] = [
     merchant: 'AUSTEX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Fay',
       last: 'Lucas',
@@ -1901,7 +1901,7 @@ export const expenses: Expense[] = [
     merchant: 'BILLMED',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Barry',
       last: 'Gallagher',
@@ -1919,7 +1919,7 @@ export const expenses: Expense[] = [
     merchant: 'MACRONAUT',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Dena',
       last: 'Warren',
@@ -1937,7 +1937,7 @@ export const expenses: Expense[] = [
     merchant: 'KAGE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Vickie',
       last: 'Lee',
@@ -1955,7 +1955,7 @@ export const expenses: Expense[] = [
     merchant: 'UNEEQ',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Bianca',
       last: 'Wallace',
@@ -1973,7 +1973,7 @@ export const expenses: Expense[] = [
     merchant: 'CEMENTION',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Celia',
       last: 'Frazier',
@@ -1991,7 +1991,7 @@ export const expenses: Expense[] = [
     merchant: 'VITRICOMP',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Waters',
       last: 'Vinson',
@@ -2009,7 +2009,7 @@ export const expenses: Expense[] = [
     merchant: 'KLUGGER',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Kathy',
       last: 'Bush',
@@ -2027,7 +2027,7 @@ export const expenses: Expense[] = [
     merchant: 'ELEMANTRA',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'gasoline',
     user: {
       first: 'Frances',
       last: 'Atkins',
@@ -2045,7 +2045,7 @@ export const expenses: Expense[] = [
     merchant: 'BRAINCLIP',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Constance',
       last: 'Hahn',
@@ -2063,7 +2063,7 @@ export const expenses: Expense[] = [
     merchant: 'XLEEN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Annette',
       last: 'Mckay',
@@ -2081,7 +2081,7 @@ export const expenses: Expense[] = [
     merchant: 'EXOSTREAM',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Tamera',
       last: 'Perkins',
@@ -2099,7 +2099,7 @@ export const expenses: Expense[] = [
     merchant: 'PREMIANT',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Jewell',
       last: 'Delacruz',
@@ -2117,7 +2117,7 @@ export const expenses: Expense[] = [
     merchant: 'GRAINSPOT',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Burris',
       last: 'Reyes',
@@ -2135,7 +2135,7 @@ export const expenses: Expense[] = [
     merchant: 'NITRACYR',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Lynette',
       last: 'Bean',
@@ -2153,7 +2153,7 @@ export const expenses: Expense[] = [
     merchant: 'ZILLA',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Ava',
       last: 'Chandler',
@@ -2171,7 +2171,7 @@ export const expenses: Expense[] = [
     merchant: 'OCEANICA',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Hopkins',
       last: 'Best',
@@ -2189,7 +2189,7 @@ export const expenses: Expense[] = [
     merchant: 'ZANYMAX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Harrison',
       last: 'Mejia',
@@ -2207,7 +2207,7 @@ export const expenses: Expense[] = [
     merchant: 'APPLIDECK',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Bennett',
       last: 'Mercer',
@@ -2225,7 +2225,7 @@ export const expenses: Expense[] = [
     merchant: 'ESCENTA',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Shannon',
       last: 'Bradford',
@@ -2243,7 +2243,7 @@ export const expenses: Expense[] = [
     merchant: 'ENTALITY',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Peggy',
       last: 'Sawyer',
@@ -2261,7 +2261,7 @@ export const expenses: Expense[] = [
     merchant: 'QUIZMO',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Florence',
       last: 'Lane',
@@ -2279,7 +2279,7 @@ export const expenses: Expense[] = [
     merchant: 'ZAPHIRE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Laurie',
       last: 'Morton',
@@ -2297,7 +2297,7 @@ export const expenses: Expense[] = [
     merchant: 'DIGIQUE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Solis',
       last: 'Rush',
@@ -2315,7 +2315,7 @@ export const expenses: Expense[] = [
     merchant: 'ILLUMITY',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Matilda',
       last: 'Becker',
@@ -2333,7 +2333,7 @@ export const expenses: Expense[] = [
     merchant: 'EXIAND',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'York',
       last: 'Mcfadden',
@@ -2351,7 +2351,7 @@ export const expenses: Expense[] = [
     merchant: 'STRALOY',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Ray',
       last: 'Townsend',
@@ -2369,7 +2369,7 @@ export const expenses: Expense[] = [
     merchant: 'CENTREXIN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Miranda',
       last: 'Obrien',
@@ -2387,7 +2387,7 @@ export const expenses: Expense[] = [
     merchant: 'ZEDALIS',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Etta',
       last: 'Black',
@@ -2405,7 +2405,7 @@ export const expenses: Expense[] = [
     merchant: 'EARWAX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Elisa',
       last: 'Banks',
@@ -2423,7 +2423,7 @@ export const expenses: Expense[] = [
     merchant: 'ICOLOGY',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Glenn',
       last: 'Hobbs',
@@ -2441,7 +2441,7 @@ export const expenses: Expense[] = [
     merchant: 'WARETEL',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'tolls',
     user: {
       first: 'Bobbie',
       last: 'Bird',
@@ -2459,7 +2459,7 @@ export const expenses: Expense[] = [
     merchant: 'COMBOGEN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Ross',
       last: 'Drake',
@@ -2477,7 +2477,7 @@ export const expenses: Expense[] = [
     merchant: 'ISOPLEX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Ada',
       last: 'Koch',
@@ -2495,7 +2495,7 @@ export const expenses: Expense[] = [
     merchant: 'ACCUFARM',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Pat',
       last: 'Avery',
@@ -2513,7 +2513,7 @@ export const expenses: Expense[] = [
     merchant: 'EMERGENT',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Christensen',
       last: 'Trevino',
@@ -2531,7 +2531,7 @@ export const expenses: Expense[] = [
     merchant: 'PHARMEX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Blanchard',
       last: 'Miles',
@@ -2549,7 +2549,7 @@ export const expenses: Expense[] = [
     merchant: 'HOUSEDOWN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Marie',
       last: 'Olsen',
@@ -2567,7 +2567,7 @@ export const expenses: Expense[] = [
     merchant: 'PATHWAYS',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Maura',
       last: 'Hardy',
@@ -2585,7 +2585,7 @@ export const expenses: Expense[] = [
     merchant: 'UPDAT',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Garza',
       last: 'Blake',
@@ -2603,7 +2603,7 @@ export const expenses: Expense[] = [
     merchant: 'XYQAG',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Huffman',
       last: 'Holman',
@@ -2621,7 +2621,7 @@ export const expenses: Expense[] = [
     merchant: 'NAMEGEN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Inez',
       last: 'Harris',
@@ -2639,7 +2639,7 @@ export const expenses: Expense[] = [
     merchant: 'GOKO',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Burgess',
       last: 'Bryant',
@@ -2657,7 +2657,7 @@ export const expenses: Expense[] = [
     merchant: 'STROZEN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Murphy',
       last: 'Peterson',
@@ -2675,7 +2675,7 @@ export const expenses: Expense[] = [
     merchant: 'MEDMEX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Carr',
       last: 'Haney',
@@ -2693,7 +2693,7 @@ export const expenses: Expense[] = [
     merchant: 'AQUAFIRE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Robin',
       last: 'Rios',
@@ -2711,7 +2711,7 @@ export const expenses: Expense[] = [
     merchant: 'MARTGO',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Kelli',
       last: 'Kerr',
@@ -2729,7 +2729,7 @@ export const expenses: Expense[] = [
     merchant: 'HANDSHAKE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Camacho',
       last: 'Delaney',
@@ -2747,7 +2747,7 @@ export const expenses: Expense[] = [
     merchant: 'UNISURE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Coffey',
       last: 'Garcia',
@@ -2765,7 +2765,7 @@ export const expenses: Expense[] = [
     merchant: 'KANGLE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Avila',
       last: 'Skinner',
@@ -2783,7 +2783,7 @@ export const expenses: Expense[] = [
     merchant: 'VELITY',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Martha',
       last: 'Mills',
@@ -2801,7 +2801,7 @@ export const expenses: Expense[] = [
     merchant: 'CIPROMOX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'party',
     user: {
       first: 'Mona',
       last: 'Freeman',
@@ -2819,7 +2819,7 @@ export const expenses: Expense[] = [
     merchant: 'INQUALA',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'flight',
     user: {
       first: 'Mamie',
       last: 'Christensen',
@@ -2837,7 +2837,7 @@ export const expenses: Expense[] = [
     merchant: 'TERRAGEN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'flight',
     user: {
       first: 'Rebekah',
       last: 'Cross',
@@ -2855,7 +2855,7 @@ export const expenses: Expense[] = [
     merchant: 'ASSITIA',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'flight',
     user: {
       first: 'Lowe',
       last: 'Michael',
@@ -2873,7 +2873,7 @@ export const expenses: Expense[] = [
     merchant: 'SURELOGIC',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'flight',
     user: {
       first: 'Walsh',
       last: 'Hudson',
@@ -2891,7 +2891,7 @@ export const expenses: Expense[] = [
     merchant: 'BUZZOPIA',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'flight',
     user: {
       first: 'Richmond',
       last: 'Sellers',
@@ -2909,7 +2909,7 @@ export const expenses: Expense[] = [
     merchant: 'INTERGEEK',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'flight',
     user: {
       first: 'West',
       last: 'Knowles',
@@ -2927,7 +2927,7 @@ export const expenses: Expense[] = [
     merchant: 'ZYPLE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'flight',
     user: {
       first: 'Mable',
       last: 'White',
@@ -2945,7 +2945,7 @@ export const expenses: Expense[] = [
     merchant: 'QUIZKA',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'flight',
     user: {
       first: 'Georgette',
       last: 'Marquez',
@@ -2963,7 +2963,7 @@ export const expenses: Expense[] = [
     merchant: 'MANTRIX',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'flight',
     user: {
       first: 'Anita',
       last: 'Yang',
@@ -2981,7 +2981,7 @@ export const expenses: Expense[] = [
     merchant: 'SCENTY',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'flight',
     user: {
       first: 'Sanchez',
       last: 'Downs',
@@ -2999,7 +2999,7 @@ export const expenses: Expense[] = [
     merchant: 'ENOMEN',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'flight',
     user: {
       first: 'Palmer',
       last: 'Howard',
@@ -3017,7 +3017,7 @@ export const expenses: Expense[] = [
     merchant: 'MAGNAFONE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'flight',
     user: {
       first: 'Mccormick',
       last: 'Barber',
@@ -3035,7 +3035,7 @@ export const expenses: Expense[] = [
     merchant: 'XINWARE',
     receipts: [],
     comment: '',
-    category: '',
+    category: 'flight',
     user: {
       first: 'Flynn',
       last: 'Giles',
