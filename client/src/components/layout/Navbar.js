@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 
-import { switchAdmin } from '../../actions/commonActions';
+import { switchAdmin, switchLanguage } from '../../actions/commonActions';
 
 import AdminSwitch from '../expenses/AdminSwitch';
+import Languages from '../expenses/Languages';
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      language: '',
+      language: 'ENG',
       admin: false
     };
   }
@@ -24,6 +25,12 @@ class Navbar extends Component {
     }
   }
 
+  switchLanguage = (e, language) => {
+    e.preventDefault();
+    this.setState({ language: language });
+    this.props.switchLanguage(language);
+  };
+
   switchToAdmin = (e, adminStatus) => {
     e.preventDefault();
     this.setState({ admin: adminStatus });
@@ -35,6 +42,10 @@ class Navbar extends Component {
       <nav className="navbar navbar-expand-md navbar-dark myNavbar">
         <div className="container">
           <h3 className="text-white my-0">Pleo</h3>
+          <Languages
+            language={this.state.language}
+            switchLanguage={this.switchLanguage}
+          />
           <AdminSwitch
             admin={this.state.admin}
             switchToAdmin={this.switchToAdmin}
@@ -45,15 +56,20 @@ class Navbar extends Component {
   }
 }
 
-Navbar.propTypes = {};
+Navbar.propTypes = {
+  switchAdmin: PropTypes.func.isRequired,
+  switchLanguage: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
-  admin: state.admin
+  admin: state.admin,
+  locale: state.locale
 });
 
 export default connect(
   mapStateToProps,
   {
-    switchAdmin
+    switchAdmin,
+    switchLanguage
   }
 )(Navbar);

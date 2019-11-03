@@ -53,7 +53,7 @@ class Expenses extends Component {
   componentWillReceiveProps(nextProps) {
     // Set admin status
     if (nextProps.admin) {
-      this.setState({ admin: nextProps.admin.admin },()=>{console.log(this.state.admin)});
+      this.setState({ admin: nextProps.admin.admin });
     }
     // Set errors
     if (nextProps.errors) {

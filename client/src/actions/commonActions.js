@@ -1,4 +1,9 @@
-import { GET_ERRORS, EXPENSES_LOADING, SWITCH_ADMIN } from './types';
+import {
+  GET_ERRORS,
+  EXPENSES_LOADING,
+  SWITCH_ADMIN,
+  SWITCH_LANGUAGE
+} from './types';
 
 export const getError = data => {
   return {
@@ -21,5 +26,12 @@ export const switchAdmin = adminStatus => {
   return {
     type: SWITCH_ADMIN,
     payload: adminStatus
+  };
+};
+
+export const switchLanguage = language => {
+  return {
+    type: SWITCH_LANGUAGE,
+    payload: language
   };
 };

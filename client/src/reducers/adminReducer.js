@@ -5,13 +5,13 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  switch (action.type) {
-    case SWITCH_ADMIN:
-      return {
-        ...state,
-        admin: action.payload
-      };
-    default:
-      return state;
+  if (action.type === 'SWITCH_ADMIN') {
+    return {
+      ...state,
+      admin: action.payload
+    };
   }
+  return {
+    ...state
+  };
 };

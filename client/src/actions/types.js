@@ -6,3 +6,4 @@ export const GET_EXPENSE = 'GET_EXPENSE';
 export const GET_EXPENSES = 'GET_EXPENSES';
 
 export const SWITCH_ADMIN = 'SWITCH_ADMIN';
+export const SWITCH_LANGUAGE = 'SWITCH_LANGUAGE';
