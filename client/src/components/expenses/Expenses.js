@@ -39,7 +39,9 @@ class Expenses extends Component {
       sortWindow: false,
       filteredExpenses: [],
       filteredFirstName: '',
-      filteredLastName: ''
+      filteredLastName: '',
+      filteredMinPrice: '',
+      filteredMaxPrice: ''
     };
   }
   componentDidMount() {

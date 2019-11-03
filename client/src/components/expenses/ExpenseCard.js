@@ -45,7 +45,15 @@ class ExpenseCard extends Component {
           <p className="lead mb-1">
             <i className="icon fas fa-dollar-sign text-center"></i>
             {this.props.expense.amount.value}{' '}
-            {this.props.expense.amount.currency}
+            {this.props.expense.amount.currency}{' '}
+            <span className="text-muted baseEUR float-right mt-1">
+              <i>
+                {(
+                  this.props.expense.amount.value /
+                  this.props.expense.amount.baseEUR
+                ).toFixed(2)} EUR
+              </i>
+            </span>
           </p>
           <p className="lead mb-1">
             <i className="icon fas fa-clock text-center"></i>

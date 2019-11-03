@@ -73,6 +73,10 @@
   border-radius: 5px;
 }
 
+.baseEUR {
+  font-size: 14px;
+}
+
 /* -------- LOADER -------- */
 .loader {
   color: rgb(108, 117, 125);
