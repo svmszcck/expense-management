@@ -11,6 +11,7 @@ import SortComponent from './SortComponent';
 import ReactPaginate from 'react-paginate';
 
 import TextInput from './common/TextInput';
+import NumberInput from './common/NumberInput';
 
 import {
   getExpenses,
@@ -120,7 +121,13 @@ class Expenses extends Component {
           .toLowerCase() === this.state.filteredFirstName.toLowerCase() &&
         unfilteredList[i].user.last
           .substring(0, this.state.filteredLastName.length)
-          .toLowerCase() === this.state.filteredLastName.toLowerCase()
+          .toLowerCase() === this.state.filteredLastName.toLowerCase() &&
+        (unfilteredList[i].amount.value / unfilteredList[i].amount.baseEUR >
+          Number(this.state.filteredMinPrice) ||
+          this.state.filteredMinPrice === '') &&
+        (unfilteredList[i].amount.value / unfilteredList[i].amount.baseEUR <
+          Number(this.state.filteredMaxPrice) ||
+          this.state.filteredMaxPrice === '')
       ) {
         filteredList.push(unfilteredList[i]);
       }
@@ -310,6 +317,24 @@ class Expenses extends Component {
                         onChange={this.onChangeFilter}
                         placeholder="Last Name"
                         name="filteredLastName"
+                        extraClass="form-control-sm"
+                      />
+                    </div>
+                    <div className="col-2">
+                      <NumberInput
+                        value={this.state.filteredMinPrice}
+                        onChange={this.onChangeFilter}
+                        placeholder="Min Price"
+                        name="filteredMinPrice"
+                        extraClass="form-control-sm"
+                      />
+                    </div>
+                    <div className="col-2">
+                      <NumberInput
+                        value={this.state.filteredMaxPrice}
+                        onChange={this.onChangeFilter}
+                        placeholder="Max Price"
+                        name="filteredMaxPrice"
                         extraClass="form-control-sm"
                       />
                     </div>
