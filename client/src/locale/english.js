@@ -22,6 +22,8 @@ const contentEnglish = {
   addComment: 'Add Comment',
   changeComment: 'Change Comment',
   editExpense: 'Edit Expense',
+  uploadNewImage: 'Upload New Image',
+  receipt: 'Receipt'
 };
 
 export default contentEnglish;

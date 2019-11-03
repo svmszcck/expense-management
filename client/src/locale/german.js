@@ -21,7 +21,9 @@ const contentGerman = {
   cancel: 'Stornieren',
   addComment: 'Einen Kommentar Hinzufügen',
   changeComment: 'Kommentar Ändern',
-  editExpense: 'Aufwand bearbeiten'
+  editExpense: 'Aufwand bearbeiten',
+  uploadNewImage: 'Neues Bild hochladen',
+  receipt: 'Quittung'
 };
 
 export default contentGerman;

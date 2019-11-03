@@ -11,11 +11,7 @@ import FilterComponent from './FilterComponent';
 
 import ReactPaginate from 'react-paginate';
 
-import {
-  getExpenses,
-  addReceiptImage,
-  updateExpense
-} from '../../actions/expenseActions';
+import { getExpenses } from '../../actions/expenseActions';
 
 class Expenses extends Component {
   constructor(props) {
@@ -25,13 +21,12 @@ class Expenses extends Component {
       expenses: [],
       total: '',
       imageModal: false,
-      imageObject: {},
       id: '',
-      commentModal: false,
       date: '',
       price: '',
       currency: '',
       category: '',
+      commentModal: false,
       editModal: false,
       offset: 0,
       filterWindow: false,
@@ -165,15 +160,8 @@ class Expenses extends Component {
       this.setState({ imageModal: true, id: id });
     }
   };
-  resetImageModal = () => {
-    this.setState({
-      imageModal: false,
-      imageObject: {},
-      id: ''
-    });
-  };
   toggleImageModal = e => {
-    e.preventDefault();
+    e && e.preventDefault();
     if (this.state.imageModal) {
       this.setState({ imageModal: false });
     }
@@ -183,43 +171,7 @@ class Expenses extends Component {
       this.setState({ errors: updatedErrors });
     }
   };
-  changeImage = e => {
-    e.preventDefault();
-    this.setState({ imageObject: e.target.files[0] });
-    if (this.state.errors && this.state.errors.image) {
-      let updatedErrors = this.state.errors;
-      delete updatedErrors.image;
-      this.setState({ errors: updatedErrors });
-    }
-  };
-  submitImage = e => {
-    e.preventDefault();
-    if (this.state.imageObject.name) {
-      const formData = new FormData();
-      formData.append('receipt', this.state.imageObject);
-      const configData = {
-        headers: {
-          'content-type': 'multipart/form/data'
-        }
-      };
-      this.props.addReceiptImage(formData, configData, this.state.id);
-      this.resetImageModal();
-    } else {
-      let updatedErrors = this.state.errors;
-      updatedErrors.image = 'Choose image to upload';
-      this.setState({ errors: updatedErrors });
-    }
-  };
   // COMMENT MODAL
-  onChange = e => {
-    e.preventDefault();
-    let errorsUpdate = {};
-    if (this.state.errors[`${e.target.name}`]) {
-      errorsUpdate = this.state.errors;
-      delete errorsUpdate[`${e.target.name}`];
-    }
-    this.setState({ [e.target.name]: e.target.value, errors: errorsUpdate });
-  };
   openCommentModal = (e, id, comment) => {
     e.preventDefault();
     if (!this.state.commentModal) {
@@ -330,10 +282,7 @@ class Expenses extends Component {
           <ImageElementModal
             modal={this.state.imageModal}
             toggleModal={this.toggleImageModal}
-            resetModal={this.resetImageModal}
-            submitModal={this.submitImage}
-            changeImage={this.changeImage}
-            imageObject={this.state.imageObject}
+            id={this.state.id}
             errors={errors}
             content={this.state.content}
           />
@@ -370,9 +319,7 @@ Expenses.propTypes = {
   expenses: PropTypes.object,
   admin: PropTypes.object.isRequired,
   locale: PropTypes.object.isRequired,
-  getExpenses: PropTypes.func.isRequired,
-  addReceiptImage: PropTypes.func.isRequired,
-  updateExpense: PropTypes.func.isRequired
+  getExpenses: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -385,8 +332,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    getExpenses,
-    addReceiptImage,
-    updateExpense
+    getExpenses
   }
 )(Expenses);
