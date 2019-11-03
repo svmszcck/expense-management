@@ -12,6 +12,8 @@ import ReactPaginate from 'react-paginate';
 
 import TextInput from './common/TextInput';
 import NumberInput from './common/NumberInput';
+import SelectInput from './common/SelectInput';
+import optionsCurrency from './common/optionsCurrency';
 
 import {
   getExpenses,
@@ -42,7 +44,8 @@ class Expenses extends Component {
       filteredFirstName: '',
       filteredLastName: '',
       filteredMinPrice: '',
-      filteredMaxPrice: ''
+      filteredMaxPrice: '',
+      filteredCurrency: ''
     };
   }
   componentDidMount() {
@@ -122,12 +125,13 @@ class Expenses extends Component {
         unfilteredList[i].user.last
           .substring(0, this.state.filteredLastName.length)
           .toLowerCase() === this.state.filteredLastName.toLowerCase() &&
-        (unfilteredList[i].amount.value / unfilteredList[i].amount.baseEUR >
+        (unfilteredList[i].amount.value / unfilteredList[i].amount.baseEUR >=
           Number(this.state.filteredMinPrice) ||
           this.state.filteredMinPrice === '') &&
-        (unfilteredList[i].amount.value / unfilteredList[i].amount.baseEUR <
+        (unfilteredList[i].amount.value / unfilteredList[i].amount.baseEUR <=
           Number(this.state.filteredMaxPrice) ||
-          this.state.filteredMaxPrice === '')
+          this.state.filteredMaxPrice === '') &&
+        unfilteredList[i].amount.currency === this.state.filteredCurrency
       ) {
         filteredList.push(unfilteredList[i]);
       }
@@ -335,6 +339,15 @@ class Expenses extends Component {
                         onChange={this.onChangeFilter}
                         placeholder="Max Price"
                         name="filteredMaxPrice"
+                        extraClass="form-control-sm"
+                      />
+                    </div>
+                    <div className="col-2">
+                      <SelectInput
+                        name="filteredCurrency"
+                        value={this.state.filteredCurrency}
+                        onChange={this.onChangeFilter}
+                        options={optionsCurrency}
                         extraClass="form-control-sm"
                       />
                     </div>
