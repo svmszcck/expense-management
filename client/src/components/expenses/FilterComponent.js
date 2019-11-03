@@ -1,68 +1,110 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SortComponent = ({
-  filterName,
-  filterSurname,
-  filterCurrency,
-  filterPriceMix,
-  filterPriceMax,
-  filterDateMin,
-  filterDateMax
+import TextInput from './common/TextInput';
+import NumberInput from './common/NumberInput';
+import SelectInput from './common/SelectInput';
+import optionsCurrency from './common/optionsCurrency';
+import optionsCategory from './common/optionsCategory';
+
+const FilterComponent = ({
+  toggleFilterWindow,
+  filterWindow,
+  onChangeFilter,
+  filteredFirstName,
+  filteredLastName,
+  filteredMinPrice,
+  filteredMaxPrice,
+  filteredCurrency,
+  filteredCategory
 }) => {
   return (
     <div className="mb-3">
-      <button className="btn btn-sm btn-info my-3" onClick={toggleSortWindow}>
-        SORT
-        {sortWindow ? (
-          <i className="fas fa-chevron-up ml-2"></i>
-        ) : (
-          <i className="fas fa-chevron-down ml-2"></i>
-        )}
-      </button>
-      {sortWindow && (
-        <div className="my-2 py-2">
-          <span className="mr-4 border p-3 sortSection">
-            date{' '}
-            <button
-              className="btn btn-secondary btn-sm ml-3"
-              onClick={e => sortDate(e, 'ascending')}
-            >
-              <i className="fas fa-chevron-up"></i>
-            </button>
-            <button
-              className="btn btn-secondary btn-sm ml-1"
-              onClick={e => sortDate(e, 'descending')}
-            >
-              <i className="fas fa-chevron-down"></i>
-            </button>
-          </span>
-          <span className="mx-4 border p-3 sortSection">
-            price{' '}
-            <button
-              className="btn btn-secondary btn-sm ml-3"
-              onClick={e => sortPrice(e, 'ascending')}
-            >
-              <i className="fas fa-chevron-up"></i>
-            </button>
-            <button
-              className="btn btn-secondary btn-sm ml-1"
-              onClick={e => sortPrice(e, 'descending')}
-            >
-              <i className="fas fa-chevron-down"></i>
-            </button>
-          </span>
-        </div>
-      )}
-    </div>
+              <button
+                className="btn btn-sm btn-info my-1"
+                onClick={toggleFilterWindow}
+              >
+                FILTER
+                {filterWindow ? (
+                  <i className="fas fa-chevron-up ml-2"></i>
+                ) : (
+                  <i className="fas fa-chevron-down ml-2"></i>
+                )}
+              </button>
+              {filterWindow && (
+                <div className="my-2 py-2">
+                  <div className="row">
+                    <div className="col-2">
+                      <TextInput
+                        value={filteredFirstName}
+                        onChange={onChangeFilter}
+                        placeholder="First Name"
+                        name="filteredFirstName"
+                        extraClass="form-control-sm"
+                      />
+                    </div>
+                    <div className="col-2">
+                      <TextInput
+                        value={filteredLastName}
+                        onChange={onChangeFilter}
+                        placeholder="Last Name"
+                        name="filteredLastName"
+                        extraClass="form-control-sm"
+                      />
+                    </div>
+                    <div className="col-2">
+                      <NumberInput
+                        value={filteredMinPrice}
+                        onChange={onChangeFilter}
+                        placeholder="Min Price"
+                        name="filteredMinPrice"
+                        extraClass="form-control-sm"
+                      />
+                    </div>
+                    <div className="col-2">
+                      <NumberInput
+                        value={filteredMaxPrice}
+                        onChange={onChangeFilter}
+                        placeholder="Max Price"
+                        name="filteredMaxPrice"
+                        extraClass="form-control-sm"
+                      />
+                    </div>
+                    <div className="col-2">
+                      <SelectInput
+                        name="filteredCurrency"
+                        value={filteredCurrency}
+                        onChange={onChangeFilter}
+                        options={optionsCurrency}
+                        extraClass="form-control-sm"
+                      />
+                    </div>
+                    <div className="col-2">
+                      <SelectInput
+                        name="filteredCategory"
+                        value={filteredCategory}
+                        onChange={onChangeFilter}
+                        options={optionsCategory}
+                        extraClass="form-control-sm"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
   );
 };
 
-SortComponent.propTypes = {
-  sortDate: PropTypes.func.isRequired,
-  sortPrice: PropTypes.func.isRequired,
-  sortWindow: PropTypes.bool.isRequired,
-  toggleSortWindow: PropTypes.func.isRequired
+FilterComponent.propTypes = {
+  toggleFilterWindow: PropTypes.func.isRequired,
+  onChangeFilter: PropTypes.func.isRequired,
+  filterWindow: PropTypes.bool.isRequired,
+  filteredFirstName: PropTypes.string.isRequired,
+  filteredLastName: PropTypes.string.isRequired,
+  filteredMinPrice: PropTypes.string.isRequired,
+  filteredMaxPrice: PropTypes.string.isRequired,
+  filteredCurrency: PropTypes.string.isRequired,
+  filteredCategory: PropTypes.string.isRequired
 };
 
-export default SortComponent;
+export default FilterComponent;

@@ -7,14 +7,9 @@ import CommentElementModal from './modals/CommentElementModal';
 import EditElementModal from './modals/EditElementModal';
 
 import SortComponent from './SortComponent';
+import FilterComponent from './FilterComponent';
 
 import ReactPaginate from 'react-paginate';
-
-import TextInput from './common/TextInput';
-import NumberInput from './common/NumberInput';
-import SelectInput from './common/SelectInput';
-import optionsCurrency from './common/optionsCurrency';
-import optionsCategory from './common/optionsCategory';
 
 import {
   getExpenses,
@@ -47,7 +42,8 @@ class Expenses extends Component {
       filteredMinPrice: '',
       filteredMaxPrice: '',
       filteredCurrency: '',
-      filteredCategory: ''
+      filteredCategory: '',
+      admin: false
     };
   }
   componentDidMount() {
@@ -296,79 +292,17 @@ class Expenses extends Component {
               sortWindow={this.state.sortWindow}
               toggleSortWindow={this.toggleSortWindow}
             />
-            <div className="mb-3">
-              <button
-                className="btn btn-sm btn-info my-1"
-                onClick={this.toggleFilterWindow}
-              >
-                FILTER
-                {this.state.filterWindow ? (
-                  <i className="fas fa-chevron-up ml-2"></i>
-                ) : (
-                  <i className="fas fa-chevron-down ml-2"></i>
-                )}
-              </button>
-              {this.state.filterWindow && (
-                <div className="my-2 py-2">
-                  <div className="row">
-                    <div className="col-2">
-                      <TextInput
-                        value={this.state.filteredFirstName}
-                        onChange={this.onChangeFilter}
-                        placeholder="First Name"
-                        name="filteredFirstName"
-                        extraClass="form-control-sm"
-                      />
-                    </div>
-                    <div className="col-2">
-                      <TextInput
-                        value={this.state.filteredLastName}
-                        onChange={this.onChangeFilter}
-                        placeholder="Last Name"
-                        name="filteredLastName"
-                        extraClass="form-control-sm"
-                      />
-                    </div>
-                    <div className="col-2">
-                      <NumberInput
-                        value={this.state.filteredMinPrice}
-                        onChange={this.onChangeFilter}
-                        placeholder="Min Price"
-                        name="filteredMinPrice"
-                        extraClass="form-control-sm"
-                      />
-                    </div>
-                    <div className="col-2">
-                      <NumberInput
-                        value={this.state.filteredMaxPrice}
-                        onChange={this.onChangeFilter}
-                        placeholder="Max Price"
-                        name="filteredMaxPrice"
-                        extraClass="form-control-sm"
-                      />
-                    </div>
-                    <div className="col-2">
-                      <SelectInput
-                        name="filteredCurrency"
-                        value={this.state.filteredCurrency}
-                        onChange={this.onChangeFilter}
-                        options={optionsCurrency}
-                        extraClass="form-control-sm"
-                      />
-                    </div>
-                    <div className="col-2">
-                      <SelectInput
-                        name="filteredCategory"
-                        value={this.state.filteredCategory}
-                        onChange={this.onChangeFilter}
-                        options={optionsCategory}
-                        extraClass="form-control-sm"
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
+            <FilterComponent
+              toggleFilterWindow={this.toggleFilterWindow}
+              filterWindow={this.state.filterWindow}
+              onChangeFilter={this.onChangeFilter}
+              filteredFirstName={this.state.filteredFirstName}
+              filteredLastName={this.state.filteredLastName}
+              filteredMinPrice={this.state.filteredMinPrice}
+              filteredMaxPrice={this.state.filteredMaxPrice}
+              filteredCurrency={this.state.filteredCurrency}
+              filteredCategory={this.state.filteredCategory}
+            />
             {this.state.filteredExpenses.length > 0 ? (
               this.state.filteredExpenses.map(expense => (
                 <ExpenseCard
