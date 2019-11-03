@@ -221,7 +221,7 @@ class Expenses extends Component {
       <div>
         {spinner}
         {!spinner && (
-          <div className="container pt-5">
+          <div className="container pt-2">
             <SortComponent
               sortDate={this.sortDate}
               sortPrice={this.sortPrice}

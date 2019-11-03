@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import ReactCountryFlag from 'react-country-flag';
 import { connect } from 'react-redux';
 import { switchLanguage } from '../../actions/commonActions';
+import Flag from "react-flags";
 
 class Languages extends Component {
   constructor(props) {
@@ -29,8 +30,8 @@ class Languages extends Component {
       <div className="text-center">
         <button
           className={classnames('btn-sm mx-1', {
-            'btn-secondary': this.state.language === 'ENG',
-            'btn-outline-secondary': this.state.language !== 'ENG'
+            'btn-info': this.state.language === 'ENG',
+            'btn-outline-info': this.state.language !== 'ENG'
           })}
           onClick={e => this.switchLanguage(e, 'ENG')}
         >
@@ -38,8 +39,8 @@ class Languages extends Component {
         </button>
         <button
           className={classnames('btn-sm mx-1', {
-            'btn-secondary': this.state.language === 'GER',
-            'btn-outline-secondary': this.state.language !== 'GER'
+            'btn-info': this.state.language === 'GER',
+            'btn-outline-info': this.state.language !== 'GER'
           })}
           onClick={e => this.switchLanguage(e, 'GER')}
         >

@@ -9,16 +9,17 @@ const NumberInput = ({
   label,
   error,
   info,
-  type,
   onChange,
   disabled,
-  extraClass
+  extraClass,
+  min,
+  max
 }) => {
   return (
     <div>
       {label && <label htmlFor={name}>{label}</label>}
       <input
-        type={type}
+        type="number"
         className={classnames(`form-control ${extraClass}`, {
           'is-invalid': error
         })}
@@ -27,6 +28,8 @@ const NumberInput = ({
         value={value}
         onChange={onChange}
         disabled={disabled}
+        min={min}
+        max={max}
       />
       {error && <div className="invalid-feedback">{error}</div>}
       {info && <small className="form-text text-muted">{info}</small>}
@@ -36,19 +39,17 @@ const NumberInput = ({
 
 NumberInput.propTypes = {
   name: PropTypes.string.isRequired,
-  placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
   error: PropTypes.string,
+  min: PropTypes.number,
+  max: PropTypes.number,
   onChange: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   label: PropTypes.string,
   info: PropTypes.string,
   extraClass: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
-};
-
-NumberInput.defaultProps = {
-  type: 'number'
 };
 
 export default NumberInput;

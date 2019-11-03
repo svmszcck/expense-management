@@ -23,7 +23,7 @@ class SortComponent extends Component {
         </button>
         {this.props.sortWindow && (
           <div className="my-2 py-2">
-            <span className="mr-4 border p-3 sortSection">
+            <span className="mr-4 p-2 sortSection">
               {this.props.content.date}{' '}
               <button
                 className="btn btn-secondary btn-sm ml-3"
@@ -38,7 +38,7 @@ class SortComponent extends Component {
                 <i className="fas fa-chevron-down"></i>
               </button>
             </span>
-            <span className="mx-4 border p-3 sortSection">
+            <span className="mx-4 p-2 sortSection">
               {this.props.content.price}{' '}
               <button
                 className="btn btn-secondary btn-sm ml-3"

@@ -78,9 +78,14 @@
 }
 
 .myNavbar {
-  background: #F43160;
+  /* background: #F43160; */
+  background: #F5F5F5;
 }
 
+.pleoIcon {
+  height: 40px;
+  margin: 5px;
+}
 /* -------- LOADER -------- */
 .loader {
   color: rgb(108, 117, 125);

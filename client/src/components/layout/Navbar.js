@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { connect } from 'react-redux';
+
+import pleo from '../../pleo.svg';
 
 import { switchAdmin, switchLanguage } from '../../actions/commonActions';
 
@@ -27,9 +28,17 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand-md navbar-dark myNavbar">
         <div className="container">
-          <h3 className="text-white my-0">Pleo</h3>
-          <Languages />
-          <AdminSwitch />
+          <h3 className="text-white my-0">
+            <img src={pleo} alt="pleo" className="img-fluid pleoIcon" />
+          </h3>
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item px-2">
+              <AdminSwitch />
+            </li>
+            <li className="nav-item px-2">
+              <Languages />
+            </li>
+          </ul>
         </div>
       </nav>
     );

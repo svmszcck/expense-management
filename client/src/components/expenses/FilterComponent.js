@@ -60,6 +60,7 @@ class FilterComponent extends Component {
                   placeholder={this.props.content.minPrice}
                   name="filteredMinPrice"
                   extraClass="form-control-sm"
+                  min={0}
                 />
                 <small className="text-muted">
                   {this.props.content.filterByMinPrice}
@@ -72,6 +73,7 @@ class FilterComponent extends Component {
                   placeholder={this.props.content.maxPrice}
                   name="filteredMaxPrice"
                   extraClass="form-control-sm"
+                  min={0}
                 />
                 <small className="text-muted">
                   {this.props.content.filterByMaxPrice}
