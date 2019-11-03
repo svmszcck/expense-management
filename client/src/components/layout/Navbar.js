@@ -17,8 +17,6 @@ class Navbar extends Component {
     };
   }
 
-  componentDidMount() {}
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.admin && nextProps.admin.admin) {
       this.setState({ admin: nextProps.admin.admin });

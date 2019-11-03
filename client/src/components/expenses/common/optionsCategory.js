@@ -1,5 +1,5 @@
 const optionsCategory = [
-  { label: 'category', value: '' },
+  { label: '...', value: '' },
   { label: 'others', value: 'others' },
   { label: 'supplies', value: 'supplies' },
   { label: 'food', value: 'food' },

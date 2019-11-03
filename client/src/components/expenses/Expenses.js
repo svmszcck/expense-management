@@ -44,13 +44,22 @@ class Expenses extends Component {
       filteredMaxPrice: '',
       filteredCurrency: '',
       filteredCategory: '',
-      admin: false
+      admin: false,
+      language: 'ENG',
+      content: {}
     };
   }
   componentDidMount() {
     this.props.getExpenses(this.state.offset);
   }
   componentWillReceiveProps(nextProps) {
+    // Set locale
+    if (nextProps.locale) {
+      this.setState({
+        language: nextProps.locale.language,
+        content: nextProps.locale.content
+      });
+    }
     // Set admin status
     if (nextProps.admin) {
       this.setState({ admin: nextProps.admin.admin });
@@ -218,18 +227,6 @@ class Expenses extends Component {
       this.setState({ commentModal: true, id: id, comment: comment });
     }
   };
-  submitCommentModal = e => {
-    e.preventDefault();
-    let commentObj = {};
-    commentObj.comment = this.state.comment;
-    this.props.updateExpense(this.state.id, commentObj);
-    this.resetCommentModal();
-  };
-  resetCommentModal = () => {
-    this.setState({
-      commentModal: false
-    });
-  };
   toggleCommentModal = e => {
     e.preventDefault();
     if (this.state.commentModal) {
@@ -297,6 +294,7 @@ class Expenses extends Component {
               sortPrice={this.sortPrice}
               sortWindow={this.state.sortWindow}
               toggleSortWindow={this.toggleSortWindow}
+              content={this.state.content}
             />
             <FilterComponent
               toggleFilterWindow={this.toggleFilterWindow}
@@ -308,6 +306,7 @@ class Expenses extends Component {
               filteredMaxPrice={this.state.filteredMaxPrice}
               filteredCurrency={this.state.filteredCurrency}
               filteredCategory={this.state.filteredCategory}
+              content={this.state.content}
             />
             {this.state.filteredExpenses.length > 0 ? (
               this.state.filteredExpenses.map(expense => (
@@ -355,6 +354,7 @@ class Expenses extends Component {
             changeImage={this.changeImage}
             imageObject={this.state.imageObject}
             errors={errors}
+            content={this.state.content}
           />
         </section>
         <section id="commentModal">
@@ -362,9 +362,9 @@ class Expenses extends Component {
             modal={this.state.commentModal}
             toggleModal={this.toggleCommentModal}
             resetModal={this.resetCommentModal}
-            submitModal={this.submitCommentModal}
             comment={this.state.comment}
-            onChange={this.onChange}
+            content={this.state.content}
+            id={this.state.id}
           />
         </section>
         <section id="editModal">
@@ -380,6 +380,7 @@ class Expenses extends Component {
             onChangeDatepicker={this.onChangeDatepicker}
             category={this.state.category}
             admin={this.state.admin}
+            content={this.state.content}
           />
         </section>
       </div>
@@ -390,7 +391,8 @@ class Expenses extends Component {
 Expenses.propTypes = {
   errors: PropTypes.object,
   expenses: PropTypes.object,
-  admin: PropTypes.object,
+  admin: PropTypes.object.isRequired,
+  locale: PropTypes.object.isRequired,
   getExpenses: PropTypes.func.isRequired,
   addReceiptImage: PropTypes.func.isRequired,
   updateExpense: PropTypes.func.isRequired
@@ -399,7 +401,8 @@ Expenses.propTypes = {
 const mapStateToProps = state => ({
   errors: state.errors,
   expenses: state.expenses,
-  admin: state.admin
+  admin: state.admin,
+  locale: state.locale
 });
 
 export default connect(

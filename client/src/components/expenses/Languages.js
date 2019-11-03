@@ -13,7 +13,7 @@ class Languages extends Component {
     };
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.locale && nextProps.locale.language) {
+    if (nextProps.locale) {
       this.setState({
         language: nextProps.locale.language
       });
