@@ -51,7 +51,8 @@ class ExpenseCard extends Component {
                 {(
                   this.props.expense.amount.value /
                   this.props.expense.amount.baseEUR
-                ).toFixed(2)} EUR
+                ).toFixed(2)}{' '}
+                EUR
               </i>
             </span>
           </p>
@@ -87,7 +88,8 @@ class ExpenseCard extends Component {
                 this.props.expense.id,
                 this.props.expense.date,
                 this.props.expense.amount.value,
-                this.props.expense.amount.currency
+                this.props.expense.amount.currency,
+                this.props.expense.category
               )
             }
           >

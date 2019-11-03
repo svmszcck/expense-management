@@ -65,13 +65,15 @@ router.get('/:id', (req, res) => {
 router.post('/:id', (req, res) => {
   const expense = expenses.find(expense => expense.id === req.params.id);
   if (expense) {
+    if (req.body.comment) expense.comment = req.body.comment;
+    if (req.body.category && optionsCategory.indexOf(req.body.category) > 0)
+      expense.category = req.body.category;
+    if (req.body.price) expense.amount.value = req.body.price;
     if (
       req.body.date !== expense.date ||
       req.body.currency !== expense.amount.currency
     ) {
       if (req.body.date) expense.date = req.body.date;
-      if (req.body.comment) expense.comment = req.body.comment;
-      if (req.body.price) expense.amount.value = req.body.price;
       if (req.body.currency) expense.amount.currency = req.body.currency;
 
       let endDate = new Date(expense.date);
@@ -119,22 +121,11 @@ router.post('/:id', (req, res) => {
             expense.amount.baseEUR =
               response.data.rates[startString][currencyString];
           }
-          console.log(expense.amount);
           return res.status(200).send(expense);
         })
         .catch(err => console.log(err.response.data));
     }
-  } else {
-    res.status(404);
-  }
-});
-
-router.post('/:id/category', (req, res) => {
-  if (!req.body.category) return res.status(404);
-  if (optionsCategory.indexOf(req.body.category) < 0) return res.status(404);
-  const expense = expenses.find(expense => expense.id === req.params.id);
-  if (expense) {
-    expense.category = req.body.category;
+    return res.status(200).send(expense);
   } else {
     res.status(404);
   }

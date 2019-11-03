@@ -8,6 +8,7 @@ import EditElementModal from './modals/EditElementModal';
 
 import SortComponent from './SortComponent';
 import FilterComponent from './FilterComponent';
+import AdminSwitch from './AdminSwitch';
 
 import ReactPaginate from 'react-paginate';
 
@@ -32,6 +33,7 @@ class Expenses extends Component {
       date: '',
       price: '',
       currency: '',
+      category: '',
       editModal: false,
       offset: 0,
       filterWindow: false,
@@ -43,7 +45,7 @@ class Expenses extends Component {
       filteredMaxPrice: '',
       filteredCurrency: '',
       filteredCategory: '',
-      admin: false
+      employer: false
     };
   }
   componentDidMount() {
@@ -232,16 +234,22 @@ class Expenses extends Component {
     }
   };
   // EDIT MODAL
-  openEditModal = (e, id, date, price, currency) => {
+  openEditModal = (e, id, date, price, currency, category) => {
     e.preventDefault();
     if (!this.state.editModal) {
-      this.setState({
-        editModal: true,
-        id: id,
-        date: date,
-        price: price,
-        currency: currency
-      });
+      this.setState(
+        {
+          editModal: true,
+          id: id,
+          date: date,
+          price: price,
+          currency: currency,
+          category: category
+        },
+        () => {
+          console.log(this.state.category);
+        }
+      );
     }
   };
   submitEditModal = e => {
@@ -250,6 +258,7 @@ class Expenses extends Component {
     expenseObj.date = this.state.date;
     expenseObj.price = this.state.price;
     expenseObj.currency = this.state.currency;
+    expenseObj.category = this.state.category;
     this.props.updateExpense(this.state.id, expenseObj);
     this.resetEditModal();
   };
@@ -272,7 +281,11 @@ class Expenses extends Component {
     let offset = data.selected * this.state.expenses.length;
     this.props.getExpenses(offset);
   };
-
+  // ADMIN USER
+  switchToAdmin = (e, adminStatus) => {
+    e.preventDefault();
+    this.setState({ employer: adminStatus });
+  };
   render() {
     const { errors, expenses } = this.state;
     let spinner = null;
@@ -286,6 +299,10 @@ class Expenses extends Component {
         {spinner}
         {!spinner && (
           <div className="container pt-5">
+            <AdminSwitch
+              employer={this.state.employer}
+              switchToAdmin={this.switchToAdmin}
+            />
             <SortComponent
               sortDate={this.sortDate}
               sortPrice={this.sortPrice}
@@ -372,6 +389,8 @@ class Expenses extends Component {
             currency={this.state.currency}
             onChange={this.onChange}
             onChangeDatepicker={this.onChangeDatepicker}
+            category={this.state.category}
+            admin={this.state.employer}
           />
         </section>
       </div>

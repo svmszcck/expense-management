@@ -8,6 +8,8 @@ import optionsCurrency from '../common/optionsCurrency';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+import optionsCategory from '../common/optionsCategory';
+
 const EditElementModal = ({
   modal,
   toggleModal,
@@ -17,7 +19,9 @@ const EditElementModal = ({
   price,
   currency,
   onChange,
-  onChangeDatepicker
+  onChangeDatepicker,
+  category,
+  admin
 }) => {
   return (
     <Modal isOpen={modal} toggle={toggleModal} size="lg" onClosed={resetModal}>
@@ -58,6 +62,16 @@ const EditElementModal = ({
                       options={optionsCurrency}
                     />
                   </div>
+                  {admin && (
+                    <div className="form-input">
+                      <SelectInput
+                        value={category}
+                        onChange={onChange}
+                        name="category"
+                        options={optionsCategory}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -90,6 +104,8 @@ EditElementModal.propTypes = {
   currency: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onChangeDatepicker: PropTypes.func.isRequired,
+  category: PropTypes.string.isRequired,
+  admin: PropTypes.bool.isRequired
 };
 
 export default EditElementModal;
