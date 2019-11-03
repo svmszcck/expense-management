@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const AdminSwitch = ({ employer, switchToAdmin }) => {
+const AdminSwitch = ({ admin, switchToAdmin }) => {
   return (
     <div className="text-center">
       <button
         className={classnames('btn-sm mx-1', {
-          'btn-secondary': employer,
-          'btn-outline-secondary': !employer
+          'btn-secondary': admin,
+          'btn-outline-secondary': !admin
         })}
         onClick={e => switchToAdmin(e, true)}
       >
@@ -16,8 +16,8 @@ const AdminSwitch = ({ employer, switchToAdmin }) => {
       </button>
       <button
         className={classnames('btn-sm mx-1', {
-          'btn-secondary': !employer,
-          'btn-outline-secondary': employer
+          'btn-secondary': !admin,
+          'btn-outline-secondary': admin
         })}
         onClick={e => switchToAdmin(e, false)}
       >
@@ -28,7 +28,7 @@ const AdminSwitch = ({ employer, switchToAdmin }) => {
 };
 
 AdminSwitch.propTypes = {
-  employer: PropTypes.bool.isRequired,
+  admin: PropTypes.bool.isRequired,
   switchToAdmin: PropTypes.func.isRequired
 };
 

@@ -21,8 +21,8 @@ const ImageElementModal = ({
             <div className="row">
               <div className="col-12">
                 <FileInputGroup
-                  name="blogAvatar"
-                  placeholder="Avatar"
+                  name="receipt"
+                  placeholder="Receipt"
                   onChange={changeImage}
                   sendFile={imageObject}
                   error={errors.image}

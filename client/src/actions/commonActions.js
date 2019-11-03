@@ -1,4 +1,4 @@
-import { GET_ERRORS, EXPENSES_LOADING } from './types';
+import { GET_ERRORS, EXPENSES_LOADING, SWITCH_ADMIN } from './types';
 
 export const getError = data => {
   return {
@@ -15,4 +15,11 @@ export const setLoading = data => {
       };
     }
   }
+};
+
+export const switchAdmin = adminStatus => {
+  return {
+    type: SWITCH_ADMIN,
+    payload: adminStatus
+  };
 };

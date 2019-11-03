@@ -8,7 +8,6 @@ import EditElementModal from './modals/EditElementModal';
 
 import SortComponent from './SortComponent';
 import FilterComponent from './FilterComponent';
-import AdminSwitch from './AdminSwitch';
 
 import ReactPaginate from 'react-paginate';
 
@@ -45,13 +44,17 @@ class Expenses extends Component {
       filteredMaxPrice: '',
       filteredCurrency: '',
       filteredCategory: '',
-      employer: false
+      admin: false
     };
   }
   componentDidMount() {
     this.props.getExpenses(this.state.offset);
   }
   componentWillReceiveProps(nextProps) {
+    // Set admin status
+    if (nextProps.admin) {
+      this.setState({ admin: nextProps.admin.admin },()=>{console.log(this.state.admin)});
+    }
     // Set errors
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
@@ -72,7 +75,7 @@ class Expenses extends Component {
   };
   sortPrice = (e, direction) => {
     e.preventDefault();
-    let unsortedList = this.state.expenses;
+    let unsortedList = this.state.filteredExpenses;
     if (direction === 'ascending') {
       unsortedList.sort((a, b) =>
         parseFloat(a.amount.value / a.amount.baseEUR) >
@@ -92,7 +95,7 @@ class Expenses extends Component {
   };
   sortDate = (e, direction) => {
     e.preventDefault();
-    let unsortedList = this.state.expenses;
+    let unsortedList = this.state.filteredExpenses;
     if (direction === 'ascending') {
       unsortedList.sort((a, b) => {
         a = new Date(a.date);
@@ -237,19 +240,14 @@ class Expenses extends Component {
   openEditModal = (e, id, date, price, currency, category) => {
     e.preventDefault();
     if (!this.state.editModal) {
-      this.setState(
-        {
-          editModal: true,
-          id: id,
-          date: date,
-          price: price,
-          currency: currency,
-          category: category
-        },
-        () => {
-          console.log(this.state.category);
-        }
-      );
+      this.setState({
+        editModal: true,
+        id: id,
+        date: date,
+        price: price,
+        currency: currency,
+        category: category
+      });
     }
   };
   submitEditModal = e => {
@@ -281,11 +279,6 @@ class Expenses extends Component {
     let offset = data.selected * this.state.expenses.length;
     this.props.getExpenses(offset);
   };
-  // ADMIN USER
-  switchToAdmin = (e, adminStatus) => {
-    e.preventDefault();
-    this.setState({ employer: adminStatus });
-  };
   render() {
     const { errors, expenses } = this.state;
     let spinner = null;
@@ -299,10 +292,6 @@ class Expenses extends Component {
         {spinner}
         {!spinner && (
           <div className="container pt-5">
-            <AdminSwitch
-              employer={this.state.employer}
-              switchToAdmin={this.switchToAdmin}
-            />
             <SortComponent
               sortDate={this.sortDate}
               sortPrice={this.sortPrice}
@@ -390,7 +379,7 @@ class Expenses extends Component {
             onChange={this.onChange}
             onChangeDatepicker={this.onChangeDatepicker}
             category={this.state.category}
-            admin={this.state.employer}
+            admin={this.state.admin}
           />
         </section>
       </div>
@@ -401,6 +390,7 @@ class Expenses extends Component {
 Expenses.propTypes = {
   errors: PropTypes.object,
   expenses: PropTypes.object,
+  admin: PropTypes.object,
   getExpenses: PropTypes.func.isRequired,
   addReceiptImage: PropTypes.func.isRequired,
   updateExpense: PropTypes.func.isRequired
@@ -408,7 +398,8 @@ Expenses.propTypes = {
 
 const mapStateToProps = state => ({
   errors: state.errors,
-  expenses: state.expenses
+  expenses: state.expenses,
+  admin: state.admin
 });
 
 export default connect(

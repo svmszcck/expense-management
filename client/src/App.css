@@ -77,6 +77,10 @@
   font-size: 14px;
 }
 
+.myNavbar {
+  background: #F43160;
+}
+
 /* -------- LOADER -------- */
 .loader {
   color: rgb(108, 117, 125);
