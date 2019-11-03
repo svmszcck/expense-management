@@ -25,31 +25,13 @@ class Navbar extends Component {
     }
   }
 
-  switchLanguage = (e, language) => {
-    e.preventDefault();
-    this.setState({ language: language });
-    this.props.switchLanguage(language);
-  };
-
-  switchToAdmin = (e, adminStatus) => {
-    e.preventDefault();
-    this.setState({ admin: adminStatus });
-    this.props.switchAdmin(adminStatus);
-  };
-
   render() {
     return (
       <nav className="navbar navbar-expand-md navbar-dark myNavbar">
         <div className="container">
           <h3 className="text-white my-0">Pleo</h3>
-          <Languages
-            language={this.state.language}
-            switchLanguage={this.switchLanguage}
-          />
-          <AdminSwitch
-            admin={this.state.admin}
-            switchToAdmin={this.switchToAdmin}
-          />
+          <Languages />
+          <AdminSwitch />
         </div>
       </nav>
     );
