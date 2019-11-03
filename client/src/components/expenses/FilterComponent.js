@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SortComponent = ({
-  sortDate,
-  sortPrice,
-  sortWindow,
-  toggleSortWindow
+  filterName,
+  filterSurname,
+  filterCurrency,
+  filterPriceMix,
+  filterPriceMax,
+  filterDateMin,
+  filterDateMax
 }) => {
   return (
-    <div className="mb-1">
-      <button
-        className="btn btn-sm btn-info my-1"
-        onClick={toggleSortWindow}
-      >
+    <div className="mb-3">
+      <button className="btn btn-sm btn-info my-3" onClick={toggleSortWindow}>
         SORT
         {sortWindow ? (
           <i className="fas fa-chevron-up ml-2"></i>

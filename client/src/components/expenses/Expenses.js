@@ -10,6 +10,8 @@ import SortComponent from './SortComponent';
 
 import ReactPaginate from 'react-paginate';
 
+import TextInput from './common/TextInput';
+
 import {
   getExpenses,
   addReceiptImage,
@@ -34,7 +36,10 @@ class Expenses extends Component {
       editModal: false,
       offset: 0,
       filterWindow: false,
-      sortWindow: false
+      sortWindow: false,
+      filteredExpenses: [],
+      filteredFirstName: '',
+      filteredLastName: ''
     };
   }
   componentDidMount() {
@@ -49,6 +54,7 @@ class Expenses extends Component {
     if (nextProps.expenses && nextProps.expenses.expenses) {
       this.setState({
         expenses: nextProps.expenses.expenses.expenses,
+        filteredExpenses: nextProps.expenses.expenses.expenses,
         total: nextProps.expenses.expenses.total
       });
     }
@@ -100,6 +106,30 @@ class Expenses extends Component {
   toggleFilterWindow = e => {
     e.preventDefault();
     this.setState({ filterWindow: !this.state.filterWindow });
+  };
+  filterExpenses = () => {
+    let unfilteredList = this.state.expenses;
+    let filteredList = [];
+    // Filter All fields
+    for (let i = 0; i < unfilteredList.length; i++) {
+      if (
+        unfilteredList[i].user.first
+          .substring(0, this.state.filteredFirstName.length)
+          .toLowerCase() === this.state.filteredFirstName.toLowerCase() &&
+        unfilteredList[i].user.last
+          .substring(0, this.state.filteredLastName.length)
+          .toLowerCase() === this.state.filteredLastName.toLowerCase()
+      ) {
+        filteredList.push(unfilteredList[i]);
+      }
+    }
+    this.setState({ filteredExpenses: filteredList });
+  };
+  onChangeFilter = e => {
+    e.preventDefault();
+    this.setState({ [e.target.name]: e.target.value }, () =>
+      this.filterExpenses()
+    );
   };
   // IMAGE MODAL
   openImageModal = (e, id) => {
@@ -248,8 +278,45 @@ class Expenses extends Component {
               sortWindow={this.state.sortWindow}
               toggleSortWindow={this.toggleSortWindow}
             />
-            {this.state.expenses.length > 0 &&
-              this.state.expenses.map(expense => (
+            <div className="mb-3">
+              <button
+                className="btn btn-sm btn-info my-1"
+                onClick={this.toggleFilterWindow}
+              >
+                FILTER
+                {this.state.filterWindow ? (
+                  <i className="fas fa-chevron-up ml-2"></i>
+                ) : (
+                  <i className="fas fa-chevron-down ml-2"></i>
+                )}
+              </button>
+              {this.state.filterWindow && (
+                <div className="my-2 py-2">
+                  <div className="row">
+                    <div className="col-2">
+                      <TextInput
+                        value={this.state.filteredFirstName}
+                        onChange={this.onChangeFilter}
+                        placeholder="First Name"
+                        name="filteredFirstName"
+                        extraClass="form-control-sm"
+                      />
+                    </div>
+                    <div className="col-2">
+                      <TextInput
+                        value={this.state.filteredLastName}
+                        onChange={this.onChangeFilter}
+                        placeholder="Last Name"
+                        name="filteredLastName"
+                        extraClass="form-control-sm"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+            {this.state.filteredExpenses.length > 0 ? (
+              this.state.filteredExpenses.map(expense => (
                 <ExpenseCard
                   key={expense.id}
                   expense={expense}
@@ -257,7 +324,10 @@ class Expenses extends Component {
                   openCommentModal={this.openCommentModal}
                   openEditModal={this.openEditModal}
                 />
-              ))}
+              ))
+            ) : (
+              <div>No Expenses Found</div>
+            )}
           </div>
         )}
         <div className="container">
