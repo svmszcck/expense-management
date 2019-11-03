@@ -20,7 +20,8 @@ const contentEnglish = {
   submit: 'Submit',
   cancel: 'Cancel',
   addComment: 'Add Comment',
-  changeComment: 'Change Comment'
+  changeComment: 'Change Comment',
+  editExpense: 'Edit Expense',
 };
 
 export default contentEnglish;

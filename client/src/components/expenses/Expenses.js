@@ -28,7 +28,6 @@ class Expenses extends Component {
       imageObject: {},
       id: '',
       commentModal: false,
-      comment: '',
       date: '',
       price: '',
       currency: '',
@@ -228,7 +227,7 @@ class Expenses extends Component {
     }
   };
   toggleCommentModal = e => {
-    e.preventDefault();
+    e && e.preventDefault();
     if (this.state.commentModal) {
       this.setState({ commentModal: false });
     }
@@ -247,29 +246,11 @@ class Expenses extends Component {
       });
     }
   };
-  submitEditModal = e => {
-    e.preventDefault();
-    let expenseObj = {};
-    expenseObj.date = this.state.date;
-    expenseObj.price = this.state.price;
-    expenseObj.currency = this.state.currency;
-    expenseObj.category = this.state.category;
-    this.props.updateExpense(this.state.id, expenseObj);
-    this.resetEditModal();
-  };
-  resetEditModal = () => {
-    this.setState({
-      editModal: false
-    });
-  };
   toggleEditModal = e => {
-    e.preventDefault();
+    e && e.preventDefault();
     if (this.state.editModal) {
       this.setState({ editModal: false });
     }
-  };
-  onChangeDatepicker = date => {
-    this.setState({ date: date });
   };
   // PAGINATION
   handlePageClick = data => {
@@ -361,7 +342,6 @@ class Expenses extends Component {
           <CommentElementModal
             modal={this.state.commentModal}
             toggleModal={this.toggleCommentModal}
-            resetModal={this.resetCommentModal}
             comment={this.state.comment}
             content={this.state.content}
             id={this.state.id}
@@ -371,16 +351,13 @@ class Expenses extends Component {
           <EditElementModal
             modal={this.state.editModal}
             toggleModal={this.toggleEditModal}
-            resetModal={this.resetEditModal}
-            submitModal={this.submitEditModal}
             date={this.state.date.toString()}
             price={this.state.price}
             currency={this.state.currency}
-            onChange={this.onChange}
-            onChangeDatepicker={this.onChangeDatepicker}
             category={this.state.category}
             admin={this.state.admin}
             content={this.state.content}
+            id={this.state.id}
           />
         </section>
       </div>

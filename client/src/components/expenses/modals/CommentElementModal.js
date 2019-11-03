@@ -15,7 +15,9 @@ class CommentElementModal extends Component {
     };
   }
   componentWillReceiveProps(nextProps) {
-    this.setState({ comment: nextProps.comment, id: nextProps.id });
+    if (nextProps.comment) {
+      this.setState({ comment: nextProps.comment, id: nextProps.id });
+    }
   }
   onChange = e => {
     e.preventDefault();
@@ -34,7 +36,7 @@ class CommentElementModal extends Component {
         isOpen={this.props.modal}
         toggle={this.props.toggleModal}
         size="lg"
-        onClosed={this.props.resetModal}
+        onClosed={this.props.toggleModal}
       >
         <form onSubmit={this.submitModal}>
           <ModalHeader className="text-info">
@@ -49,7 +51,7 @@ class CommentElementModal extends Component {
                       value={this.state.comment}
                       onChange={this.onChange}
                       name="comment"
-                      placeholder={this.props.content.addComment}
+                      placeholder={this.props.content.addComment || ''}
                     />
                   </div>
                 </div>

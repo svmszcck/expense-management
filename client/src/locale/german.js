@@ -20,7 +20,8 @@ const contentGerman = {
   submit: 'Einreichen',
   cancel: 'Stornieren',
   addComment: 'Einen Kommentar Hinzufügen',
-  changeComment: 'Kommentar Ändern'
+  changeComment: 'Kommentar Ändern',
+  editExpense: 'Aufwand bearbeiten'
 };
 
 export default contentGerman;
