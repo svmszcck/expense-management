@@ -29,7 +29,7 @@ class FilterComponent extends Component {
         {this.props.filterWindow && (
           <div className="my-2 py-2">
             <div className="row">
-              <div className="col-2">
+              <div className="col-12 col-md-6 col-lg-2">
                 <TextInput
                   value={this.props.filteredFirstName}
                   onChange={this.props.onChangeFilter}
@@ -41,7 +41,7 @@ class FilterComponent extends Component {
                   {this.props.content.filterByFirstName}
                 </small>
               </div>
-              <div className="col-2">
+              <div className="col-12 col-md-6 col-lg-2">
                 <TextInput
                   value={this.props.filteredLastName}
                   onChange={this.props.onChangeFilter}
@@ -53,7 +53,7 @@ class FilterComponent extends Component {
                   {this.props.content.filterByLastName}
                 </small>
               </div>
-              <div className="col-2">
+              <div className="col-12 col-md-6 col-lg-2">
                 <NumberInput
                   value={this.props.filteredMinPrice}
                   onChange={this.props.onChangeFilter}
@@ -66,7 +66,7 @@ class FilterComponent extends Component {
                   {this.props.content.filterByMinPrice}
                 </small>
               </div>
-              <div className="col-2">
+              <div className="col-12 col-md-6 col-lg-2">
                 <NumberInput
                   value={this.props.filteredMaxPrice}
                   onChange={this.props.onChangeFilter}
@@ -79,7 +79,7 @@ class FilterComponent extends Component {
                   {this.props.content.filterByMaxPrice}
                 </small>
               </div>
-              <div className="col-2">
+              <div className="col-12 col-md-6 col-lg-2">
                 <SelectInput
                   name="filteredCurrency"
                   value={this.props.filteredCurrency}
@@ -91,7 +91,7 @@ class FilterComponent extends Component {
                   {this.props.content.filterByCurrency}
                 </small>
               </div>
-              <div className="col-2">
+              <div className="col-12 col-md-6 col-lg-2">
                 <SelectInput
                   name="filteredCategory"
                   value={this.props.filteredCategory}
