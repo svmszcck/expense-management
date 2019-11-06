@@ -26,6 +26,7 @@ class Expenses extends Component {
       price: '',
       currency: '',
       category: '',
+      comment: '',
       commentModal: false,
       editModal: false,
       offset: 0,
@@ -257,26 +258,29 @@ class Expenses extends Component {
           </div>
         )}
         <div className="container">
-          <ReactPaginate
-            previousLabel={<i className="fas fa-chevron-left"></i>}
-            nextLabel={<i className="fas fa-chevron-right"></i>}
-            breakLabel={'...'}
-            breakClassName={'break-me'}
-            pageCount={Math.ceil(this.state.total / this.state.expenses.length)}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={this.handlePageClick}
-            containerClassName={'pagination'}
-            subContainerClassName={'pages pagination'}
-            activeClassName={'activePage'}
-            nextClassName={'nextPrevBox'}
-            previousClassName={'nextPrevBox'}
-            pageClassName={'pageBox'}
-            activeLinkClassName={'pageLink'}
-            pageLinkClassName={'pageLink'}
-            breakClassName={'pageBox'}
-            breakLinkClassName={'pageLink'}
-          />
+          <div className="row">
+            <ReactPaginate
+              previousLabel={<i className="fas fa-chevron-left"></i>}
+              nextLabel={<i className="fas fa-chevron-right"></i>}
+              breakLabel={'...'}
+              breakClassName={'break-me'}
+              pageCount={Math.ceil(
+                this.state.total / this.state.expenses.length
+              )}
+              marginPagesDisplayed={1}
+              pageRangeDisplayed={2}
+              onPageChange={this.handlePageClick}
+              containerClassName={'pagination'}
+              activeClassName={'activePage'}
+              nextClassName={'nextPrevBox'}
+              previousClassName={'nextPrevBox'}
+              pageClassName={'pageBox'}
+              activeLinkClassName={'pageLink'}
+              pageLinkClassName={'pageLink'}
+              breakClassName={'pageBox'}
+              breakLinkClassName={'pageLink'}
+            />
+          </div>
         </div>
         <section id="imageModal">
           <ImageElementModal

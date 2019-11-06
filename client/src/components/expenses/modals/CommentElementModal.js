@@ -15,9 +15,7 @@ class CommentElementModal extends Component {
     };
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.comment) {
-      this.setState({ comment: nextProps.comment, id: nextProps.id });
-    }
+    this.setState({ comment: nextProps.comment, id: nextProps.id });
   }
   onChange = e => {
     e.preventDefault();
@@ -25,6 +23,7 @@ class CommentElementModal extends Component {
   };
   submitModal = e => {
     e.preventDefault();
+    console.log(this.state);
     let commentObj = {};
     commentObj.comment = this.state.comment;
     this.props.updateExpense(this.state.id, commentObj);

@@ -1,27 +1,11 @@
-.icon {
-  width: 40px;
-}
-
+/* DATEPICKER */
 .react-datepicker-wrapper {
   width: 100% !important;
 }
-
-.pagination {
-  font: 50px !important;
-  color: black !important;
-  margin: 20px !important;
-}
-
-.pages {
-  font: 50px !important;
-  color: black !important;
-  margin: 20px !important;
-}
-
+/* PAGINATION */
 .active {
   color: grey;
 }
-
 .nextPrevBox {
   border-radius: 5px;
   border: 1px solid lightgrey;
@@ -29,25 +13,23 @@
   padding: 0px 20px;
   color: black;
 }
-
 .nextPrevBox:hover {
   cursor: pointer;
   text-decoration: none;
   background: lightgrey;
 }
-
 .activePage {
   background: lightgrey;
 }
-
 .pageLink {
   padding: 0px 10px;
 }
-
 .pageLink:hover {
   text-decoration: none;
 }
-
+.pagination{
+  margin-top: 20px;
+}
 .pageBox {
   text-align: center;
   border-radius: 5px;
@@ -55,38 +37,49 @@
   margin: 0px 5px;
   color: black;
 }
-
 .pageBox:hover {
   cursor: pointer;
   text-decoration: none;
   background: lightgrey;
 }
-
 .activePage:hover {
   cursor: pointer;
   text-decoration: none;
   color: black;
   background: lightgrey;
 }
-
+/* SORT */
 .sortSection {
   border-radius: 5px;
 }
-
+/* RECEIPT CARD */
+.icon {
+  width: 40px;
+}
 .baseEUR {
   font-size: 14px;
 }
-
+/* NAVBAR */
 .myNavbar {
-  /* background: #F43160; */
-  background: #F5F5F5;
+  background: #f5f5f5;
 }
-
 .pleoIcon {
   height: 40px;
   margin: 5px;
 }
-/* -------- LOADER -------- */
+
+@media only screen and (max-width: 425px) {
+  .pageBox {
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    margin: 0px 1px;
+    color: black;
+  }
+}
+
+
+/* LOADER */
 .loader {
   color: rgb(108, 117, 125);
   font-size: 45px;

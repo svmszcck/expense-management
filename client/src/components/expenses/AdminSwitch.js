@@ -33,7 +33,7 @@ class AdminSwitch extends Component {
         <button
           className={classnames('btn-sm mx-1', {
             'btn-info': this.state.admin,
-            'btn-outline-info': !this.state.admin
+            'btn-outline-info text-dark': !this.state.admin
           })}
           onClick={e => this.switchToAdmin(e, true)}
         >
@@ -42,7 +42,7 @@ class AdminSwitch extends Component {
         <button
           className={classnames('btn-sm mx-1', {
             'btn-info': !this.state.admin,
-            'btn-outline-info': this.state.admin
+            'btn-outline-info text-dark': this.state.admin
           })}
           onClick={e => this.switchToAdmin(e, false)}
         >

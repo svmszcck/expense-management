@@ -65,7 +65,7 @@ class EditElementModal extends Component {
               <div className="row">
                 <div className="col-12">
                   <div className="form-group">
-                    <div className="form-input">
+                    <div className="form-input my-1">
                       <DatePicker
                         className="form-control"
                         selected={Date.parse(this.state.date)}
@@ -79,7 +79,7 @@ class EditElementModal extends Component {
                         maxDate={Date.now()}
                       />
                     </div>
-                    <div className="form-input">
+                    <div className="form-input my-1">
                       <NumberInput
                         value={this.state.price}
                         onChange={this.onChange}
@@ -87,7 +87,7 @@ class EditElementModal extends Component {
                         placeholder={this.props.content.price || ''}
                       />
                     </div>
-                    <div className="form-input">
+                    <div className="form-input my-1">
                       <SelectInput
                         value={this.state.currency}
                         onChange={this.onChange}

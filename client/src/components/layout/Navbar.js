@@ -26,19 +26,32 @@ class Navbar extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand-md navbar-dark myNavbar">
+      <nav className="navbar navbar-expand-md navbar-dark bg-dark myNavbar">
         <div className="container">
-          <h3 className="text-white my-0">
+          <h3 className="my-0">
             <img src={pleo} alt="pleo" className="img-fluid pleoIcon" />
           </h3>
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item px-2">
-              <AdminSwitch />
-            </li>
-            <li className="nav-item px-2">
-              <Languages />
-            </li>
-          </ul>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li className="nav-item px-2 my-2">
+                <AdminSwitch />
+              </li>
+              <li className="nav-item px-2 my-2">
+                <Languages />
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     );

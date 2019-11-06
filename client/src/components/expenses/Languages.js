@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import ReactCountryFlag from 'react-country-flag';
 import { connect } from 'react-redux';
 import { switchLanguage } from '../../actions/commonActions';
-import Flag from "react-flags";
 
 class Languages extends Component {
   constructor(props) {

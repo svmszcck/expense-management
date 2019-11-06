@@ -10,7 +10,7 @@ class ExpenseCard extends Component {
   render() {
     return (
       <div className="row border mb-2">
-        <div className="col-1 px-0">
+        <div className="col-1 px-0 d-none d-lg-block">
           <a href="#">
             <img
               src={
@@ -24,7 +24,7 @@ class ExpenseCard extends Component {
           </a>
           <div className="text-center">{this.props.expense.category}</div>
         </div>
-        <div className="col-7 border-left">
+        <div className="col-12 col-md-7 border-left">
           <h4 className="mt-2">
             {this.props.expense.user.first} {this.props.expense.user.last}
             <span className="h5 ml-3 text-secondary">
@@ -35,7 +35,7 @@ class ExpenseCard extends Component {
           </h4>
           <p className="mb-0">{this.props.expense.comment}</p>
         </div>
-        <div className="col-3 border-left border-right pt-2">
+        <div className="col-12 border-left border-right pt-2 col-md">
           <p className="lead mb-1">
             <i className="icon fas fa-calendar-alt text-center"></i>
             <Moment format="D MMM YYYY" withTitle>
@@ -61,15 +61,15 @@ class ExpenseCard extends Component {
             <Moment format="HH:mm A">{this.props.expense.date}</Moment>
           </p>
         </div>
-        <div className="col-1 pt-1">
+        <div className="col-12 col-md-1 pt-1">
           <button
-            className="btn btn-block btn-success btn-sm my-1"
+            className="btn btn-success btn-sm my-1 mr-2"
             onClick={e => this.props.openImageModal(e, this.props.expense.id)}
           >
             <i className="fas fa-camera"></i>
           </button>
           <button
-            className="btn btn-block btn-success btn-sm my-1"
+            className="btn btn-success btn-sm my-1 mr-2"
             onClick={e =>
               this.props.openCommentModal(
                 e,
@@ -81,7 +81,7 @@ class ExpenseCard extends Component {
             <i className="fas fa-comments"></i>
           </button>
           <button
-            className="btn btn-block btn-warning btn-sm my-1"
+            className="btn btn-warning btn-sm my-1 mr-2"
             onClick={e =>
               this.props.openEditModal(
                 e,

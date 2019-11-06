@@ -19,9 +19,7 @@ class ImageElementModal extends Component {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
-    if (nextProps.id) {
-      this.setState({ id: nextProps.id });
-    }
+    this.setState({ id: nextProps.id });
   }
   changeImage = e => {
     e.preventDefault();
