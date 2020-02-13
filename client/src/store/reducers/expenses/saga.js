@@ -1,0 +1,19 @@
+import { call, put, takeEvery, select } from "redux-saga/effects";
+import { FETCH_EXPENSES, FETCH_EXPENSES_REQUEST, FETCH_EXPENSES_SUCCESS, FETCH_EXPENSES_ERROR } from "./actions";
+import { apiGetExpenses } from "../../../api";
+import { selectExpensesOffset } from "./selectors";
+
+export function* loadExpensesSaga() {
+  yield put({ type: FETCH_EXPENSES_REQUEST });
+  try {
+    const offset = yield select(selectExpensesOffset);
+    const response = yield call(apiGetExpenses, offset);
+    yield put({ type: FETCH_EXPENSES_SUCCESS, payload: response });
+  } catch (e) {
+    yield put({ type: FETCH_EXPENSES_ERROR, payload: e.message });
+  }
+}
+
+export default function* expensesSaga() {
+  yield takeEvery(FETCH_EXPENSES, loadExpensesSaga);
+}

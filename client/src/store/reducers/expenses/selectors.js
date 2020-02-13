@@ -1,6 +1,7 @@
 import { createSelector } from "reselect";
 
 export const selectExpenses = state => state.expenses.expenses;
+export const selectExpensesOffset = state => state.expenses.expenses.length;
 export const selectLoading = state => state.expenses.loading;
 export const selectLoaded = state => state.expenses.loaded;
 export const selectError = state => state.expenses.error;
