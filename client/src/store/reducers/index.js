@@ -1,8 +1,25 @@
-import { combineReducers } from "redux";
+import { createStore, applyMiddleware, compose, combineReducers } from "redux";
+import createSagaMiddleware from "redux-saga";
+import { fork, all } from "redux-saga/effects";
 import expenses from "./expenses/reducer";
 
-const rootReducer = combineReducers({
+const sagas = [expenses];
+
+function* rootSaga() {
+  yield all(sagas.map(fork));
+}
+
+const sagaMiddleware = createSagaMiddleware();
+const composeEnhancers =
+  (process.env.NODE_ENV !== "production" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware));
+
+export const rootReducer = combineReducers({
   expenses
 });
 
-export default rootReducer;
+const store = createStore(rootReducer, enhancer);
+
+sagaMiddleware.run(rootSaga);
+
+export default store;

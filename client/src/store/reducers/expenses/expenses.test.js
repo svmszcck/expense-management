@@ -1,5 +1,5 @@
 import { testReducer } from "../../../helpers/testHelpers";
-import rootReducer from "../index";
+import { rootReducer } from "../index";
 import { fetchExpensesRequest, fetchExpensesError, fetchExpensesSuccess } from "./actions";
 import { selectExpenses, selectLoading, selectLoaded, selectError, selectTotal, selectIsLoadMore } from "./selectors";
 import { expense1, expense2 } from "./expenses.mock.js";
