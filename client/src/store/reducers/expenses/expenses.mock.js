@@ -21,3 +21,5 @@ export const expense2 = {
   user: { first: "Lowe", last: "Michael", email: "lowe.michael@pleo.io" },
   index: 1
 };
+
+export const expenses = [expense1, expense2];

@@ -13,3 +13,15 @@ export const selectIsLoadMore = createSelector(
   selectExpenses,
   (loaded, loading, total, expenses) => !loading && loaded && total > expenses.length
 );
+export const selectIsShowError = createSelector(selectError, selectLoading, (error, loading) => error && !loading);
+export const selectIsAllLoaded = createSelector(
+  selectLoaded,
+  selectExpensesOffset,
+  selectTotal,
+  (loaded, offset, total) => loaded && offset === total
+);
+export const selectIsShowNoItems = createSelector(
+  selectLoaded,
+  selectExpensesOffset,
+  (loaded, offset) => loaded && offset === 0
+);

@@ -2,8 +2,9 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { fork, all } from "redux-saga/effects";
 import expenses from "./expenses/reducer";
+import expensesSaga from "./expenses/saga";
 
-const sagas = [expenses];
+const sagas = [expensesSaga];
 
 function* rootSaga() {
   yield all(sagas.map(fork));

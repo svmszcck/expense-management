@@ -7,8 +7,8 @@ export function* loadExpensesSaga() {
   yield put({ type: FETCH_EXPENSES_REQUEST });
   try {
     const offset = yield select(selectExpensesOffset);
-    const response = yield call(apiGetExpenses, offset);
-    yield put({ type: FETCH_EXPENSES_SUCCESS, payload: response });
+    const { data } = yield call(apiGetExpenses, offset);
+    yield put({ type: FETCH_EXPENSES_SUCCESS, payload: data });
   } catch (e) {
     yield put({ type: FETCH_EXPENSES_ERROR, payload: e.message });
   }

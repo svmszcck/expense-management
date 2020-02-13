@@ -9,8 +9,10 @@ import { selectExpensesOffset } from "./selectors";
 
 jest.mock("../../../api", () => ({
   apiGetExpenses: jest.fn().mockImplementation(offset => ({
-    expenses: [1, 2, 3],
-    total: offset + 1
+    data: {
+      expenses: [1, 2, 3],
+      total: offset + 1
+    }
   }))
 }));
 
