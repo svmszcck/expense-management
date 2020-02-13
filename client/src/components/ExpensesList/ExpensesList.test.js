@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import ExpensesList from "./index";
-import { expenses } from "../../store/reducers/expenses/expenses.mock";
+import { expenses } from "../../store/expenses/expenses.mock";
 import ExpenseItem from "../ExpenseItem";
 
 const setup = () => shallow(<ExpensesList expenses={expenses} />);

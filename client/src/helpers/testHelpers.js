@@ -1,3 +1,8 @@
+import React from "react";
+import { mount } from "enzyme";
+import { IntlProvider } from "react-intl";
+import messages from "../intl/messages";
+
 /** Helper for testing reducer and helpers
  * @param  {Function} rootReducer - project rootReducer
  * @param  {*} initialState - optional root reducer initial state
@@ -30,3 +35,18 @@ export function testReducer(rootReducer, initialState) {
     return this;
   };
 }
+
+/** Wrapper for testing components with react-intl
+ * @param  {Function} component - React component
+ * @param  {String} locale
+ * @return  {Function} - React component
+ * @example
+ * // mountWithReactIntl(<Component />, locale)
+ */
+export const mountWithReactIntl = (component, locale) => {
+  return mount(
+    <IntlProvider messages={messages[locale]} locale={locale}>
+      {component}
+    </IntlProvider>
+  );
+};

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
 import { expensePropTypes } from "../../constants";
 import ExpenseItem from "../ExpenseItem";
@@ -16,14 +17,25 @@ const ExpensesList = ({ expenses, fetchExpenses, isLoadMore, isLoading, isAllLoa
       {expenses.map(expense => (
         <ExpenseItem expense={expense} key={expense.id}></ExpenseItem>
       ))}
-
       {isLoading && <Text>Loading...</Text>}
-      {isShowError && <ErrorText>Error message</ErrorText>}
-      {isShowNoItems && <Text>No results</Text>}
-      {isAllLoaded && <Text>All items loaded</Text>}
+      {isShowError && (
+        <ErrorText>
+          <FormattedMessage id="general.error_msg" />
+        </ErrorText>
+      )}
+      {isShowNoItems && (
+        <Text>
+          <FormattedMessage id="general.no_results" />
+        </Text>
+      )}
+      {isAllLoaded && (
+        <Text>
+          <FormattedMessage id="general.all_items_loaded" />
+        </Text>
+      )}
       {isLoadMore && (
         <Button centered onClick={fetchExpenses}>
-          Load more
+          <FormattedMessage id="general.load_more" />
         </Button>
       )}
     </StyledExpensesList>

@@ -1,4 +1,4 @@
-import { testReducer } from "../../../helpers/testHelpers";
+import { testReducer } from "../../helpers/testHelpers";
 import { rootReducer } from "../index";
 import { fetchExpensesRequest, fetchExpensesError, fetchExpensesSuccess } from "./actions";
 import { selectExpenses, selectLoading, selectLoaded, selectError, selectTotal, selectIsLoadMore } from "./selectors";

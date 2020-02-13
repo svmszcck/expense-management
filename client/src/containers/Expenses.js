@@ -9,8 +9,8 @@ import {
   selectIsShowNoItems,
   selectIsAllLoaded,
   selectLoading
-} from "../store/reducers/expenses/selectors";
-import { fetchExpenses } from "../store/reducers/expenses/actions";
+} from "../store/expenses/selectors";
+import { fetchExpenses } from "../store/expenses/actions";
 
 const mapStateToProps = createStructuredSelector({
   error: selectError,

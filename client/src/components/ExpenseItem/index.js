@@ -2,7 +2,7 @@ import React from "react";
 import { expensePropTypes } from "../../constants";
 import { Text } from "../Text";
 import { StyledItem, StyledAmount } from "./styled";
-const options = { timeStyle: "short", dateStyle: "medium" };
+import { FormattedTime } from "react-intl";
 
 const ExpenseItem = ({ expense: { merchant, user, comment, receipts, date, amount } }) => {
   return (
@@ -23,7 +23,16 @@ const ExpenseItem = ({ expense: { merchant, user, comment, receipts, date, amoun
         <Text>
           {amount.value} {amount.currency}
         </Text>
-        <Text small>{new Date(date).toLocaleDateString("en-US", options)} </Text>
+        <Text small>
+          <FormattedTime
+            value={new Date(date)}
+            year="numeric"
+            month="short"
+            day="numeric"
+            hour="numeric"
+            minute="numeric"
+          />
+        </Text>
       </StyledAmount>
     </StyledItem>
   );

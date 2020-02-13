@@ -1,4 +1,4 @@
-import { createAction } from "../../../helpers/common";
+import { createAction } from "../../helpers/common";
 
 export const FETCH_EXPENSES = "FETCH_EXPENSES";
 export const FETCH_EXPENSES_REQUEST = "FETCH_EXPENSES_REQUEST";

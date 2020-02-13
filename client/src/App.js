@@ -1,14 +1,19 @@
 import React from "react";
 import { Provider } from "react-redux";
-import store from "./store/reducers";
+import store from "./store";
 import Expenses from "./containers/Expenses";
 import { GlobalStyles } from "./styles";
+import IntlProvider from "./containers/IntlProvider";
+import SelectLanguage from "./containers/SelectLanguage";
 
 function App() {
   return (
     <Provider store={store}>
-      <GlobalStyles />
-      <Expenses />
+      <IntlProvider>
+        <GlobalStyles />
+        <SelectLanguage />
+        <Expenses />
+      </IntlProvider>
     </Provider>
   );
 }

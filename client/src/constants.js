@@ -4,6 +4,8 @@ export const API_URL = `http://localhost:3000/expenses`;
 
 export const DEFAULT_EXPENSES_LIMIT = 25;
 
+export const DEFAULT_LOCALE = "en-GB";
+
 export const expensePropTypes = PropTypes.shape({
   id: PropTypes.string.isRequired,
   merchant: PropTypes.string.isRequired,
@@ -18,4 +20,8 @@ export const expensePropTypes = PropTypes.shape({
     value: PropTypes.string,
     currency: PropTypes.string
   })
+});
+
+export const IntlPropType = PropTypes.shape({
+  formatMessage: PropTypes.func.isRequired
 });

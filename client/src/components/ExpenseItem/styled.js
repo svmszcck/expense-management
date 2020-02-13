@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Text } from "../Text";
 import { colors, smallShadow, mediumShadow } from "../../styles";
 
 export const StyledItem = styled.div`
