@@ -5,6 +5,7 @@ import Expenses from "./containers/Expenses";
 import { GlobalStyles } from "./styles";
 import IntlProvider from "./containers/IntlProvider";
 import SelectLanguage from "./containers/SelectLanguage";
+import Filter from "./containers/Filter";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <IntlProvider>
         <GlobalStyles />
         <SelectLanguage />
+        <Filter />
         <Expenses />
       </IntlProvider>
     </Provider>

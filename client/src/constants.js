@@ -25,3 +25,8 @@ export const expensePropTypes = PropTypes.shape({
 export const IntlPropType = PropTypes.shape({
   formatMessage: PropTypes.func.isRequired
 });
+
+export const SelectOptionPropType = PropTypes.shape({
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+});

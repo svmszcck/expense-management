@@ -40,4 +40,27 @@ describe("Select", () => {
 
     expect(onChange).toHaveBeenCalledWith(event);
   });
+
+  it("should represent placeholder", () => {
+    const placeholder = "placeholder";
+    const select = setup({ options, placeholder });
+    const optionsEl = select.find("option");
+
+    expect(optionsEl).toHaveLength(options.length + 1);
+    expect(optionsEl.at(0).text()).toBe(placeholder);
+  });
+
+  it("should represent disabled prop", () => {
+    const disabled = true;
+    const select = setup({ options, disabled });
+
+    expect(select.prop("disabled")).toBeTruthy();
+  });
+
+  it("should represent enable state", () => {
+    const disabled = false;
+    const select = setup({ options, disabled });
+
+    expect(select.prop("disabled")).toBeFalsy();
+  });
 });

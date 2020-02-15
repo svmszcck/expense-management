@@ -1,84 +1,138 @@
 import { testReducer } from "../../helpers/testHelpers";
-import { rootReducer } from "../index";
+import { changeFilter } from "../filter/actions";
 import { fetchExpensesRequest, fetchExpensesError, fetchExpensesSuccess } from "./actions";
-import { selectExpenses, selectLoading, selectLoaded, selectError, selectTotal, selectIsLoadMore } from "./selectors";
-import { expense1, expense2 } from "./expenses.mock.js";
+import {
+  selectFilteredExpenses,
+  selectIsLoading,
+  selectIsAllLoaded,
+  selectIsShowError,
+  selectTotal,
+  selectIsShowLoadMore,
+  selectCurrenciesOptions,
+  selectIsShowNoItems
+} from "./selectors";
+import { expenses } from "./expenses.mock.js";
 import { initialState } from "./reducer";
+import { rootReducer } from "../index";
 
+const [exp1, exp2] = expenses;
 const error = "Error Message";
 const requestData = {
-  expenses: [expense1],
+  expenses: [exp1],
   total: 10
 };
 const requestData2 = {
-  expenses: [expense2],
+  expenses: [exp2],
   total: 20
+};
+
+const currencyOption1 = {
+  label: exp1.amount.currency,
+  value: exp1.amount.currency
+};
+
+const currencyOption2 = {
+  label: exp2.amount.currency,
+  value: exp2.amount.currency
 };
 
 describe("Expenses reducer test", () => {
   it("should represent initial state", () => {
     testReducer(rootReducer)
-      .expect(selectExpenses, [])
-      .expect(selectLoading, false)
-      .expect(selectLoaded, false)
-      .expect(selectError, null)
-      .expect(selectIsLoadMore, false)
+      .expect(selectFilteredExpenses, [])
+      .expect(selectIsLoading, false)
+      .expect(selectIsAllLoaded, false)
+      .expect(selectIsShowLoadMore, false)
       .expect(selectTotal, 0);
   });
 
   it("should represent loading state", () => {
     testReducer(rootReducer)
+      .expect(selectIsLoading, false)
+      .expect(selectIsAllLoaded, false)
+      .expect(selectIsShowError, false)
+      .expect(selectIsShowLoadMore, false)
       .put(fetchExpensesRequest())
-      .expect(selectExpenses, [])
-      .expect(selectLoading, true)
-      .expect(selectLoaded, false)
-      .expect(selectError, null)
-      .expect(selectIsLoadMore, false)
-      .expect(selectTotal, 0);
+      .expect(selectFilteredExpenses, [])
+      .expect(selectIsLoading, true)
+      .expect(selectIsAllLoaded, false)
+      .expect(selectIsShowError, false)
+      .expect(selectIsShowLoadMore, false);
   });
 
   it("should represent error state", () => {
     testReducer(rootReducer)
-      .put(fetchExpensesRequest())
-      .expect(selectLoading, true)
+      .expect(selectIsShowError, false)
       .put(fetchExpensesError(error))
-      .expect(selectExpenses, [])
-      .expect(selectLoading, false)
-      .expect(selectLoaded, false)
-      .expect(selectError, error)
-      .expect(selectIsLoadMore, false)
+      .expect(selectIsShowError, true)
+      .expect(selectFilteredExpenses, [])
+      .expect(selectIsLoading, false)
+      .expect(selectIsAllLoaded, false)
+      .expect(selectIsShowLoadMore, false)
       .expect(selectTotal, 0);
   });
 
   it("should represent success loaded state", () => {
     testReducer(rootReducer, { expenses: initialState })
+      // add error
       .put(fetchExpensesError(error))
-      .expect(selectError, error)
+      .expect(selectIsShowError, true)
+      // add loading
       .put(fetchExpensesRequest())
-      .expect(selectLoading, true)
+      .expect(selectIsLoading, true)
       .put(fetchExpensesSuccess(requestData))
-      // should add loaded expenses to already existed
-      .expect(selectExpenses, [...initialState.expenses, expense1])
-      .expect(selectLoading, false)
-      .expect(selectLoaded, true)
-      .expect(selectError, null)
+      .expect(selectFilteredExpenses, [exp1])
+      .expect(selectIsLoading, false)
+      .expect(selectIsShowError, false)
       .expect(selectTotal, requestData.total)
-      .expect(selectIsLoadMore, true)
+      .expect(selectIsShowLoadMore, true)
+      // should add loaded expenses to already existed
       .put(fetchExpensesSuccess(requestData2))
-      .expect(selectExpenses, [...initialState.expenses, expense1, expense2])
-      .expect(selectLoading, false)
-      .expect(selectLoaded, true)
-      .expect(selectIsLoadMore, true)
-      .expect(selectError, null)
+      .expect(selectFilteredExpenses, [...initialState.expenses, ...expenses])
       .expect(selectTotal, requestData2.total);
   });
 
-  it("should represent all expenses loaded state", () => {
+  it("should represent correct loaded state", () => {
     const total = 2;
     testReducer(rootReducer, { expenses: initialState })
-      .put(fetchExpensesSuccess({ expenses: [expense1], total }))
-      .expect(selectIsLoadMore, true)
-      .put(fetchExpensesSuccess({ expenses: [expense2], total }))
-      .expect(selectIsLoadMore, false);
+      .expect(selectIsShowLoadMore, false)
+      .expect(selectIsAllLoaded, false)
+      .expect(selectIsShowNoItems, false)
+      .put(fetchExpensesSuccess({ expenses: [], total }))
+      .expect(selectIsShowNoItems, true)
+      .put(fetchExpensesSuccess({ expenses: [exp1], total }))
+      .expect(selectIsAllLoaded, false)
+      .expect(selectIsShowLoadMore, true)
+      .expect(selectIsShowNoItems, false)
+      .put(fetchExpensesSuccess({ expenses: [exp2], total }))
+      .expect(selectIsAllLoaded, true)
+      .expect(selectIsShowLoadMore, false)
+      .expect(selectIsShowNoItems, false);
+  });
+
+  it("should represent unique expenses currency options", () => {
+    testReducer(rootReducer)
+      .expect(selectCurrenciesOptions, [])
+      .put(fetchExpensesSuccess(requestData))
+      .expect(selectCurrenciesOptions, [currencyOption1])
+      .put(fetchExpensesSuccess(requestData2))
+      .expect(selectCurrenciesOptions, [currencyOption1, currencyOption2])
+      // should not duplicate currency
+      .put(fetchExpensesSuccess(requestData))
+      .expect(selectCurrenciesOptions, [currencyOption1, currencyOption2]);
+  });
+
+  it("should represent filtered expenses", () => {
+    testReducer(rootReducer)
+      .expect(selectFilteredExpenses, [])
+      .put(fetchExpensesSuccess(requestData))
+      .put(fetchExpensesSuccess(requestData2))
+      .expect(selectFilteredExpenses, expenses)
+      .put(changeFilter({ key: "search", value: exp1.user.first }))
+      .expect(selectFilteredExpenses, [exp1])
+      .put(changeFilter({ key: "search", value: "" }))
+      .expect(selectFilteredExpenses, expenses)
+      .put(changeFilter({ key: "currency", value: exp1.amount.currency }))
+      .expect(selectFilteredExpenses, [exp1]);
   });
 });

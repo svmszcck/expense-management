@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
@@ -43,7 +44,13 @@ const ExpensesList = ({ expenses, fetchExpenses, isLoadMore, isLoading, isAllLoa
 };
 
 ExpensesList.propTypes = {
-  expenses: PropTypes.arrayOf(expensePropTypes)
+  expenses: PropTypes.arrayOf(expensePropTypes),
+  fetchExpenses: PropTypes.func.isRequired,
+  isLoadMore: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  isAllLoaded: PropTypes.bool.isRequired,
+  isShowError: PropTypes.func.isRequired,
+  isShowNoItems: PropTypes.func.isRequired
 };
 
 export default ExpensesList;

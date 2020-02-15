@@ -3,6 +3,7 @@ import createSagaMiddleware from "redux-saga";
 import { fork, all } from "redux-saga/effects";
 import expenses from "./expenses/reducer";
 import settings from "./settings/reducer";
+import filter from "./filter/reducer";
 import expensesSaga from "./expenses/saga";
 
 const sagas = [expensesSaga];
@@ -18,7 +19,8 @@ const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware));
 
 export const rootReducer = combineReducers({
   expenses,
-  settings
+  settings,
+  filter
 });
 
 const store = createStore(rootReducer, enhancer);

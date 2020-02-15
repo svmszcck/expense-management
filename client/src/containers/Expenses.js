@@ -2,24 +2,22 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import ExpensesList from "../components/ExpensesList";
 import {
-  selectError,
-  selectExpenses,
+  selectFilteredExpenses,
   selectIsShowError,
-  selectIsLoadMore,
+  selectIsShowLoadMore,
   selectIsShowNoItems,
   selectIsAllLoaded,
-  selectLoading
+  selectIsLoading
 } from "../store/expenses/selectors";
 import { fetchExpenses } from "../store/expenses/actions";
 
 const mapStateToProps = createStructuredSelector({
-  error: selectError,
-  expenses: selectExpenses,
-  isLoadMore: selectIsLoadMore,
+  expenses: selectFilteredExpenses,
+  isLoadMore: selectIsShowLoadMore,
   isShowError: selectIsShowError,
   isAllLoaded: selectIsAllLoaded,
   isShowNoItems: selectIsShowNoItems,
-  isLoading: selectLoading
+  isLoading: selectIsLoading
 });
 
 const mapDispatchToProps = {

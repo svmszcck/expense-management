@@ -2,6 +2,7 @@ import React from "react";
 import { mount } from "enzyme";
 import { IntlProvider } from "react-intl";
 import messages from "../intl/messages";
+import { DEFAULT_LOCALE } from "../constants";
 
 /** Helper for testing reducer and helpers
  * @param  {Function} rootReducer - project rootReducer
@@ -43,7 +44,7 @@ export function testReducer(rootReducer, initialState) {
  * @example
  * // mountWithReactIntl(<Component />, locale)
  */
-export const mountWithReactIntl = (component, locale) => {
+export const mountWithReactIntl = (component, locale = DEFAULT_LOCALE) => {
   return mount(
     <IntlProvider messages={messages[locale]} locale={locale}>
       {component}
