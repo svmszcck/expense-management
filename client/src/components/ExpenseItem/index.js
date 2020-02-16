@@ -1,6 +1,6 @@
 import React from "react";
 import { expensePropTypes } from "../../constants";
-import { Text } from "../Text";
+import { Text } from "../UI/styled";
 import { StyledItem, StyledAmount } from "./styled";
 import { FormattedTime } from "react-intl";
 

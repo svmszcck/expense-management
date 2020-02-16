@@ -5,9 +5,7 @@ import Modal from "react-modal";
 import PropTypes from "prop-types";
 import { expensePropTypes } from "../../constants";
 import CurrentExpense from "../../containers/CurrentExpense";
-import { modalStyles } from "../../styles";
-import { Button, StyledCloseButton } from "../Button";
-import { ErrorText, Text } from "../Text";
+import { Button, CloseButton, ErrorText, Text } from "../UI/styled";
 import ExpenseItem from "../ExpenseItem";
 import { StyledExpensesList } from "./styled";
 
@@ -31,14 +29,14 @@ const ExpensesList = ({
     <div>
       <StyledExpensesList>
         {expenses.map(expense => (
-          <button
+          <div
             key={expense.id}
             onClick={() => {
               setExpenseId(expense.id);
             }}
           >
             <ExpenseItem expense={expense}></ExpenseItem>
-          </button>
+          </div>
         ))}
         {isLoading && <Text>Loading...</Text>}
         {isShowError && (
@@ -62,8 +60,8 @@ const ExpensesList = ({
           </Button>
         )}
       </StyledExpensesList>
-      <Modal isOpen={!!expenseId} style={modalStyles} onRequestClose={resetExpenseId} bodyOpenClassName="preventScroll">
-        <StyledCloseButton onClick={resetExpenseId} />
+      <Modal className="modal" isOpen={!!expenseId} onRequestClose={resetExpenseId} bodyOpenClassName="preventScroll">
+        <CloseButton onClick={resetExpenseId} />
         <CurrentExpense />
       </Modal>
     </div>

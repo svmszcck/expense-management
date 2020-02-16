@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { injectIntl } from "react-intl";
+import { injectIntl, FormattedTime } from "react-intl";
 import { apiUpdateExpense } from "../../api";
 import { expensePropTypes, IntlPropType } from "../../constants";
-import { Button } from "../Button";
-import { ErrorText, Text } from "../Text";
+import { Textarea, Label, ErrorText, Text, Button } from "../UI/styled";
+import { StyledCurrentExpense, StyledActions } from "./styled";
 
-// TODO: update styles
 const HIDE_MODAL_DELAY = 2000;
 
 const CurrentExpense = ({ expense, updateExpense, onSuccessUpdate, intl }) => {
+  const { merchant, user, amount, date } = expense;
   const [comment, setComment] = useState(expense.comment);
   const [isShowError, setError] = useState(false);
   const [isShowMessage, toggleMessage] = useState(false);
@@ -31,18 +31,36 @@ const CurrentExpense = ({ expense, updateExpense, onSuccessUpdate, intl }) => {
   };
 
   return (
-    <div>
+    <StyledCurrentExpense>
+      <Text bold>
+        {merchant} - {user.first} {user.last}
+      </Text>
+      <Text small>
+        {amount.value} {amount.currency} (
+        <FormattedTime
+          value={new Date(date)}
+          year="numeric"
+          month="short"
+          day="numeric"
+          hour="numeric"
+          minute="numeric"
+        />
+        )
+      </Text>
       {isShowMessage ? (
         <Text data-test="success-msg">{intl.formatMessage({ id: "messages.success_expense_save" })}</Text>
       ) : (
         <>
-          <textarea value={comment} onChange={e => setComment(e.target.value)} />
-          <Button onClick={saveExpanse}>{intl.formatMessage({ id: "general.save" })}</Button>
+          <Label htmlFor="comment">{intl.formatMessage({ id: "general.comment" })}</Label>
+          <Textarea rows="8" id="comment" value={comment} onChange={e => setComment(e.target.value)} />
+          <StyledActions>
+            <Button onClick={saveExpanse}>{intl.formatMessage({ id: "general.save" })}</Button>
+          </StyledActions>
         </>
       )}
       {isShowError && <ErrorText data-test="error-msg">{intl.formatMessage({ id: "messages.error" })}</ErrorText>}
       {isLoading && <Text>Loading...</Text>}
-    </div>
+    </StyledCurrentExpense>
   );
 };
 

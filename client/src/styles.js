@@ -27,16 +27,21 @@ export const GlobalStyles = createGlobalStyle`
     &.preventScroll{
       overflow: hidden;
     }
+
+  }
+  .modal {
+    position: absolute;
+    background: ${colors.white};
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    min-width: 80%;
+    box-sizing: border-box;
+    border: 1px solid ${colors.grayLight};
+    border-radius: 5px;
+    ${smallShadow}
   }
 `;
-
-export const modalStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)"
-  }
-};
