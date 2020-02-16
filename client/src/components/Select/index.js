@@ -6,7 +6,7 @@ import { StyledSelect } from "./styled";
 const Select = ({ options, value, onChange, placeholder, disabled }) => {
   return (
     <StyledSelect value={value} onChange={onChange} disabled={disabled}>
-      {placeholder && <option>{placeholder}</option>}
+      {placeholder && <option value="">{placeholder}</option>}
       {options.map(({ value, label }) => (
         <option key={value} value={value}>
           {label}

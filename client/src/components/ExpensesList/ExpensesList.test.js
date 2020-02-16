@@ -4,7 +4,11 @@ import ExpensesList from "./index";
 import { expenses } from "../../store/expenses/expenses.mock";
 import ExpenseItem from "../ExpenseItem";
 
-const setup = () => shallow(<ExpensesList expenses={expenses} />);
+const requiredProps = {
+  fetchExpenses: () => {}
+};
+
+const setup = () => shallow(<ExpensesList {...requiredProps} expenses={expenses} />);
 
 describe("ExpensesList", () => {
   it("should represent expenses list with correct props", () => {

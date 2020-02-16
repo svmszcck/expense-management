@@ -7,6 +7,7 @@ export const selectIsLoading = state => state.expenses.loading;
 const selectLoaded = state => state.expenses.loaded;
 const selectError = state => state.expenses.error;
 export const selectTotal = state => state.expenses.total;
+export const selectCurrentExpenseId = state => state.expenses.currentExpenseId;
 
 export const selectIsShowLoadMore = createSelector(
   selectLoaded,
@@ -71,3 +72,6 @@ export const getUniqueCurrencies = expenses => {
 };
 
 export const selectCurrenciesOptions = createSelector(selectExpenses, getUniqueCurrencies);
+export const selectCurrentExpense = createSelector(selectExpenses, selectCurrentExpenseId, (expenses, expenseId) =>
+  expenseId ? expenses.find(({ id }) => id === expenseId) : {}
+);

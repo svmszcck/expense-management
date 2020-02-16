@@ -24,3 +24,34 @@ export const Button = styled.button`
     ${mediumShadow}
   }
 `;
+
+export const StyledCloseButton = styled.button`
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  width: 24px;
+  height: 24px;
+  opacity: 0.3;
+  border: 0;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+  &:before,
+  &:after {
+    top: 0px;
+    position: absolute;
+    left: 15px;
+    content: " ";
+    height: 26px;
+    width: 2px;
+    background-color: ${colors.gray};
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+`;

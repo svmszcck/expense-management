@@ -23,5 +23,20 @@ export const GlobalStyles = createGlobalStyle`
     font-family: "Roboto", sans-serif;
     font-size: 14px;
     margin: 0;
+    
+    &.preventScroll{
+      overflow: hidden;
+    }
   }
 `;
+
+export const modalStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)"
+  }
+};

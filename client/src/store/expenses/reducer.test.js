@@ -1,6 +1,13 @@
 import { testReducer } from "../../helpers/testHelpers";
 import { changeFilter } from "../filter/actions";
-import { fetchExpensesRequest, fetchExpensesError, fetchExpensesSuccess } from "./actions";
+import {
+  fetchExpensesRequest,
+  fetchExpensesError,
+  fetchExpensesSuccess,
+  updateExpense,
+  setExpenseId,
+  resetExpenseId
+} from "./actions";
 import {
   selectFilteredExpenses,
   selectIsLoading,
@@ -9,7 +16,9 @@ import {
   selectTotal,
   selectIsShowLoadMore,
   selectCurrenciesOptions,
-  selectIsShowNoItems
+  selectIsShowNoItems,
+  selectCurrentExpenseId,
+  selectCurrentExpense
 } from "./selectors";
 import { expenses } from "./expenses.mock.js";
 import { initialState } from "./reducer";
@@ -134,5 +143,31 @@ describe("Expenses reducer test", () => {
       .expect(selectFilteredExpenses, expenses)
       .put(changeFilter({ key: "currency", value: exp1.amount.currency }))
       .expect(selectFilteredExpenses, [exp1]);
+  });
+
+  it("should set current and reset expense", () => {
+    const { id } = exp1;
+    testReducer(rootReducer)
+      .expect(selectCurrentExpenseId, null)
+      .expect(selectCurrentExpense, {})
+      .put(fetchExpensesSuccess(requestData))
+      .expect(selectCurrentExpenseId, null)
+      .expect(selectCurrentExpense, {})
+      .put(setExpenseId(id))
+      .expect(selectCurrentExpenseId, id)
+      .expect(selectCurrentExpense, exp1)
+      .put(resetExpenseId())
+      .expect(selectCurrentExpense, {})
+      .expect(selectCurrentExpenseId, null);
+  });
+
+  it("should update expense", () => {
+    const updatedExpense = { ...exp1, comment: "New comment" };
+    testReducer(rootReducer)
+      .put(fetchExpensesSuccess(requestData))
+      .put(fetchExpensesSuccess(requestData2))
+      .expect(selectFilteredExpenses, [exp1, exp2])
+      .put(updateExpense(updatedExpense))
+      .expect(selectFilteredExpenses, [updatedExpense, exp2]);
   });
 });
