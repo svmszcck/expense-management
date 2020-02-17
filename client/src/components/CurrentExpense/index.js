@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { injectIntl, FormattedTime } from "react-intl";
 import { apiUpdateExpense } from "../../api";
 import { expensePropTypes, IntlPropType } from "../../constants";
-import { Textarea, Label, ErrorText, Text, Button } from "../UI/styled";
-import { StyledCurrentExpense, StyledActions } from "./styled";
+import { Textarea, Label, ErrorText, Text, Button, Loader } from "../UI/styled";
+import { StyledCurrentExpense, StyledActions, StyledLoaderOverlay } from "./styled";
 
 const HIDE_MODAL_DELAY = 2000;
 
@@ -48,18 +48,24 @@ const CurrentExpense = ({ expense, updateExpense, onSuccessUpdate, intl }) => {
         )
       </Text>
       {isShowMessage ? (
-        <Text data-test="success-msg">{intl.formatMessage({ id: "messages.success_expense_save" })}</Text>
+        <Text bold data-test="success-msg">
+          {intl.formatMessage({ id: "messages.success_expense_save" })}
+        </Text>
       ) : (
         <>
           <Label htmlFor="comment">{intl.formatMessage({ id: "general.comment" })}</Label>
           <Textarea rows="8" id="comment" value={comment} onChange={e => setComment(e.target.value)} />
+          {isLoading && (
+            <StyledLoaderOverlay>
+              <Loader />
+            </StyledLoaderOverlay>
+          )}
           <StyledActions>
             <Button onClick={saveExpanse}>{intl.formatMessage({ id: "general.save" })}</Button>
           </StyledActions>
         </>
       )}
       {isShowError && <ErrorText data-test="error-msg">{intl.formatMessage({ id: "messages.error" })}</ErrorText>}
-      {isLoading && <Text>Loading...</Text>}
     </StyledCurrentExpense>
   );
 };

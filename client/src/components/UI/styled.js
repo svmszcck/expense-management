@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { smallShadow, mediumShadow, colors } from "../../styles";
 
 export const Label = styled.label`
@@ -91,4 +91,49 @@ export const Text = styled.p`
 
 export const ErrorText = styled(Text)`
   color: ${colors.error};
+`;
+
+const ripple = keyframes`
+  0% {
+    top: 20px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+  }
+`;
+
+export const Loader = styled.div`
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+
+  &:after,
+  &:before {
+    content: "";
+    position: absolute;
+    border: 2px solid ${colors.primary};
+    opacity: 1;
+    border-radius: 50%;
+    animation: ${ripple} 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+  &:before {
+    animation-delay: -0.5s;
+  }
+`;
+
+export const LoaderWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
 `;

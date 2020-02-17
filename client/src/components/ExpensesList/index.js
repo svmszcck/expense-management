@@ -5,7 +5,7 @@ import Modal from "react-modal";
 import PropTypes from "prop-types";
 import { expensePropTypes } from "../../constants";
 import CurrentExpense from "../../containers/CurrentExpense";
-import { Button, CloseButton, ErrorText, Text } from "../UI/styled";
+import { Button, CloseButton, ErrorText, Text, Loader, LoaderWrapper } from "../UI/styled";
 import ExpenseItem from "../ExpenseItem";
 import { StyledExpensesList } from "./styled";
 
@@ -38,7 +38,11 @@ const ExpensesList = ({
             <ExpenseItem expense={expense}></ExpenseItem>
           </div>
         ))}
-        {isLoading && <Text>Loading...</Text>}
+        {isLoading && (
+          <LoaderWrapper>
+            <Loader />
+          </LoaderWrapper>
+        )}
         {isShowError && (
           <ErrorText>
             <FormattedMessage id="messages.error" />
