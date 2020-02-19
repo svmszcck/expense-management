@@ -17,7 +17,7 @@ export const Textarea = styled.textarea`
   color: ${colors.black};
   box-sizing: border-box;
   width: 100%;
-  margin: 8px 0;
+  margin: 0 0 8px 0;
   resize: none;
 
   &::placeholder {
@@ -87,6 +87,7 @@ export const Text = styled.p`
   line-height: 1.43;
   color: ${({ inverted }) => (inverted ? colors.white : colors.black)};
   font-weight: ${({ bold }) => (bold ? 600 : 400)};
+  text-align: ${({ align = "left" }) => align};
 `;
 
 export const ErrorText = styled(Text)`

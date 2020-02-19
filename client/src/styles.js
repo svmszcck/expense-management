@@ -38,6 +38,8 @@ export const GlobalStyles = createGlobalStyle`
     bottom: auto;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+    max-height: 100%;
+    overflow: auto;
     min-width: 80%;
     box-sizing: border-box;
     border: 1px solid ${colors.grayLight};

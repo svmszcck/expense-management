@@ -1,5 +1,6 @@
 import { createSelector } from "reselect";
 import { selectSearch, selectCurrency } from "../filter/selectors";
+import { selectCurrentExpenseId } from "../editExpense/selectors";
 
 const selectExpenses = state => state.expenses.expenses;
 export const selectExpensesOffset = state => state.expenses.expenses.length;
@@ -7,7 +8,6 @@ export const selectIsLoading = state => state.expenses.loading;
 const selectLoaded = state => state.expenses.loaded;
 const selectError = state => state.expenses.error;
 export const selectTotal = state => state.expenses.total;
-export const selectCurrentExpenseId = state => state.expenses.currentExpenseId;
 
 export const selectIsShowLoadMore = createSelector(
   selectLoaded,

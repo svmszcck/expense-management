@@ -7,10 +7,11 @@ import {
   selectIsShowLoadMore,
   selectIsShowNoItems,
   selectIsAllLoaded,
-  selectIsLoading,
-  selectCurrentExpenseId
+  selectIsLoading
 } from "../store/expenses/selectors";
-import { fetchExpenses, setExpenseId, resetExpenseId } from "../store/expenses/actions";
+import { fetchExpenses } from "../store/expenses/actions";
+import { selectCurrentExpenseId } from "../store/editExpense/selectors";
+import { resetExpenseId, setExpenseId } from "../store/editExpense/actions";
 
 const mapStateToProps = createStructuredSelector({
   expenses: selectFilteredExpenses,

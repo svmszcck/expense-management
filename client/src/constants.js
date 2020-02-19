@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
-export const API_URL = `http://localhost:3000/expenses`;
+export const SERVER_URL = `http://localhost:3000`;
+export const API_URL = `${SERVER_URL}/expenses`;
 
 export const DEFAULT_EXPENSES_LIMIT = 25;
 

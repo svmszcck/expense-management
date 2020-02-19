@@ -1,10 +1,10 @@
 import React from "react";
-import { expensePropTypes } from "../../constants";
+import { FormattedTime, injectIntl } from "react-intl";
+import { expensePropTypes, IntlPropType } from "../../constants";
 import { Text } from "../UI/styled";
 import { StyledItem, StyledAmount } from "./styled";
-import { FormattedTime } from "react-intl";
 
-const ExpenseItem = ({ expense: { merchant, user, comment, receipts, date, amount } }) => {
+const ExpenseItem = ({ expense: { merchant, user, comment, receipts, date, amount }, intl }) => {
   return (
     <StyledItem>
       <div>
@@ -14,9 +14,7 @@ const ExpenseItem = ({ expense: { merchant, user, comment, receipts, date, amoun
         </Text>
         <Text>{comment}</Text>
         <Text>
-          {receipts.map(receipt => (
-            <span>{receipt}</span>
-          ))}
+          {!!receipts.length && intl.formatMessage({ id: "general.receipts_count" }, { count: receipts.length })}
         </Text>
       </div>
       <StyledAmount>
@@ -39,7 +37,8 @@ const ExpenseItem = ({ expense: { merchant, user, comment, receipts, date, amoun
 };
 
 ExpenseItem.propTypes = {
-  expense: expensePropTypes
+  expense: expensePropTypes,
+  intl: IntlPropType
 };
 
-export default ExpenseItem;
+export default injectIntl(ExpenseItem);

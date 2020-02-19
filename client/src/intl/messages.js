@@ -7,8 +7,14 @@ const messages = {
     "general.currency": "Currency",
     "general.save": "Save",
     "general.comment": "Comment",
+    "general.receipt": "Receipt",
+    "general.receipts_count": `{count, plural,
+      one {# receipt}
+      other {# receipts}
+    }.`,
     "messages.error": "Some error happened, please connect support team support@expenses.com",
     "messages.success_expense_save": "Expense was successfully saved",
+    "messages.file_upload": "Drop files here or click to upload.",
     "locale.en": "English",
     "locale.fr": "French"
   },
@@ -20,8 +26,14 @@ const messages = {
     "general.search": "Chercher",
     "general.save": "Enregistrer",
     "general.comment": "commentaire",
+    "general.receipt": "Reçu",
+    "general.receipts_count": `{count, plural,
+      one {# reçu}
+      other {# reçus}
+    }.`,
     "messages.error": "Une erreur s'est produite, veuillez connecter l'équipe d'assistance support@expenses.com",
     "messages.success_expense_save": "La dépense a été enregistrée avec succès",
+    "messages.file_upload": "Déposez des fichiers ici ou cliquez pour télécharger.",
     "locale.en": "Anglais",
     "locale.fr": "Français"
   }

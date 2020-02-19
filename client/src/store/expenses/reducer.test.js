@@ -1,13 +1,6 @@
 import { testReducer } from "../../helpers/testHelpers";
 import { changeFilter } from "../filter/actions";
-import {
-  fetchExpensesRequest,
-  fetchExpensesError,
-  fetchExpensesSuccess,
-  updateExpense,
-  setExpenseId,
-  resetExpenseId
-} from "./actions";
+import { fetchExpensesRequest, fetchExpensesError, fetchExpensesSuccess } from "./actions";
 import {
   selectFilteredExpenses,
   selectIsLoading,
@@ -17,12 +10,13 @@ import {
   selectIsShowLoadMore,
   selectCurrenciesOptions,
   selectIsShowNoItems,
-  selectCurrentExpenseId,
   selectCurrentExpense
 } from "./selectors";
+import { selectCurrentExpenseId } from "../editExpense/selectors";
 import { expenses } from "./expenses.mock.js";
 import { initialState } from "./reducer";
 import { rootReducer } from "../index";
+import { updateExpenseSuccess, resetExpenseId, setExpenseId } from "../editExpense/actions";
 
 const [exp1, exp2] = expenses;
 const error = "Error Message";
@@ -167,7 +161,7 @@ describe("Expenses reducer test", () => {
       .put(fetchExpensesSuccess(requestData))
       .put(fetchExpensesSuccess(requestData2))
       .expect(selectFilteredExpenses, [exp1, exp2])
-      .put(updateExpense(updatedExpense))
+      .put(updateExpenseSuccess(updatedExpense))
       .expect(selectFilteredExpenses, [updatedExpense, exp2]);
   });
 });

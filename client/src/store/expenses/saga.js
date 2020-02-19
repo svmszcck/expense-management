@@ -1,6 +1,6 @@
 import { call, put, takeEvery, select } from "redux-saga/effects";
-import { FETCH_EXPENSES, FETCH_EXPENSES_REQUEST, FETCH_EXPENSES_SUCCESS, FETCH_EXPENSES_ERROR } from "./actions";
 import { apiGetExpenses } from "../../api";
+import { FETCH_EXPENSES, FETCH_EXPENSES_REQUEST, FETCH_EXPENSES_SUCCESS, FETCH_EXPENSES_ERROR } from "./actions";
 import { selectExpensesOffset } from "./selectors";
 
 export function* loadExpensesSaga() {

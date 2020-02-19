@@ -16,6 +16,7 @@ export const StyledItem = styled.div`
     ${mediumShadow}
   }
 `;
+
 export const StyledAmount = styled.div`
   text-align: right;
 `;

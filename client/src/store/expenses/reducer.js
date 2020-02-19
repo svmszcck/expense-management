@@ -1,19 +1,12 @@
-import {
-  FETCH_EXPENSES_REQUEST,
-  FETCH_EXPENSES_ERROR,
-  FETCH_EXPENSES_SUCCESS,
-  RESET_CURRENT_EXPENSE,
-  SET_CURRENT_EXPENSE,
-  UPDATE_EXPANSE
-} from "./actions";
+import { FETCH_EXPENSES_REQUEST, FETCH_EXPENSES_ERROR, FETCH_EXPENSES_SUCCESS } from "./actions";
+import { UPDATE_EXPENSE_SUCCESS } from "../editExpense/actions";
 
 export const initialState = {
   expenses: [],
   loading: false,
   error: null,
   loaded: false,
-  total: 0,
-  currentExpenseId: null
+  total: 0
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -38,17 +31,7 @@ const reducer = (state = initialState, { type, payload }) => {
         error: null,
         loading: false
       };
-    case SET_CURRENT_EXPENSE:
-      return {
-        ...state,
-        currentExpenseId: payload
-      };
-    case RESET_CURRENT_EXPENSE:
-      return {
-        ...state,
-        currentExpenseId: null
-      };
-    case UPDATE_EXPANSE:
+    case UPDATE_EXPENSE_SUCCESS:
       return {
         ...state,
         expenses: state.expenses.map(expense => (expense.id === payload.id ? payload : expense))
