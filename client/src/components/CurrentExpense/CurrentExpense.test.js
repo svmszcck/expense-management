@@ -46,7 +46,7 @@ describe("CurrentExpense", () => {
 
     holder.find("button").simulate("click");
 
-    expect(updateExpense).toHaveBeenCalledWith({ comment: "test", id: expense.id });
+    expect(updateExpense).toHaveBeenCalledWith({ comment: "test", category: "", id: expense.id });
   });
 
   it("should represent error state", () => {

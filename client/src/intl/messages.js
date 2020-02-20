@@ -8,6 +8,8 @@ const messages = {
     "general.save": "Save",
     "general.comment": "Comment",
     "general.receipt": "Receipt",
+    "general.category": "Category",
+    "general.select_category": "Select category",
     "general.receipts_count": `{count, plural,
       one {# receipt}
       other {# receipts}
@@ -16,7 +18,10 @@ const messages = {
     "messages.success_expense_save": "Expense was successfully saved",
     "messages.file_upload": "Drop files here or click to upload.",
     "locale.en": "English",
-    "locale.fr": "French"
+    "locale.fr": "French",
+    "categories.food": "Food",
+    "categories.software": "Software",
+    "categories.travel": "Travel"
   },
   "fr-FR": {
     "general.load_more": "Charger plus",
@@ -27,6 +32,8 @@ const messages = {
     "general.save": "Enregistrer",
     "general.comment": "commentaire",
     "general.receipt": "Reçu",
+    "general.category": "Catégorie",
+    "general.select_category": "Choisir une catégorie",
     "general.receipts_count": `{count, plural,
       one {# reçu}
       other {# reçus}
@@ -35,7 +42,10 @@ const messages = {
     "messages.success_expense_save": "La dépense a été enregistrée avec succès",
     "messages.file_upload": "Déposez des fichiers ici ou cliquez pour télécharger.",
     "locale.en": "Anglais",
-    "locale.fr": "Français"
+    "locale.fr": "Français",
+    "categories.food": "Nourriture",
+    "categories.software": "Logiciel",
+    "categories.travel": "Voyage"
   }
 };
 

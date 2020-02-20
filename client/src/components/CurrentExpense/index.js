@@ -5,16 +5,19 @@ import { expensePropTypes, IntlPropType } from "../../constants";
 import { Textarea, Label, ErrorText, Text, Button, Loader } from "../UI/styled";
 import FileUpload from "../FileUpload";
 import { StyledCurrentExpense, StyledActions, StyledLoaderOverlay } from "./styled";
+import Select from "../Select/index";
 
 const CurrentExpense = ({ expense, updateExpense, showSuccessMessage, error, isLoading, intl }) => {
   const { merchant, user, amount, date, id } = expense;
   const [comment, setComment] = useState(expense.comment);
+  const [category, setCategory] = useState(expense.category);
   const [file, setFile] = useState(null);
 
   const saveExpanse = () => {
     const expense = {
       id,
-      comment
+      comment,
+      category
     };
 
     if (file) {
@@ -42,6 +45,18 @@ const CurrentExpense = ({ expense, updateExpense, showSuccessMessage, error, isL
           minute="numeric"
         />
       </Text>
+      <Label htmlFor="category">{intl.formatMessage({ id: "general.category" })}</Label>
+      <Select
+        name="category"
+        placeholder={intl.formatMessage({ id: "general.select_category" })}
+        onChange={e => setCategory(e.target.value)}
+        value={category}
+        options={[
+          { value: "food", label: intl.formatMessage({ id: "categories.food" }) },
+          { value: "software", label: intl.formatMessage({ id: "categories.software" }) },
+          { value: "travel", label: intl.formatMessage({ id: "categories.travel" }) }
+        ]}
+      />
       <Label htmlFor="comment">{intl.formatMessage({ id: "general.comment" })}</Label>
       <Textarea rows="8" id="comment" value={comment} onChange={e => setComment(e.target.value)} />
       <Label htmlFor="file">{intl.formatMessage({ id: "general.receipt" })}</Label>

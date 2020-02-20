@@ -6,24 +6,35 @@ import { IntlPropType, SelectOptionPropType } from "../../constants";
 import { StyledInput } from "../Input/styled";
 import Select from "../Select";
 
-const Filter = ({ currencies, currency, search, changeFilterValue, intl }) => {
+const Filter = ({ currencies, currency, category, search, changeFilterValue, intl }) => {
   const isCurrenciesDisabled = currencies.length === 0;
 
   return (
     <div>
       <StyledInput
-        data-test="search"
+        name="search"
         defaultValue={search}
         placeholder={intl.formatMessage({ id: "general.search" })}
         onChange={e => changeFilterValue({ key: "search", value: e.target.value })}
       />
       <Select
-        data-test="currency"
+        name="currency"
         disabled={isCurrenciesDisabled}
         options={currencies}
         placeholder={intl.formatMessage({ id: "general.currency" })}
         onChange={e => changeFilterValue({ key: "currency", value: e.target.value })}
         value={currency}
+      />
+      <Select
+        name="category"
+        placeholder={intl.formatMessage({ id: "general.select_category" })}
+        onChange={e => changeFilterValue({ key: "category", value: e.target.value })}
+        value={category}
+        options={[
+          { value: "food", label: intl.formatMessage({ id: "categories.food" }) },
+          { value: "software", label: intl.formatMessage({ id: "categories.software" }) },
+          { value: "travel", label: intl.formatMessage({ id: "categories.travel" }) }
+        ]}
       />
     </div>
   );

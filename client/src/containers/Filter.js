@@ -1,14 +1,15 @@
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { changeFilter } from "../store/filter/actions";
-import { selectSearch, selectCurrency } from "../store/filter/selectors";
+import { selectSearch, selectCurrency, selectCategory } from "../store/filter/selectors";
 import Filter from "../components/Filter";
 import { selectCurrenciesOptions } from "../store/expenses/selectors";
 
 const mapStateToProps = createStructuredSelector({
   search: selectSearch,
   currencies: selectCurrenciesOptions,
-  currency: selectCurrency
+  currency: selectCurrency,
+  category: selectCategory
 });
 
 const mapDispatchToProps = {

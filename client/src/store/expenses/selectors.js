@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { selectSearch, selectCurrency } from "../filter/selectors";
+import { selectSearch, selectCurrency, selectCategory } from "../filter/selectors";
 import { selectCurrentExpenseId } from "../editExpense/selectors";
 
 const selectExpenses = state => state.expenses.expenses;
@@ -49,12 +49,16 @@ const filterBySearch = (expenses, search) => {
 
 const filterByCurrency = (expenses, currency) =>
   !currency ? expenses : expenses.filter(exp => exp.amount.currency === currency);
+const filterByCategory = (expenses, category) =>
+  !category ? expenses : expenses.filter(exp => exp.category === category);
 
 export const selectFilteredExpenses = createSelector(
   selectExpenses,
   selectSearch,
   selectCurrency,
-  (expenses, search, currency) => filterBySearch(filterByCurrency(expenses, currency), search)
+  selectCategory,
+  (expenses, search, currency, category) =>
+    filterBySearch(filterByCurrency(filterByCategory(expenses, category), currency), search)
 );
 
 export const getUniqueCurrencies = expenses => {

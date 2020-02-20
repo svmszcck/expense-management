@@ -4,11 +4,13 @@ import { expensePropTypes, IntlPropType } from "../../constants";
 import { Text } from "../UI/styled";
 import { StyledItem, StyledAmount } from "./styled";
 
-const ExpenseItem = ({ expense: { merchant, user, comment, receipts, date, amount }, intl }) => {
+const ExpenseItem = ({ expense: { merchant, user, comment, receipts, date, amount, category }, intl }) => {
   return (
     <StyledItem>
       <div>
-        <Text bold>{merchant}</Text>
+        <Text bold>
+          {merchant} {!!category && `(${category})`}
+        </Text>
         <Text>
           {user.first} {user.last}
         </Text>

@@ -2,10 +2,10 @@ import { call, put, takeEvery, all } from "redux-saga/effects";
 import { UPDATE_EXPENSE, UPDATE_EXPENSE_ERROR, UPDATE_EXPENSE_REQUEST, UPDATE_EXPENSE_SUCCESS } from "./actions";
 import { apiUpdateExpense, apiUpdateExpenseReceipts } from "../../api";
 
-export function* updateExpensesSaga({ payload: { id, comment, files } }) {
+export function* updateExpensesSaga({ payload: { id, comment, category, files } }) {
   yield put({ type: UPDATE_EXPENSE_REQUEST });
 
-  const calls = [call(apiUpdateExpense, { id, data: { comment } })];
+  const calls = [call(apiUpdateExpense, { id, data: { comment, category } })];
 
   if (files) {
     calls.push(call(apiUpdateExpenseReceipts, { id, files }));
