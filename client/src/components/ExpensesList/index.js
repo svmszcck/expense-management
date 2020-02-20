@@ -49,12 +49,12 @@ const ExpensesList = ({
           </ErrorText>
         )}
         {isShowNoItems && (
-          <Text>
+          <Text align="center">
             <FormattedMessage id="general.no_results" />
           </Text>
         )}
         {isAllLoaded && (
-          <Text>
+          <Text align="center">
             <FormattedMessage id="general.all_items_loaded" />
           </Text>
         )}
@@ -64,7 +64,13 @@ const ExpensesList = ({
           </Button>
         )}
       </StyledExpensesList>
-      <Modal className="modal" isOpen={!!expenseId} onRequestClose={resetExpenseId} bodyOpenClassName="preventScroll">
+      <Modal
+        className="modal"
+        ariaHideApp={false}
+        isOpen={!!expenseId}
+        onRequestClose={resetExpenseId}
+        bodyOpenClassName="preventScroll"
+      >
         <CloseButton onClick={resetExpenseId} />
         <CurrentExpense />
       </Modal>

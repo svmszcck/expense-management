@@ -3,22 +3,33 @@ import styled from "styled-components";
 export const StyledCurrentExpense = styled.div`
   padding: 24px;
 `;
+
+export const StyledHeader = styled.h3`
+  font-size: 24px;
+  margin: 0 0 16px 0;
+  padding: 0;
+  text-align: center;
+`;
 export const StyledActions = styled.div`
   text-align: right;
 `;
 
 export const StyledLoaderOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.65);
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-export const StyledReceiptImage = styled.img`
-  width: 25%;
+export const StyledReceiptsWrap = styled.div`
+  overflow: hidden;
+  margin-bottom: 8px;
+`;
+
+export const StyledReceipt = styled.div`
+  width: 48%;
+  padding-bottom: 48%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  float: left;
+  margin: 1%;
 `;

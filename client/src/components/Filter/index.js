@@ -5,7 +5,7 @@ import { injectIntl } from "react-intl";
 import { IntlPropType, SelectOptionPropType } from "../../constants";
 import { StyledInput } from "../Input/styled";
 import Select from "../Select";
-import { StyledFilter, StyledInputWrap, StyledSelectsWrap } from "./styled";
+import { StyledFilter, StyledInputWrap } from "./styled";
 
 const Filter = ({ currencies, currency, category, search, changeFilterValue, intl }) => {
   const isCurrenciesDisabled = currencies.length === 0;

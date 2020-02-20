@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { injectIntl, FormattedTime } from "react-intl";
+import { injectIntl } from "react-intl";
 import { expensePropTypes, IntlPropType, SERVER_URL } from "../../constants";
-import { Textarea, Label, ErrorText, Text, Button, Loader } from "../UI/styled";
+import { Textarea, Label, ErrorText, Text, Button, Loader, StyledRow } from "../UI/styled";
 import FileUpload from "../FileUpload";
 import Select from "../Select";
-import { StyledCurrentExpense, StyledActions, StyledLoaderOverlay, StyledReceiptImage } from "./styled";
+import {
+  StyledCurrentExpense,
+  StyledActions,
+  StyledLoaderOverlay,
+  StyledReceipt,
+  StyledReceiptsWrap,
+  StyledHeader
+} from "./styled";
+import ExpenseInfo from "../ExpenseInfo/index";
 
 const CurrentExpense = ({ expense, updateExpense, showSuccessMessage, error, isLoading, intl }) => {
-  const { merchant, user, amount, date, id, receipts } = expense;
+  const { id, receipts } = expense;
   const [comment, setComment] = useState(expense.comment);
   const [category, setCategory] = useState(expense.category);
   const [file, setFile] = useState(null);
@@ -36,42 +44,37 @@ const CurrentExpense = ({ expense, updateExpense, showSuccessMessage, error, isL
     updateExpense(expense);
   };
 
+  const categoriesOptions = [
+    { value: "food", label: intl.formatMessage({ id: "categories.food" }) },
+    { value: "software", label: intl.formatMessage({ id: "categories.software" }) },
+    { value: "travel", label: intl.formatMessage({ id: "categories.travel" }) }
+  ];
+
   return (
     <StyledCurrentExpense>
-      <Text bold>
-        {merchant} - {user.first} {user.last}
-      </Text>
-      <Text small>
-        {amount.value} {amount.currency}
-        <FormattedTime
-          value={new Date(date)}
-          year="numeric"
-          month="short"
-          day="numeric"
-          hour="numeric"
-          minute="numeric"
+      <StyledHeader>{intl.formatMessage({ id: "general.edit_expense" })}</StyledHeader>
+      <ExpenseInfo expense={expense} />
+      <StyledRow withIndent>
+        <Label htmlFor="category">{intl.formatMessage({ id: "general.category" })}</Label>
+        <Select
+          name="category"
+          id="category"
+          placeholder={intl.formatMessage({ id: "general.select_category" })}
+          onChange={e => setCategory(e.target.value)}
+          value={category}
+          options={categoriesOptions}
         />
-      </Text>
-      <Label htmlFor="category">{intl.formatMessage({ id: "general.category" })}</Label>
-      <Select
-        name="category"
-        placeholder={intl.formatMessage({ id: "general.select_category" })}
-        onChange={e => setCategory(e.target.value)}
-        value={category}
-        options={[
-          { value: "food", label: intl.formatMessage({ id: "categories.food" }) },
-          { value: "software", label: intl.formatMessage({ id: "categories.software" }) },
-          { value: "travel", label: intl.formatMessage({ id: "categories.travel" }) }
-        ]}
-      />
+      </StyledRow>
       <Label htmlFor="comment">{intl.formatMessage({ id: "general.comment" })}</Label>
-      <Textarea rows="8" id="comment" value={comment} onChange={e => setComment(e.target.value)} />
-      <Label htmlFor="file">{intl.formatMessage({ id: "general.receipts" })}</Label>
-      <div>
+      <Textarea rows="3" id="comment" value={comment} onChange={e => setComment(e.target.value)} />
+
+      <Text>{intl.formatMessage({ id: "general.receipts" })}</Text>
+      <StyledReceiptsWrap>
         {receipts.map(({ url }) => (
-          <StyledReceiptImage data-test="receipt" key={url} src={`${SERVER_URL}${url}`} alt="receipt" />
+          <StyledReceipt data-test="receipt" key={url} style={{ backgroundImage: `url(${SERVER_URL}${url})` }} />
         ))}
-      </div>
+      </StyledReceiptsWrap>
+
       <FileUpload name="file" file={file} onDrop={setFile} />
 
       {isLoading && (
@@ -79,10 +82,6 @@ const CurrentExpense = ({ expense, updateExpense, showSuccessMessage, error, isL
           <Loader />
         </StyledLoaderOverlay>
       )}
-
-      <StyledActions>
-        <Button onClick={saveExpanse}>{intl.formatMessage({ id: "general.save" })}</Button>
-      </StyledActions>
 
       {showSuccessMessage && (
         <Text bold align="center" data-test="success-msg">
@@ -95,6 +94,12 @@ const CurrentExpense = ({ expense, updateExpense, showSuccessMessage, error, isL
           {error}
         </ErrorText>
       )}
+
+      <StyledActions>
+        <Button centered onClick={saveExpanse}>
+          {intl.formatMessage({ id: "general.save" })}
+        </Button>
+      </StyledActions>
     </StyledCurrentExpense>
   );
 };

@@ -10,6 +10,7 @@ const messages = {
     "general.receipts": "Receipts",
     "general.category": "Category",
     "general.expenses": "Expenses",
+    "general.edit_expense": "Edit Expense",
     "general.select_category": "Select category",
     "general.receipts_count": `{count, plural,
       one {# receipt}
@@ -35,6 +36,7 @@ const messages = {
     "general.receipts": "Reçus",
     "general.category": "Catégorie",
     "general.expenses": "Dépenses",
+    "general.edit_expense": "Modifier les dépenses",
     "general.select_category": "Choisir une catégorie",
     "general.receipts_count": `{count, plural,
       one {# reçu}

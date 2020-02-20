@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { SelectOptionPropType } from "../../constants";
 import { StyledSelect } from "./styled";
 
-const Select = ({ options, value, onChange, placeholder, disabled }) => {
+const Select = ({ options, placeholder, ...props }) => {
   return (
-    <StyledSelect value={value} onChange={onChange} disabled={disabled}>
+    <StyledSelect {...props}>
       {placeholder && <option value="">{placeholder}</option>}
       {options.map(({ value, label }) => (
         <option key={value} value={value}>

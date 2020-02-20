@@ -3,6 +3,7 @@ import { colors } from "../../styles";
 
 export const StyledFileUpload = styled.div`
   margin: 0 0 16px 0;
+  overflow: hidden;
 `;
 
 export const StyledImage = styled.img`
@@ -23,7 +24,7 @@ const gradientAnimationKeyframes = keyframes`
 `;
 
 export const StyledDropContainer = styled.div`
-  padding: 24px;
+  padding: 40px 16px;
   border-radius: 5px;
   margin-bottom: 16px;
   border: 1px solid ${colors.grayLight};
@@ -31,6 +32,7 @@ export const StyledDropContainer = styled.div`
   background: ${({ isOver }) => `linear-gradient(-45deg, ${isOver ? `#f36, #ffe9f0` : `#fff7f7, #ffd3d3`})`};
   background-size: 300% 300%;
   animation: ${gradientAnimationKeyframes} 3s ease infinite;
+  cursor: pointer;
 `;
 
 export const StyledFileInput = styled.input`

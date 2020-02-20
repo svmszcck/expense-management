@@ -5,6 +5,9 @@ export const Label = styled.label`
   font-size: 15px;
   color: ${colors.gray};
   text-align: left;
+  margin: 8px 0;
+  display: inline-block;
+  cursor: pointer;
 `;
 
 export const Textarea = styled.textarea`
@@ -32,27 +35,27 @@ const centerStyle = css`
 
 export const Button = styled.button`
   font-size: 16px;
-  padding: 12px;
+  padding: 10px 26px;
   margin-bottom: 8px;
-  color: ${colors.black};
-  background: ${colors.white};
-  border: 1px solid ${colors.grayLight};
+  color: ${colors.white};
+  background: ${colors.primary};
+  border: 0;
   border-radius: 5px;
   cursor: pointer;
-  background: white;
   transition: box-shadow 0.2s ease-in-out;
   ${smallShadow}
   ${({ centered }) => centered && centerStyle}
 
   &:hover {
     ${mediumShadow}
+    opacity: 0.5;
   }
 `;
 
 export const CloseButton = styled.button`
   position: absolute;
-  right: 12px;
-  top: 12px;
+  right: 13px;
+  top: 8px;
   width: 24px;
   height: 24px;
   opacity: 0.3;
@@ -154,4 +157,11 @@ export const StyledContainer = styled.div`
   @media only screen and (min-width: ${breakpoints.md}) {
     width: 960px;
   }
+`;
+
+export const StyledRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: ${({ withIndent }) => (withIndent ? "8px 0" : 0)};
 `;
