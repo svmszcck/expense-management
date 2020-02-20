@@ -3,6 +3,7 @@ import { act } from "react-dom/test-utils";
 import { mountWithReactIntl } from "../../helpers/testHelpers";
 import CurrentExpense from "./index";
 import { expense1 as expense } from "../../store/expenses/expenses.mock";
+import { SERVER_URL } from "../../constants";
 
 const setup = props => mountWithReactIntl(<CurrentExpense {...props} />);
 
@@ -60,5 +61,23 @@ describe("CurrentExpense", () => {
     const holder = setup({ expense, showSuccessMessage: true });
 
     expect(holder.find('p[data-test="success-msg"]').text()).toBe("Expense was successfully saved");
+  });
+
+  it("should represent receipts", () => {
+    const receipts = [{ url: "url" }, { url: "url2" }];
+    const holder = setup({
+      expense: {
+        ...expense,
+        receipts
+      }
+    });
+
+    const receiptsEl = holder.find('img[data-test="receipt"]');
+
+    expect(receiptsEl).toHaveLength(receipts.length);
+
+    receiptsEl.forEach((receipt, i) => {
+      expect(receipt.prop("src")).toBe(`${SERVER_URL}${receipts[i].url}`);
+    });
   });
 });

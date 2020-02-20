@@ -4,9 +4,8 @@ import { injectIntl } from "react-intl";
 import { StyledFileUpload, StyledImage, StyledDropContainer, StyledFileInput } from "./styled";
 import { IntlPropType } from "../../constants";
 
-const FileUpload = ({ onDrop, name, intl }) => {
+const FileUpload = ({ onDrop, name, file, intl }) => {
   const [isOver, setOverlay] = useState(false);
-  const [file, setFile] = useState(null);
   const inputRef = useRef(null);
 
   const handleDragOver = e => {
@@ -18,6 +17,7 @@ const FileUpload = ({ onDrop, name, intl }) => {
     e.preventDefault();
     setOverlay(false);
   };
+
   const handleDrop = e => {
     e.preventDefault();
     e.persist();
@@ -34,7 +34,6 @@ const FileUpload = ({ onDrop, name, intl }) => {
     if (file && file.type.includes("image")) {
       file.preview = URL.createObjectURL(file);
     }
-    setFile(file);
     onDrop(file);
   };
 
@@ -67,6 +66,10 @@ const FileUpload = ({ onDrop, name, intl }) => {
 FileUpload.propTypes = {
   onDrop: PropTypes.func,
   name: PropTypes.string,
+  file: PropTypes.shape({
+    name: PropTypes.string,
+    preview: PropTypes.string
+  }),
   intl: IntlPropType
 };
 

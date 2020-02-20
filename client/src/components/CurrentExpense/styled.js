@@ -18,3 +18,7 @@ export const StyledLoaderOverlay = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const StyledReceiptImage = styled.img`
+  width: 25%;
+`;
