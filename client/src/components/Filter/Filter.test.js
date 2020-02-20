@@ -1,10 +1,11 @@
 import React from "react";
+import { mount } from "enzyme";
 import Filter from "./index";
-import { mountWithReactIntl } from "../../helpers/testHelpers";
+import { withReactIntl } from "../../helpers/testHelpers";
 
 const changeFilterValue = () => {};
 
-const setup = props => mountWithReactIntl(<Filter changeFilterValue={changeFilterValue} {...props} />);
+const setup = props => mount(withReactIntl(<Filter changeFilterValue={changeFilterValue} {...props} />));
 
 describe("Filter", () => {
   it("should represent filter layout", () => {

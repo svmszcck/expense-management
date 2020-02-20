@@ -1,11 +1,11 @@
 import React from "react";
-import { act } from "react-dom/test-utils";
-import { mountWithReactIntl } from "../../helpers/testHelpers";
+import { mount } from "enzyme";
+import { withReactIntl } from "../../helpers/testHelpers";
 import CurrentExpense from "./index";
 import { expense1 as expense } from "../../store/expenses/expenses.mock";
 import { SERVER_URL } from "../../constants";
 
-const setup = props => mountWithReactIntl(<CurrentExpense {...props} />);
+const setup = props => mount(withReactIntl(<CurrentExpense {...props} />));
 
 describe("CurrentExpense", () => {
   it("should represent initial fields state", () => {

@@ -138,3 +138,22 @@ export const LoaderWrapper = styled.div`
   justify-content: center;
   margin: 20px;
 `;
+
+export const StyledContainer = styled.div`
+  width: 100%;
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-right: auto;
+  margin-left: auto;
+  @media only screen and (min-width: 576px) {
+    width: 540px;
+  }
+
+  @media only screen and (min-width: 992px) {
+    width: 960px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    width: 1140px;
+  }
+`;

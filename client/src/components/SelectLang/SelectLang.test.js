@@ -1,12 +1,13 @@
 import React from "react";
+import { mount } from "enzyme";
 import { DEFAULT_LOCALE } from "../../constants";
-import { mountWithReactIntl } from "../../helpers/testHelpers";
+import { withReactIntl } from "../../helpers/testHelpers";
 import SelectLang from "./index";
 
 const onChange = () => {};
 
 const setup = (locale = DEFAULT_LOCALE) =>
-  mountWithReactIntl(<SelectLang locale={locale} onChange={onChange} />, locale);
+  mount(withReactIntl(<SelectLang locale={locale} onChange={onChange} />, locale));
 
 describe("SelectLang", () => {
   it("should represent Select with default props", () => {

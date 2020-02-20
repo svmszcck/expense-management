@@ -4,15 +4,15 @@ import store from "./store";
 import Expenses from "./containers/Expenses";
 import { GlobalStyles } from "./styles";
 import IntlProvider from "./containers/IntlProvider";
-import SelectLanguage from "./containers/SelectLanguage";
 import Filter from "./containers/Filter";
+import Header from "./components/Header";
 
 function App() {
   return (
     <Provider store={store}>
       <IntlProvider>
         <GlobalStyles />
-        <SelectLanguage />
+        <Header />
         <Filter />
         <Expenses />
       </IntlProvider>

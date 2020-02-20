@@ -3,6 +3,9 @@ import { mount } from "enzyme";
 import { IntlProvider } from "react-intl";
 import messages from "../intl/messages";
 import { DEFAULT_LOCALE } from "../constants";
+import { rootReducer } from "../store/index";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 
 /** Helper for testing reducer and helpers
  * @param  {Function} rootReducer - project rootReducer
@@ -42,12 +45,28 @@ export function testReducer(rootReducer, initialState) {
  * @param  {String} locale
  * @return  {Function} - React component
  * @example
- * // mountWithReactIntl(<Component />, locale)
+ * // withReactIntl(<Component />, locale)
  */
-export const mountWithReactIntl = (component, locale = DEFAULT_LOCALE) => {
-  return mount(
-    <IntlProvider messages={messages[locale]} locale={locale}>
-      {component}
-    </IntlProvider>
-  );
+export const withReactIntl = (component, locale = DEFAULT_LOCALE) => (
+  <IntlProvider messages={messages[locale]} locale={locale}>
+    {component}
+  </IntlProvider>
+);
+/** mountWithRedux helper for testing components wrapped in redux
+ * @param  {Function} container - container component
+ * @param  {Array} actions=[] - actions that will be called for creating initial state
+ * @return  {holder, store} - holder - React component, store -redux store
+ * @example
+ * // mountWithRedux(<Component />, [action])
+ */
+export const mountWithRedux = (container, actions = []) => {
+  const store = createStore(rootReducer);
+
+  actions.forEach(action => {
+    store.dispatch(action);
+  });
+
+  const holder = mount(<Provider store={store}>{container}</Provider>);
+
+  return { holder, store };
 };
