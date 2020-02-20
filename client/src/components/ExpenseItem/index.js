@@ -2,28 +2,24 @@ import React from "react";
 import { FormattedTime, injectIntl } from "react-intl";
 import { expensePropTypes, IntlPropType } from "../../constants";
 import { Text } from "../UI/styled";
-import { StyledItem, StyledAmount } from "./styled";
+import { StyledItem, StyledRow } from "./styled";
 
-const ExpenseItem = ({ expense: { merchant, user, comment, receipts, date, amount, category }, intl }) => {
+const ExpenseItem = ({ expense: { merchant, user, receipts, date, amount, category }, intl }) => {
   return (
     <StyledItem>
-      <div>
+      <StyledRow>
         <Text bold>
           {merchant} {!!category && `(${category})`}
         </Text>
-        <Text>
-          {user.first} {user.last}
-        </Text>
-        <Text>{comment}</Text>
-        <Text>
-          {!!receipts.length && intl.formatMessage({ id: "general.receipts_count" }, { count: receipts.length })}
-        </Text>
-      </div>
-      <StyledAmount>
-        <Text>
+        <Text align="right">
           {amount.value} {amount.currency}
         </Text>
+      </StyledRow>
+      <StyledRow>
         <Text small>
+          {user.first} {user.last}
+        </Text>
+        <Text small align="right">
           <FormattedTime
             value={new Date(date)}
             year="numeric"
@@ -33,7 +29,12 @@ const ExpenseItem = ({ expense: { merchant, user, comment, receipts, date, amoun
             minute="numeric"
           />
         </Text>
-      </StyledAmount>
+      </StyledRow>
+      <StyledRow>
+        {!!receipts.length && (
+          <Text small>{intl.formatMessage({ id: "general.receipts_count" }, { count: receipts.length })}</Text>
+        )}
+      </StyledRow>
     </StyledItem>
   );
 };

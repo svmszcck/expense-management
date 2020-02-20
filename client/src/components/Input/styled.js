@@ -6,8 +6,8 @@ export const StyledInput = styled.input`
   box-shadow: inset 0 1px 3px 0 rgba(174, 174, 174, 0.5);
   border-radius: 4px;
   border: none;
-  padding: 13px 10px 11px 15px;
-  font-size: 14px;
+  padding: 10px 8px 10px 8px;
+  font-size: 16px;
   color: ${colors.black};
   box-sizing: border-box;
   width: 100%;

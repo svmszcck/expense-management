@@ -82,12 +82,13 @@ export const CloseButton = styled.button`
 `;
 
 export const Text = styled.p`
-  font-size: ${({ small }) => (small ? "0.8rem" : "1rem")};
+  font-size: ${({ small }) => (small ? "12px" : "16px")};
   font-family: "Roboto", sans-serif;
   line-height: 1.43;
   color: ${({ inverted }) => (inverted ? colors.white : colors.black)};
   font-weight: ${({ bold }) => (bold ? 600 : 400)};
   text-align: ${({ align = "left" }) => align};
+  margin: 0 0 8px 0;
 `;
 
 export const ErrorText = styled(Text)`
@@ -152,9 +153,5 @@ export const StyledContainer = styled.div`
 
   @media only screen and (min-width: ${breakpoints.md}) {
     width: 960px;
-  }
-
-  @media only screen and (min-width: ${breakpoints.lg}) {
-    width: 1140px;
   }
 `;

@@ -2,11 +2,8 @@ import styled from "styled-components";
 import { colors, smallShadow, mediumShadow } from "../../styles";
 
 export const StyledItem = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 8px;
-  margin-bottom: 8px;
+  padding: 16px 16px 8px 16px;
+  margin-bottom: 16px;
   transition: box-shadow 0.2s ease-in-out;
   border-radius: 5px;
   ${smallShadow}
@@ -17,6 +14,8 @@ export const StyledItem = styled.div`
   }
 `;
 
-export const StyledAmount = styled.div`
-  text-align: right;
+export const StyledRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;

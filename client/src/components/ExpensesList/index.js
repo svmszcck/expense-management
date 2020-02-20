@@ -5,7 +5,7 @@ import Modal from "react-modal";
 import PropTypes from "prop-types";
 import { expensePropTypes } from "../../constants";
 import CurrentExpense from "../../containers/CurrentExpense";
-import { Button, CloseButton, ErrorText, Text, Loader, LoaderWrapper } from "../UI/styled";
+import { Button, CloseButton, ErrorText, Text, Loader, LoaderWrapper, StyledContainer } from "../UI/styled";
 import ExpenseItem from "../ExpenseItem";
 import { StyledExpensesList } from "./styled";
 
@@ -26,7 +26,7 @@ const ExpensesList = ({
   }, []);
 
   return (
-    <div>
+    <StyledContainer>
       <StyledExpensesList>
         {expenses.map(expense => (
           <div
@@ -68,7 +68,7 @@ const ExpensesList = ({
         <CloseButton onClick={resetExpenseId} />
         <CurrentExpense />
       </Modal>
-    </div>
+    </StyledContainer>
   );
 };
 
