@@ -11,7 +11,6 @@ export const StyledHeaderWrap = styled(StyledContainer)`
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  box-sizing: border-box;
 `;
 
 export const StyledLogo = styled.div`

@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
-import { smallShadow, mediumShadow, colors } from "../../styles";
+import { smallShadow, mediumShadow, colors, breakpoints } from "../../styles";
 
 export const Label = styled.label`
   font-size: 15px;
@@ -145,15 +145,16 @@ export const StyledContainer = styled.div`
   padding-left: 16px;
   margin-right: auto;
   margin-left: auto;
-  @media only screen and (min-width: 576px) {
+  box-sizing: border-box;
+  @media only screen and (min-width: ${breakpoints.sm}) {
     width: 540px;
   }
 
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: ${breakpoints.md}) {
     width: 960px;
   }
 
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: ${breakpoints.lg}) {
     width: 1140px;
   }
 `;
