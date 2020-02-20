@@ -6,6 +6,7 @@ import { GlobalStyles } from "./styles";
 import IntlProvider from "./containers/IntlProvider";
 import Filter from "./containers/Filter";
 import Header from "./components/Header";
+import CurrentExpense from "./containers/CurrentExpense";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Header />
         <Filter />
         <Expenses />
+        <CurrentExpense />
       </IntlProvider>
     </Provider>
   );

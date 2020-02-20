@@ -1,11 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import Modal from "react-modal";
+
 import PropTypes from "prop-types";
 import { expensePropTypes } from "../../constants";
-import CurrentExpense from "../../containers/CurrentExpense";
-import { Button, CloseButton, ErrorText, Text, Loader, LoaderWrapper, StyledContainer } from "../UI/styled";
+import { Button, ErrorText, Text, Loader, LoaderWrapper, StyledContainer } from "../UI/styled";
 import ExpenseItem from "../ExpenseItem";
 import { StyledExpensesList } from "./styled";
 
@@ -17,9 +16,7 @@ const ExpensesList = ({
   isAllLoaded,
   isShowError,
   isShowNoItems,
-  setExpenseId,
-  resetExpenseId,
-  expenseId
+  setExpenseId
 }) => {
   useEffect(() => {
     fetchExpenses();
@@ -59,21 +56,11 @@ const ExpensesList = ({
           </Text>
         )}
         {isLoadMore && (
-          <Button centered onClick={fetchExpenses}>
+          <Button centered onClick={() => fetchExpenses()}>
             <FormattedMessage id="general.load_more" />
           </Button>
         )}
       </StyledExpensesList>
-      <Modal
-        className="modal"
-        ariaHideApp={false}
-        isOpen={!!expenseId}
-        onRequestClose={resetExpenseId}
-        bodyOpenClassName="preventScroll"
-      >
-        <CloseButton onClick={resetExpenseId} />
-        <CurrentExpense />
-      </Modal>
     </StyledContainer>
   );
 };

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { injectIntl } from "react-intl";
+import Modal from "react-modal";
 import { expensePropTypes, IntlPropType, SERVER_URL } from "../../constants";
-import { Textarea, Label, ErrorText, Text, Button, Loader, StyledRow } from "../UI/styled";
+import { Textarea, Label, ErrorText, Text, Button, Loader, CloseButton, StyledRow } from "../UI/styled";
 import FileUpload from "../FileUpload";
 import Select from "../Select";
 import {
@@ -15,7 +16,7 @@ import {
 } from "./styled";
 import ExpenseInfo from "../ExpenseInfo/index";
 
-const CurrentExpense = ({ expense, updateExpense, showSuccessMessage, error, isLoading, intl }) => {
+const CurrentExpense = ({ expense, updateExpense, showSuccessMessage, error, isLoading, resetExpenseId, intl }) => {
   const { id, receipts } = expense;
   const [comment, setComment] = useState(expense.comment);
   const [category, setCategory] = useState(expense.category);
@@ -51,56 +52,68 @@ const CurrentExpense = ({ expense, updateExpense, showSuccessMessage, error, isL
   ];
 
   return (
-    <StyledCurrentExpense>
-      <StyledHeader>{intl.formatMessage({ id: "general.edit_expense" })}</StyledHeader>
-      <ExpenseInfo expense={expense} />
-      <StyledRow withIndent>
-        <Label htmlFor="category">{intl.formatMessage({ id: "general.category" })}</Label>
-        <Select
-          name="category"
-          id="category"
-          placeholder={intl.formatMessage({ id: "general.select_category" })}
-          onChange={e => setCategory(e.target.value)}
-          value={category}
-          options={categoriesOptions}
-        />
-      </StyledRow>
-      <Label htmlFor="comment">{intl.formatMessage({ id: "general.comment" })}</Label>
-      <Textarea rows="3" id="comment" value={comment} onChange={e => setComment(e.target.value)} />
+    <Modal
+      className="modal"
+      ariaHideApp={false}
+      isOpen={!!id}
+      onRequestClose={resetExpenseId}
+      bodyOpenClassName="preventScroll"
+    >
+      <CloseButton onClick={resetExpenseId} />
 
-      <Text>{intl.formatMessage({ id: "general.receipts" })}</Text>
-      <StyledReceiptsWrap>
-        {receipts.map(({ url }) => (
-          <StyledReceipt data-test="receipt" key={url} style={{ backgroundImage: `url(${SERVER_URL}${url})` }} />
-        ))}
-      </StyledReceiptsWrap>
+      {id && (
+        <StyledCurrentExpense>
+          <StyledHeader>{intl.formatMessage({ id: "general.edit_expense" })}</StyledHeader>
+          <ExpenseInfo expense={expense} />
+          <StyledRow withIndent>
+            <Label htmlFor="category">{intl.formatMessage({ id: "general.category" })}</Label>
+            <Select
+              name="category"
+              id="category"
+              placeholder={intl.formatMessage({ id: "general.select_category" })}
+              onChange={e => setCategory(e.target.value)}
+              value={category}
+              options={categoriesOptions}
+            />
+          </StyledRow>
+          <Label htmlFor="comment">{intl.formatMessage({ id: "general.comment" })}</Label>
+          <Textarea rows="3" id="comment" value={comment} onChange={e => setComment(e.target.value)} />
 
-      <FileUpload name="file" file={file} onDrop={setFile} />
+          <Text>{intl.formatMessage({ id: "general.receipts" })}</Text>
+          <StyledReceiptsWrap>
+            {receipts.map(({ url }) => (
+              <StyledReceipt data-test="receipt" key={url} style={{ backgroundImage: `url(${SERVER_URL}${url})` }} />
+            ))}
+          </StyledReceiptsWrap>
 
-      {isLoading && (
-        <StyledLoaderOverlay>
-          <Loader />
-        </StyledLoaderOverlay>
+          <FileUpload name="file" file={file} onDrop={setFile} />
+
+          {isLoading && (
+            <StyledLoaderOverlay>
+              <Loader />
+            </StyledLoaderOverlay>
+          )}
+
+          {showSuccessMessage && (
+            <Text bold align="center" data-test="success-msg">
+              {intl.formatMessage({ id: "messages.success_expense_save" })}
+            </Text>
+          )}
+
+          {error && (
+            <ErrorText align="center" data-test="error-msg">
+              {error}
+            </ErrorText>
+          )}
+
+          <StyledActions>
+            <Button centered data-test="save" onClick={saveExpanse}>
+              {intl.formatMessage({ id: "general.save" })}
+            </Button>
+          </StyledActions>
+        </StyledCurrentExpense>
       )}
-
-      {showSuccessMessage && (
-        <Text bold align="center" data-test="success-msg">
-          {intl.formatMessage({ id: "messages.success_expense_save" })}
-        </Text>
-      )}
-
-      {error && (
-        <ErrorText align="center" data-test="error-msg">
-          {error}
-        </ErrorText>
-      )}
-
-      <StyledActions>
-        <Button centered onClick={saveExpanse}>
-          {intl.formatMessage({ id: "general.save" })}
-        </Button>
-      </StyledActions>
-    </StyledCurrentExpense>
+    </Modal>
   );
 };
 

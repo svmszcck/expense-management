@@ -10,8 +10,7 @@ import {
   selectIsLoading
 } from "../store/expenses/selectors";
 import { fetchExpenses } from "../store/expenses/actions";
-import { selectCurrentExpenseId } from "../store/editExpense/selectors";
-import { resetExpenseId, setExpenseId } from "../store/editExpense/actions";
+import { setExpenseId } from "../store/editExpense/actions";
 
 const mapStateToProps = createStructuredSelector({
   expenses: selectFilteredExpenses,
@@ -19,14 +18,12 @@ const mapStateToProps = createStructuredSelector({
   isShowError: selectIsShowError,
   isAllLoaded: selectIsAllLoaded,
   isShowNoItems: selectIsShowNoItems,
-  isLoading: selectIsLoading,
-  expenseId: selectCurrentExpenseId
+  isLoading: selectIsLoading
 });
 
 const mapDispatchToProps = {
   fetchExpenses,
-  setExpenseId,
-  resetExpenseId
+  setExpenseId
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpensesList);

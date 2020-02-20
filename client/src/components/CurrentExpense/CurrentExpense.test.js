@@ -1,11 +1,12 @@
 import React from "react";
 import { mount } from "enzyme";
 import { withReactIntl } from "../../helpers/testHelpers";
-import CurrentExpense from "./index";
 import { expense1 as expense } from "../../store/expenses/expenses.mock";
 import { SERVER_URL } from "../../constants";
-import ExpenseInfo from "../ExpenseInfo/index";
+import ExpenseInfo from "../ExpenseInfo";
+import { CloseButton } from "../UI/styled";
 import { StyledHeader } from "./styled";
+import CurrentExpense from "./index";
 
 const setup = props => mount(withReactIntl(<CurrentExpense {...props} />));
 
@@ -66,7 +67,7 @@ describe("CurrentExpense", () => {
   it("should represent save button", () => {
     const holder = setup({ expense });
 
-    expect(holder.find("button").text()).toBe("Save");
+    expect(holder.find('button[data-test="save"]').text()).toBe("Save");
   });
 
   it("should update expense comment on save", async () => {
@@ -79,7 +80,7 @@ describe("CurrentExpense", () => {
     holder.find("textarea").simulate("change", { target: { value: "test" } });
     holder.update();
 
-    holder.find("button").simulate("click");
+    holder.find('button[data-test="save"]').simulate("click");
 
     expect(updateExpense).toHaveBeenCalledWith({ comment: "test", category: "", id: expense.id });
   });
@@ -113,5 +114,25 @@ describe("CurrentExpense", () => {
     receiptsEl.forEach((receipt, i) => {
       expect(receipt.prop("style")).toEqual({ backgroundImage: `url(${SERVER_URL}${receipts[i].url})` });
     });
+  });
+
+  it("should represent modal", () => {
+    const holder = setup({ expense });
+
+    expect(holder.find("Modal")).toHaveLength(1);
+  });
+
+  it("should represent close button", () => {
+    const resetExpenseId = jest.fn();
+    const holder = setup({ expense, resetExpenseId });
+    const closeButton = holder.find(CloseButton);
+
+    expect(resetExpenseId).not.toHaveBeenCalled();
+
+    expect(closeButton).toHaveLength(1);
+
+    closeButton.simulate("click");
+
+    expect(resetExpenseId).toHaveBeenCalled();
   });
 });
