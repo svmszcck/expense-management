@@ -2,8 +2,8 @@ import React from "react";
 import { injectIntl } from "react-intl";
 import { expensePropTypes, IntlPropType } from "../../constants";
 import { Text, StyledRow } from "../UI/styled";
+import ExpenseInfo from "../ExpenseInfo";
 import { StyledItem } from "./styled";
-import ExpenseInfo from "../ExpenseInfo/index";
 
 const ExpenseItem = ({ expense, intl }) => {
   return (

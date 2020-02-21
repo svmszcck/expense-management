@@ -2,9 +2,9 @@ import { select } from "redux-saga/effects";
 import { expectSaga, testSaga } from "redux-saga-test-plan";
 import * as matchers from "redux-saga-test-plan/matchers";
 import { throwError } from "redux-saga-test-plan/providers";
+import { apiGetExpenses } from "../../api";
 import expensesSaga, { loadExpensesSaga } from "./saga";
 import { FETCH_EXPENSES_REQUEST, FETCH_EXPENSES_ERROR, FETCH_EXPENSES_SUCCESS, FETCH_EXPENSES } from "./actions";
-import { apiGetExpenses } from "../../api";
 import { selectExpensesOffset } from "./selectors";
 
 jest.mock("../../api", () => ({

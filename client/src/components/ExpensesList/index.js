@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-
 import PropTypes from "prop-types";
 import { expensePropTypes } from "../../constants";
 import { Button, ErrorText, Text, Loader, LoaderWrapper, StyledContainer } from "../UI/styled";

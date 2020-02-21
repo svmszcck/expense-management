@@ -2,11 +2,10 @@ import PropTypes from "prop-types";
 
 export const SERVER_URL = `http://localhost:3000`;
 export const API_URL = `${SERVER_URL}/expenses`;
-
 export const DEFAULT_EXPENSES_LIMIT = 25;
-
 export const DEFAULT_LOCALE = "en-GB";
 
+// PROP_TYPES
 export const expensePropTypes = PropTypes.shape({
   id: PropTypes.string,
   merchant: PropTypes.string,

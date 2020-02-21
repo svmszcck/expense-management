@@ -36,15 +36,14 @@ describe("CurrentExpense", () => {
     const select = holder.find('Select[name="category"]');
 
     expect(holder.find('label[htmlFor="category"]').text()).toEqual("Category");
-
     expect(select.prop("placeholder")).toEqual("Select category");
     expect(select.prop("options")).toEqual([
       { label: "Food", value: "food" },
       { label: "Software", value: "software" },
       { label: "Travel", value: "travel" }
     ]);
-
     expect(select.prop("value")).toBe("");
+
     select.simulate("change", { target: { value: "travel" } });
 
     holder.update();
@@ -106,7 +105,6 @@ describe("CurrentExpense", () => {
         receipts
       }
     });
-
     const receiptsEl = holder.find('div[data-test="receipt"]');
 
     expect(receiptsEl).toHaveLength(receipts.length);
@@ -128,7 +126,6 @@ describe("CurrentExpense", () => {
     const closeButton = holder.find(CloseButton);
 
     expect(resetExpenseId).not.toHaveBeenCalled();
-
     expect(closeButton).toHaveLength(1);
 
     closeButton.simulate("click");

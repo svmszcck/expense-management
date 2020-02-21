@@ -1,8 +1,8 @@
 import React from "react";
 import { mount } from "enzyme";
-import ExpenseInfo from "./index";
 import { expense1 } from "../../store/expenses/expenses.mock";
 import { withReactIntl } from "../../helpers/testHelpers";
+import ExpenseInfo from "./index";
 
 const setup = () => mount(withReactIntl(<ExpenseInfo expense={expense1} />));
 

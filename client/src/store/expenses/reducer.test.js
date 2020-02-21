@@ -1,6 +1,7 @@
 import { testReducer } from "../../helpers/testHelpers";
 import { changeFilter } from "../filter/actions";
-import { fetchExpensesRequest, fetchExpensesError, fetchExpensesSuccess } from "./actions";
+import { selectCurrentExpenseId } from "../editExpense/selectors";
+import { updateExpenseSuccess, resetExpenseId, setExpenseId } from "../editExpense/actions";
 import {
   selectFilteredExpenses,
   selectIsLoading,
@@ -12,11 +13,10 @@ import {
   selectIsShowNoItems,
   selectCurrentExpense
 } from "./selectors";
-import { selectCurrentExpenseId } from "../editExpense/selectors";
 import { expenses } from "./expenses.mock.js";
+import { fetchExpensesRequest, fetchExpensesError, fetchExpensesSuccess } from "./actions";
 import { initialState } from "./reducer";
 import { rootReducer } from "../index";
-import { updateExpenseSuccess, resetExpenseId, setExpenseId } from "../editExpense/actions";
 
 const [exp1, exp2] = expenses;
 const error = "Error Message";

@@ -1,12 +1,12 @@
 import React from "react";
 import { Provider } from "react-redux";
-import store from "./store";
 import Expenses from "./containers/Expenses";
-import { GlobalStyles } from "./styles";
 import IntlProvider from "./containers/IntlProvider";
 import Filter from "./containers/Filter";
-import Header from "./components/Header";
 import CurrentExpense from "./containers/CurrentExpense";
+import Header from "./components/Header";
+import store from "./store";
+import { GlobalStyles } from "./styles";
 
 function App() {
   return (

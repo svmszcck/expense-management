@@ -2,25 +2,25 @@ import styled, { css, keyframes } from "styled-components";
 import { smallShadow, mediumShadow, colors, breakpoints } from "../../styles";
 
 export const Label = styled.label`
+  display: inline-block;
   font-size: 15px;
   color: ${colors.gray};
   text-align: left;
   margin: 8px 0;
-  display: inline-block;
   cursor: pointer;
 `;
 
 export const Textarea = styled.textarea`
-  background: ${colors.white};
-  box-shadow: inset 0 1px 3px 0 rgba(174, 174, 174, 0.5);
-  border-radius: 4px;
-  border: none;
+  margin: 0 0 8px 0;
+  width: 100%;
   padding: 13px 10px 11px 15px;
+  box-sizing: border-box;
   font-size: 14px;
   color: ${colors.black};
-  box-sizing: border-box;
-  width: 100%;
-  margin: 0 0 8px 0;
+  border-radius: 4px;
+  border: none;
+  box-shadow: inset 0 1px 3px 0 rgba(174, 174, 174, 0.5);
+  background: ${colors.white};
   resize: none;
 
   &::placeholder {
@@ -34,10 +34,10 @@ const centerStyle = css`
 `;
 
 export const Button = styled.button`
-  font-size: 16px;
   padding: 10px 26px;
   margin-bottom: 8px;
   color: ${colors.white};
+  font-size: 16px;
   background: ${colors.primary};
   border: 0;
   border-radius: 5px;
@@ -68,12 +68,12 @@ export const CloseButton = styled.button`
   }
   &:before,
   &:after {
-    top: 0px;
     position: absolute;
+    top: 0px;
     left: 15px;
-    content: " ";
-    height: 26px;
     width: 2px;
+    height: 26px;
+    content: "";
     background-color: ${colors.gray};
   }
   &:before {
@@ -85,13 +85,13 @@ export const CloseButton = styled.button`
 `;
 
 export const Text = styled.p`
+  margin: 0 0 8px 0;
   font-size: ${({ small }) => (small ? "12px" : "16px")};
   font-family: "Roboto", sans-serif;
   line-height: 1.43;
-  color: ${({ inverted }) => (inverted ? colors.white : colors.black)};
   font-weight: ${({ bold }) => (bold ? 600 : 400)};
   text-align: ${({ align = "left" }) => align};
-  margin: 0 0 8px 0;
+  color: ${({ inverted }) => (inverted ? colors.white : colors.black)};
 `;
 
 export const ErrorText = styled(Text)`
@@ -125,8 +125,8 @@ export const Loader = styled.div`
   &:before {
     content: "";
     position: absolute;
-    border: 2px solid ${colors.primary};
     opacity: 1;
+    border: 2px solid ${colors.primary};
     border-radius: 50%;
     animation: ${ripple} 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
   }
@@ -136,7 +136,6 @@ export const Loader = styled.div`
 `;
 
 export const LoaderWrapper = styled.div`
-  align-items: center;
   display: flex;
   align-items: center;
   justify-content: center;

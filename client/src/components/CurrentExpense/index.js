@@ -6,6 +6,7 @@ import { expensePropTypes, IntlPropType, SERVER_URL } from "../../constants";
 import { Textarea, Label, ErrorText, Text, Button, Loader, CloseButton, StyledRow } from "../UI/styled";
 import FileUpload from "../FileUpload";
 import Select from "../Select";
+import ExpenseInfo from "../ExpenseInfo";
 import {
   StyledCurrentExpense,
   StyledActions,
@@ -14,7 +15,6 @@ import {
   StyledReceiptsWrap,
   StyledHeader
 } from "./styled";
-import ExpenseInfo from "../ExpenseInfo/index";
 
 const CurrentExpense = ({ expense, updateExpense, showSuccessMessage, error, isLoading, resetExpenseId, intl }) => {
   const { id, receipts } = expense;

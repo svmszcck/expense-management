@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import { injectIntl } from "react-intl";
-import { StyledFileUpload, StyledImage, StyledDropContainer, StyledFileInput } from "./styled";
 import { IntlPropType } from "../../constants";
+import { StyledFileUpload, StyledImage, StyledDropContainer, StyledFileInput } from "./styled";
 
 const FileUpload = ({ onDrop, name, file, intl }) => {
   const [isOver, setOverlay] = useState(false);

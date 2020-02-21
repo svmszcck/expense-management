@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
-import Filter from "./index";
 import { withReactIntl } from "../../helpers/testHelpers";
+import Filter from "./index";
 
 const changeFilterValue = () => {};
 
