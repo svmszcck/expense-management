@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './components/navigation'
 import Expenses from './components/expenses-list'
 import Search from './components/search'
+import ExpenseDetails from './components/expense-details'
 import './App.scss';
 
 const expenses = [{
@@ -50,7 +51,7 @@ function App() {
           <Expenses expenses={expenses} />
         </div>
         <div className='right'>
-
+          <ExpenseDetails {...expenses[0]}/>
         </div>
       </div>
     </div>
