@@ -1,0 +1,53 @@
+$clr-expense-active-bg: #f8fafb;
+
+.expense {
+  padding: 20px;
+  border-radius: 5px;
+  transition: all .3s linear;
+  cursor: pointer;
+  &:hover {
+    background-color: $clr-expense-active-bg;
+  }
+}
+
+.expense--active {
+  background-color: $clr-expense-active-bg;
+  box-shadow: 0 6px 6px -1px rgba(10, 22, 70, 0.1), 0 0 1px 0 rgba(10, 22, 70, 0.06);
+  z-index: 1;
+  position: relative;
+  transform: translate(30px, 0);
+}
+
+.expense__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.expense__merchant {
+  margin-top: 0;
+  text-transform: capitalize;
+}
+
+.expense__amount {
+  color: #8a899f;
+  font-size: 1.1rem;
+}
+
+.expense__user {
+  font-size: .8rem;
+  color: #666;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.expense__comment {
+  border-left: 2px solid #cde0f7;
+  padding: 10px;
+  &:empty {
+    display: none;
+  }
+}
