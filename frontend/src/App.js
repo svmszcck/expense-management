@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from './components/navigation'
 import Expenses from './components/expenses-list'
+import Search from './components/search'
 import './App.scss';
 
 const expenses = [{
@@ -45,6 +46,7 @@ function App() {
       <Navigation />
       <div className='container'>
         <div className='left'>
+          <Search />
           <Expenses expenses={expenses} />
         </div>
         <div className='right'>
