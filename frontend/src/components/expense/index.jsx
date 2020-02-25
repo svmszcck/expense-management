@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import getSymbolFromCurrency from 'currency-symbol-map'
 import './index.scss';
 
 export default ({
@@ -29,7 +30,7 @@ export default ({
           <p className='expense__comment'>{comment}</p>
         </div>
         <div className='expense__amount'>
-          {value} {currency}
+        { getSymbolFromCurrency(currency) }{value}
         </div>
       </div>
 

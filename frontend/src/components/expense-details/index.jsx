@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment';
+import getSymbolFromCurrency from 'currency-symbol-map'
 import Input from '../input';
 import FileUpload from '../file-upload';
 import stringToColor from '../../helpers/string-to-color';
@@ -33,8 +35,8 @@ export default ({
         { merchant.charAt(0) }
       </div>
       <h1 className='expense-details__title'>{merchant.toLowerCase()}</h1>
-      <p className='expense-details__amount'>{value} {currency}</p>
-      <p className='expense-details__date'>{date}</p>
+      <p className='expense-details__amount'>{getSymbolFromCurrency(currency)}{value}</p>
+      <p className='expense-details__date'>{moment(date).format("dddd, MMMM Do YYYY, h:mm a")}</p>
       <div className='expense-details__other'>
         <p className='expense-details__user'>
           <PersonIcon className='expense-details__icon'/>
