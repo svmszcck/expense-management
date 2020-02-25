@@ -1,7 +1,8 @@
 import React from 'react';
+import { MdSearch as SearchIcon } from 'react-icons/md';
 import Navigation from './components/navigation'
 import Expenses from './components/expenses-list'
-import Search from './components/search'
+import Input from './components/input'
 import ExpenseDetails from './components/expense-details'
 import './App.scss';
 
@@ -47,7 +48,9 @@ function App() {
       <Navigation />
       <div className='container'>
         <div className='left'>
-          <Search />
+          <Input id='search' type='search' label='Search' icon={
+            <SearchIcon className='search__icon' aria-hidden='true' />
+          } />
           <Expenses expenses={expenses} />
         </div>
         <div className='right'>

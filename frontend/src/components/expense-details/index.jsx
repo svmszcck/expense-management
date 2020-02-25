@@ -1,4 +1,5 @@
 import React from 'react';
+import Input from '../input';
 import stringToColor from '../../helpers/string-to-color';
 import { MdPerson as PersonIcon, MdMessage as MessageIcon } from 'react-icons/md';
 import './index.scss';
@@ -38,9 +39,14 @@ export default ({
           <PersonIcon className='expense-details__icon'/>
           <a className='expense-details__user-link' href={`mailto:${email}`}>{first} {last}</a>
         </p>
-        <p className='expense-details__comment'>
-          <MessageIcon className='expense-details__icon'/>
-        </p>
+        <Input
+          id='comment'
+          label='Comment'
+          className='expense-details__comment'
+          inputClassName='expense-details__comment-input'
+          icon={
+            <MessageIcon className='expense-details__icon' aria-hidden='true' />
+          } />
       </div>
     </div>
   );
