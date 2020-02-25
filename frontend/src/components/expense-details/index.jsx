@@ -1,5 +1,6 @@
 import React from 'react';
 import Input from '../input';
+import FileUpload from '../file-upload';
 import stringToColor from '../../helpers/string-to-color';
 import { MdPerson as PersonIcon, MdMessage as MessageIcon } from 'react-icons/md';
 import './index.scss';
@@ -24,7 +25,6 @@ export default ({
   },
 }) => {
   const color = stringToColor(merchant);
-  console.log(getGradient(color));
   return (
     <div className='expense-details'>
       <div className='expense-details__bg' style={getGradient(color)}></div>
@@ -48,6 +48,7 @@ export default ({
             <MessageIcon className='expense-details__icon' aria-hidden='true' />
           } />
       </div>
+      <FileUpload />
     </div>
   );
 };
