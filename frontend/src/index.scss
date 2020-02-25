@@ -22,3 +22,9 @@ a {
     text-decoration: none;
   }
 }
+
+@media screen and (max-width: $mobile-breakpoint) {
+  body {
+    padding-top: $nav-height-mobile;
+  }
+}

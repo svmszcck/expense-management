@@ -1,7 +1,24 @@
+@import '../styleguide/variables.scss';
+
 .expense-details {
   padding: 50px;
   text-align: center;
   width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 5px;
+  position: relative;
+}
+
+.expense-details__close {
+  appearance: none;
+  border: 0;
+  background-color: transparent;
+  font-size: 2rem;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
 }
 
 .expense-details__bg {
@@ -55,4 +72,27 @@
 
 .expense-details__comment-input {
   padding-left: 0;
+}
+
+
+@media screen and (max-width: $mobile-breakpoint) {
+  .expense-details {
+    position: fixed;
+    top: 70px;
+    z-index: 100;
+    width: 100%;
+    box-shadow: 0px -7px 4px -4px rgba(112,112,112,.4);
+    height: calc(100vh - 70px);
+    animation: appear .2s linear;
+  }
+  @keyframes appear {
+    0% {
+      opacity: 0;
+      top: 100vh
+    }
+    100% {
+      opacity: 1;
+      top: 70px;
+    }
+  }
 }

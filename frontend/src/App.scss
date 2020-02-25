@@ -10,6 +10,17 @@
   width: 50%;
   border-right: 1px solid #ccc;
 }
+
 .right {
   width: 50%;
+}
+
+@media screen and (max-width: $mobile-breakpoint) {
+  .container {
+    flex-direction: column;
+    & > * {
+      width: 100%;
+      border: none;
+    }
+  }
 }

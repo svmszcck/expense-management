@@ -27,6 +27,7 @@ export default ({
   const color = stringToColor(merchant);
   return (
     <div className='expense-details'>
+      <button className='expense-details__close' aria-label='close'>&times;</button>
       <div className='expense-details__bg' style={getGradient(color)}></div>
       <div className='expense-details__logo' style={{backgroundColor: color}}>
         { merchant.charAt(0) }

@@ -1,3 +1,4 @@
+@import '../styleguide/variables.scss';
 $clr-expense-active-bg: #f8fafb;
 
 .expense {
@@ -49,5 +50,14 @@ $clr-expense-active-bg: #f8fafb;
   padding: 10px;
   &:empty {
     display: none;
+  }
+}
+
+@media screen and (max-width: $mobile-breakpoint) {
+  .expense--active {
+    background-color: $clr-expense-active-bg;
+    box-shadow: 0 6px 6px -1px rgba(10, 22, 70, 0.1), 0 0 1px 0 rgba(10, 22, 70, 0.06);
+    z-index: 1;
+    transform: translate(0, 0);
   }
 }
