@@ -3,9 +3,11 @@ import createSagaMiddleware from "redux-saga";
 import { fork, all } from "redux-saga/effects";
 import expensesSaga from './expenses/sagas'
 import expensesReducer from './expenses';
+import globalReducer from './global';
 
 const rootReducer = combineReducers({
-  expenses: expensesReducer
+  expenses: expensesReducer,
+  global: globalReducer
 });
 
 const sagas = [

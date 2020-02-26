@@ -4,6 +4,7 @@ import store from "./store";
 import { MdSearch as SearchIcon } from 'react-icons/md';
 import Navigation from './components/navigation'
 import Expenses from './containers/expenses-list'
+import Notification from './containers/notification'
 import Input from './components/input'
 import ExpenseDetails from './components/expense-details'
 import './App.scss';
@@ -59,6 +60,7 @@ const App = () => {
           <ExpenseDetails {...expenses[1]}/>
         </div>
       </div>
+      <Notification />
     </div>
   );
 }
