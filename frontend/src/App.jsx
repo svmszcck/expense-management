@@ -1,7 +1,9 @@
 import React from 'react';
+import { Provider } from "react-redux";
+import store from "./store";
 import { MdSearch as SearchIcon } from 'react-icons/md';
 import Navigation from './components/navigation'
-import Expenses from './components/expenses-list'
+import Expenses from './containers/expenses-list'
 import Input from './components/input'
 import ExpenseDetails from './components/expense-details'
 import './App.scss';
@@ -42,7 +44,7 @@ const expenses = [{
   }
 }];
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Navigation />
@@ -51,14 +53,18 @@ function App() {
           <Input id='search' type='search' label='Search' icon={
             <SearchIcon className='search__icon' aria-hidden='true' />
           } />
-          <Expenses expenses={expenses} />
+          <Expenses />
         </div>
         <div className='right'>
-          <ExpenseDetails {...expenses[0]}/>
+          <ExpenseDetails {...expenses[1]}/>
         </div>
       </div>
     </div>
   );
 }
 
-export default App;
+export default () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
