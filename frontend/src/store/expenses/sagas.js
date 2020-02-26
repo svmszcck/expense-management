@@ -1,15 +1,17 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { FETCH_EXPENSES, EXPENSES_FETCHED } from './actions';
+import { FETCH_EXPENSES, EXPENSES_FETCHED, EXPENSES_FETCHING } from './actions';
 import { SHOW_NOTIFICATION } from '../global/actions';
 import { fetchExpenses } from '../../api';
 import { NotificationTypes } from '../../components/notification';
 
 function* loadExpensesSaga() {
+  yield put({ type: EXPENSES_FETCHING, payload: true });
   try {
     const offset = 0;
     const data = yield call(fetchExpenses, offset);
     yield put({ type: EXPENSES_FETCHED, payload: data });
   } catch (e) {
+    yield put({ type: EXPENSES_FETCHING, payload: false });
     yield put({ type: SHOW_NOTIFICATION, payload: {
       message: 'Failed to fetch expenses...',
       type: NotificationTypes.ERROR

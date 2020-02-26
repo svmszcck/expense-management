@@ -3,7 +3,8 @@ import { fetchExpenses } from '../../store/expenses/actions'
 import ExpensesList from '../../components/expenses-list';
 
 const mapStateToProps = (state) => ({
-  expenses: state.expenses.expenses
+  expenses: state.expenses.expenses,
+  isLoading: state.expenses.isFetching
 })
 
 const mapDispatchToProps = {
