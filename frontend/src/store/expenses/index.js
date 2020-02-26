@@ -10,6 +10,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         expenses: [...state.expenses, ...payload.expenses],
+        total: payload.total,
         isFetching: false
       };
     case EXPENSES_FETCHING: {

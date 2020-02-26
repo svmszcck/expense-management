@@ -2,11 +2,12 @@ import React from 'react';
 import { Provider } from "react-redux";
 import store from "./store";
 import { MdSearch as SearchIcon } from 'react-icons/md';
-import Navigation from './components/navigation'
-import Expenses from './containers/expenses-list'
-import Notification from './containers/notification'
-import Input from './components/input'
-import ExpenseDetails from './components/expense-details'
+import Navigation from './components/navigation';
+import Expenses from './containers/expenses-list';
+import Notification from './containers/notification';
+import Pagination from './containers/pagination';
+import Input from './components/input';
+import ExpenseDetails from './components/expense-details';
 import './App.scss';
 
 const expenses = [{
@@ -55,6 +56,7 @@ const App = () => {
             <SearchIcon className='search__icon' aria-hidden='true' />
           } />
           <Expenses />
+          <Pagination />
         </div>
         <div className='right'>
           <ExpenseDetails {...expenses[1]}/>

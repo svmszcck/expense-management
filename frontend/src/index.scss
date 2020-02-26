@@ -23,6 +23,18 @@ a {
   }
 }
 
+.btn--primary {
+  color: #FFF !important;
+  background-color: #000;
+  border-radius: 31px;
+  padding: 10px 23px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  font-size: 1rem;;
+  border: none;
+  cursor: pointer;
+}
+
 @media screen and (max-width: $mobile-breakpoint) {
   body {
     padding-top: $nav-height-mobile;

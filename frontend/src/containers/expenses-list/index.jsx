@@ -4,7 +4,7 @@ import ExpensesList from '../../components/expenses-list';
 
 const mapStateToProps = (state) => ({
   expenses: state.expenses.expenses,
-  isLoading: state.expenses.isFetching
+  isLoading: !state.expenses.expenses.length && state.expenses.isFetching
 })
 
 const mapDispatchToProps = {

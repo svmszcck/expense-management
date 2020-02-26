@@ -4,10 +4,9 @@ import { SHOW_NOTIFICATION } from '../global/actions';
 import { fetchExpenses } from '../../api';
 import { NotificationTypes } from '../../components/notification';
 
-function* loadExpensesSaga() {
+function* loadExpensesSaga({ payload: { offset = 0 } }) {
   yield put({ type: EXPENSES_FETCHING, payload: true });
   try {
-    const offset = 0;
     const data = yield call(fetchExpenses, offset);
     yield put({ type: EXPENSES_FETCHED, payload: data });
   } catch (e) {
