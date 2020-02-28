@@ -7,7 +7,7 @@ import Expenses from './containers/expenses-list';
 import Notification from './containers/notification';
 import Pagination from './containers/pagination';
 import Input from './components/input';
-import ExpenseDetails from './components/expense-details';
+import ExpenseDetails from './containers/expense-details';
 import './App.scss';
 
 const expenses = [{

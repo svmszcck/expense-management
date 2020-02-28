@@ -13,23 +13,30 @@ const getGradient = (color) => ({
 });
 
 export default ({
-  amount: {
-    value,
-    currency
-  },
-  merchant,
-  date,
-  comment,
-  user: {
-    first,
-    last,
-    email
-  },
+  expense,
+  selectExpense
 }) => {
+  if (!expense) {
+    return null;
+  }
+  const {
+    amount: {
+      value,
+      currency
+    },
+    merchant,
+    date,
+    comment,
+    user: {
+      first,
+      last,
+      email
+    }
+  } = expense;
   const color = stringToColor(merchant);
   return (
     <div className='expense-details'>
-      <button className='expense-details__close' aria-label='close'>&times;</button>
+      <button className='expense-details__close' aria-label='close' onClick={() => selectExpense(null)}>&times;</button>
       <div className='expense-details__bg' style={getGradient(color)}></div>
       <div className='expense-details__logo' style={{backgroundColor: color}}>
         { merchant.charAt(0) }
