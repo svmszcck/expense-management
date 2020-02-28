@@ -16,13 +16,14 @@ export default ({
     last,
     email
   },
-  selected
+  selected,
+  onClick
 }) => {
   const classNames = classnames('expense', {
     'expense--active': selected
   });
   return (
-    <As className={classNames}>
+    <As className={classNames} onClick={onClick}>
       <div className='expense__container'>
         <div className='expense__info'>
           <p className='expense__merchant'>{ merchant.toLowerCase() }</p>

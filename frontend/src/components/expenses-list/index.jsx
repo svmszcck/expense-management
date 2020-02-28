@@ -3,7 +3,7 @@ import Expense from '../expense';
 import Spinner from '../spinner'
 import './index.scss';
 
-export default ({ expenses = [], fetchExpenses, isLoading }) => {
+export default ({ expenses = [], selectedExpenseId, fetchExpenses, selectExpense, isLoading }) => {
   useEffect(() => {
     fetchExpenses();
   }, [fetchExpenses]);
@@ -16,7 +16,13 @@ export default ({ expenses = [], fetchExpenses, isLoading }) => {
     <ul className='expenses-list'>
       {
         expenses.map(expense =>
-          <Expense key={expense.id} {...expense} as='li' />
+          <Expense
+            as='li'
+            key={expense.id}
+            {...expense}
+            selected={ selectedExpenseId === expense.id }
+            onClick={() => selectExpense(expense.id)} 
+          />
         )
       }
     </ul>

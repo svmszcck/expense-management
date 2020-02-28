@@ -1,7 +1,12 @@
-import { EXPENSES_FETCHED, EXPENSES_FETCHING } from './actions';
+import {
+  EXPENSES_FETCHED,
+  EXPENSES_FETCHING,
+  EXPENSE_SELECTED
+} from './actions';
 
 const initialState = {
-  expenses: []
+  expenses: [],
+  selectedExpenseId: null
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -17,6 +22,12 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         isFetching: payload
+      };
+    }
+    case EXPENSE_SELECTED: {
+      return {
+        ...state,
+        selectedExpenseId: payload
       };
     }
     default:
