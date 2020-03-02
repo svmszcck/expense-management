@@ -6,3 +6,15 @@ export const fetchExpenses = (offset = 0, limit = DEFAULT_EXPENSES_LIMIT) =>
   .then((response) => {
     return response.json();
   });
+
+export const postExpenseComment = ({id, comment}) =>
+  fetch(`${API_URL}/expenses/${id}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ comment })
+  }).then((response) => {
+    return response.json();
+  });
+

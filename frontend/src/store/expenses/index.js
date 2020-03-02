@@ -1,7 +1,9 @@
 import {
   EXPENSES_FETCHED,
   EXPENSES_FETCHING,
-  EXPENSE_SELECTED
+  EXPENSE_SELECTED,
+  COMMENT_POSTED,
+  COMMENT_POSTING
 } from './actions';
 
 const initialState = {
@@ -29,6 +31,25 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         selectedExpenseId: payload
       };
+    }
+    case COMMENT_POSTED: {
+      const expenses = [...state.expenses].map(e => {
+        if (e.id === payload.id) {
+          return payload;
+        }
+        return e;
+      });
+      return {
+        ...state,
+        expenses,
+        isPostingComment: false
+      }
+    }
+    case COMMENT_POSTING: {
+      return {
+        ...state,
+        isPostingComment: payload
+      }
     }
     default:
       return state;

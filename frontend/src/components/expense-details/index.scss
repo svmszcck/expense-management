@@ -66,6 +66,25 @@
   vertical-align: bottom;  
 }
 
+.expense-details__icon--message {
+  margin-right: 0;
+}
+
+.expense-details__icon--spinner {
+  color: #4790e5;
+  margin-right: 0;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
+
 .expense-details__comment {
   padding-left: 0;
 }

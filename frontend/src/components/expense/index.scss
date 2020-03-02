@@ -48,6 +48,8 @@ $clr-expense-active-bg: #f8fafb;
 .expense__comment {
   border-left: 2px solid #cde0f7;
   padding: 10px;
+  word-break: break-all;
+  line-height: 1.5;
   &:empty {
     display: none;
   }

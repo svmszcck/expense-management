@@ -1,10 +1,11 @@
 import React from 'react';
 import moment from 'moment';
 import getSymbolFromCurrency from 'currency-symbol-map'
+import { MdPerson as PersonIcon, MdMessage as MessageIcon } from 'react-icons/md';
+import { AiOutlineLoading3Quarters as Spinner } from 'react-icons/ai';
 import Input from '../input';
 import FileUpload from '../file-upload';
 import stringToColor from '../../helpers/string-to-color';
-import { MdPerson as PersonIcon, MdMessage as MessageIcon } from 'react-icons/md';
 import './index.scss';
 
 const getGradient = (color) => ({
@@ -14,12 +15,15 @@ const getGradient = (color) => ({
 
 export default ({
   expense,
-  selectExpense
+  isPostingComment,
+  selectExpense,
+  postComment
 }) => {
   if (!expense) {
     return null;
   }
   const {
+    id,
     amount: {
       value,
       currency
@@ -54,8 +58,15 @@ export default ({
           label='Comment'
           className='expense-details__comment'
           inputClassName='expense-details__comment-input'
-          icon={
-            <MessageIcon className='expense-details__icon' aria-hidden='true' />
+          onChange={ (e) => postComment({id, comment: e.target.value}) }
+          defaultValue={comment}
+          prefixIcon={
+            <MessageIcon className='expense-details__icon expense-details__icon--message' aria-hidden='true' />
+          }
+          suffixIcon={
+            isPostingComment
+              ? <Spinner className='expense-details__icon expense-details__icon--spinner' />
+              : null
           } />
       </div>
       <FileUpload />
