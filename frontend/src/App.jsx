@@ -52,7 +52,7 @@ const App = () => {
       <Navigation />
       <div className='container'>
         <div className='left'>
-          <Input id='search' type='search' label='Search' icon={
+          <Input id='search' type='search' label='Search' prefixIcon={
             <SearchIcon className='search__icon' aria-hidden='true' />
           } />
           <Expenses />
