@@ -3,13 +3,23 @@ import {
   EXPENSES_FETCHING,
   EXPENSE_SELECTED,
   COMMENT_POSTED,
-  COMMENT_POSTING
+  COMMENT_POSTING,
+  FILE_UPLOADED,
+  FILE_UPLOADING
 } from './actions';
 
 const initialState = {
   expenses: [],
-  selectedExpenseId: null
+  selectedExpenseId: null,
+  isUploadingFile: false
 };
+
+const replaceExpense = (expenses, expense) => expenses.map(e => {
+  if (e.id === expense.id) {
+    return expense;
+  }
+  return e;
+});
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
@@ -33,15 +43,9 @@ export default (state = initialState, { type, payload }) => {
       };
     }
     case COMMENT_POSTED: {
-      const expenses = [...state.expenses].map(e => {
-        if (e.id === payload.id) {
-          return payload;
-        }
-        return e;
-      });
       return {
         ...state,
-        expenses,
+        expenses: replaceExpense([...state.expenses], payload),
         isPostingComment: false
       }
     }
@@ -49,6 +53,18 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         isPostingComment: payload
+      }
+    }
+    case FILE_UPLOADING: {
+      return {
+        ...state,
+        isUploadingFile: payload
+      }
+    }
+    case FILE_UPLOADED: {
+      return {
+        ...state,
+        expenses: replaceExpense([...state.expenses], payload)
       }
     }
     default:

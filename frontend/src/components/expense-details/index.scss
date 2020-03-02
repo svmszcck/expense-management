@@ -115,3 +115,24 @@
     }
   }
 }
+
+.expense-details__receipts {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.expense-details__receipt {
+  $size: 150px;
+  display: block;
+  width: $size;
+  height: $size;
+  border-radius: 5px;
+  object-fit: cover;
+  object-position: center;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.expense-details__receipt-upload {
+  margin: 20px 0 0;
+}

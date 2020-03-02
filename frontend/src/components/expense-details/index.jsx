@@ -7,6 +7,7 @@ import Input from '../input';
 import FileUpload from '../file-upload';
 import stringToColor from '../../helpers/string-to-color';
 import './index.scss';
+import { API_URL } from '../../api'
 
 const getGradient = (color) => ({
   background: `linear-gradient(to bottom, transparent 50%, #fff 50%),
@@ -17,7 +18,9 @@ export default ({
   expense,
   isPostingComment,
   selectExpense,
-  postComment
+  postComment,
+  uploadFile,
+  isUploadingFile
 }) => {
   if (!expense) {
     return null;
@@ -35,7 +38,8 @@ export default ({
       first,
       last,
       email
-    }
+    },
+    receipts
   } = expense;
   const color = stringToColor(merchant);
   return (
@@ -69,7 +73,13 @@ export default ({
               : null
           } />
       </div>
-      <FileUpload />
+      <div className='expense-details__receipts'>
+        {
+          receipts.map((r, index) => <img key={r.url} className='expense-details__receipt' src={`${API_URL}${r.url}`} alt={`Reciept ${index}`} />)
+        }
+        <FileUpload className='expense-details__receipt-upload' isUploadingFile={isUploadingFile} onChange={(file) => uploadFile({ expenseId: id, file }) } />
+      </div>
+      
     </div>
   );
 };

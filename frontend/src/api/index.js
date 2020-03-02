@@ -1,4 +1,4 @@
-const API_URL = '//localhost:3000';
+export const API_URL = '//localhost:3000';
 const DEFAULT_EXPENSES_LIMIT = 20;
 
 export const fetchExpenses = (offset = 0, limit = DEFAULT_EXPENSES_LIMIT) =>
@@ -18,3 +18,13 @@ export const postExpenseComment = ({id, comment}) =>
     return response.json();
   });
 
+export const uploadFile = ({expenseId, file}) => {
+  const formData = new FormData();
+  formData.append('receipt', file);
+  return fetch(`${API_URL}/expenses/${expenseId}/receipts`, {
+    method: 'POST',
+    body: formData
+  }).then((response) => {
+    return response.json();
+  });
+}
