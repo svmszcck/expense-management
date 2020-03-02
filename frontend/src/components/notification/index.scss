@@ -4,12 +4,10 @@ $height: 40px;
 
 .notification {
   position: fixed;
-  height: $height;
-  line-height: $height;
+  line-height: 1.5;
   bottom: $bottom;
   right: 10px;
-  padding-left: 10px;
-  padding-right: 10px + $close-width;
+  padding: 10px 40px 10px 10px;
   border-radius: 4px;
   box-shadow: 0 6px 6px -1px rgba(10, 22, 70, 0.1), 0 0 1px 0 rgba(10, 22, 70, 0.06);
   animation: slideUp .2s linear;
