@@ -40,6 +40,11 @@
   color: #fff;
 }
 
+.expense-details__bg, 
+.expense-details__logo {
+  transition: all .3s linear;
+}
+
 .expense-details__title {
   text-transform: capitalize;
 }

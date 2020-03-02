@@ -25,6 +25,25 @@ $clr-expense-active-bg: #f8fafb;
   justify-content: space-between;
 }
 
+$amount-width: 100px;
+$logo-size: 50px;
+$logo-margin: 20px;
+
+.expense_logo {
+  width: $logo-size;
+  height: $logo-size;
+  line-height: $logo-size;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 50%;
+  margin-right: $logo-margin;
+  text-align: center;
+}
+
+.expense__info {
+  width: calc(100%  - #{$logo-size} - #{$logo-margin} - #{$amount-width});
+}
+
 .expense__merchant {
   margin-top: 0;
   text-transform: capitalize;
@@ -33,6 +52,8 @@ $clr-expense-active-bg: #f8fafb;
 .expense__amount {
   color: #8a899f;
   font-size: 1.1rem;
+  width: $amount-width;
+  text-align: right;
 }
 
 .expense__user {
