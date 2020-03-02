@@ -1,9 +1,14 @@
 @import './components/styleguide/variables.scss';
+.App {
+  display: flex;
+  height: 100%;
+}
 
 .container {
   display: flex;
   flex-direction: row;
-  min-height: calc(100vh - #{$nav-height});
+  width: calc(100% - #{$nav-width});
+  margin-left: $nav-width;
 }
 
 .left {
@@ -18,6 +23,9 @@
 
 @media screen and (max-width: $mobile-breakpoint) {
   .container {
+    
+    width: calc(100% - #{$nav-width-mobile-collapsed});
+    margin-left: $nav-width-mobile-collapsed;
     flex-direction: column;
     & > * {
       width: 100%;
