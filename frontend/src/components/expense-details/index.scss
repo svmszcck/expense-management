@@ -105,24 +105,29 @@
     border-radius: 0;
   }
 }
+$receipt-size: 150px;
+$receipt-margin: 20px;
 
 .expense-details__receipts {
   display: flex;
   flex-wrap: wrap;
+  width: 2 * $receipt-size + $receipt-margin;
 }
 
 .expense-details__receipt {
-  $size: 150px;
   display: block;
-  width: $size;
-  height: $size;
+  width: $receipt-size;
+  height: $receipt-size;
   border-radius: 5px;
   object-fit: cover;
   object-position: center;
-  margin-top: 20px;
-  margin-right: 20px;
+  margin-top: $receipt-margin;
+  margin-right: $receipt-margin;
+  &:nth-child(2n) {
+    margin-right: 0
+  }
 }
 
 .expense-details__receipt-upload {
-  margin: 20px 0 0;
+  margin: $receipt-margin 0 0 0;
 }
