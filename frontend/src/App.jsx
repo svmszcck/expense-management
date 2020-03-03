@@ -1,35 +1,24 @@
 import React from 'react';
 import { Provider } from "react-redux";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 import store from "./store";
 import Navigation from './components/navigation';
-import Expenses from './containers/expenses-list';
 import Notification from './containers/notification';
-import Pagination from './containers/pagination';
-import ExpenseDetails from './containers/expense-details';
-import Search from './containers/search';
-import './App.scss';
-
-const App = () => {
-  return (
-    <div className="App">
-      <Navigation />
-      <div className='container'>
-        <div className='left'>
-          <Search />
-          <Expenses />
-          <Pagination />
-        </div>
-        <div className='right'>
-          <ExpenseDetails />
-        </div>
-      </div>
-      <Notification />
-    </div>
-  );
-}
+import ExpensesPage from './containers/expenses-page';
 
 export default () => (
   <Provider store={store}>
-    <App />
+    <Navigation />
+    <Router>
+      <Switch>
+        <Route path='/expenses/:id' component={ExpensesPage} />
+        <Route path='/' component={ExpensesPage} />
+      </Switch>
+    </Router>
+    <Notification />
   </Provider>
 );
