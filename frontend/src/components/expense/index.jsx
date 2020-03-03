@@ -2,10 +2,12 @@ import React from 'react';
 import classnames from 'classnames';
 import getSymbolFromCurrency from 'currency-symbol-map';
 import stringToColor from '../../helpers/string-to-color';
+import { Link } from 'react-router-dom';
 import './index.scss';
 
 export default ({
   as: As = 'div',
+  id,
   amount: {
     value,
     currency
@@ -31,7 +33,7 @@ export default ({
           { merchant.charAt(0) }
         </div>
         <div className='expense__info'>
-          <p className='expense__merchant'>{ merchant.toLowerCase() }</p>
+          <Link to={`/expenses/${id}`} className='expense__merchant'>{ merchant.toLowerCase() }</Link>
           <a className='expense__user' href={`mailto:${email}`}>{first} {last}</a>
           <p className='expense__comment'>{comment}</p>
         </div>

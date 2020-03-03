@@ -45,8 +45,15 @@ $logo-margin: 20px;
 }
 
 .expense__merchant {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #000;
   margin-top: 0;
   text-transform: capitalize;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .expense__amount {
