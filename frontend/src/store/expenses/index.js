@@ -71,11 +71,12 @@ export default (state = initialState, { type, payload }) => {
     case FILTER_BY_TEXT: {
       const isSearchActive = !!payload.text;
       const searchTerm = payload.text.toLowerCase();
-      const filteredExpenses = state.expenses.filter(({ merchant, comment, user: { first, last, email } }) =>
+      const filteredExpenses = state.expenses.filter(({ amount: { value }, merchant, comment, user: { first, last, email } }) =>
         merchant.toLowerCase().indexOf(searchTerm) > -1
           || `${first} ${last}`.toLowerCase().indexOf(searchTerm) > -1
           || comment.toLowerCase().indexOf(searchTerm) > -1
           || email.indexOf(searchTerm) > -1
+          || value.indexOf(searchTerm) > -1
       );
       return {
         ...state,
