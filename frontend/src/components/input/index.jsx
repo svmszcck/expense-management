@@ -12,7 +12,7 @@ export default ({ id, type = 'text', label, prefixIcon, suffixIcon, className, i
     {
       'input--with-prefix': prefixIcon,
       'input--with-suffix': prefixIcon,
-      'input--with-prefix-and-suffix': prefixIcon,
+      'input--with-prefix-and-suffix': prefixIcon && suffixIcon,
     },
     inputClassName
   );
