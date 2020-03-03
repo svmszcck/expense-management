@@ -20,7 +20,8 @@ export default ({
   selectExpense,
   postComment,
   uploadFile,
-  isUploadingFile
+  isUploadingFile,
+  className
 }) => {
   if (!expense) {
     return null;
@@ -43,7 +44,7 @@ export default ({
   } = expense;
   const color = stringToColor(merchant);
   return (
-    <div className='expense-details'>
+    <div className={`expense-details ${className}`}>
       <button className='expense-details__close' aria-label='close' onClick={() => selectExpense(null)}>&times;</button>
       <div className='expense-details__bg' style={getGradient(color)}></div>
       <div className='expense-details__logo' style={{backgroundColor: color}}>

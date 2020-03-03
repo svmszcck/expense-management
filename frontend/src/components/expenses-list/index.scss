@@ -1,5 +1,17 @@
+@import '../styleguide/variables.scss';
+
 .expenses-list {
   list-style-type: none;
   text-align: left;
   padding: 0;
+}
+
+.expenses-list__expense-details {
+  display: none;    
+}
+
+@media screen and (max-width: $mobile-breakpoint) {
+  .expenses-list__expense-details {
+    display: block; 
+  }
 }
