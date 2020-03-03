@@ -65,7 +65,8 @@ export default (state = initialState, { type, payload }) => {
     case FILE_UPLOADED: {
       return {
         ...state,
-        expenses: replaceExpense([...state.expenses], payload)
+        expenses: replaceExpense([...state.expenses], payload),
+        isUploadingFile: false
       }
     }
     case FILTER_BY_TEXT: {
