@@ -5,7 +5,8 @@ import Pagination from '../../components/pagination';
 const mapStateToProps = (state) => ({
   loaded: state.expenses.expenses.length,
   total: state.expenses.total,
-  isLoading: state.expenses.isFetching
+  isLoading: state.expenses.isFetching,
+  isVisible: !state.expenses.isSearchActive
 });
 
 const mapDispatchToProps = {

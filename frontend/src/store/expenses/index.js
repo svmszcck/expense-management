@@ -5,7 +5,8 @@ import {
   COMMENT_POSTED,
   COMMENT_POSTING,
   FILE_UPLOADED,
-  FILE_UPLOADING
+  FILE_UPLOADING,
+  FILTER_BY_TEXT
 } from './actions';
 
 const initialState = {
@@ -65,6 +66,21 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         expenses: replaceExpense([...state.expenses], payload)
+      }
+    }
+    case FILTER_BY_TEXT: {
+      const isSearchActive = !!payload.text;
+      const searchTerm = payload.text.toLowerCase();
+      const filteredExpenses = state.expenses.filter(({ merchant, comment, user: { first, last, email } }) =>
+        merchant.toLowerCase().indexOf(searchTerm) > -1
+          || `${first} ${last}`.toLowerCase().indexOf(searchTerm) > -1
+          || comment.toLowerCase().indexOf(searchTerm) > -1
+          || email.indexOf(searchTerm) > -1
+      );
+      return {
+        ...state,
+        isSearchActive,
+        filteredExpenses: filteredExpenses
       }
     }
     default:

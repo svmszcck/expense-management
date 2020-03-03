@@ -19,7 +19,7 @@ export default () => {
       <a href='/' aria-label='To Homepage' className='navigation__home-link'>
         <img className='navigation__logo' alt='Pleo Logo' src={logo} />
       </a>
-      <img className='navigation__user-photo' src={profilePhoto} alt='Vitaliy Stanyshevskyy photo' />
+      <img className='navigation__user-photo' src={profilePhoto} alt='Vitaliy Stanyshevskyy' />
       <h3 className='navigation__user-name'>Vitaliy Stanyshevskyy</h3>
       <ul className='navigation__user-contacts'>
         <li className='navigation__user-contact'>

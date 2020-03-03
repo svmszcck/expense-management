@@ -3,7 +3,10 @@ import { fetchExpenses, selectExpense } from '../../store/expenses/actions'
 import ExpensesList from '../../components/expenses-list';
 
 const mapStateToProps = (state) => ({
-  expenses: state.expenses.expenses,
+  expenses: state.expenses.isSearchActive
+    ? state.expenses.filteredExpenses
+    : state.expenses.expenses,
+  isSearchActive: state.expenses.isSearchActive,
   isLoading: !state.expenses.expenses.length && state.expenses.isFetching,
   selectedExpenseId: state.expenses.selectedExpenseId
 })

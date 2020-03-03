@@ -2,12 +2,15 @@ import React from 'react';
 import classnames from 'classnames';
 import './index.scss';
 
-export default ({ loaded, total, isLoading, fetchNext }) => {
+export default ({ loaded, total, isLoading, fetchNext, isVisible }) => {
   const percentageLoaded = Math.floor(loaded/total * 100);
   const disabled = loaded === total;
   const loadingBarClasses = classnames('pagination__progress-filled', {
     'pagination__progress-filled--loading': isLoading,
   });
+  if (!isVisible) {
+    return null;
+  }
   return (
     <div className='pagination'>
       <p className='pagination__info'>
