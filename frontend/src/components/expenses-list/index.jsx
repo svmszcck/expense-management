@@ -17,10 +17,9 @@ export default ({ expenses = [], selectedExpenseId, fetchExpenses, selectExpense
     <ul className='expenses-list'>
       {
         expenses.map(expense =>
-          <>
+          <React.Fragment key={expense.id}>
             <Expense
               as='li'
-              key={expense.id}
               {...expense}
               selected={ selectedExpenseId === expense.id }
               onClick={() => selectExpense(selectedExpenseId === expense.id ? null : expense.id)} 
@@ -29,7 +28,7 @@ export default ({ expenses = [], selectedExpenseId, fetchExpenses, selectExpense
               selectedExpenseId === expense.id
               ? <ExpenseDetails className='expenses-list__expense-details' />
               : null }
-          </>
+          </React.Fragment>
         )
       }
     </ul>
