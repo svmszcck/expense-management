@@ -1,7 +1,7 @@
 @import '../styleguide/variables.scss';
 
 .expense-details {
-  padding: 50px;
+  padding: 40px;
   text-align: center;
   width: 100%;
   background-color: #fff;
@@ -131,4 +131,7 @@ $receipt-margin: 20px;
 
 .expense-details__receipt-upload {
   margin: $receipt-margin 0 0 0;
+  &:only-child {
+    margin: $receipt-margin auto;
+  }
 }
