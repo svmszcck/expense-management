@@ -8,7 +8,7 @@ export default ({ loaded, total, isLoading, fetchNext, isVisible }) => {
   const loadingBarClasses = classnames('pagination__progress-filled', {
     'pagination__progress-filled--loading': isLoading,
   });
-  if (!isVisible) {
+  if (!isVisible || !loaded) {
     return null;
   }
   return (
