@@ -1,5 +1,6 @@
 # Vitaliy's Front-end challenge
-![](https://pleo-expenses.netlify.com/app-demo.gif)
+See the [GIF!](https://pleo-expenses.netlify.com/)<br/>
+Lighthouse report:<br/>
 ![](https://pleo-expenses.netlify.com/lighthouse-report.png)
 The API deployed to Heroku with cronjob to wake it up every 30 minutes :)
 The SPA deployed to Netlify
