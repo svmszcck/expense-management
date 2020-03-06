@@ -4,7 +4,7 @@ import ExpenseDetails from '../../containers/expense-details';
 import Spinner from '../spinner'
 import './index.scss';
 
-export default ({ expenses = [], selectedExpenseId, fetchExpenses, selectExpense, isLoading }) => {
+export default ({ expenses = [], selectedExpenseId, fetchExpenses, isLoading }) => {
   useEffect(() => {
     fetchExpenses();
   }, [fetchExpenses]);
@@ -22,7 +22,6 @@ export default ({ expenses = [], selectedExpenseId, fetchExpenses, selectExpense
               as='li'
               {...expense}
               selected={ selectedExpenseId === expense.id }
-              onClick={() => selectExpense(selectedExpenseId === expense.id ? null : expense.id)} 
             />
             {
               selectedExpenseId === expense.id

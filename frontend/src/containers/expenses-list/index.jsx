@@ -12,8 +12,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  fetchExpenses,
-  selectExpense
+  fetchExpenses
 };
 
 
