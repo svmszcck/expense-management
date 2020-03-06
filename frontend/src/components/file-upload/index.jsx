@@ -1,8 +1,12 @@
 import React from 'react';
+import { injectIntl } from 'react-intl';
 import classnames from 'classnames';
 import './index.scss';
 
-export default ({ className, onChange, isUploadingFile }) => {
+const FileUpload = ({ intl, className, onChange, isUploadingFile }) => {
+  const placeholder = intl.formatMessage({
+    id: 'upload_a_reciept'
+  });
   const labelClasses = classnames(
     'file-upload__label',
     className, {
@@ -15,9 +19,12 @@ export default ({ className, onChange, isUploadingFile }) => {
         name='file'
         id='file'
         className='file-upload'
-        aria-label='Upload a reciept'
+        aria-label={placeholder}
         onChange={e => onChange(e.currentTarget.files[0])}
       />
     </label>
   );
 };
+
+
+export default injectIntl(FileUpload);

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import moment from 'moment';
+import { FormattedDate } from 'react-intl';
 import Expense from '../expense';
 import ExpenseDetails from '../../containers/expense-details';
 import Spinner from '../spinner'
@@ -19,7 +19,13 @@ export default ({ expenses = {}, selectedExpenseId, fetchExpenses, isLoading }) 
       {
         Object.keys(expenses).map(expensesGroupKey => (
             <li key={expensesGroupKey} className='expenses-list__period-group'>
-              <h3 className='expenses-list__period-group-title'>{ moment(expensesGroupKey, 'YYYY-MM').format('MMMM YYYY') }</h3>
+              <h3 className='expenses-list__period-group-title'>
+                <FormattedDate
+                  value={new Date(expenses[expensesGroupKey][0].date)}
+                  year="numeric"
+                  month="long"
+                />
+              </h3>
               <ul className='expenses-list__group-expenses'>
                 {
                   expenses[expensesGroupKey].map(expense => (

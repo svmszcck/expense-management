@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import classnames from 'classnames';
-import getSymbolFromCurrency from 'currency-symbol-map';
+import { FormattedNumber } from 'react-intl';
 import { stringToColor, CardClickHelper } from '../../helpers';
 import { Link } from 'react-router-dom';
 import './index.scss';
@@ -41,7 +41,12 @@ const Expense = ({
           <p className='expense__comment'>{comment}</p>
         </div>
         <div className='expense__amount'>
-          { getSymbolFromCurrency(currency) }{value}
+          <FormattedNumber
+            value={value}
+            style={`currency`}
+            currencyDisplay="symbol"
+            currency={currency}
+          />
         </div>
       </div>
     </As>

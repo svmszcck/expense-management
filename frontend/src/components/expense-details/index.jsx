@@ -1,6 +1,5 @@
 import React from 'react';
-import moment from 'moment';
-import getSymbolFromCurrency from 'currency-symbol-map'
+import { FormattedNumber, FormattedTime, injectIntl } from 'react-intl';
 import { MdPerson as PersonIcon, MdMessage as MessageIcon } from 'react-icons/md';
 import { AiOutlineLoading3Quarters as Spinner } from 'react-icons/ai';
 import Input from '../input';
@@ -14,7 +13,8 @@ const getGradient = (color) => ({
     radial-gradient(circle closest-side, ${color}, #fff)`
 });
 
-export default ({
+const ExpenseDetails = ({
+  intl,
   expense,
   isPostingComment,
   selectExpense,
@@ -42,17 +42,43 @@ export default ({
     },
     receipts
   } = expense;
+  const close = intl.formatMessage({
+    id: 'close'
+  });
+  const commentI18n = intl.formatMessage({
+    id: 'comment'
+  });
+  const reciept = intl.formatMessage({
+    id: 'reciept'
+  });
+  
   const color = stringToColor(merchant);
   return (
     <div className={`expense-details ${className}`}>
-      <button className='expense-details__close' aria-label='close' onClick={() => selectExpense(null)}>&times;</button>
+      <button className='expense-details__close' aria-label={close} onClick={() => selectExpense(null)}>&times;</button>
       <div className='expense-details__bg' style={getGradient(color)}></div>
       <div className='expense-details__logo' style={{backgroundColor: color}}>
         { merchant.charAt(0) }
       </div>
       <h1 className='expense-details__title'>{merchant.toLowerCase()}</h1>
-      <p className='expense-details__amount'>{getSymbolFromCurrency(currency)}{value}</p>
-      <p className='expense-details__date'>{moment(date).format("dddd, MMMM Do YYYY, h:mm a")}</p>
+      <p className='expense-details__amount'>
+        <FormattedNumber
+          value={value}
+          style={`currency`}
+          currencyDisplay="symbol"
+          currency={currency}
+        />
+      </p>
+      <p className='expense-details__date'>
+        <FormattedTime
+          value={new Date(date)}
+          year="numeric"
+          month="short"
+          day="numeric"
+          hour="numeric"
+          minute="numeric"
+        />
+      </p>
       <div className='expense-details__other'>
         <p className='expense-details__user'>
           <PersonIcon className='expense-details__icon'/>
@@ -60,7 +86,7 @@ export default ({
         </p>
         <Input
           id='comment'
-          label='Comment'
+          label={commentI18n}
           className='expense-details__comment'
           inputClassName='expense-details__comment-input'
           onChange={ (e) => postComment({id, comment: e.target.value}) }
@@ -78,15 +104,19 @@ export default ({
         {
           receipts.map((r, index) => (
             <li key={r.url} >
-              <img className='expense-details__receipt' src={`${API_URL}${r.url}`} alt={`Reciept ${index}`} />
+              <img className='expense-details__receipt' src={`${API_URL}${r.url}`} alt={`${reciept} ${index}`} />
             </li>
           ))
         }
         <li>
-          <FileUpload className='expense-details__receipt-upload' isUploadingFile={isUploadingFile} onChange={(file) => uploadFile({ expenseId: id, file }) } />
+          <FileUpload
+            className='expense-details__receipt-upload'
+            isUploadingFile={isUploadingFile}
+            onChange={(file) => uploadFile({ expenseId: id, file }) } />
         </li>
       </ul>
-      
     </div>
   );
 };
+
+export default injectIntl(ExpenseDetails);

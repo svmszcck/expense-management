@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import classnames from 'classnames';
 import './index.scss';
 
@@ -23,7 +24,7 @@ export default ({ loaded, total, isLoading, fetchNext, isVisible }) => {
           />
         </div>
       <button className='btn btn--primary pagination__button' disabled={disabled} onClick={() => fetchNext(loaded)}>
-        Load More
+        <FormattedMessage id='load_more' />
       </button>
     </div>
   );

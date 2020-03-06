@@ -1,7 +1,16 @@
-import { SHOW_NOTIFICATION, CLEAR_NOTIFICATION } from './actions';
+import {
+  SHOW_NOTIFICATION,
+  CLEAR_NOTIFICATION,
+  SET_LOCALE
+} from './actions';
+import { locales } from '../../i18n';
+
+const browserLocale = navigator.language;
+const locale = locales[browserLocale] ? browserLocale : Object.keys(locales)[0];
 
 const initialState = {
-  error: null
+  error: null,
+  locale
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -17,6 +26,12 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         notification: null
+      }
+    }
+    case SET_LOCALE: {
+      return {
+        ...state,
+        locale: payload
       }
     }
     default:

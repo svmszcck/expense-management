@@ -1,4 +1,5 @@
 import React from 'react';
+import { injectIntl } from 'react-intl';
 import './index.scss';
 
 export const NotificationTypes = {
@@ -6,14 +7,19 @@ export const NotificationTypes = {
   INFO: 'info'
 };
 
-export default ({ isVisible = false, type = NotificationTypes.INFO, message, clear }) => {
+const Notification = ({ intl, isVisible = false, type = NotificationTypes.INFO, message, clear }) => {
   if (!isVisible) {
     return false;
   }
+  const dismiss = intl.formatMessage({
+    id: 'dismiss'
+  });
   return (
     <div role='alertdialog' className={`notification notification--${type}`} arialabeledby='notification__message'>
-      <button autofocus className='notification__close' onClick={clear} aria-label='Dismiss'>&times;</button>
+      <button autofocus className='notification__close' onClick={clear} aria-label={dismiss}>&times;</button>
       <p className='notification__message' id='notification__message'>{message}</p>
     </div>
   );
 }
+
+export default injectIntl(Notification);
