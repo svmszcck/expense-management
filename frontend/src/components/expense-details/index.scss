@@ -113,6 +113,9 @@ $receipt-margin: 20px;
   display: flex;
   flex-wrap: wrap;
   width: 2 * $receipt-size + $receipt-margin;
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
 }
 
 .expense-details__receipt {

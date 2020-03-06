@@ -74,12 +74,16 @@ export default ({
               : null
           } />
       </div>
-      <div className='expense-details__receipts'>
+      <ul className='expense-details__receipts'>
         {
-          receipts.map((r, index) => <img key={r.url} className='expense-details__receipt' src={`${API_URL}${r.url}`} alt={`Reciept ${index}`} />)
+          receipts.map((r, index) => (
+            <li>
+              <img key={r.url} className='expense-details__receipt' src={`${API_URL}${r.url}`} alt={`Reciept ${index}`} />
+            </li>
+          ))
         }
         <FileUpload className='expense-details__receipt-upload' isUploadingFile={isUploadingFile} onChange={(file) => uploadFile({ expenseId: id, file }) } />
-      </div>
+      </ul>
       
     </div>
   );
