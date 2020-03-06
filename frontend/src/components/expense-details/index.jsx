@@ -85,7 +85,7 @@ const ExpenseDetails = ({
           <a className='expense-details__user-link' href={`mailto:${email}`}>{first} {last}</a>
         </p>
         <Input
-          id='comment'
+          id={`comment--${className}`}
           label={commentI18n}
           className='expense-details__comment'
           inputClassName='expense-details__comment-input'
