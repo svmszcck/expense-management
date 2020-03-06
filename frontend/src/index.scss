@@ -14,7 +14,7 @@ body {
 }
 
 a {
-  color: #666;
+  color: $clr-primary;
   text-decoration: underline;
   &:hover,
   &:focus {
@@ -23,8 +23,8 @@ a {
 }
 
 .btn--primary {
-  color: #FFF !important;
-  background-color: #000;
+  color: $clr-white !important;
+  background-color: $clr-primary;
   border-radius: 31px;
   padding: 10px 23px;
   font-weight: 500;
@@ -32,8 +32,4 @@ a {
   font-size: 1rem;;
   border: none;
   cursor: pointer;
-}
-
-@media screen and (max-width: $mobile-breakpoint) {
-
 }

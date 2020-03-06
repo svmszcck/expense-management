@@ -4,7 +4,6 @@
   padding: 40px;
   text-align: center;
   width: 100%;
-  background-color: #fff;
   overflow: hidden;
   border-radius: 5px;
   position: relative;
@@ -33,12 +32,12 @@
   width: $size;
   height: $size;
   border-radius: 50%;
-  border: 4px solid #fff;
+  border: 4px solid $clr-white;
   font-size: 4rem;
   text-align: center;
   line-height: calc(#{$size} - 8px);
   margin: 0 auto;
-  color: #fff;
+  color: $clr-white;
 }
 
 .expense-details__bg, 
@@ -50,14 +49,10 @@
   text-transform: capitalize;
 }
 
-.expense-details__amount {
-  color: #9695a8;
-  font-size: 1.2rem;
-}
-
+.expense-details__amount,
 .expense-details__date {
-  color: #999;
   font-size: 1.2rem;
+  line-height: 1.5;
 }
 
 .expense-details__other {
@@ -65,7 +60,7 @@
 }
 
 .expense-details__icon {
-  color: #9997b8;
+  color: #999;
   display: inline-block;
   margin-right: 10px;
   font-size: 1.3rem;

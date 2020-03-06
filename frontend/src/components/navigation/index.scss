@@ -4,11 +4,10 @@
   position: fixed;
   padding: 20px;
   text-align: left;
-  background-color: #fff;
-  // transition: all .3s linear;
+  background-color: $clr-white;
   height: 100%;
   width: $nav-width;
-  background-color: #f8fafb;
+  background-color: $clr-selected-bg;
   min-height: 100vh;
 }
 
@@ -104,7 +103,6 @@
   }
   .navigation--expanded {
     padding: 5px 20px;
-    height: $nav-height-mobile;
     width: $nav-width-mobile;
     z-index: 2;
     box-shadow: 3px 0 10px rgba(0,0,0,.3);
