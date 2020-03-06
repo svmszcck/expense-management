@@ -77,8 +77,8 @@ export default ({
       <ul className='expense-details__receipts'>
         {
           receipts.map((r, index) => (
-            <li>
-              <img key={r.url} className='expense-details__receipt' src={`${API_URL}${r.url}`} alt={`Reciept ${index}`} />
+            <li key={r.url} >
+              <img className='expense-details__receipt' src={`${API_URL}${r.url}`} alt={`Reciept ${index}`} />
             </li>
           ))
         }
