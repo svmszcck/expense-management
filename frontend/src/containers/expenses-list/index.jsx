@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchExpenses, selectExpense } from '../../store/expenses/actions'
+import { fetchExpenses } from '../../store/expenses/actions'
 import ExpensesList from '../../components/expenses-list';
 
 const mapStateToProps = (state) => ({
