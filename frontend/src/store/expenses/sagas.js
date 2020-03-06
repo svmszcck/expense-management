@@ -14,7 +14,7 @@ import { SHOW_NOTIFICATION } from '../global/actions';
 import { fetchExpenses, postExpenseComment, uploadFile } from '../../api';
 import { NotificationTypes } from '../../components/notification';
 
-function* loadExpensesSaga({ payload: { offset = 0 } }) {
+export function* loadExpensesSaga({ payload: { offset = 0 } }) {
   yield put({ type: EXPENSES_FETCHING, payload: true });
   try {
     const data = yield call(fetchExpenses, offset);
@@ -28,7 +28,7 @@ function* loadExpensesSaga({ payload: { offset = 0 } }) {
   }
 }
 
-function* postCommentSaga({ payload: { id, comment } }) {
+export function* postCommentSaga({ payload: { id, comment } }) {
   yield put({ type: COMMENT_POSTING, payload: true });
   try {
     const data = yield call(postExpenseComment, { id, comment });
@@ -42,7 +42,7 @@ function* postCommentSaga({ payload: { id, comment } }) {
   }
 }
 
-function* uploadFileSaga({ payload: { expenseId, file } }) {
+export function* uploadFileSaga({ payload: { expenseId, file } }) {
   yield put({ type: FILE_UPLOADING, payload: true });
   try {
     const data = yield call(uploadFile, { expenseId, file });
