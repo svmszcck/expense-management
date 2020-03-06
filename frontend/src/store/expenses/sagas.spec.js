@@ -5,8 +5,10 @@ import { throwError } from 'redux-saga-test-plan/providers';
 import {
   fetchExpenses as fetchExpensesAPI,
   postExpenseComment,
-  uploadFile as uploadFileAPI
+  uploadFile as uploadFileAPI,
 } from '../../api';
+
+import mockExpensesData from '../../api/expenses.mock';
 
 import {
   loadExpensesSaga,
@@ -31,26 +33,6 @@ import { NotificationTypes } from '../../components/notification';
 import {
   SHOW_NOTIFICATION
 } from '../global/actions';
-
-const mockExpensesData = [
-  {
-    id: '5b995dff2e3cb74644948a66',
-    amount: {
-      value: '2149.29',
-      currency: 'GBP'
-    },
-    date: '2017-06-21T08:45:09.326Z',
-    merchant: 'QUONK',
-    receipts: [],
-    comment: '',
-    category: '',
-    user: {
-      first: 'Atkins',
-      last: 'Blackburn',
-      email: 'atkins.blackburn@pleo.io'
-    }
-  }
-];
 
 describe("loadExpensesSaga", () => {
   const action = {

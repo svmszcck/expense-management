@@ -13,7 +13,7 @@ export default ({ loaded, total, isLoading, fetchNext, isVisible }) => {
     return null;
   }
   return (
-    <div className='pagination'>
+    <div className='pagination' data-test-id='pagination'>
       <p className='pagination__info'>
         {loaded} of {total}
       </p>

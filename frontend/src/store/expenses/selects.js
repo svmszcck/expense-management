@@ -1,5 +1,19 @@
 import { createSelector } from 'reselect';
 
+export const groupExpensesByMonthYear = (expenses) => {
+  const res = {};
+  expenses.forEach(e => {
+    const date = new Date(e.date);
+    const key = `${date.getFullYear()}-${date.getMonth() + 1}`;
+    if (res[key]) {
+      res[key].push(e);
+    } else {
+      res[key] = [e];
+    }
+  });
+  return res;
+}
+
 export const selectExpenses = state => state.expenses.expenses;
 export const selectFilteredExpenses = state => state.expenses.filteredExpenses;
 export const selectIsFetchingExpenses = state => state.expenses.isFetching;
@@ -28,17 +42,5 @@ export const selectIsExpensesListLoading = createSelector(
 
 export const selectExpensesGroupedByPeriod = createSelector(
   [selectExpensesToDisplay],
-  (expenses) => {
-    const res = {};
-    expenses.forEach(e => {
-      const date = new Date(e.date);
-      const key = `${date.getFullYear()}-${date.getMonth() + 1}`;
-      if (res[key]) {
-        res[key].push(e);
-      } else {
-        res[key] = [e];
-      }
-    });
-    return res;
-  }
+  groupExpensesByMonthYear
 );
