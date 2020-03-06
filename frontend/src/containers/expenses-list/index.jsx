@@ -1,15 +1,21 @@
 import { connect } from "react-redux";
 import { fetchExpenses } from '../../store/expenses/actions'
+import {
+  selectExpensesToDisplay,
+  selectIsSearchActive,
+  selectExpenseId,
+  selectIsExpensesListLoading
+} from '../../store/expenses/selects';
 import ExpensesList from '../../components/expenses-list';
 
-const mapStateToProps = (state) => ({
-  expenses: state.expenses.isSearchActive
-    ? state.expenses.filteredExpenses
-    : state.expenses.expenses,
-  isSearchActive: state.expenses.isSearchActive,
-  isLoading: !state.expenses.expenses.length && state.expenses.isFetching,
-  selectedExpenseId: state.expenses.selectedExpenseId
-})
+const mapStateToProps = (state) => {
+  return {
+    expenses: selectExpensesToDisplay(state),
+    isSearchActive: selectIsSearchActive(state),
+    isLoading: selectIsExpensesListLoading(state),
+    selectedExpenseId: selectExpenseId(state)
+  }
+};
 
 const mapDispatchToProps = {
   fetchExpenses

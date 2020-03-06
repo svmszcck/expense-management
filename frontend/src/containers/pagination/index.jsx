@@ -1,12 +1,18 @@
 import { connect } from "react-redux";
-import { fetchExpenses } from '../../store/expenses/actions'
+import { fetchExpenses } from '../../store/expenses/actions';
+import {
+  selectExpenses,
+  selectTotalExpensesCount,
+  selectIsFetchingExpenses,
+  selectIsSearchActive
+} from '../../store/expenses/selects';
 import Pagination from '../../components/pagination';
 
 const mapStateToProps = (state) => ({
-  loaded: state.expenses.expenses.length,
-  total: state.expenses.total,
-  isLoading: state.expenses.isFetching,
-  isVisible: !state.expenses.isSearchActive
+  loaded: selectExpenses(state).length,
+  total: selectTotalExpensesCount(state),
+  isLoading: selectIsFetchingExpenses(state),
+  isVisible: !selectIsSearchActive(state)
 });
 
 const mapDispatchToProps = {

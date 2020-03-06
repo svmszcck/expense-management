@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { filterByText } from '../../store/expenses/actions'
 import Search from '../../components/search';
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = {
   search: filterByText
