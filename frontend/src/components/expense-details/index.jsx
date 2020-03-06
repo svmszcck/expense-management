@@ -103,12 +103,12 @@ const ExpenseDetails = ({
       <ul className='expense-details__receipts'>
         {
           receipts.map((r, index) => (
-            <li key={r.url} >
+            <li key={r.url} className='expense-details__receipt-item'>
               <img className='expense-details__receipt' src={`${API_URL}${r.url}`} alt={`${reciept} ${index}`} />
             </li>
           ))
         }
-        <li>
+        <li className='expense-details__receipt-upload-item'>
           <FileUpload
             className='expense-details__receipt-upload'
             isUploadingFile={isUploadingFile}

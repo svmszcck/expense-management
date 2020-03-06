@@ -114,6 +114,15 @@ $receipt-margin: 20px;
   margin: 0 auto;
 }
 
+.expense-details__receipt-item {
+
+  margin-top: $receipt-margin;
+  margin-right: $receipt-margin;
+  &:nth-child(2n) {
+    margin-right: 0
+  }
+}
+
 .expense-details__receipt {
   display: block;
   width: $receipt-size;
@@ -121,10 +130,12 @@ $receipt-margin: 20px;
   border-radius: 5px;
   object-fit: cover;
   object-position: center;
-  margin-top: $receipt-margin;
-  margin-right: $receipt-margin;
-  &:nth-child(2n) {
-    margin-right: 0
+}
+
+.expense-details__receipt-upload-item {
+
+  &:only-child {
+    margin: 0 auto;
   }
 }
 
