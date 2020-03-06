@@ -11,9 +11,9 @@ export default ({ isVisible = false, type = NotificationTypes.INFO, message, cle
     return false;
   }
   return (
-    <div className={`notification notification--${type}`}>
-      <button className='notification__close' onClick={clear} aria-label='Dismiss'>&times;</button>
-      <p className='notification__message'>{message}</p>
+    <div role='alertdialog' className={`notification notification--${type}`} arialabeledby='notification__message'>
+      <button autofocus className='notification__close' onClick={clear} aria-label='Dismiss'>&times;</button>
+      <p className='notification__message' id='notification__message'>{message}</p>
     </div>
   );
 }
