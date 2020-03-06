@@ -1,36 +1,36 @@
-# Front-end challenge
-Implement an expenses list fetching all expenses from the provided API. Allow the user to add notes and upload receipt pictures to each expense.
-
-See the [API details](https://github.com/pleo-io/frontend-challenge/blob/master/api/README.md) for implementation.
+# Vitaliy's Front-end challenge
+![](https://pleo-expenses.netlify.com/app-demo.gif)
+![](https://pleo-expenses.netlify.com/lighthouse-report.png)
+The API deployed to Heroku with cronjob to wake it up every 30 minutes :)
+The SPA deployed to Netlify
+[See it in action!](https://pleo-expenses.netlify.com)
 
 ## Functional requirements
-- User can list expenses
-- User can add a comment on an expense
-- User can filter on expenses (client side filters)
-- User can add a receipt image on an expense
+[x] User can list expenses
+[x] User can add a comment on an expense
+[x] User can filter on expenses (client side filters)
+[x] User can add a receipt image on an expense
+Extra mile:
+[x] Responsive design
+[x] Implement with a state management library (Redux)
+[x] Localization: support for multiple languages (English, French, ...)
+[x] Router and smooth navigation - a user can share the url for an expense
+[x] Deployed and available over the internet
 
-## General requirements
-A single page application using a modern JS library/framework including:
-- A visually pleasing experience, you don’t have to be a designer but you must have put an effort into making this look good
-- A "componentized" approach, split your code into small building blocks, showcase your clean architecture skills.
-- CSS can be written using PostCSS, SASS, LESS or similar higher-level language
-- The use of any libraries or frameworks as long as you can explain to us why you chose them.
-- A brief description of your project. How long did it take? Which part was the hardest to implement? What functionalities are you most proud of?
+## Details
+* Implemented using React, Redux, Saga, SCSS, React-Intl. I also added a few tests for complex components and sagas.
+* I spent quite some time on the **visual side** of the app to make it responsive and comfortable for use. I'd like to highlight such details as spinners for fetching the list of expenses, posting comments or uploading files. 
+* There is also notifications for connectivity issues with proper `alertdialog` ARIA role.
+* **I put a lot of efforts into semantic and accessibility**. For example I implemented Cards pattern for expenses (see [implementation](https://github.com/vstanyshevskyy/expenses-app/blob/master/frontend/src/helpers/card-click-helper.js) inspired by [Heydon Pickering](https://inclusive-components.design/cards/)) which i'm proud about. The list of expenses is actuly `<ul>` with nested lists which should be great for SEO and accessibility as well.
+* App has 97-100 scores in Google Lighthouse.
+* The trickiest parts were i18n (I haven't used react-intl before, so took some time to get up to speed) and responsive design.
+* It took me about **22 hours** to implement it according to git logs. I dedicated some spare time for it and had a couple of design changes which slowed me down (yes, i tried to build something similar to Pleo app, but there are not many screenshots in the internet.)
 
-## Nice to have
-Want to go the extra mile? Here's few suggestion of things we'd like to see (or go crazy and implement what you think will impress us).
-- Responsive design
-- Implement with a state management library (Redux, Mobx, VueX, ...)
-- Implement solution in TypeScript
-- Localization: support for multiple languages (English, French, ...)
+## What I would like to add
+* Filtering by currency
+* Some gallery/modal for receipt + ability to delete a receipt.
+* Web Sharing API to share expenses
 
-## What we're looking for
-- Using high-quality existing libraries or small amounts of custom code. 
-- Production grade code (clean, maintainable, reusable code)
-- Showing your work through your commit history
-- Polish and visual creativity
-- Pride in craftsmanship
-
-## A few last things 👇
- - Please note that while you are free to use libraries of your choosing, we encourage you to write at least some your own code. This is your chance to really impress us with your skills.
-- You are welcome to make changes to the API code if you think it will improve your solution
+## API changes
+* I did some API changes to deploy API to Heroku (moved TS dependencies from dev-deps to deps)
+* Allowed to send empty comment in order to delete it. [Commit](https://github.com/vstanyshevskyy/expenses-app/commit/aca61616d5c60c7717f5554cf0189e74c25aaea1)
