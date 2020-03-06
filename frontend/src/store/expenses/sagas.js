@@ -22,7 +22,7 @@ function* loadExpensesSaga({ payload: { offset = 0 } }) {
   } catch (e) {
     yield put({ type: EXPENSES_FETCHING, payload: false });
     yield put({ type: SHOW_NOTIFICATION, payload: {
-      message: 'Failed to fetch expenses...',
+      message: 'failed_to_fetch_expenses',
       type: NotificationTypes.ERROR
     } });
   }
@@ -36,7 +36,7 @@ function* postCommentSaga({ payload: { id, comment } }) {
   } catch (e) {
     yield put({ type: COMMENT_POSTING, payload: false });
     yield put({ type: SHOW_NOTIFICATION, payload: {
-      message: 'Failed to post comment...',
+      message: 'failed_to_post_comment',
       type: NotificationTypes.ERROR
     } });
   }
@@ -50,7 +50,7 @@ function* uploadFileSaga({ payload: { expenseId, file } }) {
   } catch (e) {
     yield put({ type: FILE_UPLOADING, payload: false });
     yield put({ type: SHOW_NOTIFICATION, payload: {
-      message: 'Failed to upload file...',
+      message: 'failed_to_upload_file',
       type: NotificationTypes.ERROR
     } });
   }

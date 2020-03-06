@@ -14,10 +14,13 @@ const Notification = ({ intl, isVisible = false, type = NotificationTypes.INFO, 
   const dismiss = intl.formatMessage({
     id: 'dismiss'
   });
+  const messageIntl = intl.formatMessage({
+    id: message
+  });
   return (
     <div role='alertdialog' className={`notification notification--${type}`} arialabeledby='notification__message'>
       <button autofocus className='notification__close' onClick={clear} aria-label={dismiss}>&times;</button>
-      <p className='notification__message' id='notification__message'>{message}</p>
+      <p className='notification__message' id='notification__message'>{messageIntl}</p>
     </div>
   );
 }
