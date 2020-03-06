@@ -9,6 +9,17 @@ $clr-expense-active-bg: #f8fafb;
   &:hover {
     background-color: $clr-expense-active-bg;
   }
+  &:focus-within {
+    background-color: $clr-expense-active-bg;
+    box-shadow: 0 6px 6px -1px rgba(10, 22, 70, 0.1), 0 0 1px 0 rgba(10, 22, 70, 0.06);
+    a:focus {
+      outline:none;
+      text-decoration: underline;
+    }
+    .expense__merchant:focus {
+      text-decoration: none;
+    }
+  }
 }
 
 .expense--active {
@@ -67,6 +78,7 @@ $logo-margin: 20px;
   font-size: .8rem;
   color: #666;
   text-decoration: none;
+  position: relative;
   &:hover,
   &:focus {
     text-decoration: underline;

@@ -5,7 +5,7 @@ import { MdPerson as PersonIcon, MdMessage as MessageIcon } from 'react-icons/md
 import { AiOutlineLoading3Quarters as Spinner } from 'react-icons/ai';
 import Input from '../input';
 import FileUpload from '../file-upload';
-import stringToColor from '../../helpers/string-to-color';
+import { stringToColor } from '../../helpers';
 import './index.scss';
 import { API_URL } from '../../api'
 
