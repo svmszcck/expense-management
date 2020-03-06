@@ -6,15 +6,15 @@ The SPA deployed to Netlify
 [See it in action!](https://pleo-expenses.netlify.com)
 
 ## Functional requirements
-[x] User can list expenses
-[x] User can add a comment on an expense
-[x] User can filter on expenses (client side filters)
-[x] User can add a receipt image on an expense
-Extra mile:
-[x] Responsive design
-[x] Implement with a state management library (Redux)
-[x] Localization: support for multiple languages (English, French, ...)
-[x] Router and smooth navigation - a user can share the url for an expense
+[x] User can list expenses<br />
+[x] User can add a comment on an expense<br />
+[x] User can filter on expenses (client side filters)<br />
+[x] User can add a receipt image on an expense<br />
+Extra mile:<br />
+[x] Responsive design<br />
+[x] Implement with a state management library (Redux)<br />
+[x] Localization: support for multiple languages (English, French, ...)<br />
+[x] Router and smooth navigation - a user can share the url for an expense<br />
 [x] Deployed and available over the internet
 
 ## Details
