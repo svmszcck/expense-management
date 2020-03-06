@@ -2,6 +2,7 @@
 
 .expense-details {
   padding: 40px;
+  padding-right: 20px;
   text-align: center;
   width: 100%;
   overflow: hidden;
@@ -129,7 +130,4 @@ $receipt-margin: 20px;
 
 .expense-details__receipt-upload {
   margin: $receipt-margin 0 0 0;
-  &:only-child {
-    margin: $receipt-margin auto;
-  }
 }

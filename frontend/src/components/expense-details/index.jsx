@@ -82,7 +82,9 @@ export default ({
             </li>
           ))
         }
-        <FileUpload className='expense-details__receipt-upload' isUploadingFile={isUploadingFile} onChange={(file) => uploadFile({ expenseId: id, file }) } />
+        <li>
+          <FileUpload className='expense-details__receipt-upload' isUploadingFile={isUploadingFile} onChange={(file) => uploadFile({ expenseId: id, file }) } />
+        </li>
       </ul>
       
     </div>
