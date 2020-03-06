@@ -10,6 +10,17 @@
   display: none;    
 }
 
+.expenses-list__period-group,
+.expenses-list__group-expenses {
+  list-style-type: none;
+  padding: 0;
+}
+
+.expenses-list__period-group-title {
+  font-weight: 400;
+  padding: 0 20px;
+}
+
 @media screen and (max-width: $mobile-breakpoint) {
   .expenses-list__expense-details {
     display: block;

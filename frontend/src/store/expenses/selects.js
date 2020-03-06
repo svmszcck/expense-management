@@ -25,3 +25,20 @@ export const selectIsExpensesListLoading = createSelector(
   [selectExpenses, selectIsFetchingExpenses],
   (expenses, isFetching) => !expenses.length && isFetching,
 );
+
+export const selectExpensesGroupedByPeriod = createSelector(
+  [selectExpensesToDisplay],
+  (expenses) => {
+    const res = {};
+    expenses.forEach(e => {
+      const date = new Date(e.date);
+      const key = `${date.getFullYear()}-${date.getMonth() + 1}`;
+      if (res[key]) {
+        res[key].push(e);
+      } else {
+        res[key] = [e];
+      }
+    });
+    return res;
+  }
+);

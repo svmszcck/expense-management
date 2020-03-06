@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { fetchExpenses } from '../../store/expenses/actions'
 import {
-  selectExpensesToDisplay,
+  selectExpensesGroupedByPeriod,
   selectIsSearchActive,
   selectExpenseId,
   selectIsExpensesListLoading
@@ -10,7 +10,7 @@ import ExpensesList from '../../components/expenses-list';
 
 const mapStateToProps = (state) => {
   return {
-    expenses: selectExpensesToDisplay(state),
+    expenses: selectExpensesGroupedByPeriod(state),
     isSearchActive: selectIsSearchActive(state),
     isLoading: selectIsExpensesListLoading(state),
     selectedExpenseId: selectExpenseId(state)
