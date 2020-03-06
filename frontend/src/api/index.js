@@ -1,7 +1,6 @@
 const env = process.env.NODE_ENV || 'development';
 const isProd = env === 'production';
 export const API_URL = isProd ? 'https://pleo-api.herokuapp.com' : '//localhost:3000';
-console.log(API_URL);
 const DEFAULT_EXPENSES_LIMIT = 20;
 
 export const fetchExpenses = (offset = 0, limit = DEFAULT_EXPENSES_LIMIT) =>
