@@ -1,5 +1,5 @@
 # Vitaliy's Front-end challenge
-See the [GIF!](https://pleo-expenses.netlify.com/)<br/>
+See the [GIF!](https://pleo-expenses.netlify.com/app-demo-fast.gif)<br/>
 Lighthouse report:<br/>
 ![](https://pleo-expenses.netlify.com/lighthouse-report.png)<br/>
 The API deployed to Heroku with cronjob to wake it up every 30 minutes :)<br/>
