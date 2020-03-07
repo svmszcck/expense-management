@@ -9,14 +9,14 @@ The SPA deployed to Netlify<br/>
 ## Functional requirements
 [x] User can list expenses<br />
 [x] User can add a comment on an expense<br />
-[x] User can filter on expenses (client side filters)<br />
+[x] User can filter on expenses (client side filters - merchant, comment, user name, amount)<br />
 [x] User can add a receipt image on an expense<br />
 Extra mile:<br />
 [x] Responsive design<br />
 [x] Implement with a state management library (Redux)<br />
 [x] Localization: support for multiple languages (English, French, ...)<br />
-[x] Router and smooth navigation - a user can share the url for an expense<br />
-[x] Deployed and available over the internet
+[x] Router and smooth navigation - a user can share the URL for an expense<br />
+[x] Deployed and available over the Internet
 
 ## Details
 * Implemented using React, Redux, Saga, SCSS, React-Intl. I also added a few tests for complex components and sagas.
