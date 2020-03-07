@@ -22,14 +22,14 @@ Extra mile 💪:<br />
 
 ## 📜 Details
 * I used **React, Redux, Saga, SCSS, React-Intl**.
-* Tests for complex components and sagas.<br />
-* Visual side 🎨:<br />
-  * Responsive design<br />
-  * CSS animations and transitions<br />
+* **Tests** for complex components and sagas.<br />
+* 🎨 Visual side:<br />
+  * **Responsive** design<br />
+  * CSS **animations** and transitions<br />
   * Attention to details:<br />
-    * Spinners for fetching the list of expenses, posting comments or uploading files. <br />
-    * Notifications for connectivity issues with proper `alertdialog` ARIA role.<br />
-* Semantic and accessibility.<br />
+    * **Spinners** for fetching the list of expenses, posting comments or uploading files. <br />
+    * **Notifications** for connectivity issues with proper `alertdialog` ARIA role.<br />
+* Semantic and **accessibility**.<br />
   * Cards pattern for expenses (see [implementation](https://github.com/vstanyshevskyy/expenses-app/blob/master/frontend/src/helpers/card-click-helper.js) inspired by [Heydon Pickering](https://inclusive-components.design/cards/))<br />
   * The list of expenses is actually `<ul>` with nested - great for SEO and accessibility as well.<br />
 * **97-100** in Google Lighthouse.<br />
