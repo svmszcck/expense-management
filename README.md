@@ -13,7 +13,7 @@
 ✅ User can add a comment on an expense<br />
 ✅ User can filter on expenses (client side filters - merchant, comment, user name, amount)<br />
 ✅ User can add a receipt image on an expense<br /><br />
-Extra mile 💪:<br />
+**💪 Extra mile:**<br />
 ✅ Responsive design<br />
 ✅ Implement with a state management library (Redux)<br />
 ✅ Localization: support for multiple languages (English, French, ...)<br />
