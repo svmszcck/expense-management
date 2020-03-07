@@ -1,7 +1,7 @@
 # Vitaliy's Front-end challenge
 ## See the [GIF!](https://pleo-expenses.netlify.com/app-demo-fast.gif)
 **[See the expenses app in action!](https://pleo-expenses.netlify.com)**<br/><br/>
-🚄 The API deployed to Heroku with cronjob to wake it up every 30 minutes :)<br/>
+🚄 The API deployed to Heroku with the cronjob to wake it up every 30 minutes :)<br/>
 🚄 The SPA deployed to Netlify<br/>
 
 ### 💡 Lighthouse report:<br/>
