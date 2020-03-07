@@ -21,9 +21,13 @@ Extra mile 💪:<br />
 ✅ Deployed and available over the Internet
 
 ## Details
-* Implemented using React, Redux, Saga, SCSS, React-Intl. I also added a few tests for complex components and sagas.<br />
-* I spent quite some time on the **visual side** 🎨 of the app to make it responsive and comfortable for use. I'd like to highlight such details as spinners for fetching the list of expenses, posting comments or uploading files. <br />
-* There are also notifications for connectivity issues with proper `alertdialog` ARIA role.<br />
+* I used **React, Redux, Saga, SCSS, React-Intl**. I added tests for complex components and sagas.<br />
+* I spent quite some time on the **visual side** 🎨:
+** Responsive design
+** CSS Animations and transitions
+** Attention to details:
+*** Spinners for fetching the list of expenses, posting comments or uploading files. <br />
+*** Notifications for connectivity issues with proper `alertdialog` ARIA role.<br />
 * **I put a lot of effort into semantic and accessibility**. For example, I implemented Cards pattern for expenses (see [implementation](https://github.com/vstanyshevskyy/expenses-app/blob/master/frontend/src/helpers/card-click-helper.js) inspired by [Heydon Pickering](https://inclusive-components.design/cards/)) which I'm proud about. The list of expenses is actually `<ul>` with nested lists which should be great for SEO and accessibility as well.<br />
 * App has 97-100 scores in Google Lighthouse.<br />
 * The trickiest parts were i18n (I haven't used react-intl before, so took some time to get up to speed) and responsive design.<br />
