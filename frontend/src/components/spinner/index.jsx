@@ -1,4 +1,4 @@
 import React from 'react';
 import './index.scss';
 
-export default () => <div className='spinner' />;
+export default () => <div className="spinner" />;

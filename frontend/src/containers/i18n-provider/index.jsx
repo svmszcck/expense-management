@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { selectLocale } from '../../store/global/selects';
 import IntlProvider from '../../components/i18n-provider';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   locale: selectLocale(state)
 });
 

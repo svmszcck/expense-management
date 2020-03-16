@@ -8,17 +8,10 @@ import './index.scss';
 const Expense = ({
   as: As = 'div',
   id,
-  amount: {
-    value,
-    currency
-  },
+  amount: { value, currency },
   merchant,
   comment,
-  user: {
-    first,
-    last,
-    email
-  },
+  user: { first, last, email },
   selected
 }) => {
   const classNames = classnames('expense', {
@@ -30,17 +23,29 @@ const Expense = ({
   const clickHelper = new CardClickHelper(linkRef);
 
   return (
-    <As className={classNames} onMouseUp={e => clickHelper.onMouseUp(e)} onMouseDown={e => clickHelper.onMouseDown(e)}>
-      <div className='expense__container'>
-        <div className='expense_logo' style={{backgroundColor: color}}>
-          { merchant.charAt(0) }
+    <As
+      className={classNames}
+      onMouseUp={e => clickHelper.onMouseUp(e)}
+      onMouseDown={e => clickHelper.onMouseDown(e)}
+    >
+      <div className="expense__container">
+        <div className="expense_logo" style={{ backgroundColor: color }}>
+          {merchant.charAt(0)}
         </div>
-        <div className='expense__info'>
-          <Link ref={linkRef} to={`/expenses/${id}`} className='expense__merchant'>{ merchant.toLowerCase() }</Link>
-          <a className='expense__user' href={`mailto:${email}`}>{first} {last}</a>
-          <p className='expense__comment'>{comment}</p>
+        <div className="expense__info">
+          <Link
+            ref={linkRef}
+            to={`/expenses/${id}`}
+            className="expense__merchant"
+          >
+            {merchant.toLowerCase()}
+          </Link>
+          <a className="expense__user" href={`mailto:${email}`}>
+            {first} {last}
+          </a>
+          <p className="expense__comment">{comment}</p>
         </div>
-        <div className='expense__amount'>
+        <div className="expense__amount">
           <FormattedNumber
             value={value}
             style={`currency`}
@@ -51,6 +56,6 @@ const Expense = ({
       </div>
     </As>
   );
-}
+};
 
 export default Expense;

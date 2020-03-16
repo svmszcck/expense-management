@@ -14,4 +14,4 @@ export default {
   failed_to_fetch_expenses: 'Échec de la récupération des dépenses ...',
   failed_to_post_comment: 'Impossible de publier un commentaire ...',
   failed_to_upload_file: 'Impossible de télécharger le fichier ...'
-}
+};

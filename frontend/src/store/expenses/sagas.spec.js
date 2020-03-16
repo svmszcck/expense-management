@@ -5,16 +5,12 @@ import { throwError } from 'redux-saga-test-plan/providers';
 import {
   fetchExpenses as fetchExpensesAPI,
   postExpenseComment,
-  uploadFile as uploadFileAPI,
+  uploadFile as uploadFileAPI
 } from '../../api';
 
 import mockExpensesData from '../../api/expenses.mock';
 
-import {
-  loadExpensesSaga,
-  postCommentSaga,
-  uploadFileSaga
-} from "./sagas";
+import { loadExpensesSaga, postCommentSaga, uploadFileSaga } from './sagas';
 
 import {
   FETCH_EXPENSES,
@@ -25,21 +21,19 @@ import {
   COMMENT_POSTED,
   UPLOAD_FILE,
   FILE_UPLOADING,
-  FILE_UPLOADED,
-} from "./actions";
+  FILE_UPLOADED
+} from './actions';
 
 import { NotificationTypes } from '../../components/notification';
 
-import {
-  SHOW_NOTIFICATION
-} from '../global/actions';
+import { SHOW_NOTIFICATION } from '../global/actions';
 
-describe("loadExpensesSaga", () => {
+describe('loadExpensesSaga', () => {
   const action = {
     type: FETCH_EXPENSES,
     payload: {}
   };
-  it("it should load expenses", () => {
+  it('it should load expenses', () => {
     return expectSaga(loadExpensesSaga, action)
       .provide([[matchers.call.fn(fetchExpensesAPI), mockExpensesData]])
       .put({
@@ -53,16 +47,16 @@ describe("loadExpensesSaga", () => {
       .run();
   });
 
-  it("it should catch fetch error", () => {
+  it('it should catch fetch error', () => {
     return expectSaga(loadExpensesSaga, action)
       .provide([
-        [matchers.call.fn(fetchExpensesAPI), throwError(new Error("err"))]
+        [matchers.call.fn(fetchExpensesAPI), throwError(new Error('err'))]
       ])
       .put({
         type: EXPENSES_FETCHING,
         payload: true
       })
-      .put({ 
+      .put({
         type: EXPENSES_FETCHING,
         payload: false
       })
@@ -77,12 +71,12 @@ describe("loadExpensesSaga", () => {
   });
 });
 
-describe("postCommentSaga", () => {
+describe('postCommentSaga', () => {
   const action = {
     type: POST_COMMENT,
     payload: {}
   };
-  it("it should post comment", () => {
+  it('it should post comment', () => {
     return expectSaga(postCommentSaga, action)
       .provide([[matchers.call.fn(postExpenseComment), mockExpensesData]])
       .put({
@@ -96,16 +90,16 @@ describe("postCommentSaga", () => {
       .run();
   });
 
-  it("it should catch fetch error", () => {
+  it('it should catch fetch error', () => {
     return expectSaga(postCommentSaga, action)
       .provide([
-        [matchers.call.fn(postExpenseComment), throwError(new Error("err"))]
+        [matchers.call.fn(postExpenseComment), throwError(new Error('err'))]
       ])
       .put({
         type: COMMENT_POSTING,
         payload: true
       })
-      .put({ 
+      .put({
         type: COMMENT_POSTING,
         payload: false
       })
@@ -120,12 +114,12 @@ describe("postCommentSaga", () => {
   });
 });
 
-describe("uploadFileSaga", () => {
+describe('uploadFileSaga', () => {
   const action = {
     type: UPLOAD_FILE,
     payload: {}
   };
-  it("it should upload a file", () => {
+  it('it should upload a file', () => {
     return expectSaga(uploadFileSaga, action)
       .provide([[matchers.call.fn(uploadFileAPI), mockExpensesData]])
       .put({
@@ -139,16 +133,16 @@ describe("uploadFileSaga", () => {
       .run();
   });
 
-  it("it should catch fetch error", () => {
+  it('it should catch fetch error', () => {
     return expectSaga(uploadFileSaga, action)
       .provide([
-        [matchers.call.fn(uploadFileSaga), throwError(new Error("err"))]
+        [matchers.call.fn(uploadFileSaga), throwError(new Error('err'))]
       ])
       .put({
         type: FILE_UPLOADING,
         payload: true
       })
-      .put({ 
+      .put({
         type: FILE_UPLOADING,
         payload: false
       })

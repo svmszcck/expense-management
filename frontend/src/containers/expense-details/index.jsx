@@ -1,5 +1,9 @@
-import { connect } from "react-redux";
-import { selectExpense, postComment, uploadFile } from '../../store/expenses/actions';
+import { connect } from 'react-redux';
+import {
+  selectExpense,
+  postComment,
+  uploadFile
+} from '../../store/expenses/actions';
 import {
   selectSelectedExpense,
   selectIsPostingComment,
@@ -7,7 +11,7 @@ import {
 } from '../../store/expenses/selects';
 import ExpenseDetails from '../../components/expense-details';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   expense: selectSelectedExpense(state),
   isPostingComment: selectIsPostingComment(state),
   isUploadingFile: selectIsUploadingFile(state)
@@ -18,6 +22,5 @@ const mapDispatchToProps = {
   postComment,
   uploadFile
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpenseDetails);

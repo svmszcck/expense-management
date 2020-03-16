@@ -37,8 +37,9 @@
     margin-left: -$size/2;
     line-height: $size;
     font-size: 2rem;
-    box-shadow: 0 3px 3px -1px rgba(10, 22, 70, 0.1), 0 0 1px 0 rgba(10, 22, 70, 0.06);
-    transition: all .1s linear;
+    box-shadow: 0 3px 3px -1px rgba(10, 22, 70, 0.1),
+      0 0 1px 0 rgba(10, 22, 70, 0.06);
+    transition: all 0.1s linear;
   }
   &:hover:after {
     box-shadow: $shadow-elevate;

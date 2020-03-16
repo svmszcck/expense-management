@@ -14,7 +14,7 @@ export default class CardClickHelper {
       return;
     }
     this.up = +new Date();
-    if ((this.up - this.down) < this.clickThreshhold) {
+    if (this.up - this.down < this.clickThreshhold) {
       this.linkRef.current.click();
     }
   }

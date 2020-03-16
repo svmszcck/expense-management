@@ -7,7 +7,13 @@ export const NotificationTypes = {
   INFO: 'info'
 };
 
-const Notification = ({ intl, isVisible = false, type = NotificationTypes.INFO, message, clear }) => {
+const Notification = ({
+  intl,
+  isVisible = false,
+  type = NotificationTypes.INFO,
+  message,
+  clear
+}) => {
   if (!isVisible) {
     return false;
   }
@@ -18,11 +24,24 @@ const Notification = ({ intl, isVisible = false, type = NotificationTypes.INFO, 
     id: message
   });
   return (
-    <div role='alertdialog' className={`notification notification--${type}`} arialabeledby='notification__message'>
-      <button autofocus className='notification__close' onClick={clear} aria-label={dismiss}>&times;</button>
-      <p className='notification__message' id='notification__message'>{messageIntl}</p>
+    <div
+      role="alertdialog"
+      className={`notification notification--${type}`}
+      arialabeledby="notification__message"
+    >
+      <button
+        autofocus
+        className="notification__close"
+        onClick={clear}
+        aria-label={dismiss}
+      >
+        &times;
+      </button>
+      <p className="notification__message" id="notification__message">
+        {messageIntl}
+      </p>
     </div>
   );
-}
+};
 
 export default injectIntl(Notification);

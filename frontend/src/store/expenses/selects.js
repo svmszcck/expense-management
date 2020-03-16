@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-export const groupExpensesByMonthYear = (expenses) => {
+export const groupExpensesByMonthYear = expenses => {
   const res = {};
   expenses.forEach(e => {
     const date = new Date(e.date);
@@ -12,7 +12,7 @@ export const groupExpensesByMonthYear = (expenses) => {
     }
   });
   return res;
-}
+};
 
 export const selectExpenses = state => state.expenses.expenses;
 export const selectFilteredExpenses = state => state.expenses.filteredExpenses;
@@ -25,19 +25,19 @@ export const selectTotalExpensesCount = state => state.expenses.total;
 
 export const selectSelectedExpense = createSelector(
   [selectExpenses, selectExpenseId],
-  (expenses, selectedExpenseId) => expenses.find(e => e.id === selectedExpenseId),
+  (expenses, selectedExpenseId) =>
+    expenses.find(e => e.id === selectedExpenseId)
 );
 
 export const selectExpensesToDisplay = createSelector(
   [selectIsSearchActive, selectExpenses, selectFilteredExpenses],
-  (isSearchActive, expenses, filteredExpenses) => isSearchActive
-    ? filteredExpenses
-    : expenses,
+  (isSearchActive, expenses, filteredExpenses) =>
+    isSearchActive ? filteredExpenses : expenses
 );
 
 export const selectIsExpensesListLoading = createSelector(
   [selectExpenses, selectIsFetchingExpenses],
-  (expenses, isFetching) => !expenses.length && isFetching,
+  (expenses, isFetching) => !expenses.length && isFetching
 );
 
 export const selectExpensesGroupedByPeriod = createSelector(

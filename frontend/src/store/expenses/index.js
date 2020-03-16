@@ -15,12 +15,13 @@ const initialState = {
   isUploadingFile: false
 };
 
-const replaceExpense = (expenses, expense) => expenses.map(e => {
-  if (e.id === expense.id) {
-    return expense;
-  }
-  return e;
-});
+const replaceExpense = (expenses, expense) =>
+  expenses.map(e => {
+    if (e.id === expense.id) {
+      return expense;
+    }
+    return e;
+  });
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
@@ -48,42 +49,48 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         expenses: replaceExpense([...state.expenses], payload),
         isPostingComment: false
-      }
+      };
     }
     case COMMENT_POSTING: {
       return {
         ...state,
         isPostingComment: payload
-      }
+      };
     }
     case FILE_UPLOADING: {
       return {
         ...state,
         isUploadingFile: payload
-      }
+      };
     }
     case FILE_UPLOADED: {
       return {
         ...state,
         expenses: replaceExpense([...state.expenses], payload),
         isUploadingFile: false
-      }
+      };
     }
     case FILTER_BY_TEXT: {
       const isSearchActive = !!payload.text;
       const searchTerm = payload.text.toLowerCase();
-      const filteredExpenses = state.expenses.filter(({ amount: { value }, merchant, comment, user: { first, last, email } }) =>
-        merchant.toLowerCase().indexOf(searchTerm) > -1
-          || `${first} ${last}`.toLowerCase().indexOf(searchTerm) > -1
-          || comment.toLowerCase().indexOf(searchTerm) > -1
-          || email.indexOf(searchTerm) > -1
-          || value.indexOf(searchTerm) > -1
+      const filteredExpenses = state.expenses.filter(
+        ({
+          amount: { value },
+          merchant,
+          comment,
+          user: { first, last, email }
+        }) =>
+          merchant.toLowerCase().indexOf(searchTerm) > -1 ||
+          `${first} ${last}`.toLowerCase().indexOf(searchTerm) > -1 ||
+          comment.toLowerCase().indexOf(searchTerm) > -1 ||
+          email.indexOf(searchTerm) > -1 ||
+          value.indexOf(searchTerm) > -1
       );
       return {
         ...state,
         isSearchActive,
         filteredExpenses: filteredExpenses
-      }
+      };
     }
     default:
       return state;

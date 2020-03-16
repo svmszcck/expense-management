@@ -7,7 +7,7 @@ export default function(str) {
   }
   let color = '#';
   for (let i = 0; i < 3; i++) {
-    const value = (hash >> (i * 8)) & 0xFF;
+    const value = (hash >> (i * 8)) & 0xff;
     color += ('00' + value.toString(16)).substr(-2);
   }
   return color;

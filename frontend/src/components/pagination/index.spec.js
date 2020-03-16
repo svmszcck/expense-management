@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 import { shallow } from 'enzyme';
 import Pagination from '.';
 
-const props = { 
+const props = {
   total: 20,
   loaded: 10,
   fetchNext: () => {},

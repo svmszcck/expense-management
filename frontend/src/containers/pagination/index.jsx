@@ -1,4 +1,4 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import { fetchExpenses } from '../../store/expenses/actions';
 import {
   selectExpenses,
@@ -8,7 +8,7 @@ import {
 } from '../../store/expenses/selects';
 import Pagination from '../../components/pagination';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   loaded: selectExpenses(state).length,
   total: selectTotalExpensesCount(state),
   isLoading: selectIsFetchingExpenses(state),
@@ -18,6 +18,5 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   fetchNext: fetchExpenses
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pagination);

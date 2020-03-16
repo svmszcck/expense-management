@@ -8,16 +8,18 @@ const LocaleSwitcher = ({ intl, locales, selectedLocale, onChange }) => {
   });
   return (
     <select
-      className='locales-select'
+      className="locales-select"
       aria-label={label}
       defaultValue={selectedLocale}
-      onChange={ e => onChange(e.target.value) }
+      onChange={e => onChange(e.target.value)}
     >
-      {
-        locales.map(l => <option key={l} value={l}>{l}</option>)
-      }
+      {locales.map(l => (
+        <option key={l} value={l}>
+          {l}
+        </option>
+      ))}
     </select>
   );
-}
+};
 
 export default injectIntl(LocaleSwitcher);

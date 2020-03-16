@@ -8,10 +8,14 @@ const Search = ({ intl, search }) => {
     id: 'search'
   });
   return (
-    <Input id='search' type='search' label={placeholder} onChange={(e) => search({ text: e.target.value })}  prefixIcon={
-      <SearchIcon className='search__icon' aria-hidden='true' />
-    } />
+    <Input
+      id="search"
+      type="search"
+      label={placeholder}
+      onChange={e => search({ text: e.target.value })}
+      prefixIcon={<SearchIcon className="search__icon" aria-hidden="true" />}
+    />
   );
-}
+};
 
 export default injectIntl(Search);

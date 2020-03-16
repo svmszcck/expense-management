@@ -1,4 +1,4 @@
-import { call, put, takeLatest, throttle } from "redux-saga/effects";
+import { call, put, takeLatest, throttle } from 'redux-saga/effects';
 import {
   FETCH_EXPENSES,
   EXPENSES_FETCHED,
@@ -21,10 +21,13 @@ export function* loadExpensesSaga({ payload: { offset = 0 } }) {
     yield put({ type: EXPENSES_FETCHED, payload: data });
   } catch (e) {
     yield put({ type: EXPENSES_FETCHING, payload: false });
-    yield put({ type: SHOW_NOTIFICATION, payload: {
-      message: 'failed_to_fetch_expenses',
-      type: NotificationTypes.ERROR
-    } });
+    yield put({
+      type: SHOW_NOTIFICATION,
+      payload: {
+        message: 'failed_to_fetch_expenses',
+        type: NotificationTypes.ERROR
+      }
+    });
   }
 }
 
@@ -35,10 +38,13 @@ export function* postCommentSaga({ payload: { id, comment } }) {
     yield put({ type: COMMENT_POSTED, payload: data });
   } catch (e) {
     yield put({ type: COMMENT_POSTING, payload: false });
-    yield put({ type: SHOW_NOTIFICATION, payload: {
-      message: 'failed_to_post_comment',
-      type: NotificationTypes.ERROR
-    } });
+    yield put({
+      type: SHOW_NOTIFICATION,
+      payload: {
+        message: 'failed_to_post_comment',
+        type: NotificationTypes.ERROR
+      }
+    });
   }
 }
 
@@ -49,10 +55,13 @@ export function* uploadFileSaga({ payload: { expenseId, file } }) {
     yield put({ type: FILE_UPLOADED, payload: data });
   } catch (e) {
     yield put({ type: FILE_UPLOADING, payload: false });
-    yield put({ type: SHOW_NOTIFICATION, payload: {
-      message: 'failed_to_upload_file',
-      type: NotificationTypes.ERROR
-    } });
+    yield put({
+      type: SHOW_NOTIFICATION,
+      payload: {
+        message: 'failed_to_upload_file',
+        type: NotificationTypes.ERROR
+      }
+    });
   }
 }
 

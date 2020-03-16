@@ -25,7 +25,7 @@
 .expense-details__bg {
   height: 500px;
   margin-bottom: -300px;
-  margin-top: -100px
+  margin-top: -100px;
 }
 
 .expense-details__logo {
@@ -41,9 +41,9 @@
   color: $clr-white;
 }
 
-.expense-details__bg, 
+.expense-details__bg,
 .expense-details__logo {
-  transition: all .3s linear;
+  transition: all 0.3s linear;
 }
 
 .expense-details__title {
@@ -65,7 +65,7 @@
   display: inline-block;
   margin-right: 10px;
   font-size: 1.3rem;
-  vertical-align: bottom;  
+  vertical-align: bottom;
 }
 
 .expense-details__icon--message {
@@ -80,10 +80,10 @@
 
 @keyframes spin {
   from {
-    transform:rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-    transform:rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -94,7 +94,6 @@
 .expense-details__comment-input {
   padding-left: 0;
 }
-
 
 @media screen and (max-width: $mobile-breakpoint) {
   .expense-details {
@@ -116,11 +115,10 @@ $receipt-margin: 20px;
 }
 
 .expense-details__receipt-item {
-
   margin-top: $receipt-margin;
   margin-right: $receipt-margin;
   &:nth-child(2n) {
-    margin-right: 0
+    margin-right: 0;
   }
 }
 
@@ -134,7 +132,6 @@ $receipt-margin: 20px;
 }
 
 .expense-details__receipt-upload-item {
-
   &:only-child {
     margin: 0 auto;
   }

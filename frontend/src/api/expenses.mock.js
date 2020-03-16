@@ -1,4 +1,3 @@
-
 export default [
   {
     id: '5b995dff2e3cb74644948a66',
@@ -33,5 +32,5 @@ export default [
       last: 'Downs',
       email: 'barbara.downs@pleo.io'
     }
-  },
+  }
 ];

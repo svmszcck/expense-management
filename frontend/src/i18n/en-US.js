@@ -14,4 +14,4 @@ export default {
   failed_to_fetch_expenses: 'Failed to fetch expenses...',
   failed_to_post_comment: 'Failed to post comment...',
   failed_to_upload_file: 'Failed to upload file...'
-}
+};

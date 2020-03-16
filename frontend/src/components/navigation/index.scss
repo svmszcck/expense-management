@@ -19,7 +19,7 @@
   display: block;
   max-width: 75px;
   margin: 0 auto;
-  margin-top: 20px
+  margin-top: 20px;
 }
 
 .navigation__user-photo {
@@ -105,8 +105,8 @@
     padding: 5px 20px;
     width: $nav-width-mobile;
     z-index: 2;
-    box-shadow: 3px 0 10px rgba(0,0,0,.3);
-    animation: drawer .2s linear;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.3);
+    animation: drawer 0.2s linear;
     & > * {
       display: block;
     }
@@ -117,5 +117,4 @@
       display: flex;
     }
   }
-
 }

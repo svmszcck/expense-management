@@ -11,7 +11,7 @@
 }
 
 .spinner:after {
-  content: " ";
+  content: ' ';
   display: block;
   width: 64px;
   height: 64px;
@@ -26,7 +26,7 @@
   0% {
     transform: rotate(0deg);
   }
-  
+
   100% {
     transform: rotate(360deg);
   }

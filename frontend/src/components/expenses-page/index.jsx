@@ -10,19 +10,19 @@ export default ({ selectExpense }) => {
   let { id } = useParams();
   useEffect(() => {
     id && selectExpense(id);
-  }, [id, selectExpense])
+  }, [id, selectExpense]);
   return (
     <div className="App">
-      <div className='container'>
-        <div className='left'>
+      <div className="container">
+        <div className="left">
           <Search />
           <Expenses />
           <Pagination />
         </div>
-        <div className='right'>
+        <div className="right">
           <ExpenseDetails />
         </div>
       </div>
     </div>
   );
-}
+};
