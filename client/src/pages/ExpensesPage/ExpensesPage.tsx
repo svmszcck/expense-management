@@ -1,36 +1,59 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ListOfExpenses from "../../components/ListOfExpenses/ListOfExpenses";
+import { connect } from "react-redux";
+import { startFetchExpenses } from "../../actions/expensesAction";
+import { Expense } from "../../types/Expense";
+import { AppActions } from "../../types/actions";
+import { AppState } from "../../store";
+import { bindActionCreators } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 
-interface IExpensesPageState {
-    expenses: Array<any>
-};
-class ExpensesPage extends Component<IExpensesPageState> {
-    state = {
-        expenses: []
-    }
+interface ExpensesPageProps {
+}
+interface ExpensesPageState { }
 
+type Props = ExpensesPageProps & LinkStateProps & LinkDispatchProps;
+
+export class ExpensesPage extends React.Component<Props, ExpensesPageState> {
     componentDidMount() {
-        this.fetchExpenses();
+        this.props.startFetchExpenses(0)
     }
-
-    fetchExpenses = async () => {
-        const response = await fetch(
-            `http://localhost:3000/expenses?limit=25offset=25`
-        );
-        const json = await response.json();
-        const expenses = await json.expenses;
-        this.setState({ expenses })
-    };
 
     render() {
+        const { expenses, total } = this.props.data
         return (
-            <>{this.state.expenses.length > 0 &&
-                <>
-                    All expenses
-                <ListOfExpenses expenses={this.state.expenses} />
-                </>}
+            <>
+                <h1>List of expenses</h1>
+                <ListOfExpenses expenses={expenses} />
             </>
-        )
+        );
     }
 }
-export default ExpensesPage;
+
+interface LinkStateProps {
+    data: { expenses: Expense[], total: number }
+}
+interface LinkDispatchProps {
+    startFetchExpenses: (page?: number) => void;
+}
+
+const mapStateToProps = (
+    state: AppState,
+    ownProps: ExpensesPageProps
+): LinkStateProps => {
+    return ({
+        data: state.data
+    });
+}
+
+const mapDispatchToProps = (
+    dispatch: ThunkDispatch<any, any, AppActions>,
+    ownProps: ExpensesPageProps
+): LinkDispatchProps => ({
+    startFetchExpenses: bindActionCreators(startFetchExpenses, dispatch)
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ExpensesPage);
