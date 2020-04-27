@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router';
 import { Expense } from '../../types/Expense';
+import Receipts from '../../components/Receipts/Receipts';
 import moment from 'moment';
 
 interface IExpensePageProps {
@@ -50,6 +51,19 @@ class ExpensePage extends Component<IExpensePageProps & RouteComponentProps, IEx
         <p>Merchant: {merchant}</p>
         <p>User: {userName}</p>
         <p>User email: {userEmail}</p>
+        <div>
+          Receipts:
+          {receipts && receipts.length > 0 ? (
+            <>
+              <div>You have {receipts.length} {receipts.length === 1 ? 'receipt' : 'receipts'}</div>
+              <Receipts userId={this.state.id} fetchExpense={() => this.fetchExpense(this.state.id)} />{" "} 
+            </>
+          ) : (
+            // <></>
+            <Receipts userId={this.state.id} fetchExpense={() => this.fetchExpense(this.state.id)} />
+          )
+          }
+        </div>
         <p>Category: {category}</p>
       </>
     )
