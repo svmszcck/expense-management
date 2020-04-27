@@ -28,7 +28,9 @@ class ExpenseItem extends Component<IExpenseItemProps> {
           <td>{comment}</td>
           <td>
             <Link
-              to={`/expenses/${id}` 
+              to={{
+                pathname:`/expenses/${id}`
+              }
               }
             >
               {" "}
