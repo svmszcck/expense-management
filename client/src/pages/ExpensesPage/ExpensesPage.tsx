@@ -24,7 +24,7 @@ export class ExpensesPage extends React.Component<Props, ExpensesPageState> {
         return (
             <>
                 <h1>List of expenses</h1>
-                <ListOfExpenses expenses={expenses} />
+                <ListOfExpenses expenses={expenses} total={total}/>
             </>
         );
     }
