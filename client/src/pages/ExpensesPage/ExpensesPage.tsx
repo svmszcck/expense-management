@@ -1,30 +1,68 @@
 import React from 'react';
-import ListOfExpenses from "../../components/ListOfExpenses/ListOfExpenses";
-import { connect } from "react-redux";
-import { startFetchExpenses } from "../../actions/expensesAction";
-import { Expense } from "../../types/Expense";
-import { AppActions } from "../../types/actions";
-import { AppState } from "../../store";
-import { bindActionCreators } from "redux";
-import { ThunkDispatch } from "redux-thunk";
+import { connect } from 'react-redux';
+import { startFetchExpenses } from '../../actions/expensesAction';
+import { Expense } from '../../types/Expense';
+import { AppActions } from '../../types/actions';
+import { AppState } from '../../store';
+import { bindActionCreators } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+
+import ListOfExpenses from '../../components/ListOfExpenses/ListOfExpenses';
+import Filter from '../../components/Filter/Filter';
 
 interface ExpensesPageProps {
 }
-interface ExpensesPageState { }
+interface ExpensesPageState {
+    filteredArray: Expense[]
+}
 
 type Props = ExpensesPageProps & LinkStateProps & LinkDispatchProps;
 
 export class ExpensesPage extends React.Component<Props, ExpensesPageState> {
-    componentDidMount() {
-        this.props.startFetchExpenses(0)
+    async componentDidMount() {
+        await this.props.startFetchExpenses(0);
+        this.onFilterChange('');      
     }
 
+    onFilterChange = (value: any) => {
+        let filteredArray = this.props.data.expenses.filter((expense) => {
+            if (
+                value.searchByName &&
+                !expense.user.first
+                    .toLowerCase()
+                    .includes(value.searchByName.toLowerCase()) &&
+                !expense.user.last
+                    .toLowerCase()
+                    .includes(value.searchByName.toLowerCase())
+            ) {
+                return false;
+            } else if (
+                value.searchByPlace &&
+                !expense.merchant
+                    .toLowerCase()
+                    .includes(value.searchByPlace.toLowerCase())
+            ) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+        this.setState({ filteredArray });
+    };
+
     render() {
-        const { expenses, total } = this.props.data
+        const { total } = this.props.data
         return (
             <>
                 <h1>List of expenses</h1>
-                <ListOfExpenses expenses={expenses} total={total} goToPage={(page) => this.props.startFetchExpenses(page)}/>
+                <Filter onFilterChange={this.onFilterChange} />
+                {this.state && this.state.filteredArray.length > 0
+                    ? <ListOfExpenses
+                        expenses={this.state.filteredArray}
+                        total={total}
+                        goToPage={(page) => this.props.startFetchExpenses(page)} />
+                    : null
+                }
             </>
         );
     }
