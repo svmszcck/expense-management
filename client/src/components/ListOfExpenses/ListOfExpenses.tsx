@@ -1,11 +1,13 @@
 import React from "react";
 import { Expense } from "../../types/Expense";
 import ExpenseItem from '../ExpenseItem/ExpenseItem';
+import Pagination from '../Pagination/Pagination';
 import './list.scss';
 
 interface IListOfExpensesProps {
   expenses: Expense[],
-  total: number
+  total: number,
+  goToPage(page: number): void;
 };
 
 class ListOfExpenses extends React.Component<IListOfExpensesProps> {
@@ -29,6 +31,11 @@ class ListOfExpenses extends React.Component<IListOfExpensesProps> {
               return <ExpenseItem key={item.id} data={item} />;
             })}
           </tbody>
+          <tfoot>
+            <tr>
+              {this.props.total && <Pagination numberOfItems={this.props.total} goToPage={(page) => this.props.goToPage(page)}/>}
+            </tr>
+          </tfoot>
         </table>
       </div>
     );
