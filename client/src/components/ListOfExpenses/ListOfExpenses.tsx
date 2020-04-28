@@ -7,7 +7,7 @@ import './list.scss';
 interface IListOfExpensesProps {
   expenses: Expense[],
   total: number,
-  goToPage(page: number): void;
+  goToPage(page: number): void
 };
 
 class ListOfExpenses extends React.Component<IListOfExpensesProps> {
@@ -33,7 +33,7 @@ class ListOfExpenses extends React.Component<IListOfExpensesProps> {
           </tbody>
           <tfoot>
             <tr>
-              {this.props.total && <Pagination numberOfItems={this.props.total} goToPage={(page) => this.props.goToPage(page)}/>}
+              {this.props.total ? <Pagination numberOfItems={this.props.total} goToPage={(page) => this.props.goToPage(page)}/> : null}
             </tr>
           </tfoot>
         </table>
