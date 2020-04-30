@@ -42,5 +42,5 @@ app.use(function(err, req, res, next) {
   })
 })
 
-app.listen(3000)
-console.log('API running at http://localhost:3000')
+app.listen(3001)
+console.log('API running at http://localhost:3001')

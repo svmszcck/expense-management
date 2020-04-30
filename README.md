@@ -32,5 +32,26 @@ Want to go the extra mile? Here's few suggestion of things we'd like to see (or 
 - Pride in craftsmanship
 
 ## A few last things 👇
- - Please note that while you are free to use libraries of your choosing, we encourage you to write at least some your own code. This is your chance to really impress us with your skills.
+- Please note that while you are free to use libraries of your choosing, we encourage you to write at least some your own code. This is your chance to really impress us with your skills.
 - You are welcome to make changes to the API code if you think it will improve your solution
+
+## Requirements
+- have node installed
+- have react installed
+- have access to npm
+
+## To run the code 
+- go to api folder then run
+```
+npm install
+```
+```
+npm start
+```
+- open a new terminal window and go back to the core folder then go to client folder then run
+```
+npm install
+```
+```
+npm start
+```

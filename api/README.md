@@ -11,7 +11,7 @@ npm install
 npm start
 ```
 
-API is now running at `http://localhost:3000`
+API is now running at `http://localhost:3001`
 
 ## Expenses API
 
