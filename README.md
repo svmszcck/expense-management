@@ -118,6 +118,7 @@ Want to go the extra mile? Here's few suggestion of things we'd like to see (or 
 - DONE. Localization: support for multiple languages (English, French, ...)
 
 ## What we're looking for
+
 - Using high-quality existing libraries or small amounts of custom code
 - Production grade code (clean, maintainable, reusable code)
 - Showing your work through your commit history
