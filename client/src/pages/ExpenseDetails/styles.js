@@ -39,6 +39,26 @@ const Styled = styled.div`
             opacity: 0.6;
         }
     }
+
+    .expense-edit {
+        display: flex;
+        flex-direction: column;
+
+        &__title {
+            font-weight: bold;
+            opacity: 0.6;
+        }
+
+        &__comment {
+            width: 100%;
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 5rem;
+            box-sizing: border-box;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+        }        
+    }
 `;
 
 export default Styled;

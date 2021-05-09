@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchExpense } from 'store/actions/expense';
-import { VIEW, EDIT } from 'constants/ui';
+import { VIEW } from 'constants/ui';
 import { Store } from 'types';
 import ExpenseDetailsView from './view';
 
@@ -21,8 +21,12 @@ const ExpenseDetails = () => {
         setMode(mode);
     }
 
+    const selectFile = (file: File) => {
+        console.log(file);
+    }
+
     return (
-        <ExpenseDetailsView data={expense.data} />
+        <ExpenseDetailsView data={expense.data} updateMode={updateMode} mode={mode} selectFile={selectFile} />
     );
 };
 

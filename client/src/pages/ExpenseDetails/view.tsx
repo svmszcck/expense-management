@@ -3,12 +3,14 @@ import { isEmpty } from 'lodash';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faEdit } from '@fortawesome/free-solid-svg-icons';
 
-import { Card, LoadingIndicator, Section } from 'components';
+import { Button, Card, FilePicker, LoadingIndicator, Section } from 'components';
 import { Expense } from 'types';
 import { GRAY_DARK } from 'constants/colors';
+import { VIEW, EDIT } from 'constants/ui';
+import { SECONDARY } from 'constants/buttonTypes';
 import Styled from './styles';
 
-const ExpenseDetailsView = ({ data }: ExpenseDetailsViewProps) => {
+const ExpenseDetailsView = ({ data, updateMode, mode, selectFile }: ExpenseDetailsViewProps) => {
     const { merchant, category, amount, user, comment, date } = data;
 
     return (
@@ -16,11 +18,11 @@ const ExpenseDetailsView = ({ data }: ExpenseDetailsViewProps) => {
             {isEmpty(data) ?
                 <LoadingIndicator />
                 :
-                (
-                    <Section title='Expense Details'>
-                        <Card>
+                < Section title={mode === VIEW ? 'Expense Details' : 'Edit Expense'}>
+                    <Card>
+                        {mode === VIEW ?
                             <div className='expense'>
-                                <FontAwesomeIcon className='expense__edit' icon={faEdit} />
+                                <FontAwesomeIcon className='expense__edit' icon={faEdit} onClick={() => updateMode(EDIT)} />
                                 <div className='expense__user'>
                                     <FontAwesomeIcon icon={faUserCircle} size='3x' color={GRAY_DARK} />
                                     <div className='expense__user-info'>
@@ -36,15 +38,28 @@ const ExpenseDetailsView = ({ data }: ExpenseDetailsViewProps) => {
                                     <p className='expense__detail'><b>Comment:</b> {comment || '-'}</p>
                                 </div>
                             </div>
-                        </Card>
-                    </Section>)
+                            :
+                            <div className='expense-edit'>
+                                <p className='expense-edit__title'>Expense Comment</p>
+                                <textarea className='expense-edit__comment' rows={8} placeholder='Write the expense comment here...' />
+                                <p className='expense-edit__title'>Add Receipt</p>
+                                <FilePicker action={selectFile} />
+                                <Button type={SECONDARY}>Update Expense</Button>
+                            </div>
+                        }
+                    </Card>
+                </Section>
+
             }
-        </Styled>
+        </Styled >
     );
 };
 
 type ExpenseDetailsViewProps = {
-    data: Expense
+    data: Expense;
+    updateMode: (mode: string) => void;
+    mode: string;
+    selectFile: (file: File) => void
 }
 
 export default ExpenseDetailsView;
