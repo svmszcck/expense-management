@@ -5,7 +5,7 @@ import Styled from './styles';
 const ExpenseDetailsView = () => {
     return (
         <Styled>
-
+            Expense Details
         </Styled>
     );
 };

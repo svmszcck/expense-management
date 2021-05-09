@@ -13,10 +13,10 @@ export default function App() {
         <Router>
             <div>
                 <Switch>
-                    <Route path="/">
+                    <Route exact path="/">
                         <Home />
                     </Route>
-                    <Route path="/expense-details">
+                    <Route exact path="/expense-details">
                         <ExpenseDetails />
                     </Route>
                 </Switch>
