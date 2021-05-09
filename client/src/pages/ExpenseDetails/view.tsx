@@ -1,17 +1,19 @@
 import React from 'react';
 import { isEmpty } from 'lodash';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faEdit, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faEdit, faCheckCircle, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { Button, Card, FilePicker, LoadingIndicator, Section } from 'components';
-import { Expense } from 'types';
+import { Expense, Receipt } from 'types';
 import { GRAY_DARK } from 'constants/colors';
 import { VIEW, EDIT, ERROR, SUCCESS } from 'constants/ui';
+import { ROOT } from 'constants/routes';
 import { SECONDARY } from 'constants/buttonTypes';
 import Styled from './styles';
 
-const ExpenseDetailsView = ({ data, updateMode, mode, selectFile, setComment, submit, updateStatus }: ExpenseDetailsViewProps) => {
-    const { merchant, category, amount, user, comment, date } = data;
+const ExpenseDetailsView = ({ data, updateMode, mode, file, selectFile, setComment, submit, updateStatus }: ExpenseDetailsViewProps) => {
+    const { merchant, category, amount, user, comment, date, receipts } = data;
     const isViewMode = mode === VIEW;
     const isError = updateStatus === ERROR;
     const isSuccess = updateStatus === SUCCESS;
@@ -39,6 +41,12 @@ const ExpenseDetailsView = ({ data, updateMode, mode, selectFile, setComment, su
                                     <p className='expense__detail'><b>Amount:</b> {amount.value} {amount.currency}</p>
                                     <p className='expense__detail'><b>Date:</b> {new Date(date).toLocaleDateString()}</p>
                                     <p className='expense__detail'><b>Comment:</b> {comment || '-'}</p>
+                                    <p className='expense__detail'><b>Receipts:</b> {isEmpty(receipts) && '-'}</p>
+                                    <ul>
+                                        {receipts.map((receipt: Receipt, index: number) =>
+                                            <li>{receipt.url}</li>
+                                        )}
+                                    </ul>
                                 </div>
                             </div>
                             :
@@ -49,6 +57,7 @@ const ExpenseDetailsView = ({ data, updateMode, mode, selectFile, setComment, su
                                     onChange={e => setComment(e.target.value)} />
                                 <p className='expense-edit__title'>Add Receipt</p>
                                 <FilePicker action={selectFile} />
+                                {file && <p className='expense-edit__file'>Selected File: <b>{file.name}</b></p>}
                                 {isError &&
                                     <p className='expense-edit__error'>
                                         You need to add a comment or a file to be able to update the expense!
@@ -59,10 +68,14 @@ const ExpenseDetailsView = ({ data, updateMode, mode, selectFile, setComment, su
                                         Expense successfully updated!
                                     </p>
                                 }
+                                <br /> <br />
                                 <Button type={SECONDARY} action={submit}>Update Expense</Button>
                             </div>
                         }
                     </Card>
+                    <Link to={ROOT}>
+                        <p className='back'><FontAwesomeIcon icon={faArrowLeft} /> Go back to Expense List</p>
+                    </Link>
                 </Section>
 
             }

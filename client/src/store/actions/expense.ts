@@ -5,8 +5,8 @@ import {
   uploadReceipt as uploadReceiptService
 } from 'services/expenseService';
 import { ExpensePayload } from 'types';
-import { UPDATE_EXPENSE, SET_EXPENSE_LIST, SET_EXPENSE, SET_EXPENSE_STATUS } from '../constants';
-import { SUCCESS, ERROR } from 'constants/ui';
+import { SET_EXPENSE_LIST, SET_EXPENSE, SET_EXPENSE_STATUS, SET_EXPENSE_OFFSET } from '../constants';
+import { SUCCESS } from 'constants/ui';
 
 export const fetchExpenses = ({ limit, offset }: ExpensePayload) => async (dispatch: any) => {
   const expenses = await getExpensesService(limit, offset);
@@ -24,6 +24,10 @@ export const updateExpense = (id: string, comment: string) => async (dispatch: a
   const result = await updateExpenseService(id, comment);
 
   if (result) dispatch(updateExpenseStatus(SUCCESS));
+}
+
+export const setExpenseOffset = (offset: number) => async (dispatch: any) => {
+  dispatch({ type: SET_EXPENSE_OFFSET, payload: { offset } });
 }
 
 export const uploadReceipt = (id: string, receipt: File) => async (dispatch: any) => {

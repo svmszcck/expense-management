@@ -4,7 +4,7 @@ import Screens from 'utils/screens';
 
 const Styled = styled.div`
     padding: 2rem;
-    @media ${Screens.desktop, Screens.retina} {
+    @media ${Screens.desktop}, ${Screens.retina} {
        padding: 2rem 8rem 2rem 8rem;
     }
 

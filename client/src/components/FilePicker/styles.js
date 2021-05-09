@@ -9,7 +9,6 @@ const Styled = styled.div`
     border-style: dashed;
     border-radius: 5px;
     padding: 0.5rem;
-    margin-bottom: 2rem;
     cursor: pointer;
 `;
 

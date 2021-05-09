@@ -6,7 +6,7 @@ import Styled from './styles';
 const FilePicker = ({ action }: FilePickerProps) => {
     const onDrop = useCallback(files => {
         action(files[0]);
-    }, [])
+    }, [action])
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, multiple: false })
 
     return (
@@ -15,8 +15,9 @@ const FilePicker = ({ action }: FilePickerProps) => {
                 <input {...getInputProps()} />
                 {
                     isDragActive ?
-                        <p>Drop the files here ...</p> :
-                        <p>Drag 'n' drop some files here, or click to select files</p>
+                        <p>Drop the files here ...</p>
+                        :
+                        <p>Drag & Drop some files here, or click to select files...</p>
                 }
             </div>
         </Styled>

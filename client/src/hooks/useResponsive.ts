@@ -1,4 +1,3 @@
-import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 export const MobileTablet = () => useMediaQuery({ query: '(max-width: 1224px)' })

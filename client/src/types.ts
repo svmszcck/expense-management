@@ -4,6 +4,10 @@ export type ExpensePayload = {
     offset: number;
 }
 
+export type Receipt = {
+    url: string
+}
+
 export type Expense = {
     id: string;
     amount: {
@@ -12,7 +16,7 @@ export type Expense = {
     },
     date: string;
     merchant: string;
-    receipts: Array<any>,
+    receipts: Array<Receipt>,
     comment: string;
     category: string;
     user: {
@@ -25,8 +29,9 @@ export type Expense = {
 // REDUX
 export type Store = {
     expense: {
-        list: Array<Expense>,
-        data: Expense,
-        updateStatus: string
+        list: Array<Expense>;
+        data: Expense;
+        updateStatus: string;
+        offset: number;
     }
 }

@@ -16,7 +16,7 @@ const Styled = styled.div`
     transition: .3s;
 
     ${({ animated }) => animated && `
-        @media ${Screens.desktop, Screens.retina} {
+        @media ${Screens.desktop}, ${Screens.retina} {
             &:hover {
                 box-shadow: 1px 1px 3px rgba(0,0,0,0.25), 1px 2px 3px rgba(0,0,0,0.22);
                 width: calc(100% + 1.6rem);

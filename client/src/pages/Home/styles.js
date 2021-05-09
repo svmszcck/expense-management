@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Screens from 'utils/screens';
+import { GRAY } from 'constants/colors';
 
 const Styled = styled.div`
     display: flex;
@@ -14,7 +14,7 @@ const Styled = styled.div`
         &__user {
             width: 12rem;
             margin-right: 2rem;
-            border-right: 1px solid #E9E9E9;
+            border-right: 1px solid ${GRAY};
         }
 
         &__user-detail {
