@@ -1,28 +1,31 @@
 import React from 'react';
 import { isEmpty } from 'lodash';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faEdit, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 import { Button, Card, FilePicker, LoadingIndicator, Section } from 'components';
 import { Expense } from 'types';
 import { GRAY_DARK } from 'constants/colors';
-import { VIEW, EDIT } from 'constants/ui';
+import { VIEW, EDIT, ERROR, SUCCESS } from 'constants/ui';
 import { SECONDARY } from 'constants/buttonTypes';
 import Styled from './styles';
 
-const ExpenseDetailsView = ({ data, updateMode, mode, selectFile }: ExpenseDetailsViewProps) => {
+const ExpenseDetailsView = ({ data, updateMode, mode, selectFile, setComment, submit, updateStatus }: ExpenseDetailsViewProps) => {
     const { merchant, category, amount, user, comment, date } = data;
+    const isViewMode = mode === VIEW;
+    const isError = updateStatus === ERROR;
+    const isSuccess = updateStatus === SUCCESS;
 
     return (
         <Styled>
             {isEmpty(data) ?
                 <LoadingIndicator />
                 :
-                < Section title={mode === VIEW ? 'Expense Details' : 'Edit Expense'}>
+                < Section title={isViewMode ? 'Expense Details' : 'Edit Expense'}>
                     <Card>
-                        {mode === VIEW ?
+                        {isViewMode ?
                             <div className='expense'>
-                                <FontAwesomeIcon className='expense__edit' icon={faEdit} onClick={() => updateMode(EDIT)} />
+                                <FontAwesomeIcon className='expense-toggle' icon={faEdit} onClick={() => updateMode(EDIT)} />
                                 <div className='expense__user'>
                                     <FontAwesomeIcon icon={faUserCircle} size='3x' color={GRAY_DARK} />
                                     <div className='expense__user-info'>
@@ -40,11 +43,23 @@ const ExpenseDetailsView = ({ data, updateMode, mode, selectFile }: ExpenseDetai
                             </div>
                             :
                             <div className='expense-edit'>
+                                <FontAwesomeIcon className='expense-toggle' icon={faCheckCircle} onClick={() => updateMode(VIEW)} />
                                 <p className='expense-edit__title'>Expense Comment</p>
-                                <textarea className='expense-edit__comment' rows={8} placeholder='Write the expense comment here...' />
+                                <textarea className='expense-edit__comment' rows={8} placeholder='Write the expense comment here...'
+                                    onChange={e => setComment(e.target.value)} />
                                 <p className='expense-edit__title'>Add Receipt</p>
                                 <FilePicker action={selectFile} />
-                                <Button type={SECONDARY}>Update Expense</Button>
+                                {isError &&
+                                    <p className='expense-edit__error'>
+                                        You need to add a comment or a file to be able to update the expense!
+                                    </p>
+                                }
+                                {!isError && isSuccess &&
+                                    <p className='expense-edit__success'>
+                                        Expense successfully updated!
+                                    </p>
+                                }
+                                <Button type={SECONDARY} action={submit}>Update Expense</Button>
                             </div>
                         }
                     </Card>
@@ -59,7 +74,11 @@ type ExpenseDetailsViewProps = {
     data: Expense;
     updateMode: (mode: string) => void;
     mode: string;
-    selectFile: (file: File) => void
+    file: File | undefined;
+    selectFile: (file: File) => void;
+    setComment: (comment: string) => void;
+    submit: () => void;
+    updateStatus: string;
 }
 
 export default ExpenseDetailsView;

@@ -26,6 +26,7 @@ export type Expense = {
 export type Store = {
     expense: {
         list: Array<Expense>,
-        data: Expense
+        data: Expense,
+        updateStatus: string
     }
 }

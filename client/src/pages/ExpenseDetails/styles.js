@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { DANGER, SUCCESS } from 'constants/colors';
+
 const Styled = styled.div`
     display: flex;
     flex-direction: row;
@@ -11,19 +13,6 @@ const Styled = styled.div`
             display: flex;
             align-items: center;
             border-bottom: 1px solid #E9E9E9;
-        }
-
-        &__edit {
-            position: absolute;
-            font-size: 25px;
-            top: 0;
-            right: 0;
-            cursor: pointer;
-            opacity: 0.8;
-
-            &:hover {
-                opacity: 0.7;
-            }
         }
 
         &__user-info {
@@ -43,8 +32,10 @@ const Styled = styled.div`
     .expense-edit {
         display: flex;
         flex-direction: column;
+        position: relative;
 
         &__title {
+            width: fit-content;
             font-weight: bold;
             opacity: 0.6;
         }
@@ -57,8 +48,31 @@ const Styled = styled.div`
             box-sizing: border-box;
             padding: 0.5rem;
             margin-bottom: 1rem;
-        }        
+        }
+        
+        &__error {
+            color: ${DANGER};
+            margin-top: 0;
+        }
+
+        &__success{
+            color: ${SUCCESS};
+            margin-top: 0;
+        }
     }
+
+    .expense-toggle {
+            position: absolute;
+            font-size: 25px;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+            opacity: 0.8;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
 `;
 
 export default Styled;

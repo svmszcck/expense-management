@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { PRIMARY, SECONDARY, OUTLINE } from 'constants/buttonTypes';
 import { PRIMARY as PRIMARY_COLOR, SECONDARY as SECONDARY_COLOR, WHITE } from 'constants/colors';
+import Screens from 'utils/screens';
 
 const handleType = type => {
     switch (type) {
@@ -36,6 +37,12 @@ const Styled = styled.div`
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 1rem;
+    box-sizing: border-box;
+
+    @media ${Screens.mobile} {
+        width: 100%;
+        text-align: center;
+    }
 
     &:hover {
         opacity: 0.9;
