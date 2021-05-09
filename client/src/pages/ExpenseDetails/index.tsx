@@ -18,8 +18,11 @@ const ExpenseDetails = () => {
     const expense = useSelector((state: Store) => state.expense);
 
     useEffect(() => {
-        dispatch(fetchExpense(id));
-    }, []);
+        if (mode === VIEW) dispatch(fetchExpense(id));
+        else {
+            dispatch(updateExpenseStatus(null));
+        }
+    }, [mode]);
 
     const updateMode = (mode: string) => {
         setMode(mode);

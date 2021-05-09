@@ -44,7 +44,7 @@ const ExpenseDetailsView = ({ data, updateMode, mode, file, selectFile, setComme
                                     <p className='expense__detail'><b>Receipts:</b> {isEmpty(receipts) && '-'}</p>
                                     <ul>
                                         {receipts.map((receipt: Receipt, index: number) =>
-                                            <li>{receipt.url}</li>
+                                            <li key={index}>{receipt.url}</li>
                                         )}
                                     </ul>
                                 </div>

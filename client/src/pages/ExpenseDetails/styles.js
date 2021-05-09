@@ -76,12 +76,12 @@ const Styled = styled.div`
         
         &__error {
             color: ${DANGER};
-            margin-top: 0;
+            margin-bottom: 0;
         }
 
         &__success{
             color: ${SUCCESS};
-            margin-top: 0;
+            margin-bottom: 0;
         }
     }
 

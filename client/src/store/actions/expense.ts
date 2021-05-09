@@ -36,6 +36,6 @@ export const uploadReceipt = (id: string, receipt: File) => async (dispatch: any
   if (result) dispatch(updateExpenseStatus(SUCCESS));
 }
 
-export const updateExpenseStatus = (updateStatus: string) => async (dispatch: any) => {
+export const updateExpenseStatus = (updateStatus: string | null) => async (dispatch: any) => {
   dispatch({ type: SET_EXPENSE_STATUS, payload: { updateStatus } });
 }
