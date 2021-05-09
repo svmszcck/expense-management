@@ -1,0 +1,1 @@
+export const EXPENSE_LIMIT = 10;

@@ -25,6 +25,7 @@ export type Expense = {
 // REDUX
 export type Store = {
     expense: {
-        data: any
+        list: Array<Expense>,
+        data: Expense
     }
 }

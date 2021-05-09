@@ -15,12 +15,12 @@ router.get('/', (req, res) => {
       .sort((a, b) => {
         const valA = Date.parse(a.date)
         const valB = Date.parse(b.date)
-    
+
         if (valA > valB) {
-            return -1
+          return -1
         }
         if (valB > valA) {
-            return 1
+          return 1
         }
         return 0
       })
@@ -71,7 +71,7 @@ router.post('/:id/receipts', (req, res) => {
       if (err) {
         return res.status(500).send(err);
       }
-   
+
       expense.receipts.push({
         url: `/receipts/${receiptId}`
       })

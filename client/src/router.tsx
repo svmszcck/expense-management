@@ -16,7 +16,7 @@ export default function App() {
                     <Route exact path="/">
                         <Home />
                     </Route>
-                    <Route exact path="/expense-details">
+                    <Route exact path="/expense-details/:id">
                         <ExpenseDetails />
                     </Route>
                 </Switch>

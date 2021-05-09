@@ -13,7 +13,7 @@ const Button = ({ type = 'primary', action, children }: ButtonProps) => {
 type ButtonProps = {
     children: ReactNode;
     type?: string;
-    action?: () => {}
+    action?: () => any
 };
 
 export default Button;

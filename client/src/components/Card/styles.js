@@ -17,14 +17,14 @@ const Styled = styled.div`
 
     ${({ animated }) => animated && `
         @media ${Screens.desktop, Screens.retina} {
-        &:hover {
-            box-shadow: 1px 1px 3px rgba(0,0,0,0.25), 1px 2px 3px rgba(0,0,0,0.22);
-            width: calc(100% + 1.6rem);
-            margin-left: -0.8rem;
-            margin-right: -0.8rem;
+            &:hover {
+                box-shadow: 1px 1px 3px rgba(0,0,0,0.25), 1px 2px 3px rgba(0,0,0,0.22);
+                width: calc(100% + 1.6rem);
+                margin-left: -0.8rem;
+                margin-right: -0.8rem;
 
-        }
-    }`}
+            }
+        }`}
 `;
 
 export default Styled;

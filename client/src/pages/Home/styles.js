@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import Screens from 'utils/screens';
+
 const Styled = styled.div`
     display: flex;
     flex-direction: column;
@@ -10,7 +12,7 @@ const Styled = styled.div`
         flex-direction: row;
 
         &__user {
-            width: 10rem;
+            width: 12rem;
             margin-right: 2rem;
             border-right: 1px solid #E9E9E9;
         }
@@ -18,6 +20,9 @@ const Styled = styled.div`
         &__user-detail {
             font-size: 13px;
             opacity: 0.6;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         &__detail {

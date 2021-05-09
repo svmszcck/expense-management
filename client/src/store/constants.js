@@ -1,4 +1,5 @@
 export const UPDATE_EXPENSE_LIST = "UPDATE_EXPENSE_LIST";
+export const UPDATE_EXPENSE = "UPDATE_EXPENSE";
 
 // Loading Indicators
 export const EXPENSES_LOADING = "EXPENSES_LOADING";
