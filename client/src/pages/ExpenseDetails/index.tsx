@@ -1,10 +1,10 @@
 import React from 'react';
 
+import ExpenseDetailsView from './view';
+
 const ExpenseDetails = () => {
     return (
-        <div>
-
-        </div>
+        <ExpenseDetailsView />
     );
 };
 

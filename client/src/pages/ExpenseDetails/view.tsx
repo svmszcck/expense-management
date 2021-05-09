@@ -2,12 +2,12 @@ import React from 'react';
 
 import Styled from './styles';
 
-const Card = () => {
+const ExpenseDetailsView = () => {
     return (
         <Styled>
-            <p>erer</p>
+
         </Styled>
     );
 };
 
-export default Card;
+export default ExpenseDetailsView;

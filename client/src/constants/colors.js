@@ -1,0 +1,1 @@
+export const GRAY = '#F6F6F6';
