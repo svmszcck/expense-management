@@ -2,7 +2,7 @@ import { UPDATE_EXPENSE_LIST } from "../constants";
 
 const initialState = { data: [] };
 
-const userReducer = (state = initialState, { type, payload }: any) => {
+const expenseReducer = (state = initialState, { type, payload }: any) => {
   switch (type) {
     case UPDATE_EXPENSE_LIST:
       return { ...state, ...payload };
@@ -11,4 +11,4 @@ const userReducer = (state = initialState, { type, payload }: any) => {
   }
 };
 
-export default userReducer;
+export default expenseReducer;

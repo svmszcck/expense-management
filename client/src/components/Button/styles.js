@@ -17,8 +17,9 @@ const handleType = type => {
             `;
         case OUTLINE:
             return `
-            background-color: ${PRIMARY_COLOR};
+            background-color: transparent;
             color: ${WHITE};
+            border: 1px solid ${WHITE};
             `;
         default:
             return `
