@@ -19,9 +19,7 @@ const ExpenseDetails = () => {
 
     useEffect(() => {
         if (mode === VIEW) dispatch(fetchExpense(id));
-        else {
-            dispatch(updateExpenseStatus(null));
-        }
+        else dispatch(updateExpenseStatus(null));
     }, [mode]);
 
     const updateMode = (mode: string) => {

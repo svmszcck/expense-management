@@ -18,6 +18,7 @@ const Home = () => {
 
     const loadMore = () => {
         const newOffset = (expense.offset + 1) * EXPENSE_LIMIT;
+
         dispatch(fetchExpenses({ limit: EXPENSE_LIMIT, offset: newOffset }));
         dispatch(setExpenseOffset(expense.offset + 1));
     }
