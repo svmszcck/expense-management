@@ -8,7 +8,7 @@ import expensesRouter from './routes/expenses'
 
 const app = express()
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', "*")
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
   res.header('Access-Control-Allow-Headers', 'Origin, Content-Type')
@@ -25,11 +25,11 @@ app.use('/receipts', express.static(path.join(__dirname, 'receipts')))
 
 app.use('/expenses', expensesRouter)
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404))
 })
 
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   const message = err.message
   const error = req.app.get('env') === 'development' ? err : {}
   const status = err.status || 500
@@ -42,5 +42,9 @@ app.use(function(err, req, res, next) {
   })
 })
 
-app.listen(3000)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, err => {
+  if (err) throw err;
+  console.log("%c Server running", "color: green");
+});
 console.log('API running at http://localhost:3000')
