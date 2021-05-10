@@ -35,3 +35,8 @@ export type Store = {
         offset: number;
     }
 }
+
+export type Action = {
+    type: string;
+    payload: any;
+};
