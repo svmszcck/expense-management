@@ -22,15 +22,15 @@ const ExpenseDetails = () => {
         else dispatch(updateExpenseStatus(null));
     }, [mode]);
 
-    const updateMode = (mode: string) => {
+    const updateMode = (mode: string): void => {
         setMode(mode);
     }
 
-    const selectFile = (file: File) => {
+    const selectFile = (file: File): void => {
         setFile(file);
     }
 
-    const submit = async () => {
+    const submit = (): void => {
         if (isEmpty(comment) && !file) {
             dispatch(updateExpenseStatus(ERROR));
             return;

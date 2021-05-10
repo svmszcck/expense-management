@@ -6,6 +6,7 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 import { Button, Card, LoadingIndicator, Section } from 'components';
 import { OUTLINE } from 'constants/buttonTypes';
+import { GRAY_DARK } from 'constants/colors';
 import { EXPENSE_DETAILS } from 'constants/routes';
 import { MobileTablet } from 'hooks/useResponsive';
 import { Expense } from 'types';
@@ -26,7 +27,7 @@ const HomeView = ({ list, loadMore }: HomeViewProps) => {
                                 <div className='expense'>
                                     {!isMobileTablet &&
                                         <div className='expense__user'>
-                                            <FontAwesomeIcon icon={faUserCircle} size='3x' color='#838383' />
+                                            <FontAwesomeIcon icon={faUserCircle} size='3x' color={GRAY_DARK} />
                                             <p className='expense__user-detail'>{user.first} {user.last}</p>
                                             <p className='expense__user-detail'>{user.email}</p>
                                         </div>
