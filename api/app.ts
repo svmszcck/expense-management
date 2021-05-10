@@ -42,9 +42,5 @@ app.use(function (err, req, res, next) {
   })
 })
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, err => {
-  if (err) throw err;
-  console.log("%c Server running", "color: green");
-});
+app.listen(3000)
 console.log('API running at http://localhost:3000')
